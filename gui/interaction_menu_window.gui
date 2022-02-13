@@ -74,6 +74,26 @@ window = {
 					expand = {}
 
 					hbox = {
+						# [UniUI] [IMHO]
+						UniUI_IMHO_button = {}
+						# [/IMHO] [/UniUI]
+
+						# Chronicle Begin
+
+						button_history = {
+							name = "show_chronicle"
+							visible = "[GetGlobalVariable('chronicle_mod_version').IsSet]"
+							datacontext = "[GetScriptedGui( 'chronicle_scripted_gui_show_chronicle' )]"
+							onclick = "[ScriptedGui.Execute( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'actor', GetPlayer.MakeScope ).End )]"
+							onclick = "[CharacterInteractionMenuWindow.Close]"
+							size = { 25 25 }
+
+							tooltip = "chronicle_shortcut_text"
+							using = tooltip_ne
+						}
+
+						# Chronicle End
+
 						button_pin = {
 							name = "button_pin"
 							visible = "[Not(Character.IsPinned)]"
@@ -86,9 +106,21 @@ window = {
 
 						button_barbershop = {
 							name = "customize_portrait"
-							visible = "[Character.CanCustomizePortrait]"
+							visible = "[And(Not(GetGlobalVariable('FSB_is_loaded').IsSet), Character.CanCustomizePortrait]"
 							onclick = "[Character.OnCustomizePortrait]"
 							onclick = "[CharacterInteractionMenuWindow.Close]"
+							size = { 25 25 }
+
+							tooltip = "CV_CUSTOMIZE_PORTRAIT"
+							using = tooltip_ne
+						}
+
+						button_barbershop = {
+							name = "customize_portrait_fsb"
+							visible = "[And(Or(Not(GameIsMultiplayer), And( GameIsMultiplayer, Character.CanCustomizePortrait)), GetGlobalVariable('FSB_is_loaded').IsSet]"
+							onclick = "[Character.OnCustomizePortrait]"
+							onclick = "[CharacterInteractionMenuWindow.Close]"
+							enabled = "[Not(GetPlayer.MakeScope.Var('barber_text').IsSet)]"
 							size = { 25 25 }
 
 							tooltip = "CV_CUSTOMIZE_PORTRAIT"
@@ -131,6 +163,9 @@ window = {
 				}
 			}
 
+			# [UniUI] [IMHO]
+			UniUI_IMHO_PoV = {}
+			# [/IMHO] [/UniUI]
 
 			dynamicgridbox = {
 				name = "category_interaction_list"

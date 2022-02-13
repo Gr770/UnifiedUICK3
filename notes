@@ -2,3 +2,26 @@ PoW:
  cooltip
  map_icon_layer
  window_army
+
+Chronicle:
+ texticons
+
+StA:
+ coat_of_arms
+ dialogs
+
+FSB:
+ Portrait Cus
+
+Spouse Designer:
+ multipler types
+ ruler designer
+
+Extended Outliner:
+ outliner
+
+NamePlates:
+ Problem child
+
+Duel Overlay:
+ Types need to be removed from main file.

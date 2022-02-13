@@ -9,10 +9,15 @@ window = {
 	using = Window_Size_Sidebar
 	using = Window_Background_Sidebar
 
+	# [UniUI] [StA]
+	using = UniUI_StA_title_window_states
+	# [/StA] [/UniUI]
 	state = {
 		name = _show
 		position = { 0 0 }
-		on_start = "[GetVariableSystem.Clear( 'display_allegiance' )]"
+		# [UniUI] [Vanilla] better tab management
+		on_start = "[GetVariableSystem.Set( 'title_view_tab', 'de_jure_tab' )]"
+		# [/Vanilla] [/UniUI]
 		on_start = "[GetVariableSystem.Set( 'hide_bottom_left_HUD', 'true' )]"
 
 		using = Animation_FadeIn_Quick
@@ -355,6 +360,10 @@ window = {
 				layoutpolicy_vertical = expanding
 
 				### TABS ###
+				# [UniUI] [Vanilla] Not StA
+				container = {
+					visible = "[Not(And(GetGlobalVariable('StA_is_loaded').IsSet,TitleViewWindow.GetTitle.GetHolder.GetGovernment.IsType('feudal_government')))]"
+				# [/Vanilla] [/UniUI]
 				hbox = {
 					name = "tabs"
 					visible = "[Not(IsDataModelEmpty(TitleViewWindow.GetTitleAllegianceVassals))]"
@@ -365,24 +374,35 @@ window = {
 						name = "show_vassals"
 						text = "TITLE_VIEW_DE_JURE"
 						default_format = "#weak"
-						down = "[Not( GetVariableSystem.Exists( 'display_allegiance' ) )]"
-						onclick = "[GetVariableSystem.Clear( 'display_allegiance' )]"
+						# [UniUI] [Vanilla] better tab management
+						down = "[GetVariableSystem.HasValue( 'title_view_tab', 'de_jure_tab' ) )]"
+						onclick = "[GetVariableSystem.Set( 'title_view_tab', 'de_jure_tab' )]"
+						# [/Vanilla] [/UniUI]
 					}
 
 					button_tab = {
+						visible = "[DataModelHasItems(TitleViewWindow.GetVassalGroupItems)]"
 						layoutpolicy_horizontal = expanding
 						name = "show_allegiance"
 						text = "TITLE_VIEW_VASSALS"
 						default_format = "#weak"
-						down = "[GetVariableSystem.Exists( 'display_allegiance' )]"
-						onclick = "[GetVariableSystem.Set( 'display_allegiance', 'true' )]"
+						# [UniUI] [Vanilla] better tab management
+						down = "[GetVariableSystem.HasValue( 'title_view_tab', 'vassals_tab' )]"
+						onclick = "[GetVariableSystem.Set( 'title_view_tab', 'vassals_tab' )]"
+						# [/Vanilla] [/UniUI]
 					}
 				}
+				# [UniUI] [StA]
+				}
+				UniUI_StA_title_window_tabs = {}
+				# [/StA] [/UniUI]
 
 				vbox = {
 					name = "dejure_tab_contents"
 					datacontext = "[TitleViewWindow.GetTitle]"
-					visible = "[And(DataModelHasItems(TitleViewWindow.GetVassalGroupItems), Not(Or(GetVariableSystem.Exists( 'display_allegiance' ), Or(Title.IsMercenaryCompany,Title.IsHolyOrder))))]"
+					# [UniUI] [StA]
+					visible = "[And(And(DataModelHasItems(TitleViewWindow.GetVassalGroupItems),GetVariableSystem.HasValue('title_view_tab','de_jure_tab')), And(Not(Title.IsMercenaryCompany),Not(Title.IsHolyOrder)))]"
+					# [/StA] [/UniUI]					
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
 					margin_top = 10
@@ -464,7 +484,9 @@ window = {
 					name = "tab_contents_empty"
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
-					visible = "[Not(Or(DataModelHasItems(TitleViewWindow.GetVassalGroupItems), GetVariableSystem.Exists( 'display_allegiance' )))]"
+					# [UniUI] [Vanilla] better tab management
+					visible = "[Not(DataModelHasItems(TitleViewWindow.GetVassalGroupItems))]"
+					# [/Vanilla] [/UniUI]
 
 					using = title_window_background_illustration
 
@@ -493,7 +515,9 @@ window = {
 
 				vbox = {
 					name = "vassals_tab_contents"
-					visible = "[GetVariableSystem.Exists( 'display_allegiance' )]"
+					# [UniUI] [Vanilla] [StA] better tab management + Not StA
+					visible = "[And(GetVariableSystem.HasValue( 'title_view_tab','vassals_tab' ),And(DataModelHasItems(TitleViewWindow.GetVassalGroupItems),Not(And(GetGlobalVariable('StA_is_loaded').IsSet,TitleViewWindow.GetTitle.GetHolder.GetGovernment.IsType('feudal_government')))))]"
+					# [/StA][/Vanilla] [/UniUI]
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
 					margin_top = 10
@@ -529,7 +553,7 @@ window = {
 											coa_realm_tiny_crown = {}
 
 											text_single = {
-												text = "GeneralUniUICharGetNameNoTooltip"
+												text = "[Character.GetNameNoTooltip]"
 												layoutpolicy_horizontal = expanding
 												margin = { 10 0 }
 											}
@@ -540,6 +564,12 @@ window = {
 						}
 					}
 				}
+				
+				# [UniUI] [StA]
+				UniUI_StA_title_window_vassals_tab = {}
+				UniUI_StA_title_window_realm_law_tab = {}
+				expand = {}
+				# [/StA] [/UniUI]
 
 				hbox = {
 					margin = { 20 5 }
@@ -668,6 +698,9 @@ window = {
 						text = "TITLE_VIEW_CREATE_TITLE"
 						onclick = "[TitleViewWindow.CreateTitle]"
 						tooltip = "[TitleViewWindow.GetCreateTitleButtonTooltip]"
+						# [UniUI] [StA]
+						using = UniUI_StA_title_window_create_title
+						# [/StA] [/UniUI]
 					}
 				}
 

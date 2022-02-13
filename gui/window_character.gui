@@ -363,6 +363,11 @@ window = {
 					{
 						text = "[Character.GetOpinionBreakdownText( CharacterWindow.GetCharacter.GetLiege )]"
 					}
+					# [UniUI] [IMHO]
+					blockoverride "IMHO_player_opinion"
+					{
+					}
+					# [/IMHO] [/UniUI]
 				}
 			}
 
@@ -426,6 +431,12 @@ window = {
 					{
 						text = "[Character.GetOpinionBreakdownText( CharacterWindow.GetCourtOwner )]"
 					}
+
+					# [UniUI] [IMHO]
+					blockoverride "IMHO_player_opinion"
+					{
+					}
+					# [/IMHO] [/UniUI]
 				}
 			}
 

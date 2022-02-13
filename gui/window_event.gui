@@ -75,7 +75,7 @@ base_event_window = {
 									{
 										portrait_texture = "[EventWindowData.GetAnimatedEventPortraitTexture('left_portrait', 'camera_event_left', PdxGetWidgetScreenSize(PdxGuiWidget.Self))]"
 										alwaystransparent = "[Not(EventWindowData.ShouldShowPortraitInfo('left_portrait'))]"
-										tooltip_enabled = "[EventWindowData.ShouldShowPortraitInfo('left_portrait')]"
+										tooltip_enabled = "[And(Not(GetGlobalVariable('nameplates_mod_version').IsSet), EventWindowData.ShouldShowPortraitInfo('left_portrait'))]"
 									}
 
 									blockoverride "highlight_visible"
@@ -103,6 +103,35 @@ base_event_window = {
 											blend_mode = alphamultiply
 										}
 									}
+
+									flowcontainer = {
+										visible = "[GetGlobalVariable('nameplates_mod_version').IsSet]"
+										parentanchor = bottom|hcenter
+										direction = vertical
+										allow_outside = yes
+										position = { -30 -40 }
+
+										text_label_center = {
+											visible = "[And(And(EventWindowData.HasPortraitCharacter('left_portrait'), EventWindowData.HasPortraitCharacter('right_portrait')), And(Character.HasRelationTo(GetPlayer), Not(Character.IsLocalPlayer)))]"
+											parentanchor = bottom|hcenter
+											alwaystransparent = yes
+											text = "[Character.GetRelationToString(GetPlayer)]"
+											max_width = 300
+											align = center
+											fontsize_min = 12
+										}
+
+										text_label_center_multi = {
+											visible = "[And(EventWindowData.HasPortraitCharacter('left_portrait'), EventWindowData.HasPortraitCharacter('right_portrait'))]"
+											parentanchor = bottom|hcenter
+											alwaystransparent = yes
+											text = "GeneralUniUICharGetUINameUV"
+											maximumsize = { 300 50 }
+											autoresize = yes
+											align = center
+											fontsize_min = 12
+										}
+									}
 								}
 							}
 
@@ -125,7 +154,7 @@ base_event_window = {
 									{
 										portrait_texture = "[EventWindowData.GetAnimatedEventPortraitTexture('right_portrait', 'camera_event_right', PdxGetWidgetScreenSize(PdxGuiWidget.Self))]"
 										alwaystransparent = "[Not(EventWindowData.ShouldShowPortraitInfo('right_portrait'))]"
-										tooltip_enabled = "[EventWindowData.ShouldShowPortraitInfo('right_portrait')]"
+										tooltip_enabled = "[And(Not(GetGlobalVariable('nameplates_mod_version').IsSet), EventWindowData.ShouldShowPortraitInfo('right_portrait'))]"
 									}
 
 									blockoverride "highlight_visible"
@@ -153,6 +182,35 @@ base_event_window = {
 											blend_mode = alphamultiply
 										}
 									}
+
+									flowcontainer = {
+										visible = "[GetGlobalVariable('nameplates_mod_version').IsSet]"
+										parentanchor = bottom|hcenter
+										direction = vertical
+										allow_outside = yes
+										position = { 100 -40 }
+
+										text_label_center = {
+											visible = "[And(EventWindowData.HasPortraitCharacter('right_portrait'), And(Character.HasRelationTo(GetPlayer), Not(Character.IsLocalPlayer)))]"
+											parentanchor = bottom|hcenter
+											alwaystransparent = yes
+											text = "[Character.GetRelationToString(GetPlayer)]"
+											max_width = 300
+											align = center
+											fontsize_min = 12
+										}
+
+										text_label_center_multi = {
+											visible = "[EventWindowData.HasPortraitCharacter('right_portrait')]"
+											parentanchor = bottom|hcenter
+											alwaystransparent = yes
+											text = "GeneralUniUICharGetUINameUV"
+											maximumsize = { 300 50 }
+											autoresize = yes
+											align = center
+											fontsize_min = 12
+										}
+									}
 								}
 							}
 						}
@@ -170,7 +228,7 @@ base_event_window = {
 							{
 								portrait_texture = "[EventWindowData.GetAnimatedEventPortraitTexture('left_portrait', 'camera_event_center', PdxGetWidgetScreenSize(PdxGuiWidget.Self))]"
 								alwaystransparent = "[Not(EventWindowData.ShouldShowPortraitInfo('left_portrait'))]"
-								tooltip_enabled = "[EventWindowData.ShouldShowPortraitInfo('left_portrait')]"
+								tooltip_enabled = "[And(Not(GetGlobalVariable('nameplates_mod_version').IsSet), EventWindowData.ShouldShowPortraitInfo('left_portrait'))]"
 								using = tooltip_below
 								tooltip_offset = { 550 -580 }
 							}
@@ -199,21 +257,58 @@ base_event_window = {
 									blend_mode = alphamultiply
 								}
 							}
+
+							flowcontainer = {
+								visible = "[GetGlobalVariable('nameplates_mod_version').IsSet]"
+								parentanchor = bottom|hcenter
+								direction = vertical
+								allow_outside = yes
+								position = { 0 -45 }
+
+								text_label_center = {
+									visible = "[And(And(EventWindowData.HasPortraitCharacter('left_portrait'), Not(EventWindowData.HasPortraitCharacter('right_portrait'))), And(Character.HasRelationTo(GetPlayer), Not(Character.IsLocalPlayer)))]"
+									parentanchor = bottom|hcenter
+									alwaystransparent = yes
+									text = "[Character.GetRelationToString(GetPlayer)]"
+									max_width = 300
+									align = center
+									fontsize_min = 12
+								}
+
+								text_label_center_multi = {
+									visible = "[And(EventWindowData.HasPortraitCharacter('left_portrait'), Not(EventWindowData.HasPortraitCharacter('right_portrait')))]"
+									parentanchor = bottom|hcenter
+									alwaystransparent = yes
+									text = "GeneralUniUICharGetUINameUV"
+									maximumsize = { 300 50 }
+									autoresize = yes
+									align = center
+									fontsize_min = 12
+								}
+							}
 						}
 
 						margin_widget = {
 							name = "bottom_characters"
 							size = { 100% 170 }
+							position = { 0 -60 }
 							parentanchor = bottom|hcenter
 							margin_bottom = 10
 							allow_outside = yes
 
 							icon = {
 								name = "bottom_characters_bg"
-								visible = "[Or(EventWindowData.HasPortraitOrArtifact('lower_left_portrait'), Or(EventWindowData.HasPortraitOrArtifact('lower_center_portrait'), EventWindowData.HasPortraitOrArtifact('lower_right_portrait')))]"
+								visible = "[And(Not(GetGlobalVariable('nameplates_mod_version').IsSet), Or(EventWindowData.HasPortraitOrArtifact('lower_left_portrait'), Or(EventWindowData.HasPortraitOrArtifact('lower_center_portrait'), EventWindowData.HasPortraitOrArtifact('lower_right_portrait'))))]"
 								position = { -55 7 }
 								size = { 624 100% }
 								texture = "gfx/interface/window_event/event_bottom_char_bg.dds"
+							}
+
+							icon = {
+								name = "bottom_characters_bg"
+								visible = "[And(GetGlobalVariable('nameplates_mod_version').IsSet, Or(EventWindowData.HasPortraitOrArtifact('lower_left_portrait'), Or(EventWindowData.HasPortraitOrArtifact('lower_center_portrait'), EventWindowData.HasPortraitOrArtifact('lower_right_portrait'))))]"
+								position = { -55 7 }
+								size = { 624 100% }
 							}
 
 							flowcontainer = {
@@ -274,7 +369,7 @@ base_event_window = {
 											{
 												portrait_texture = "[EventWindowData.GetStaticEventPortraitTexture('lower_left_portrait', 'camera_shoulders', PdxGetWidgetScreenSize(PdxGuiWidget.Self))]"
 												alwaystransparent = "[Not(EventWindowData.ShouldShowPortraitInfo('lower_left_portrait'))]"
-												tooltip_enabled = "[EventWindowData.ShouldShowPortraitInfo('lower_left_portrait')]"
+												tooltip_enabled = "[And(Not(GetGlobalVariable('nameplates_mod_version').IsSet), EventWindowData.ShouldShowPortraitInfo('lower_left_portrait'))]"
 											}
 
 											blockoverride "highlight_visible"
@@ -289,7 +384,7 @@ base_event_window = {
 											blockoverride "coa"
 											{
 												event_portrait_status_icons_left = {
-													visible = "[EventWindowData.ShouldShowPortraitInfo('lower_right_portrait')]"
+													visible = "[EventWindowData.ShouldShowPortraitInfo('lower_left_portrait')]"
 													parentanchor = bottom|left
 													position = { -15 -5 }
 													scale = 0.8
@@ -369,7 +464,7 @@ base_event_window = {
 											{
 												portrait_texture = "[EventWindowData.GetStaticEventPortraitTexture('lower_center_portrait', 'camera_shoulders', PdxGetWidgetScreenSize(PdxGuiWidget.Self))]"
 												alwaystransparent = "[Not(EventWindowData.ShouldShowPortraitInfo('lower_center_portrait'))]"
-												tooltip_enabled = "[EventWindowData.ShouldShowPortraitInfo('lower_center_portrait')]"
+												tooltip_enabled = "[And(Not(GetGlobalVariable('nameplates_mod_version').IsSet), EventWindowData.ShouldShowPortraitInfo('lower_center_portrait'))]"
 											}
 
 											blockoverride "highlight_visible"
@@ -473,7 +568,7 @@ base_event_window = {
 											{
 												portrait_texture = "[EventWindowData.GetStaticEventPortraitTexture('lower_right_portrait', 'camera_shoulders', PdxGetWidgetScreenSize(PdxGuiWidget.Self))]"
 												alwaystransparent = "[Not(EventWindowData.ShouldShowPortraitInfo('lower_right_portrait'))]"
-												tooltip_enabled = "[EventWindowData.ShouldShowPortraitInfo('lower_right_portrait')]"
+												tooltip_enabled = "[And(Not(GetGlobalVariable('nameplates_mod_version').IsSet), EventWindowData.ShouldShowPortraitInfo('lower_right_portrait'))]"
 											}
 
 											blockoverride "portrait_transformation"
