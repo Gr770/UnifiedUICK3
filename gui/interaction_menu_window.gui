@@ -106,21 +106,9 @@ window = {
 
 						button_barbershop = {
 							name = "customize_portrait"
-							visible = "[And(Not(GetGlobalVariable('FSB_is_loaded').IsSet), Character.CanCustomizePortrait]"
+							visible = "[Or(Not(GameIsMultiplayer), And( GameIsMultiplayer, Character.CanCustomizePortrait))]"
 							onclick = "[Character.OnCustomizePortrait]"
 							onclick = "[CharacterInteractionMenuWindow.Close]"
-							size = { 25 25 }
-
-							tooltip = "CV_CUSTOMIZE_PORTRAIT"
-							using = tooltip_ne
-						}
-
-						button_barbershop = {
-							name = "customize_portrait_fsb"
-							visible = "[And(Or(Not(GameIsMultiplayer), And( GameIsMultiplayer, Character.CanCustomizePortrait)), GetGlobalVariable('FSB_is_loaded').IsSet]"
-							onclick = "[Character.OnCustomizePortrait]"
-							onclick = "[CharacterInteractionMenuWindow.Close]"
-							enabled = "[Not(GetPlayer.MakeScope.Var('barber_text').IsSet)]"
 							size = { 25 25 }
 
 							tooltip = "CV_CUSTOMIZE_PORTRAIT"
