@@ -497,6 +497,30 @@ window = {
 				}
 			}
 
+			container = { # Papal succession
+				name = "heir_papal"
+				datacontext = "[CharacterWindow.GetCharacter.GetFaith.GetReligion.MakeScope.Var('preferatus_character').GetCharacter]"
+				visible = "[GetScriptedGui('this_is_the_pope_UniUI').IsShown(GuiScope.SetRoot(CharacterWindow.GetCharacter.MakeScope).End) ]"
+				parentanchor = bottom|right
+				position = { -20 -6 }
+
+				using = Animation_Character_Window_Refresh
+
+				portrait_head_small = {
+					blockoverride "portrait_transformation"
+					{
+						portrait_scale = { -1 1 }
+						portrait_offset = { 1 0 }
+					}
+				}
+
+				text_label_center = {
+					parentanchor = top|hcenter
+					position = { 0 85 }
+					raw_text = "[papabile|E]"
+				}
+			}
+
 			### DEBUG STUFF, please make sure those are visible and usable, especially the watch button, type "watch" into the console to show it
 			flowcontainer = {
 				name = "debug_buttons"
@@ -800,7 +824,7 @@ window = {
 								margin_left = 2
 								max_width = 400
 								fontsize = 20
-								fontsize_min = 14
+								fontsize_min = 8
 								align = nobaseline
 								default_format = "#medium"
 								tooltip = "HOLYCHARACTERCONCEPT"
@@ -979,11 +1003,11 @@ window = {
 											}
 										}
 									}
-
+									#Extended Traits
 									fixedgridbox = {
 										name = "traits_tiny"
 										datamodel = "[CharacterWindow.GetTraits]"
-										visible = "[GreaterThan_int32(GetDataModelSize(CharacterWindow.GetTraits), '(int32)10')]"
+										visible = "[And(GreaterThan_int32(GetDataModelSize(CharacterWindow.GetTraits), '(int32)10'), LessThanOrEqualTo_int32(GetDataModelSize(CharacterWindow.GetTraits), '(int32)22'))]"
 										flipdirection = yes
 										addcolumn = 24
 										addrow = 25
@@ -996,6 +1020,136 @@ window = {
 												blockoverride "icon_size"
 												{
 													size = { 25 25 }
+												}
+
+												blockoverride "glow_radius"
+												{
+													glow_radius = 2
+												}
+											}
+										}
+									}
+
+									fixedgridbox = {
+										name = "epe_tinier_traits_1"
+										datamodel = "[CharacterWindow.GetTraits]"
+										visible = "[And(GreaterThan_int32(GetDataModelSize(CharacterWindow.GetTraits), '(int32)22'), LessThanOrEqualTo_int32(GetDataModelSize(CharacterWindow.GetTraits), '(int32)24'))]"
+										flipdirection = yes
+										addcolumn = 23
+										addrow = 24
+										maxhorizontalslots = 12
+										datamodel_wrap = 12
+										maxverticalslots = 2
+
+										item = {
+											icon_trait = {
+												blockoverride "icon_size"
+												{
+													size = { 23 23 }
+												}
+
+												blockoverride "glow_radius"
+												{
+													glow_radius = 2
+												}
+											}
+										}
+									}
+
+									fixedgridbox = {
+										name = "epe_tinier_traits_2"
+										datamodel = "[CharacterWindow.GetTraits]"
+										visible = "[And(GreaterThan_int32(GetDataModelSize(CharacterWindow.GetTraits), '(int32)24'), LessThanOrEqualTo_int32(GetDataModelSize(CharacterWindow.GetTraits), '(int32)26'))]"
+										flipdirection = yes
+										addcolumn = 21
+										addrow = 22
+										maxhorizontalslots = 13
+										datamodel_wrap = 13
+										maxverticalslots = 2
+
+										item = {
+											icon_trait = {
+												blockoverride "icon_size"
+												{
+													size = { 22 22 }
+												}
+
+												blockoverride "glow_radius"
+												{
+													glow_radius = 2
+												}
+											}
+										}
+									}
+
+									fixedgridbox = {
+										name = "epe_tinier_traits_3"
+										datamodel = "[CharacterWindow.GetTraits]"
+										visible = "[And(GreaterThan_int32(GetDataModelSize(CharacterWindow.GetTraits), '(int32)26'), LessThanOrEqualTo_int32(GetDataModelSize(CharacterWindow.GetTraits), '(int32)28'))]"
+										flipdirection = yes
+										addcolumn = 20
+										addrow = 21
+										maxhorizontalslots = 14
+										datamodel_wrap = 14
+										maxverticalslots = 2
+
+										item = {
+											icon_trait = {
+												blockoverride "icon_size"
+												{
+													size = { 21 21 }
+												}
+
+												blockoverride "glow_radius"
+												{
+													glow_radius = 2
+												}
+											}
+										}
+									}
+
+									fixedgridbox = {
+										name = "epe_tinier_traits_4"
+										datamodel = "[CharacterWindow.GetTraits]"
+										visible = "[And(GreaterThan_int32(GetDataModelSize(CharacterWindow.GetTraits), '(int32)28'), LessThanOrEqualTo_int32(GetDataModelSize(CharacterWindow.GetTraits), '(int32)30'))]"
+										flipdirection = yes
+										addcolumn = 19
+										addrow = 20
+										maxhorizontalslots = 15
+										datamodel_wrap = 15
+										maxverticalslots = 2
+
+										item = {
+											icon_trait = {
+												blockoverride "icon_size"
+												{
+													size = { 21 21 }
+												}
+
+												blockoverride "glow_radius"
+												{
+													glow_radius = 2
+												}
+											}
+										}
+									}
+
+									fixedgridbox = {
+										name = "epe_tinier_traits_5"
+										datamodel = "[CharacterWindow.GetTraits]"
+										visible = "[GreaterThan_int32(GetDataModelSize(CharacterWindow.GetTraits), '(int32)30')]"
+										flipdirection = yes
+										addcolumn = 17
+										addrow = 18
+										maxhorizontalslots = 16
+										datamodel_wrap = 16
+										maxverticalslots = 3
+
+										item = {
+											icon_trait = {
+												blockoverride "icon_size"
+												{
+													size = { 20 20 }
 												}
 
 												blockoverride "glow_radius"
@@ -1114,7 +1268,7 @@ window = {
 									fixedgridbox = {
 										name = "traits_tiny"
 										datamodel = "[CharacterWindow.GetTraits]"
-										visible = "[GreaterThan_int32(GetDataModelSize(CharacterWindow.GetTraits), '(int32)8')]"
+										visible = "[And(GreaterThan_int32(GetDataModelSize(CharacterWindow.GetTraits), '(int32)8'), LessThanOrEqualTo_int32(GetDataModelSize(CharacterWindow.GetTraits), '(int32)18'))]"
 										flipdirection = yes
 										addcolumn = 24
 										addrow = 25
@@ -1127,6 +1281,110 @@ window = {
 												blockoverride "icon_size"
 												{
 													size = { 25 25 }
+												}
+
+												blockoverride "glow_radius"
+												{
+													glow_radius = 2
+												}
+											}
+										}
+									}
+									
+									fixedgridbox = {
+										name = "epe_tinier_traits_1"
+										datamodel = "[CharacterWindow.GetTraits]"
+										visible = "[And(GreaterThan_int32(GetDataModelSize(CharacterWindow.GetTraits), '(int32)18'), LessThanOrEqualTo_int32(GetDataModelSize(CharacterWindow.GetTraits), '(int32)20'))]"
+										flipdirection = yes
+										addcolumn = 23
+										addrow = 24
+										maxhorizontalslots = 10
+										datamodel_wrap = 10
+										maxverticalslots = 2
+
+										item = {
+											icon_trait = {
+												blockoverride "icon_size"
+												{
+													size = { 23 23 }
+												}
+
+												blockoverride "glow_radius"
+												{
+													glow_radius = 2
+												}
+											}
+										}
+									}
+
+									fixedgridbox = {
+										name = "epe_tinier_traits_2"
+										datamodel = "[CharacterWindow.GetTraits]"
+										visible = "[And(GreaterThan_int32(GetDataModelSize(CharacterWindow.GetTraits), '(int32)20'), LessThanOrEqualTo_int32(GetDataModelSize(CharacterWindow.GetTraits), '(int32)22'))]"
+										flipdirection = yes
+										addcolumn = 21
+										addrow = 22
+										maxhorizontalslots = 11
+										datamodel_wrap = 11
+										maxverticalslots = 2
+
+										item = {
+											icon_trait = {
+												blockoverride "icon_size"
+												{
+													size = { 22 22 }
+												}
+
+												blockoverride "glow_radius"
+												{
+													glow_radius = 2
+												}
+											}
+										}
+									}
+
+									fixedgridbox = {
+										name = "epe_tinier_traits_3"
+										datamodel = "[CharacterWindow.GetTraits]"
+										visible = "[And(GreaterThan_int32(GetDataModelSize(CharacterWindow.GetTraits), '(int32)22'), LessThanOrEqualTo_int32(GetDataModelSize(CharacterWindow.GetTraits), '(int32)24'))]"
+										flipdirection = yes
+										addcolumn = 19
+										addrow = 20
+										maxhorizontalslots = 12
+										datamodel_wrap = 12
+										maxverticalslots = 2
+
+										item = {
+											icon_trait = {
+												blockoverride "icon_size"
+												{
+													size = { 20 20 }
+												}
+
+												blockoverride "glow_radius"
+												{
+													glow_radius = 2
+												}
+											}
+										}
+									}
+
+									fixedgridbox = {
+										name = "epe_tinier_traits_4"
+										datamodel = "[CharacterWindow.GetTraits]"
+										visible = "[GreaterThan_int32(GetDataModelSize(CharacterWindow.GetTraits), '(int32)24')]"
+										flipdirection = yes
+										addcolumn = 17
+										addrow = 18
+										maxhorizontalslots = 13
+										datamodel_wrap = 13
+										maxverticalslots = 3
+
+										item = {
+											icon_trait = {
+												blockoverride "icon_size"
+												{
+													size = { 20 20 }
 												}
 
 												blockoverride "glow_radius"

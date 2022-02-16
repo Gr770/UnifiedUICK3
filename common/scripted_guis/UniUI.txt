@@ -1,0 +1,10 @@
+﻿this_is_the_pope_UniUI = {
+    scope = character
+	is_shown = {
+		exists = global_var:the_catholic
+		OR = {
+			has_title = title:k_papal_state
+			is_pope = yes
+		}
+	}
+}
