@@ -1699,7 +1699,7 @@ types Lists
 								# 	widget_value_breakdown_tooltip = {}
 								# }
 								tooltip = "[Character.MakeScope.GetScriptValueDesc('StA_submission')]"
-								text = "STA_VASSAL_SUBMISSION"
+								raw_text = "STA_VASSAL_SUBMISSION"
 							}
 						}
 

@@ -8,3 +8,13 @@
 		}
 	}
 }
+
+dummy_UniUI = {
+	scope = character
+	effect = {
+		set_global_variable = {
+			name = the_catholic
+			value = flag:none
+		}
+	}
+}

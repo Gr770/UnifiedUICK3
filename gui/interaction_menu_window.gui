@@ -88,7 +88,7 @@ window = {
 							onclick = "[CharacterInteractionMenuWindow.Close]"
 							size = { 25 25 }
 
-							tooltip = "chronicle_shortcut_text"
+							raw_tooltip = "chronicle_shortcut_text"
 							using = tooltip_ne
 						}
 
