@@ -1,7 +1,7 @@
 ﻿this_is_the_pope_UniUI = {
     scope = character
 	is_shown = {
-		exists = global_var:the_catholic
+		exists = global_var:Trinity_is_loaded
 		OR = {
 			has_title = title:k_papal_state
 			is_pope = yes
@@ -13,7 +13,7 @@ dummy_UniUI = {
 	scope = character
 	effect = {
 		set_global_variable = {
-			name = the_catholic
+			name = Trinity_is_loaded
 			value = flag:none
 		}
 	}
