@@ -655,7 +655,7 @@ window = {
 											}
 
 											text_single = {
-												text = "[Character.GetShortUINameNoTooltip]"
+												text = "GeneralUniUICharGetShortUINameNoTooltip"
 												default_format = "#high"
 												using = Font_Size_Medium
 											}

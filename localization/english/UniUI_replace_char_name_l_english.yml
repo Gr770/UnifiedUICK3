@@ -11,6 +11,7 @@ GeneralUniUICharGetShortUINameNoTooltipU: "[Character.GetShortUINameNoTooltip|U]
 GeneralUniUICharGetUINameNotMeNoTooltipU: "[Character.GetUINameNotMeNoTooltip|U]"
 GeneralUniUICharGetUINameNotMeNoTooltip: "[Character.GetUINameNotMeNoTooltip]"
 GeneralUniUICharGetUINameUV: "[Character.GetUIName|UV]"
+GeneralUniUICharGetShortUINameUV: "[Character.GetShortUIName|UV]"
 
 #Debug Windows
 AIWatchWindowUniUICharGetUIName: "[AIWatchWindow.GetCharacter.GetUIName]"
