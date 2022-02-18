@@ -9,11 +9,378 @@
 	}
 }
 
+qualifies_for_governorships_uniui = {
+	is_shown = {
+		OR = {
+			exists = global_var:play_republic_leaders
+			exists = global_var:play_house_heads
+		}
+		exists = primary_title
+		is_independent_ruler = yes
+		holds_valid_merchant_republic = yes
+	}
+}
+
+has_republic_government_uniui = {
+	scope = character
+	is_shown = {
+		OR = {
+			exists = global_var:play_republic_leaders
+			exists = global_var:play_house_heads
+		}
+		OR = {
+			holds_valid_merchant_republic = yes
+			liege = {
+				holds_valid_merchant_republic = yes
+			}
+		}
+	}
+}
+
+has_republic_elected_ruler_government_uniui = {
+	scope = character
+	is_shown = {
+		OR = {
+			exists = global_var:play_republic_leaders
+			exists = global_var:play_house_heads
+		}
+		OR = {
+			AND = {
+				holds_valid_merchant_republic = yes
+				republic_has_elected_ruler_form = yes
+			}
+			liege = {
+				AND = {
+					holds_valid_merchant_republic = yes
+					republic_has_elected_ruler_form = yes
+				}
+			}
+		}
+	}
+	is_valid = {
+		custom_description = {
+			text = "holds_the_republic_trigger"
+			is_landed = yes
+			holds_valid_merchant_republic = yes
+		}
+		custom_description = {
+			text = "does_not_have_current_form_trigger"
+			NOT = {
+				republic_has_elected_ruler_form = yes
+			}
+		}
+		custom_description = {
+			text = "has_not_reformed_in_hundred_years_trigger"
+			primary_title = {
+				NOT = {
+					has_variable = reformed_recently
+				}
+			}
+		}
+	}
+	effect = {
+		custom_description = {
+			text = "effect_reform_into_elected_ruler"
+			house = {
+				var:titular_republic = {
+					every_in_list = {
+						variable = republic_families_list
+						limit = { house_head = { is_ai = yes } }
+						house_head = {
+							trigger_event = republic_vote_events.1102
+						}
+					}
+					every_in_list = {
+						variable = republic_families_list
+						limit = { house_head = { is_ai = no } }
+						house_head = {
+							trigger_event = {
+								id = republic_vote_events.1102
+								days = 1
+							}
+						}
+					}
+					set_variable = law_reform_elected_ruler
+					holder = {
+						trigger_event = {
+							id = republic_vote_events.1104
+							days = 2
+						}
+					}
+					clear_variable_list = proposed_laws_list
+				}
+			}
+		}
+	}
+}
+
+has_republic_senate_government_uniui = {
+	scope = character
+	is_shown = {
+		OR = {
+			exists = global_var:play_republic_leaders
+			exists = global_var:play_house_heads
+		}
+		OR = {
+			AND = {
+				holds_valid_merchant_republic = yes
+				republic_has_senate_form = yes
+			}
+			liege = {
+				AND = {
+					holds_valid_merchant_republic = yes
+					republic_has_senate_form = yes
+				}
+			}
+		}
+	}
+	is_valid = {
+		custom_description = {
+			text = "holds_the_republic_trigger"
+			is_landed = yes
+			holds_valid_merchant_republic = yes
+		}
+		custom_description = {
+			text = "does_not_have_current_form_trigger"
+			NOT = {
+				republic_has_senate_form = yes
+			}
+		}
+		custom_description = {
+			text = "has_not_reformed_in_hundred_years_trigger"
+			primary_title = {
+				NOT = {
+					has_variable = reformed_recently
+				}
+			}
+		}
+	}
+	effect = {
+		custom_description = {
+			text = "effect_reform_into_senate"
+			house = {
+				var:titular_republic = {
+					every_in_list = {
+						variable = republic_families_list
+						limit = { house_head = { is_ai = yes } }
+						house_head = {
+							trigger_event = republic_vote_events.1100
+						}
+					}
+					every_in_list = {
+						variable = republic_families_list
+						limit = { house_head = { is_ai = no } }
+						house_head = {
+							trigger_event = {
+								id = republic_vote_events.1100
+								days = 1
+							}
+						}
+					}
+					set_variable = law_reform_senate
+					holder = {
+						trigger_event = {
+							id = republic_vote_events.1104
+							days = 2
+						}
+					}
+					clear_variable_list = proposed_laws_list
+				}
+			}
+		}
+	}
+}
+
+has_republic_council_government_uniui = {
+	scope = character
+	is_shown = {
+		OR = {
+			exists = global_var:play_republic_leaders
+			exists = global_var:play_house_heads
+		}
+		OR = {
+			AND = {
+				holds_valid_merchant_republic = yes
+				republic_has_council_form = yes
+			}
+			liege = {
+				AND = {
+					holds_valid_merchant_republic = yes
+					republic_has_council_form = yes
+				}
+			}
+		}
+	}
+	is_valid = {
+		custom_description = {
+			text = "holds_the_republic_trigger"
+			is_landed = yes
+			holds_valid_merchant_republic = yes
+		}
+		custom_description = {
+			text = "does_not_have_current_form_trigger"
+			NOT = {
+				republic_has_council_form = yes
+			}
+		}
+		custom_description = {
+			text = "has_not_reformed_in_hundred_years_trigger"
+			primary_title = {
+				NOT = {
+					has_variable = reformed_recently
+				}
+			}
+		}
+	}
+	effect = {
+		custom_description = {
+			text = "effect_reform_into_council"
+			house = {
+				var:titular_republic = {
+					every_in_list = {
+						variable = republic_families_list
+						limit = { house_head = { is_ai = yes } }
+						house_head = {
+							trigger_event = republic_vote_events.1101
+						}
+					}
+					every_in_list = {
+						variable = republic_families_list
+						limit = { house_head = { is_ai = no } }
+						house_head = {
+							trigger_event = {
+								id = republic_vote_events.1101
+								days = 1
+							}
+						}
+					}
+					set_variable = law_reform_council
+					holder = {
+						trigger_event = {
+							id = republic_vote_events.1104
+							days = 2
+						}
+					}
+					clear_variable_list = proposed_laws_list
+				}
+			}
+		}
+	}
+}
+
+has_republic_bicameral_government = {
+	scope = character
+	is_shown = {
+		OR = {
+			exists = global_var:play_republic_leaders
+			exists = global_var:play_house_heads
+		}
+		OR = {
+			AND = {
+				holds_valid_merchant_republic = yes
+				republic_has_bicameral_form = yes
+			}
+			liege = {
+				AND = {
+					holds_valid_merchant_republic = yes
+					republic_has_bicameral_form = yes
+				}
+			}
+		}
+	}
+	is_valid = {
+		custom_description = {
+			text = "holds_the_republic_trigger"
+			is_landed = yes
+			holds_valid_merchant_republic = yes
+		}
+		custom_description = {
+			text = "does_not_have_current_form_trigger"
+			NOT = {
+				republic_has_bicameral_form = yes
+			}
+		}
+		custom_description = {
+			text = "has_not_reformed_in_hundred_years_trigger"
+			primary_title = {
+				NOT = {
+					has_variable = reformed_recently
+				}
+			}
+		}
+		culture = { OR = { has_innovation = innovation_parliamentary_ideals has_innovation = innovation_english_parliament } }
+	}
+	effect = {
+		custom_description = {
+			text = "effect_reform_into_bicameral"
+			house = {
+				var:titular_republic = {
+					every_in_list = {
+						variable = republic_families_list
+						limit = { house_head = { is_ai = yes } }
+						house_head = {
+							trigger_event = republic_vote_events.1103
+						}
+					}
+					every_in_list = {
+						variable = republic_families_list
+						limit = { house_head = { is_ai = no } }
+						house_head = {
+							trigger_event = {
+								id = republic_vote_events.1103
+								days = 1
+							}
+						}
+					}
+					set_variable = law_reform_bicameral
+					holder = {
+						trigger_event = {
+							id = republic_vote_events.1104
+							days = 2
+						}
+					}
+					clear_variable_list = proposed_laws_list
+				}
+			}
+		}
+	}
+}
+
+is_title_federation_uniui = {
+	scope = character
+	is_shown = {
+		OR = {
+			exists = global_var:play_republic_leaders
+			exists = global_var:play_house_heads
+		}
+		has_variable_list = federation_members
+	}
+}
+
+personally_has_republic_government_uniui = {
+	scope = character
+	is_shown = {
+		OR = {
+			exists = global_var:play_republic_leaders
+			exists = global_var:play_house_heads
+		}
+		holds_valid_merchant_republic = yes
+	}
+}
+
 dummy_UniUI = {
 	scope = character
 	effect = {
 		set_global_variable = {
 			name = Trinity_is_loaded
+			value = flag:none
+		}
+		set_global_variable = {
+			name = play_republic_leaders
+			value = flag:none
+		}
+		set_global_variable = {
+			name = play_house_heads
 			value = flag:none
 		}
 	}
