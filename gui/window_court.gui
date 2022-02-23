@@ -338,7 +338,7 @@ window = {
 												# [PoW]
 												using = Background_Area_Dark
 											}
-											
+
 											# [PoW]
 											using = PoW_background
 											# [/PoW]
@@ -380,57 +380,15 @@ window = {
 
 												expand = {}
 											}
-											
+
 											# [PoW]
-											vbox = {
-												visible = "[GetGlobalVariable('PoW_is_loaded').IsSet]"
-												name = "PoW_info_text_not_PoW"
-												layoutpolicy_horizontal = expanding
-												layoutpolicy_vertical = expanding
-
-												text_single = {
-													visible = "[GetScriptedGui('prison_screen_exclude_PoW').IsShown(GuiScope.SetRoot( Character.MakeScope ).End)]"
-													name = "PoW_prisoner"
-													layoutpolicy_horizontal = expanding
-													text = "[CharacterListItem.GetText('tooltip')]"
-													default_format = "#low"
-													autoresize = yes
-												}
-
-												# [PoW]
-												text_single = {
-													visible = "[GetScriptedGui('prison_screen_PoW').IsShown(GuiScope.SetRoot( Character.MakeScope ).End)]"
-													name = "PoW_imprisoner"
-													layoutpolicy_horizontal = expanding
-													text = "POW_CAPTUREDBY_SHORT"
-													# default_format = "#low"
-													autoresize = yes
-												}
-												# [/PoW]
-
-												text_single = {
-													visible = "[GetScriptedGui('prison_screen_PoW').IsShown(GuiScope.SetRoot( Character.MakeScope ).End)]"
-													name = "PoW_location"
-													layoutpolicy_horizontal = expanding
-													text = "POW_LOCATION"
-													# default_format = "#low"
-													autoresize = yes
-												}
-
-												text_single = {
-													name = "imprisoned_time"
-													layoutpolicy_horizontal = expanding
-													text = "[CharacterListItem.GetText('imprisoned_time')]"
-													autoresize = no
-												}												
-											}
-											expand = {}
+											UniUI_PoW_in_prison = {}
 											# [/PoW]
 
 											button_checkbox = {
 												name = "lock_from_mass_actions"
 												# [PoW]
-												down = "[GetScriptedGui('prison_screen_PoW').IsShown(GuiScope.SetRoot( Character.MakeScope ).End)]"
+												using = UniUI_PoW_mass_action_lock
 												# [/PoW]
 												checked = "[CharacterListItem.GetBool('is_mass_action_locked')]"
 												onclick = "[CharacterListItem.OnClick('mass_action_lock')]"
@@ -562,9 +520,10 @@ window = {
 									size = { 262 395}
 									datacontext = "[CharacterListItem.GetCharacter]"
 
-									# [PoW]
 									background = {
-										visible = "[GetScriptedGui('prison_screen_exclude_PoW').IsShown(GuiScope.SetRoot( Character.MakeScope ).AddScope( 'player', GetPlayer.MakeScope ).End)]"
+										# [UniUI] [Vanilla]
+										visible = "[Not(GetGlobalVariable('PoW_is_loaded').IsSet)]"
+										# [/Vanilla] [/UniUI]
 										texture = "gfx/interface/skinned/illustrations/dungeon.dds"
 										margin = { -5 0 }
 										fittype = centercrop
@@ -573,17 +532,9 @@ window = {
 										using = Mask_Rough_Edges
 									}
 
-									background = {
-										visible = "[GetScriptedGui('prison_screen_PoW').IsShown(GuiScope.SetRoot( Character.MakeScope ).AddScope( 'player', GetPlayer.MakeScope ).End)]"
-										# texture = "gfx/interface/illustrations/army_status/camped.dds"
-										texture = "[Character.MakeScope.Var('story_PoW').Var('story_army').Army.GetArmyStatusIcon]"
-										margin = { -5 0 }
-										fittype = centercrop
-										alpha = 0.3
-
-										using = Mask_Rough_Edges
-									}
-									# [/PoW]
+									# [UniUI] [PoW]
+									using = UniUI_PoW_prison_background
+									# [/PoW] [/UniUI]
 
 									background = {
 										using = Background_Frame
@@ -642,38 +593,13 @@ window = {
 											}
 										}
 
-										# [PoW]
+
 										vbox = {
 											layoutpolicy_horizontal = expanding
 											margin = { 5 5 }
-											visible = "[GetScriptedGui('prison_screen_PoW').IsShown(GuiScope.SetRoot( Character.MakeScope ).End)]"
-											# [/PoW]
-
-											background = {
-												using = Background_Area
-												margin_bottom = 3
-											}
-
-											text_single = {
-												text = "GeneralUniUICharGetShortUINameNoTooltip"
-												default_format = "#high"
-												using = Font_Size_Medium
-											}
-
-											text_single = {
-												visible = "[Character.IsImprisoned]"
-												name = "type"
-												text = "POW_CAPTUREDBY"
-											}
-										}
-
-										# [PoW]										
-										vbox = {
-											layoutpolicy_horizontal = expanding
-											margin = { 5 5 }
-											# [PoW]
-											visible = "[GetScriptedGui('prison_screen_exclude_PoW').IsShown(GuiScope.SetRoot( Character.MakeScope ).AddScope( 'player', GetPlayer.MakeScope ).End)]"
-											# [/PoW]
+											# [UniUI] [PoW]
+											visible = "[Not(GetGlobalVariable('PoW_is_loaded').IsSet)]"
+											# [/PoW] [/UniUI]
 
 											background = {
 												using = Background_Area
@@ -692,7 +618,10 @@ window = {
 												text = "[CharacterListItem.GetText('tooltip')]"
 											}
 										}
-
+										# [UniUI] [PoW]
+										UniUI_PoW_prison_text = {}
+										# [/PoW] [/UniUI]
+										
 										spacer = {
 											size = { 3 3 }
 										}
@@ -731,9 +660,9 @@ window = {
 												button_round  = {
 													name = "ransom"
 													enabled = "[CharacterListItem.GetBool('can_ransom')]"
-													# [PoW]
-													visible = "[GetScriptedGui('prison_screen_exclude_PoW').IsShown(GuiScope.SetRoot( Character.MakeScope ).End)]"
-													# [/PoW]
+													# [UniUI] [PoW]
+													using = UniUI_PoW_mass_action_visibility_trigger
+													# [/PoW] [/UniUI]
 
 													button_prison_ransom = {
 														parentanchor = center
@@ -748,9 +677,9 @@ window = {
 												button_round  = {
 													name = "release"
 													enabled = "[CharacterListItem.GetBool('can_release')]"
-													# [PoW]
-													visible = "[GetScriptedGui('prison_screen_exclude_PoW').IsShown(GuiScope.SetRoot( Character.MakeScope ).End)]"
-													# [/PoW]
+													# [UniUI] [PoW]
+													using = UniUI_PoW_mass_action_visibility_trigger
+													# [/PoW] [/UniUI]
 
 													button_prison_release = {
 														parentanchor = center
