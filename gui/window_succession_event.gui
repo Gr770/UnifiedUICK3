@@ -9,14 +9,14 @@ window = {
 	layer = confirmation
 	alwaystransparent = yes
 
-	# [UniUI] [Inherichance]
-	using = UniUI_Inherichance_window_succession_event_show_state
-	# [/Inherichance] [/UniUI]
-
+	
 	state = {
 		name =_show
 		on_finish = "[PdxGuiTriggerAllAnimations('ruler_transition_appear')]"
 		on_start = "[GetVariableSystem.Clear( 'ruler_transition_remove_fade')]"
+		# [UniUI] [Inherichance]
+		using = UniUI_Inherichance_window_succession_event_show_state
+		# [/Inherichance] [/UniUI]
 	}
 
 	state = {
@@ -596,12 +596,20 @@ window = {
 						hbox = {
 							margin = { 16 40 }
 
+							# [UniUI] [Vanilla]
+							vbox = {
+							visible = "[Not(GetGlobalVariable('Inherichance_is_loaded').IsSet)]"
+							# [/Vanilla] [/UniUI]
 							vbox_heir = {
 								name = "right"
 								datacontext = "[SuccessionEventWindow.GetPlayerHeirLegacy]"
 								visible = "[SuccessionEventWindow.GetPlayerHeir.IsValid]"
 								layoutpolicy_vertical = expanding
 							}
+							# [UniUI] [Inherichance]
+							}
+							UniUI_Inherichance_vbox_heir = {}
+							# [/Inherichance] [/UniUI]
 
 							vbox_dynasty = {
 								name = "dynasty_right"
