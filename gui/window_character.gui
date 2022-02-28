@@ -855,6 +855,7 @@ window = {
 
 							expand = {}
 						}
+                        hbox_mod_birth_death_dates = {}
 
 						hbox = {
 							name = "AI_personality"
