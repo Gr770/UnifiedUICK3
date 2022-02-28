@@ -1,0 +1,19 @@
+﻿is_character_allowed_to_be_player = {
+	trigger_if = {
+		limit = {
+			scope:will_override_government = no
+		}
+		custom_description = {
+			text = "GAME_OVER_CANNOT_PLAY_THEOCRACY"
+			NOT = { exists = global_var:Trinity_is_loaded }
+		}
+
+		custom_description = {
+			text = "GAME_OVER_CANNOT_PLAY_REPUBLIC"
+			NOR = { 
+				exists = global_var:play_republic_leaders 
+				exists = global_var:play_house_heads 
+			}
+		}
+	}
+}
