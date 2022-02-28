@@ -6,7 +6,10 @@
 		custom_description = {
 			text = "GAME_OVER_CANNOT_PLAY_THEOCRACY"
 			OR = { 
-				exists = global_var:Trinity_is_loaded
+				AND = {
+                    exists = global_var:Trinity_is_loaded
+                    has_title = title:k_papal_state
+                }
 				NOT = {
 					has_government = theocracy_government
 				}
