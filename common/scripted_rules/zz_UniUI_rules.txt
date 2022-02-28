@@ -5,14 +5,22 @@
 		}
 		custom_description = {
 			text = "GAME_OVER_CANNOT_PLAY_THEOCRACY"
-			NOT = { exists = global_var:Trinity_is_loaded }
+			OR = { 
+				exists = global_var:Trinity_is_loaded
+				NOT = {
+					has_government = theocracy_government
+				}
+			}
 		}
 
 		custom_description = {
 			text = "GAME_OVER_CANNOT_PLAY_REPUBLIC"
-			NOR = { 
+			OR = { 
 				exists = global_var:play_republic_leaders 
 				exists = global_var:play_house_heads 
+				NOT = {
+					has_government = republic_government
+				}
 			}
 		}
 	}
