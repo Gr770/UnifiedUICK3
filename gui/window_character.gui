@@ -812,13 +812,21 @@ window = {
 						name = "name_etc"
 						layoutpolicy_horizontal = expanding
 
+						### 称号または立場 / Title or Position
+						SNAT_title_or_position = {}
+						### End
 						## Name
 						hbox = {
 							layoutpolicy_horizontal = expanding
 							margin = { 3 0 }
 							margin_top = 1
+							
+							### キャラクター名 / Character name
+							SNAT_character_name = {}
+							### End
 
 							text_single = {
+								visible = "[Not(GetGlobalVariable('SNAT_is_loaded').IsSet)]"
 								name = "character_name"
 								raw_text = "HOLYCHARACTERNAME"
 								margin_left = 2
@@ -831,6 +839,7 @@ window = {
 							}
 
 							text_single = {
+								visible = "[Not(GetGlobalVariable('SNAT_is_loaded').IsSet)]"
 								name = "character_age"
 								raw_text = " [Character.GetAge]"
 								default_format = "#low"
@@ -840,6 +849,7 @@ window = {
 							}
 
 							hbox = {
+								visible = "[Not(GetGlobalVariable('SNAT_is_loaded').IsSet)]"
 								margin_left = 4
 								spacing = -3
 
@@ -854,6 +864,9 @@ window = {
 							}
 
 							expand = {}
+							### COMPATIBILITY: "Rename Anyone"
+							hbox_mod_renamer = {}
+							### ComEnd
 						}
                         hbox_mod_birth_death_dates = {}
 
