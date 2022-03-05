@@ -812,13 +812,32 @@ window = {
 						name = "name_etc"
 						layoutpolicy_horizontal = expanding
 
+						### 称号または立場 / Title or Position
+						SNAT_title_or_position = {}
+						### End
 						## Name
 						hbox = {
 							layoutpolicy_horizontal = expanding
 							margin = { 3 0 }
 							margin_top = 1
+							
+							### キャラクター名 / Character name
+							text_single = {
+								visible = "[GetGlobalVariable('SNAT_is_loaded').IsSet]"
+								name = "character_name_snat"
+								text = "SNAT_CHARACTER_NAME_TEXT"
+								margin_left = 2
+								max_width = 400
+								fontsize = 20
+								fontsize_min = 14
+								align = nobaseline
+								default_format = "#high"
+								tooltip = "HOLYCHARACTERCONCEPT"
+							}
+							### End
 
 							text_single = {
+								visible = "[Not(GetGlobalVariable('SNAT_is_loaded').IsSet)]"
 								name = "character_name"
 								raw_text = "HOLYCHARACTERNAME"
 								margin_left = 2
@@ -831,6 +850,7 @@ window = {
 							}
 
 							text_single = {
+								visible = "[Not(GetGlobalVariable('SNAT_is_loaded').IsSet)]"
 								name = "character_age"
 								raw_text = " [Character.GetAge]"
 								default_format = "#low"
@@ -840,6 +860,7 @@ window = {
 							}
 
 							hbox = {
+								visible = "[Not(GetGlobalVariable('SNAT_is_loaded').IsSet)]"
 								margin_left = 4
 								spacing = -3
 
@@ -853,7 +874,11 @@ window = {
 								}
 							}
 
-							expand = {}
+							expand = {
+							}
+							### COMPATIBILITY: "Rename Anyone"
+							hbox_mod_renamer = {}
+							### ComEnd
 						}
                         hbox_mod_birth_death_dates = {}
 
@@ -873,7 +898,7 @@ window = {
 							}
 
 							icon = {
-								visible = "[Not(Character.IsFemale)]"
+								visible = "[And(Not(GetGlobalVariable('SNAT_is_loaded').IsSet), Not(Character.IsFemale))]"
 								size = { 20 20 }
 								framesize = { 40 40 }
 								frame = "[Character.GetSexualityFrame]"
@@ -882,7 +907,7 @@ window = {
 							}
 
 							icon = {
-								visible = "[Character.IsFemale]"
+								visible = "[And(Not(GetGlobalVariable('SNAT_is_loaded').IsSet), Character.IsFemale)]"
 								size = { 20 20 }
 								framesize = { 40 40 }
 								frame = "[Character.GetSexualityFrame]"
@@ -1586,6 +1611,10 @@ window = {
 							maximumsize = { 0 5 }
 						}
 
+						### 王朝 / Dynasty
+						SNAT_character_dynasty = {}
+						### End
+
 						coa_house_big = {
 							flowcontainer = {
 								name = "characters_status_in_house"
@@ -1616,7 +1645,12 @@ window = {
 							}
 						}
 
+						### 家 / House
+						SNAT_character_house = {}
+						### End
+
 						text_multi = {
+							visible = "[Not(GetGlobalVariable('SNAT_is_loaded').IsSet)]"
 							autoresize = yes
 							maximumsize = { 118 50 }
 							text = "[DynastyHouse.GetBaseNameNoTooltip]"
