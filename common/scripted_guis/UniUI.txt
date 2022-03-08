@@ -164,3 +164,11 @@ dummy_UniUI = {
 		}
 	}
 }
+can_see_investiture_uniui = {
+    scope = character
+	is_shown = {
+		exists = global_var:Trinity_is_loaded
+		# has_realm_law = free_investiture
+		has_faith = faith:catholic
+	}
+}
