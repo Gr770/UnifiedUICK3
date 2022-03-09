@@ -17,6 +17,9 @@ window = {
 		using = Window_Position_MainTab
 
 		on_start = "[GetVariableSystem.Set( 'factions_view_tabs', 'against_you' )]"
+		# [UniUI] [LTAF]
+		using = UniUI_LTAF_show
+		# [/LTAF] [/UniUI]
 	}
 
 	state = {
@@ -173,7 +176,12 @@ window = {
 											text = "FACTIONS_WINDOW_CASSALC_CANT_CREATE_JOIN"
 										}
 
+										UniUI_LTAF_faction_window_cant_join_creater_members = {}
+
 										dynamicgridbox = {
+											# [UniUI] [Vanilla] Not LTAF
+											visible = "[Not(GetGlobalVariable('LTAF_is_loaded').IsSet)]"
+											# [/Vanilla] [/UniUI]
 											name = "cant_join_creater_members_grid"
 											datamodel = "[FactionsWindow.GetCantCreateOrJoinFactionVassals]"
 											datamodel_wrap = 4
