@@ -317,8 +317,9 @@ window = {
 
 
 							modify_texture = {
-								texture = "gfx/interface/component_masks/mask_fade_horizontal_right.dds"
+								texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
 								blend_mode = alphamultiply
+								mirror = horizontal
 							}
 						}
 
@@ -999,8 +1000,9 @@ window = {
 									using = Mask_Rough_Edges
 
 									modify_texture = {
-										texture = "gfx/interface/component_masks/mask_fade_horizontal_right.dds"
+										texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
 										blend_mode = alphamultiply
+										mirror = horizontal									
 									}
 								}
 

@@ -436,7 +436,7 @@ window = {
 											layoutpolicy_vertical = expanding
 											margin = { 10 0 }
 
-											portrait_head_small_cached = {
+											portrait_head_small = {
 												name = "actor"
 												datacontext = "[HistoryEntry.GetActor]"
 												visible = "[HistoryEntry.HasActor]"
@@ -472,7 +472,7 @@ window = {
 												}
 											}
 
-											portrait_head_small_cached = {
+											portrait_head_small = {
 												name = "recipient"
 												datacontext = "[HistoryEntry.GetRecipient]"
 												visible = "[And( HistoryEntry.HasRecipient, Not( ObjectsEqual( HistoryEntry.GetRecipient, HistoryEntry.GetActor ) ) )]"
@@ -555,7 +555,7 @@ window = {
 												margin_top = 5
 												margin_bottom = 9
 
-												portrait_head_small_cached = {
+												portrait_head_small = {
 													name = "character"
 													visible = "[ClaimantEntry.IsCharacter]"
 													datacontext = "[ClaimantEntry.GetCharacter]"

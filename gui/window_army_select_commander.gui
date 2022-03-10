@@ -9,7 +9,7 @@ window = {
 
 	using = Window_Position_CharacterList_Small
 	using = Window_Size_CharacterList_Small
-	minimumsize = { 620 100 }
+	minimumsize = { 630 100 }
 	using = Window_Background
 	using = Window_Decoration
 
@@ -115,7 +115,7 @@ window = {
 								}
 
 								hbox = {
-									portrait_head_small_cached = {}
+									portrait_head_small = {}
 
 									spacer = {
 										size = { 15 20 }

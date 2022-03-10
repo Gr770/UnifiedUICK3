@@ -418,7 +418,7 @@ types AppointCourtPositionTypes
 			margin = { 0 5 }
 			spacing = 15
 
-			portrait_head_small_cached = {
+			portrait_head_small = {
 				blockoverride "portrait_button" {
 					text_single = {
 						name = "tutorial_highlight_character_view_opinion"

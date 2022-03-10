@@ -1185,9 +1185,10 @@ window = {
 					margin = { 0 10 }
 
 					modify_texture = {
-						texture = "gfx/interface/component_masks/mask_fade_horizontal_right.dds"
+						texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
 						blend_mode = alphamultiply
-						rotate_uv = -180
+						rotate_uv = 180
+						mirror = horizontal
 					}
 				}
 
@@ -1196,11 +1197,11 @@ window = {
 					spriteType = Corneredtiled
 					spriteborder = { 20 20 }
 					margin = { 3 10 }
-					mirror = horizontal
 
 					modify_texture = {
-						texture = "gfx/interface/component_masks/mask_fade_horizontal_right.dds"
+						texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
 						blend_mode = alphamultiply
+						mirror = horizontal
 					}
 				}
 
@@ -1210,12 +1211,12 @@ window = {
 					spriteType = Corneredtiled
 					spriteborder = { 20 20 }
 					margin = { 0 10 }
-					mirror = horizontal
 
 					modify_texture = {
-						texture = "gfx/interface/component_masks/mask_fade_horizontal_right.dds"
+						texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
 						blend_mode = alphamultiply
-						rotate_uv = -180
+						rotate_uv = 180
+						mirror = horizontal
 					}
 				}
 
@@ -1226,8 +1227,9 @@ window = {
 					margin = { 3 10 }
 
 					modify_texture = {
-						texture = "gfx/interface/component_masks/mask_fade_horizontal_right.dds"
+						texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
 						blend_mode = alphamultiply
+						mirror = horizontal
 					}
 				}
 

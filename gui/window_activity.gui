@@ -200,11 +200,11 @@ window = {
 							using = Background_Area_Dark
 
 							modify_texture = {
-								texture = "gfx/interface/component_masks/mask_fade_horizontal_right.dds"
+								texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
 								blend_mode = alphamultiply
 								alpha = 0.2
 								rotate_uv = 45
-
+								mirror = horizontal
 							}
 						}
 
@@ -269,10 +269,11 @@ window = {
 							using = Background_Area_Dark
 
 							modify_texture = {
-								texture = "gfx/interface/component_masks/mask_fade_horizontal_right.dds"
+								texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
 								blend_mode = alphamultiply
 								alpha = 0.2
 								rotate_uv = 45
+								mirror = horizontal
 
 							}
 						}
