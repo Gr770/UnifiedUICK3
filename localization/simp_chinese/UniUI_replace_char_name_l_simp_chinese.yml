@@ -48,3 +48,7 @@ HiredTroopUniUIGetUIName: "[HiredTroop.GetTitle.GetHolder.GetUIName]"
 #War
 WarParticipantItemUniUIGetName: "[WarParticipantItem.GetCharacter.GetName]"
 WarOverviewWindowItemUniUIGetBeneficiaryName: "[WarOverviewWindow.GetBeneficiaryName]"
+
+#realm
+
+MyRealmPlayerHeirGetUINameNoTooltip: "[MyRealmWindow.GetCharacter.GetPlayerHeir.GetUINameNoTooltip]"

@@ -8,7 +8,6 @@ window = {
 	movable = no
 	layer = confirmation
 	alwaystransparent = yes
-
 	
 	state = {
 		name =_show
@@ -396,15 +395,6 @@ window = {
 									layoutpolicy_vertical = expanding
 									margin_top = 62
 
-									#background = {
-										#using = Background_Area
-
-										#modify_texture = {
-											#texture = "gfx/interface/component_masks/mask_fade_horizontal_right.dds"
-											#blend_mode = alphamultiply
-										#}
-									#}
-
 									widget = {
 										size = { 250 340 }
 
@@ -791,9 +781,10 @@ window = {
 								}
 
 								modify_texture = {
-									texture = "gfx/interface/component_masks/mask_fade_horizontal_right.dds"
+									texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
 									spriteType = Corneredstretched
 									blend_mode = alphamultiply
+									mirror = horizontal
 								}
 							}
 						}
@@ -855,7 +846,7 @@ window = {
 
 
 											modify_texture = {
-												texture = "gfx/interface/component_masks/mask_fade_horizontal_extended_2.dds"
+												texture = "gfx/interface/component_masks/mask_fade_horizontal_thick.dds"
 												spriteType = Corneredstretched
 												blend_mode = alphamultiply
 											}
@@ -891,7 +882,7 @@ window = {
 
 
 											modify_texture = {
-												texture = "gfx/interface/component_masks/mask_fade_horizontal_extended_2.dds"
+												texture = "gfx/interface/component_masks/mask_fade_horizontal_thick.dds"
 												spriteType = Corneredstretched
 												blend_mode = alphamultiply
 											}
