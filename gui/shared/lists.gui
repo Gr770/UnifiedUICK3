@@ -1695,6 +1695,7 @@ types Lists
 							}
 
 							text_single = {
+								visible = "[GetGlobalVariable('StA_is_loaded').IsSet]"
 								# state = {
 								# 	name = _mouse_enter
 								# 	on_start = "[GetVariableSystem.Set('character_script_value_breakdown','StA_submission')]"
