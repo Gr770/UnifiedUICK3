@@ -38,6 +38,8 @@ GetEmployeeUniUIGetNameNoTooltip: "[CourtPosition.GetEmployee.GetNameNoTooltip]"
 
 #Dynasty tree
 DynastyTreeItemUniUIGetShortUINameNotMeNoTooltip: "[DynastyTreeItem.GetCharacter.GetShortUINameNotMeNoTooltip]"
+DynastyTreeUniUIFounderGetShortUINameNotMeNoTooltip: "[DynastyHouse.GetFounder.GetShortUINameNotMeNoTooltip]"
+DynastyTreeUniUIHeadGetShortUINameNotMeNoTooltip: "[DynastyHouse.GetHeadOfHouse.GetShortUINameNotMeNoTooltip]"
 
 #GHW
 GetBeneficiaryUniUIGetFullName: "[GetPlayer.GetBeneficiary.GetFullName]"
