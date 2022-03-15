@@ -191,7 +191,7 @@ window = {
 												container = {
 													datacontext = "[CantCreateOrJoinFactionVassal.GetVassal]"
 
-													portrait_head_cached = {
+													portrait_head = {
 														blockoverride "portrait_button_template_tooltip" {
 															tooltip = "[CantCreateOrJoinFactionVassal.GetTooltip]"
 														}
@@ -420,7 +420,7 @@ types  FactionWindow
 				# [UniUI] [LTAF]
 				UniUI_LTAF_loyalist_icon = {}
 				# [/LTAF] [/UniUI]
-				portrait_head_cached = {
+				portrait_head = {
 					datacontext = "[Faction.GetSpecialCharacter]"
 					visible = "[Faction.HasSpecialCharacter]"
 					parentanchor = center
@@ -707,7 +707,7 @@ types  FactionWindow
 					container = {
 						datacontext = "[FactionCharacterMember.GetMember]"
 
-						portrait_head_small_cached = {
+						portrait_head_small = {
 							position = { 0 -0 }
 							parentanchor = top|left
 
