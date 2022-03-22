@@ -863,7 +863,7 @@ window = {
 								margin_left = 2
 								max_width = 400
 								fontsize = 20
-								fontsize_min = 14
+								fontsize_min = 8
 								align = nobaseline
 								default_format = "#high"
 								tooltip = "HOLYCHARACTERCONCEPT"
@@ -890,6 +890,7 @@ window = {
 								default_format = "#low"
 								tooltip = "[Character.GetDeathOrBirthDateInfo]"
 								fontsize = 20
+								fontsize_min = 8
 								align = nobaseline
 							}
 
