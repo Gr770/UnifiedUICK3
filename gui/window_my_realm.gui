@@ -393,6 +393,16 @@ window = {
 
 						raw_text = "Governorships"
 					}
+
+					button_tab = {
+						name = "Laws"
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+						down = "[GetVariableSystem.HasValue( 'realm_tabs', 'laws' )]"
+						visible = "[Or(EqualTo_string(GetPlayer.GetGovernment.GetName, GetGovernment('imperial_government').GetName), EqualTo_string(GetPlayer.GetGovernment.GetName, GetGovernment('autocratic_government').GetName))]"
+						onclick = "[GetVariableSystem.Set( 'realm_tabs', 'laws' )]"
+						text = "Imperial Laws"
+					}
 				}
 
 				### DOMAIN TAB
@@ -1081,7 +1091,7 @@ window = {
 
 							item = {
 								hbox = {
-									visible = "[And( Not( GuiLawGroup.GetLawGroup.HasFlag( 'realm_law' ) ), GuiLawGroup.IsAvailable )]"
+									visible = "[And( And( Not( GuiLawGroup.GetLawGroup.HasFlag( 'realm_law' ) ), GuiLawGroup.IsAvailable ), Not( GuiLawGroup.GetLawGroup.HasFlag( 'policy' ) ))]"
 									layoutpolicy_horizontal = growing
 
 									vbox = {
@@ -1756,6 +1766,67 @@ window = {
 
 							expand = {
 								layoutpolicy_vertical = expanding
+							}
+						}
+					}
+				}
+
+				#LAWS TAB
+
+				vbox = {
+					name = "tab_laws"
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+					visible = "[GetVariableSystem.HasValue( 'realm_tabs', 'laws' )]"
+
+					state = {
+						name = _show
+						using = Animation_FadeIn_Quick
+					}
+
+					state = {
+						name = _hide
+						alpha = 0
+					}
+
+					scrollbox = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+						blockoverride "scrollbox_content"
+						{	
+							vbox = {
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								Laws = {
+									blockoverride "visible" {
+										visible = "[And( GuiLawGroup.GetLawGroup.HasFlag( 'policy_1' ), GuiLawGroup.IsAvailable )]"
+									}
+								}
+
+								Laws = {
+									blockoverride "visible" {
+										visible = "[And( GuiLawGroup.GetLawGroup.HasFlag( 'policy_2' ), GuiLawGroup.IsAvailable )]"
+									}
+								}
+								Laws = {
+									blockoverride "visible" {
+										visible = "[And( GuiLawGroup.GetLawGroup.HasFlag( 'policy_3' ), GuiLawGroup.IsAvailable )]"
+									}
+								}
+								Laws = {
+									blockoverride "visible" {
+										visible = "[And( GuiLawGroup.GetLawGroup.HasFlag( 'policy_4' ), GuiLawGroup.IsAvailable )]"
+									}
+								}
+								Laws = {
+									blockoverride "visible" {
+										visible = "[And( GuiLawGroup.GetLawGroup.HasFlag( 'policy_5' ), GuiLawGroup.IsAvailable )]"
+									}
+								}
+								spacer = {
+									size = {0 50}
+									visible = "[And( GuiLawGroup.GetLawGroup.HasFlag( 'policy_5' ), GuiLawGroup.IsAvailable )]"
+								}
 							}
 						}
 					}

@@ -73,5 +73,9 @@ StA_error_suppression.0001 = {
 			name = titular_republic
 			value = yes
 		}
+		set_variable = {
+			name = Gov_is_loaded
+			value = yes
+		}
 	}
 }
