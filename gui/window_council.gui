@@ -57,12 +57,13 @@ window = {
 					layoutpolicy_horizontal = expanding
 
 					button_tab = {
-						visible = "[Not(GetPlayer.IsIndependentRuler)]"
+						visible = "[Or(GetGlobalVariable('SMYC_is_loaded').IsSet, Not(GetPlayer.IsIndependentRuler))]"
 						layoutpolicy_horizontal = expanding
 						text = "COUNCIL_WINDOW_PLAYER_COUNCIL"
 
 						down = "[CouncilWindow.IsPlayerCouncilShown]"
 						onclick = "[CouncilWindow.SetPlayerCouncil]"
+						onclick = "[GetVariableSystem.Set( 'SMYC_player_council', 'true' )]"
 
 						# onclick = "[PdxGuiTriggerAllAnimations('council_refresh')]"
 
@@ -393,7 +394,7 @@ types CouncilWindow
 			{
 				portrait_council = {
 					name = "councillor_portrait_blank"
-					visible = "[And( Not(Character.IsValid), CouncilWindow.IsPlayerCouncilShown)]"
+					visible = "[And(Not(GetGlobalVariable('SMYC_is_loaded').IsSet), And( Not(Character.IsValid), CouncilWindow.IsPlayerCouncilShown))]"
 					parentanchor = center
 
 					blockoverride "portrait_button_no_character_text"
@@ -728,7 +729,7 @@ types CouncilWindow
 
 					icon = {
 						name = "church_approval_icon"
-						visible = "[Character.IsTheocraticLesseeOf( GetPlayer )]"
+						visible = "[Character.IsTheocraticLesseeOf( Character.GetLiege )]"
 
 						texture = "gfx/interface/icons/icon_bishop_approval.dds"
 						framesize = { 120 120 }
@@ -760,7 +761,7 @@ types CouncilWindow
 				{
 					fixedgridbox = {
 						name = "council_position_tasks"
-						visible = "[Not(CouncilWindow.IsLiegeCouncilShown)]"
+						visible = "[And(Not(CouncilWindow.IsLiegeCouncilShown),GuiCouncilPosition.CanPotentiallySelectCouncillor)]"
 						datamodel = "[GuiCouncilPosition.GetPotentialCouncilTasks]"
 
 						addcolumn = 45
@@ -968,7 +969,7 @@ types CouncilWindow
 			}
 
 			vbox = {
-				visible = "[Not(CouncilWindow.IsLiegeCouncilShown)]"
+				visible = "[And(Not(CouncilWindow.IsLiegeCouncilShown),Or(GuiCouncilPosition.CanPotentiallySelectCouncillor,ObjectsEqual( Character.Self, GetPlayer.GetPrimarySpouse )))]"
 				layoutpolicy_horizontal = expanding
 				margin = { 7 0 }
 
@@ -1142,7 +1143,7 @@ types CouncilTaskTypes
 					blockoverride "spouse_task"
 					{
 						hbox = {
-							visible = "[Character.IsValid]"
+							visible = "[And(Character.IsValid,ObjectsEqual( Character.Self, GetPlayer.GetPrimarySpouse ))]"
 							layoutpolicy_horizontal = expanding
 							margin = { 5 5 }
 							spacing = 3
