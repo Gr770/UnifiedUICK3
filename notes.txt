@@ -38,6 +38,3 @@ CTFA:
  Title Customization window
  Fine Title
  Succession Event
-
-SMYC:
- Hud
