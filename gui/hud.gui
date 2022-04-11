@@ -471,6 +471,7 @@ widget = {
 						texture = "gfx/interface/skinned/hud_maintab/maintab_council.dds"
 
 						onclick = "[ToggleGameViewData('council_window', GetPlayer.GetID)]"
+						onclick = "[GetVariableSystem.Set( 'SMYC_player_council', 'true' )]"
 						shortcut = "council_window"
 						tooltip = "COUNCIL_BUTTON"
 						down = "[IsGameViewOpen('council_window')]"
