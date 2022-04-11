@@ -706,6 +706,7 @@ types  FactionWindow
 				item = {
 					container = {
 						datacontext = "[FactionCharacterMember.GetMember]"
+						using = fe_calculate_faction_score
 
 						portrait_head_small = {
 							position = { 0 -0 }
@@ -714,6 +715,7 @@ types  FactionWindow
 							blockoverride "portrait_button_template_tooltip"
 							{
 								tooltip = "[FactionCharacterMember.GetTooltip]"
+								using = fe_faction_screen_member_tooltip
 							}
 						}
 

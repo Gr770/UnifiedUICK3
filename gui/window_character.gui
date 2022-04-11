@@ -698,6 +698,10 @@ window = {
 					}
 				}
 
+				### Comp Stress Bar For All
+				using = SBfA_character_stress_bar
+				### Comp End
+
 				container = {
 					visible = "[GreaterThan_int32(GetDataModelSize(Character.GetKnownLanguages), '(int32)1')]"
 					parentanchor = hcenter
@@ -718,6 +722,10 @@ window = {
 						texture = "gfx/interface/icons/culture_pillars/language.dds"
 					}
 				}
+
+				###Factions Explained comp
+				using = fe_faction_member_icon
+				###Comp end	
 
 				button_normal = {
 					name = "open_kill_list"
@@ -2284,6 +2292,10 @@ window = {
 				name = "tabs"
 				visible = "[CharacterWindow.AreNoneExpanded]"
 				layoutpolicy_horizontal = expanding
+
+				#SMYC
+				using = SMYC_council_button
+				#/SMYC
 
 				button_tab = {
 					name = "family_button"
