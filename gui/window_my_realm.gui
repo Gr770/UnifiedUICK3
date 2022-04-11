@@ -19,6 +19,7 @@ window = {
 		using = Animation_FadeIn_Quick
 		using = Sound_WindowShow_Standard
 		using = Window_Position_MainTab
+		on_start = "[GetVariableSystem.Set( 'realm_tabs', 'domain' )]"
 
 		on_start = "[GetVariableSystem.Clear('show_governors')]"
 		on_start = "[GetVariableSystem.Set( 'bicameral_view_tabs', 'maintab' )]"
@@ -354,8 +355,8 @@ window = {
 						layoutpolicy_horizontal = expanding
 						layoutpolicy_vertical = expanding
 						onclick = "[MyRealmWindow.ShowDomain]"
-						down = "[And(MyRealmWindow.IsShowingDomain,Not(GetVariableSystem.Exists('show_governors')))]"
-						onclick = "[GetVariableSystem.Clear('show_governors')]"
+						onclick = "[GetVariableSystem.Set( 'realm_tabs', 'domain' )]"
+						down = "[GetVariableSystem.HasValue( 'realm_tabs', 'domain' )]"
 						text = "MY_REALM_WINDOW_DOMAIN_TAB"
 					}
 
@@ -364,8 +365,8 @@ window = {
 						layoutpolicy_horizontal = expanding
 						layoutpolicy_vertical = expanding
 						onclick = "[MyRealmWindow.ShowVassals]"
-						down = "[And(MyRealmWindow.IsShowingVassals,Not(GetVariableSystem.Exists('show_governors')))]"
-						onclick = "[GetVariableSystem.Clear('show_governors')]"
+						onclick = "[GetVariableSystem.Set( 'realm_tabs', 'vassals' )]"
+						down = "[GetVariableSystem.HasValue( 'realm_tabs', 'vassals' )]"
 						text = "MY_REALM_WINDOW_VASSALS_TAB"
 					}
 
@@ -374,8 +375,8 @@ window = {
 						layoutpolicy_horizontal = expanding
 						layoutpolicy_vertical = expanding
 						onclick = "[MyRealmWindow.ShowSuccession]"
-						down = "[And(MyRealmWindow.IsShowingSuccession,Not(GetVariableSystem.Exists('show_governors')))]"
-						onclick = "[GetVariableSystem.Clear('show_governors')]"
+						onclick = "[GetVariableSystem.Set( 'realm_tabs', 'succession' )]"
+						down = "[GetVariableSystem.HasValue( 'realm_tabs', 'succession' )]"
 
 						text = "MY_REALM_WINDOW_SUCCESSION_TAB"
 					}
@@ -410,7 +411,7 @@ window = {
 					name = "tab_domain"
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
-					visible = "[And( MyRealmWindow.IsShowingDomain,Not(GetVariableSystem.Exists('show_governors')))]"
+					visible = "[GetVariableSystem.HasValue( 'realm_tabs', 'domain' )]"
 
 					using = Animation_Tab_Switch
 
@@ -821,7 +822,7 @@ window = {
 					name = "tab_vassals"
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
-					visible = "[And(MyRealmWindow.IsShowingVassals,Not(GetVariableSystem.Exists('show_governors')))]"
+					visible = "[GetVariableSystem.HasValue( 'realm_tabs', 'vassals' )]"
 
 					state = {
 						name = _show
@@ -1058,7 +1059,7 @@ window = {
 				### SUCCESSION TAB
 				vbox = {
 					name = "tab_succession"
-					visible = "[And(MyRealmWindow.IsShowingSuccession,Not(GetVariableSystem.Exists('show_governors')))]"
+					visible = "[GetVariableSystem.HasValue( 'realm_tabs', 'succession' )]"
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
 
