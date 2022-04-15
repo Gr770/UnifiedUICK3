@@ -135,9 +135,20 @@ window = {
 									layoutpolicy_horizontal = expanding
 									ignoreinvisible = yes
 									spacing = 5
+									
+									text_multi = {
+										visible = "[Not(GetGlobalVariable('SoW_is_loaded').IsSet)]"
+										text = "[TitleViewWindow.GetTitle.GetNameNoTooltip|U]"
+										default_format = "#high"
+										max_width = 330
+										autoresize = yes
+										using = Font_Size_Big
+									}
 
 									text_multi = {
+										visible = "[GetGlobalVariable('SoW_is_loaded').IsSet]"
 										text = "[TitleViewWindow.GetTitle.GetNameNoTooltip|U]"
+										tooltip = "[Title.Custom('demd_show_title_stats')]"
 										default_format = "#high"
 										max_width = 330
 										autoresize = yes

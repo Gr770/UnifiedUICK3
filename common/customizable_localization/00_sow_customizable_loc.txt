@@ -1,0 +1,7 @@
+﻿# From Sinews of War (dummy copy). Should be overwritten by file name when SoW is loaded
+demd_show_title_stats = {
+	type = landed_title
+	text = {
+		localization_key = culture_era_tribal
+	}
+}

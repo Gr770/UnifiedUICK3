@@ -1526,7 +1526,7 @@ types FaithShared
 			}
 			text_single = {
 				visible = "[GetGlobalVariable('SoW_is_loaded').IsSet]"
-				raw_text = "#help ([Faith.MakeScope.ScriptValue('fervor_target')|0]%)#!"
+				text = window_faith_fervor_target
 				datacontext = "[GuiScope.SetRoot(Faith.MakeScope).GetScriptValueBreakdown('fervor_target')]"
 				tooltipwidget = {
 					widget_value_breakdown_tooltip = {}
