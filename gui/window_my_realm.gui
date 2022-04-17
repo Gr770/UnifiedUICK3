@@ -1083,52 +1083,64 @@ window = {
 							text = "MY_REALM_WINDOW_CURRENT_SUCCESSION"
 						}
 
-						vbox = {
-							datamodel = "[MyRealmWindow.GetRealmLaws]"
-							spacing = 10
-							margin_bottom = 5
-							ignoreinvisible = yes
+						scrollbox = {
+							name = "laws_scrollbox"
 							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+							minimumsize = { 0 350 }
+	
+							blockoverride "scrollbox_content" {
+								datamodel = "[MyRealmWindow.GetRealmLaws]"
+								spacing = 1
+								margin_bottom = 5
+								ignoreinvisible = yes
 
 							item = {
 								hbox = {
 									visible = "[And( And( Not( GuiLawGroup.GetLawGroup.HasFlag( 'realm_law' ) ), GuiLawGroup.IsAvailable ), Not( GuiLawGroup.GetLawGroup.HasFlag( 'policy' ) ))]"
-									layoutpolicy_horizontal = growing
-
-									vbox = {
 										layoutpolicy_horizontal = growing
 
-										text_single = {
+										vbox = {
 											layoutpolicy_horizontal = growing
-											max_width = 350
-											raw_text = "[GuiLawGroup.GetLawGroup.GetNameSingular]:"
+
+											text_single = {
+												layoutpolicy_horizontal = growing
+												max_width = 350
+												raw_text = "[GuiLawGroup.GetLawGroup.GetNameSingular]:"
+											}
+
+											text_single = {
+												layoutpolicy_horizontal = growing
+												max_width = 350
+												text = "[GuiLawGroup.GetCurrentLevel.GetLaw.GetName]"
+												default_format = "#high"
+											}
+
+											text_single = {
+												layoutpolicy_horizontal = growing
+												max_width = 350
+												visible = "[GuiLawGroup.GetCurrentLevel.GetLaw.HasSubName]"
+												text = "[GuiLawGroup.GetCurrentLevel.GetLaw.GetSubName]"
+												default_format = "#F"
+											}
+
+											divider_light = {
+												layoutpolicy_horizontal = expanding
+											}
+	
+											spacing = 5
+										}
+										expand = {
+											layoutpolicy_horizontal = growing
 										}
 
-										text_single = {
-											layoutpolicy_horizontal = growing
-											max_width = 350
-											text = "[GuiLawGroup.GetCurrentLevel.GetLaw.GetName]"
-											default_format = "#high"
+										button_standard = {
+											datacontext = "[GuiLawGroup]"
+											size = { 150 32 }
+											onclick = "[OpenSuccessionLawChangeWindow(GuiLawGroup.Self)]"
+											text = "MRW_CHANGE_LAW"
+											tooltip = "MRW_CHANGE_LAW_TT"
 										}
-
-										text_single = {
-											layoutpolicy_horizontal = growing
-											max_width = 350
-											visible = "[GuiLawGroup.GetCurrentLevel.GetLaw.HasSubName]"
-											text = "[GuiLawGroup.GetCurrentLevel.GetLaw.GetSubName]"
-											default_format = "#F"
-										}
-									}
-									expand = {
-										layoutpolicy_horizontal = growing
-									}
-
-									button_standard = {
-										datacontext = "[GuiLawGroup]"
-										size = { 150 32 }
-										onclick = "[OpenSuccessionLawChangeWindow(GuiLawGroup.Self)]"
-										text = "MRW_CHANGE_LAW"
-										tooltip = "MRW_CHANGE_LAW_TT"
 									}
 								}
 							}
