@@ -1095,9 +1095,9 @@ window = {
 								margin_bottom = 5
 								ignoreinvisible = yes
 
-							item = {
-								hbox = {
-									visible = "[And( And( Not( GuiLawGroup.GetLawGroup.HasFlag( 'realm_law' ) ), GuiLawGroup.IsAvailable ), Not( GuiLawGroup.GetLawGroup.HasFlag( 'policy' ) ))]"
+								item = {
+									hbox = {
+										visible = "[And( And( Not( GuiLawGroup.GetLawGroup.HasFlag( 'realm_law' ) ), GuiLawGroup.IsAvailable ), Not( GuiLawGroup.GetLawGroup.HasFlag( 'policy' ) ))]"
 										layoutpolicy_horizontal = growing
 
 										vbox = {
