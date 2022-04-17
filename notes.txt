@@ -36,5 +36,9 @@ Inherichance:
 
 CTFA:
  Title Customization window
- Fine Title
+ Find Title
  Succession Event
+
+SoW:
+ Culture
+ County View
