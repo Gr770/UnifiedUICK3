@@ -172,3 +172,23 @@ can_see_investiture_uniui = {
 		has_faith = faith:catholic
 	}
 }
+designate_core_button_uniui = {
+    scope = title
+    
+    is_shown = {
+		exists = global_var:CTI_is_loaded
+        And = {
+            is_title_core = no
+            tier >= tier_county
+        }
+    }
+}
+
+de_designate_core_button_uniui = {
+    scope = title
+    
+    is_shown = {
+		exists = global_var:CTI_is_loaded
+        is_title_core = yes # has built in barony check
+    }
+}

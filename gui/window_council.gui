@@ -394,7 +394,7 @@ types CouncilWindow
 			{
 				portrait_council = {
 					name = "councillor_portrait_blank"
-					visible = "[And(Not(GetGlobalVariable('SMYC_is_loaded').IsSet), And( Not(Character.IsValid), CouncilWindow.IsPlayerCouncilShown))]"
+					visible = "[And( Not(Character.IsValid), CouncilWindow.IsPlayerCouncilShown))]"
 					parentanchor = center
 
 					blockoverride "portrait_button_no_character_text"

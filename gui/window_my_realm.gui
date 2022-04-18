@@ -834,77 +834,87 @@ window = {
 						alpha = 0
 					}
 
-					hbox = {
-						name = "government_filters_container"
-						margin = { 0 7 }
+					scrollarea = {
+						layoutpolicy_horizontal = expanding
+						minimumsize = { 0 75 }
+						scrollbarpolicy_vertical = always_off
 
-						hbox = {
-							name = "government_filters"
-							datamodel = "[MyRealmWindow.GetGovernmentTypeHeaders]"
-							visible = "[LessThan_int32(GetDataModelSize(MyRealmWindow.GetGovernmentTypeHeaders), '(int32)3')]"
-							spacing = 5
-							layoutpolicy_horizontal = expanding
-
-							button_standard_clean = {
-								name = "all_governments"
-								size = { 60 33 }
-								default_format = "#low"
-
-								text = "MRW_GOVERNMENT_FILTER_ALL"
-								tooltip = "MRW_GOVERNMENT_FILTER_ALL_TT"
-								using = tooltip_above
-								down = "[Not(MyRealmWindow.HasGovernmentTypeFilter)]"
-								onclick = "[MyRealmWindow.ResetGovernmentTypeFilter]"
-							}
-
-							item = {
-								button_standard_clean = {
-									name = "government_filter"
-									datacontext = "[GovernmentTypeHeader.GetGovernmentType]"
-
-									text = "MRW_GOVERNMENT_FILTER"
-									default_format = "#low"
-
-									tooltip = "MRW_GOVERNMENT_FILTER_TT"
-									using = tooltip_above
-									down = "[GovernmentTypeHeader.IsSelected]"
-									onclick = "[GovernmentTypeHeader.OnClick]"
-								}
-							}
+						scrollbar_horizontal = {
+							using = Scrollbar_Horizontal
 						}
 
-						hbox = {
-							name = "small_government_filters"
-							datamodel = "[MyRealmWindow.GetGovernmentTypeHeaders]"
-							visible = "[GreaterThanOrEqualTo_int32(GetDataModelSize(MyRealmWindow.GetGovernmentTypeHeaders), '(int32)3')]"
-							spacing = 2
-							layoutpolicy_horizontal = expanding
+						scrollwidget = {
+							hbox = {
+								name = "government_filters_container"
+								margin = { 0 7 }
 
-							button_standard_clean = {
-								name = "all_governments"
-								size = { 56 33 }
-								default_format = "#low"
+								hbox = {
+									name = "government_filters"
+									datamodel = "[MyRealmWindow.GetGovernmentTypeHeaders]"
+									visible = "[LessThan_int32(GetDataModelSize(MyRealmWindow.GetGovernmentTypeHeaders), '(int32)3')]"
+									spacing = 5
 
-								text = "MRW_GOVERNMENT_FILTER_ALL"
-								tooltip = "MRW_GOVERNMENT_FILTER_ALL_TT"
-								using = tooltip_above
-								down = "[Not(MyRealmWindow.HasGovernmentTypeFilter)]"
-								onclick = "[MyRealmWindow.ResetGovernmentTypeFilter]"
-							}
+									button_standard_clean = {
+										name = "all_governments"
+										size = { 60 33 }
+										default_format = "#low"
 
-							item = {
-								button_standard_clean = {
-									name = "small_government_filter"
-									datacontext = "[GovernmentTypeHeader.GetGovernmentType]"
-									size = { 96 33 }
+										text = "MRW_GOVERNMENT_FILTER_ALL"
+										tooltip = "MRW_GOVERNMENT_FILTER_ALL_TT"
+										using = tooltip_above
+										down = "[Not(MyRealmWindow.HasGovernmentTypeFilter)]"
+										onclick = "[MyRealmWindow.ResetGovernmentTypeFilter]"
+									}
 
-									text = "[GovernmentType.GetNameNoTooltip]"
-									default_format = "#low"
+									item = {
+										button_standard_clean = {
+											name = "government_filter"
+											datacontext = "[GovernmentTypeHeader.GetGovernmentType]"
 
-									tooltip = "MRW_GOVERNMENT_FILTER_TT"
-									using = tooltip_above
-									down = "[GovernmentTypeHeader.IsSelected]"
-									onclick = "[GovernmentTypeHeader.OnClick]"
+											text = "MRW_GOVERNMENT_FILTER"
+											default_format = "#low"
+
+											tooltip = "MRW_GOVERNMENT_FILTER_TT"
+											using = tooltip_above
+											down = "[GovernmentTypeHeader.IsSelected]"
+											onclick = "[GovernmentTypeHeader.OnClick]"
+										}
+									}
+								}
+
+								hbox = {
+									name = "small_government_filters"
+									datamodel = "[MyRealmWindow.GetGovernmentTypeHeaders]"
+									visible = "[GreaterThanOrEqualTo_int32(GetDataModelSize(MyRealmWindow.GetGovernmentTypeHeaders), '(int32)3')]"
+									spacing = 2
+
+									button_standard_clean = {
+										name = "all_governments"
+										size = { 60 33 }
+										default_format = "#low"
+
+										text = "MRW_GOVERNMENT_FILTER_ALL"
+										tooltip = "MRW_GOVERNMENT_FILTER_ALL_TT"
+										using = tooltip_above
+										down = "[Not(MyRealmWindow.HasGovernmentTypeFilter)]"
+										onclick = "[MyRealmWindow.ResetGovernmentTypeFilter]"
+									}
+
+									item = {
+										button_standard_clean = {
+											name = "small_government_filter"
+											datacontext = "[GovernmentTypeHeader.GetGovernmentType]"
+											size = { 93 33 }
+
+											text = "[GovernmentType.GetNameNoTooltip]"
+											default_format = "#low"
+
+											tooltip = "MRW_GOVERNMENT_FILTER_TT"
+											using = tooltip_above
+											down = "[GovernmentTypeHeader.IsSelected]"
+											onclick = "[GovernmentTypeHeader.OnClick]"
+										}
+									}
 								}
 							}
 						}
@@ -1087,7 +1097,8 @@ window = {
 							name = "laws_scrollbox"
 							layoutpolicy_horizontal = expanding
 							layoutpolicy_vertical = expanding
-							minimumsize = { 0 350 }
+							minimumsize = { 0 185 }
+							maximunsize = { 0 400 }
 	
 							blockoverride "scrollbox_content" {
 								datamodel = "[MyRealmWindow.GetRealmLaws]"

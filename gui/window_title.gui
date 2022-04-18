@@ -996,18 +996,18 @@ window = {
 							}
                             
                             button_tertiary = {
+                                visible = "[And( TitleViewWindow.GetTitle.GetHolder.IsLocalPlayer, GetScriptedGui('designate_core_button_uniui').IsShown( GuiScope.SetRoot( TitleViewWindow.GetTitle.MakeScope).End ))]"
 								name = "designate_core_title"
 								text = "TITLE_VIEW_DESIGNATE_CORE"
-                                visible = "[And(GetGlobalVariable('CTI_is_loaded').IsSetAnd( TitleViewWindow.GetTitle.GetHolder.IsLocalPlayer, GetScriptedGui('designate_core_button').IsShown( GuiScope.SetRoot( TitleViewWindow.GetTitle.MakeScope).End )))]"
                                 enabled = "[GetScriptedGui('designate_core_button').IsValid( GuiScope.SetRoot( TitleViewWindow.GetTitle.MakeScope).End )]"
 								onclick = "[GetScriptedGui('designate_core_button').Execute( GuiScope.SetRoot( TitleViewWindow.GetTitle.MakeScope).End )]"
 								tooltip = "[GetScriptedGui('designate_core_button').BuildTooltip( GuiScope.SetRoot( TitleViewWindow.GetTitle.MakeScope).End )]"
 							}
                             
                             button_tertiary = {
+								visible = "[And( TitleViewWindow.GetTitle.GetHolder.IsLocalPlayer, GetScriptedGui('de_designate_core_button_uniui').IsShown( GuiScope.SetRoot( TitleViewWindow.GetTitle.MakeScope).End ))]"
 								name = "de_designate_core_title"
 								text = "TITLE_VIEW_DE_DESIGNATE_CORE"
-								visible = "[And(GetGlobalVariable('CTI_is_loaded').IsSetAnd( TitleViewWindow.GetTitle.GetHolder.IsLocalPlayer, GetScriptedGui('de_designate_core_button').IsShown( GuiScope.SetRoot( TitleViewWindow.GetTitle.MakeScope).End )))]"
                                 enabled = "[GetScriptedGui('de_designate_core_button').IsValid( GuiScope.SetRoot( TitleViewWindow.GetTitle.MakeScope).End )]"
 								onclick = "[GetScriptedGui('de_designate_core_button').Execute( GuiScope.SetRoot( TitleViewWindow.GetTitle.MakeScope).End )]"
 								tooltip = "[GetScriptedGui('de_designate_core_button').BuildTooltip( GuiScope.SetRoot( TitleViewWindow.GetTitle.MakeScope).End )]"
