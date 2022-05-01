@@ -400,7 +400,7 @@ window = {
 						layoutpolicy_horizontal = expanding
 						layoutpolicy_vertical = expanding
 						down = "[GetVariableSystem.HasValue( 'realm_tabs', 'laws' )]"
-						visible = "[Or(EqualTo_string(GetPlayer.GetGovernment.GetName, GetGovernment('imperial_government').GetName), EqualTo_string(GetPlayer.GetGovernment.GetName, GetGovernment('autocratic_government').GetName))]"
+						visible = "[GetScriptedGui('legions_uniui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 						onclick = "[GetVariableSystem.Set( 'realm_tabs', 'laws' )]"
 						text = "Imperial Laws"
 					}

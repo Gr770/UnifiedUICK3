@@ -192,3 +192,64 @@ de_designate_core_button_uniui = {
         is_title_core = yes # has built in barony check
     }
 }
+
+caliphate_uniui = {
+	scope = character
+
+	is_shown = {
+		exists = global_var:Gov_is_loaded
+		has_religion = religion:islam_religion
+		has_government = caliphate_government
+	}
+}
+
+legions_uniui = {
+	scope = character
+
+	is_shown = {
+		exists = global_var:Gov_is_loaded
+		OR = {
+			has_government = autocratic_government
+			has_government = imperial_government
+		}
+	}
+}
+
+legions_uniui = {
+	scope = character
+
+	is_shown = {
+		exists = global_var:Gov_is_loaded
+		OR = {
+			has_government = autocratic_government
+			has_government = imperial_government
+		}
+	}
+}
+
+scriptvalue_error_destroyer = {
+	scope = character
+
+	effect = {
+		save_scope_as = effect_root
+		hidden_effect = {
+			IF = {
+				limit = {
+					exists = global_var:SoW_is_loaded
+				}
+				custom_description_no_bullet = {
+					text = UniUI_regiment
+					subject = scope:effect_root
+					object = scope:effect_root
+				}
+			}
+			else = {
+				custom_description_no_bullet = {
+					text = UniUI_blank
+					subject = scope:effect_root
+					object = scope:effect_root
+				}
+			}
+		}
+	}
+}

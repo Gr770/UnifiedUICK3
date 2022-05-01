@@ -174,7 +174,7 @@ window = {
 						layoutpolicy_horizontal = expanding
 						onclick = "[GetVariableSystem.Set( 'military_view_tabs', 'legions' )]"
 						down = "[GetVariableSystem.HasValue( 'military_view_tabs', 'legions' )]"
-						visible = "[And(GetGlobalVariable('Gov_is_loaded').IsSet, Or(EqualTo_string(GetPlayer.GetGovernment.GetName, GetGovernment('imperial_government').GetName), EqualTo_string(GetPlayer.GetGovernment.GetName, GetGovernment('autocratic_government').GetName)) )]"
+						visible = "[GetScriptedGui('legions_uniui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 
 						text_single = {
 							text = "Legions"
@@ -516,7 +516,7 @@ window = {
 													
 													text_single = {
 														visible = "[GetGlobalVariable('SoW_is_loaded').IsSet]"
-														raw_text = "[demd_regiment_limit|E]: [Character.MakeScope.ScriptValue('total_regiment_capacity_display')|0]"
+														raw_text = "[GetScriptedGui('scriptvalue_error_destroyer').ExecuteTooltip(GuiScope.SetRoot(Character.MakeScope).End)]"
 														datacontext = "[GuiScope.SetRoot(Character.MakeScope).GetScriptValueBreakdown('total_regiment_capacity_display')]"
 														tooltipwidget = {
 															widget_value_breakdown_tooltip = {}
