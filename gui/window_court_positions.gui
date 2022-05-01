@@ -600,11 +600,17 @@ types CourtPositionTypes
 					margin_top = 4
 
 					button_change = {
+						###SMYCP###
+						visible = "[Or(Not(GetVariableSystem.Exists('SMYCP_player_court')),GetVariableSystem.HasValue( 'SMYCP_player_court', 'true' ) )]"
+						###SMYCP###
 						onclick = "[EmployedPositionItem.Replace)]"
 						tooltip = "COURT_POSITION_REPLACE"
 					}
 
 					button_cancel = {
+						###SMYCP###
+						visible = "[Or(Not(GetVariableSystem.Exists('SMYCP_player_court')),GetVariableSystem.HasValue( 'SMYCP_player_court', 'true' ) )]"
+						###SMYCP###
 						onclick = "[EmployedPositionItem.Revoke)]"
 						tooltip = "COURT_POSITION_REVOKE"
 					}
@@ -955,7 +961,7 @@ types CourtPositionTypes
 
 		button = {
 			size = { 100% 100% }
-			enabled = "[And(EmptyCourtPosition.CanHirePosition, GreaterThan_int32(EmptyCourtPosition.NumValidCourtiers, '(int32)0') )]"
+			enabled = "[And(EmptyCourtPosition.CanHirePosition, And(GreaterThan_int32(EmptyCourtPosition.NumValidCourtiers, '(int32)0'), Or(Not(GetVariableSystem.Exists('SMYCP_player_court')),GetVariableSystem.HasValue( 'SMYCP_player_court', 'true' ) ) ) )]"
 			onclick = "[EmptyCourtPosition.Appoint]"
 			name = "position_portrait_tutorial_uses_this"
 

@@ -513,6 +513,9 @@ widget = {
 							texture = "gfx/interface/skinned/hud_maintab/maintab_court.dds"
 
 							onclick = "[ToggleGameViewData( 'court_window', GetPlayer.GetID )]"
+							###SMYCP###
+							onclick = "[GetVariableSystem.Set( 'SMYCP_player_court', 'true' )]"
+							###SMYCP###
 							shortcut = "court_window"
 							tooltip = "COURT_BUTTON"
 							down = "[IsGameViewOpen( 'court_window' )]"

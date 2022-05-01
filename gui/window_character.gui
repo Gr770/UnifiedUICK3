@@ -23,6 +23,9 @@ window = {
 		# MOD(custom-form-of-address)
 		using = CTFA_character_window_show_state_actions
 		# END MOD
+		###SMYCP###
+		on_start = "[GetVariableSystem.Set( 'SMYCP_player_court', 'true' )]"
+		###SMYCP###
 	}
 
 	state = {
@@ -2361,6 +2364,9 @@ window = {
 					name = "court_button"
 					datacontext = "[CharacterWindow.GetCharacter]"
 					#	visible = "[Not(Character.IsPlayer)]"
+					###SMYCP###
+					visible = "[Not(GetGlobalVariable('SMYCP_is_loaded').IsSet)]"
+					###SMYCP###
 					layoutpolicy_horizontal = expanding
 
 					onclick = "[CharacterWindow.SetTab('court')]"
@@ -2387,6 +2393,11 @@ window = {
 						}
 					}
 				}
+
+				###SMYCP###
+				SMYCP_court_button = {}
+				SMYCP_player_court_button = {}
+				###SMYCP###
 
 				button_tab = {
 					name = "vassals_button"
