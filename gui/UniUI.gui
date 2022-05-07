@@ -1,0 +1,450 @@
+﻿window = {
+	name = Uni_Mod_Selector_Icon
+
+	visible = "[And(IsPauseMenuShown, IsDefaultGUIMode)]"
+	parentanchor = top|right
+	size = { 50 50 }
+	movable = no
+	layer = confirmation
+	filter_mouse = all
+
+	button_round = {
+		onclick = "[GetVariableSystem.Toggle('show_uni_mod_selector')]"
+		#onclick = "[CharacterWindow.Close]"
+		#onclick = "[Character.OpenRoyalCourtView( 'characters' )]"
+
+		size = { 50 50 }
+		icon = {
+			texture = "gfx/interface/icons/flat_icons/coop_logo.dds"
+			size = { 40 40 }
+			parentanchor = center
+		}
+	}
+}
+
+window = {
+	name = Uni_Mod_Selector
+
+	visible = "[And(And(IsPauseMenuShown,GetVariableSystem.Exists('show_uni_mod_selector')), IsDefaultGUIMode)]"
+	size = { 600 600 }
+	parentanchor = top|right
+	position = { 0 2% }
+	movable = no
+	layer = confirmation
+	filter_mouse = all
+	using = Window_Decoration
+
+	###DUIT
+	vbox={
+		using = Window_Background
+		alpha = 0.9
+	}
+	###DUIT/
+	state = {
+		name = _show
+		using = Animation_FadeIn_Quick
+		position_x = 0
+	}
+
+	state = {
+		name = _hide
+		using = Animation_FadeOut_Quick
+		position_x = 60
+	}
+	vbox = {
+		margin_left = 40
+		margin_right = 40
+		margin_top = 18
+		margin_bottom = 20
+		size = { 562 520 }
+		
+
+		header_pattern = {
+			layoutpolicy_horizontal = expanding
+
+			blockoverride "header_text"
+			{
+				text = "Select Enabled Mods"
+			}
+
+			blockoverride "button_close"
+			{
+				visible = no
+			}
+		}
+
+		scrollbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+
+			blockoverride "scrollbox_content" {
+				vbox={
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+
+						text_single = {
+							autoresize = yes
+							text = "Dynamic Theme Selector"
+							using = Font_Size_Medium
+						}
+
+						expand={}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('DUIT_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_DUIT').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+					
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+
+						text_single = {
+							autoresize = yes
+							text = "Show Me Your Council"
+							using = Font_Size_Medium
+						}
+
+						expand={}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							#checked = "[GetVariableSystem.Exists('Mod1_enabled')]"
+							checked = "[GetGlobalVariable('SMYC_is_loaded').IsSet]"
+							#onclick = "[GetVariableSystem.Toggle('Mod1_enabled')]"
+							onclick = "[GetScriptedGui('UMS_toggle_SMYC').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+
+						text_single = {
+							autoresize = yes
+							text = "In My Humble Opinion"
+							max_width = 250
+							using = Font_Size_Medium
+						}
+
+						expand = {}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('IMHO_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_IMHO').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+
+						text_single = {
+							autoresize = yes
+							text = "Fullscreen Barbershop"
+							max_width = 250
+							using = Font_Size_Medium
+						}
+
+						expand = {}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('FSB_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_FSB').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+
+						text_single = {
+							autoresize = yes
+							text = "The Catholic Trinity (Requires NG)"
+							max_width = 250
+							using = Font_Size_Medium
+						}
+
+						expand ={}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('Trinity_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_Trinity').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+						
+						text_single = {
+							autoresize = yes
+							text = "Prisoners of War"
+							max_width = 250
+							using = Font_Size_Medium
+						}
+
+						expand = {}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('PoW_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_PoW').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+						
+						text_single = {
+							autoresize = yes
+							text = "Submission to Authority"
+							max_width = 250
+							using = Font_Size_Medium
+						}
+
+						expand = {}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('StA_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_StA').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+						
+						text_single = {
+							autoresize = yes
+							text = "Inherichance"
+							max_width = 250
+							using = Font_Size_Medium
+						}
+
+						expand = {}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('Inherichance_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_Inherichance').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+
+						text_single = {
+							autoresize = yes
+							text = "Custom Title Form of Address (Requires NG)"
+							max_width = 300
+							using = Font_Size_Medium
+						}
+
+						expand = {}
+						
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('CTFA_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_CTFA').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+						
+						text_single = {
+							autoresize = yes
+							text = "Separate Name and Title - IE"
+							max_width = 250
+							using = Font_Size_Medium
+						}
+
+						expand = {}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('SNAT_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_SNAT').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+						
+						text_single = {
+							autoresize = yes
+							text = "Enhanced Dynasty Tree Viewer"
+							max_width = 250
+							using = Font_Size_Medium
+						}
+
+						expand = {}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('EDT_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_EDT').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+						
+						text_single = {
+							autoresize = yes
+							text = "Loyal To A Fault"
+							max_width = 250
+							using = Font_Size_Medium
+						}
+
+						expand = {}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('LTAF_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_LTAF').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+						
+						text_single = {
+							autoresize = yes
+							text = "Core Title Inheritance"
+							max_width = 250
+							using = Font_Size_Medium
+						}
+
+						expand = {}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('CTI_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_CTI').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+						
+						text_single = {
+							autoresize = yes
+							text = "Governments +"
+							max_width = 250
+							using = Font_Size_Medium
+						}
+
+						expand = {}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('Gov_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_Gov').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+						
+						text_single = {
+							autoresize = yes
+							text = "Sinews of War"
+							max_width = 250
+							using = Font_Size_Medium
+						}
+
+						expand = {}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('SoW_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_SoW').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+					
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+						
+						text_single = {
+							autoresize = yes
+							text = "Advanced Character Search"
+							max_width = 250
+							using = Font_Size_Medium
+						}
+
+						expand = {}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('mod_acs_active').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_acs').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+						
+						text_single = {
+							autoresize = yes
+							text = "Show Me Your Court"
+							max_width = 250
+							using = Font_Size_Medium
+						}
+
+						expand = {}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('SMYCP_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_SMYCP').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+					expand = {}
+				}
+			}
+		}
+	}
+}
+
+template UMS_Entry_Margins
+{
+    margin_left = 60
+    margin_right = 60
+}

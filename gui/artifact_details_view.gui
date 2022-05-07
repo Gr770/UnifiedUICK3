@@ -6,8 +6,14 @@ window = {
 	position = { 500 200 }
 
 	using = Window_Movable
-	using = Window_Background
+	#using = Window_Background
 	using = Window_Decoration_Spike
+
+	### DUIT
+	vbox={
+		using = Window_Background
+	}
+	### DUIT
 
 	datacontext = "[GetVariableSystem]"
 	datacontext = "[ArtifactDetailsView.GetArtifact]"

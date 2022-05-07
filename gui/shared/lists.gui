@@ -660,6 +660,7 @@ types Lists
 				alwaystransparent = no
 
 				button_drop = {
+					visible = "[Or(GetPlayer.IsValid, Not(GetGlobalVariable('DUIT_is_loaded').IsSet))]"
 					block "dropdown_size"
 					{
 						size = { 200 32 }
@@ -672,6 +673,24 @@ types Lists
 
 
 				}
+
+				###DUIT
+				button_drop = {
+					visible= "[And(Not(GetPlayer.IsValid), GetGlobalVariable('DUIT_is_loaded').IsSet)]"
+					texture = "gfx/interface/buttons/button_drop_down.dds"
+					block "dropdown_size"
+					{
+						size = { 200 32 }
+					}
+					block "dropdown_active_item_properties"
+					{
+						raw_text = "#D Current Option#!"
+					}
+					button_trigger = none
+
+
+				}
+				###DUIT/
 			}
 		}
 

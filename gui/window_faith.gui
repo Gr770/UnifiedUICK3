@@ -15,7 +15,7 @@ window = {
 	layer = windows_layer
 
 	using = Window_Size_Sidebar
-	using = Window_Background_Sidebar
+	#using = Window_Background_Sidebar
 
 	state = {
 		name = _show
@@ -37,6 +37,11 @@ window = {
 		using = Sound_WindowHide_Standard
 	}
 
+	###DUIT
+	vbox={
+		using = Window_Background_Sidebar
+	}
+	###DUIT/
 	### INSIDE WINDOW
 	vbox = {
 		using = Window_Margins_Sidebar

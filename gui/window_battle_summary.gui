@@ -10,6 +10,7 @@ window = {
 	blockoverride "frame_bottom" {}
 
 	background = {
+		visible = "[Not(GetGlobalVariable('DUIT_is_loaded').IsSet)]"
 		texture = "gfx/interface/window_military/battle_summary_bg.dds"
 		spritetype = corneredstretched
 		spriteborder = { 0 200 }
@@ -29,6 +30,31 @@ window = {
 			blend_mode = overlay
 		}
 	}
+	###DUIT
+	vbox={
+		background = {
+			visible = "[GetGlobalVariable('DUIT_is_loaded').IsSet]"
+			texture = "[GetIllustration( 'duit_background_battle_summary_bg' ).GetTexture(GetPlayer)]"
+			spritetype = corneredstretched
+			spriteborder = { 0 200 }
+			texture_density = 2
+			margin = { -18 0 }
+			margin_top = -8
+	
+			modify_texture = {
+				texture = "gfx/interface/window_military/battle_summary_bg_overlay.dds"
+				spritetype = corneredtiled
+				blend_mode = overlay
+				texture_density = 2
+			}
+	
+			modify_texture = {
+				texture = "gfx/interface/component_overlay/overlay_effect.dds"
+				blend_mode = overlay
+			}
+		}
+	}
+	###DUIT/
 
 	state = {
 		name = _show

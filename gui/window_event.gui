@@ -2298,7 +2298,28 @@ types Events
 		}
 
 		icon = {
+			visible = "[Not(GetGlobalVariable('DUIT_is_loaded').IsSet)]"
 			texture = "gfx/interface/buttons/button_event.dds"
+			alpha = 1
+			spriteType = Corneredtiled
+			spriteborder = { 3 3 }
+			framesize = { 249 78 }
+			size = { 100% 100% }
+
+			modify_texture = {
+				name = "mask"
+				texture = "gfx/interface/component_masks/mask_fade_horizontal_middle_thick.dds"
+				spriteType = Corneredtiled
+				spriteborder_left = 40
+				spriteborder_right = 40
+				blend_mode = alphamultiply
+			}
+		}
+		icon = {
+			###DUIT
+			visible = "[GetGlobalVariable('DUIT_is_loaded').IsSet]"
+			texture = "[GetIllustration( 'duit_button_button_event' ).GetTexture(GetPlayer)]"
+			###DUIT/
 			alpha = 1
 			spriteType = Corneredtiled
 			spriteborder = { 3 3 }

@@ -42,3 +42,6 @@ CTFA:
 SoW:
  Culture
  County View
+
+Dynamic UI Themes:
+ Always check

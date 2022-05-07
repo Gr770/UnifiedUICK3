@@ -9,7 +9,7 @@ window = {
 	layer = windows_layer
 
 	using = Window_Size_Sidebar
-	using = Window_Background_Sidebar
+	#using = Window_Background_Sidebar
 
 	state = {
 		name = _show
@@ -28,6 +28,11 @@ window = {
 		on_start = "[GetVariableSystem.Clear( 'hide_bottom_left_HUD' )]"
 	}
 
+	###DUIT
+	vbox={
+		using = Window_Background_Sidebar
+	}
+	###DUIT/
 	vbox = {
 		name = "dynasty_house"
 
@@ -1280,8 +1285,13 @@ window = {
 		}
 
 		using = Window_Movable
-		using = Window_Background
+		#using = Window_Background
 		using = Window_Decoration
+		###DUIT
+		vbox = {
+			using = Window_Background
+		}
+		###DUIT/
 
 		state = {
 			name = _show

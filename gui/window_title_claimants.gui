@@ -12,8 +12,13 @@ window = {
 	using = Window_Movable
 	using = title_view_window_side_pop_out
 	using = Window_Decoration
-	using = Window_Background
+	#using = Window_Background
 
+	###DUIT
+	vbox = {
+		using = Window_Background
+	}
+	###DUIT/
 	# Sort dropdown
 	vbox = {
 		using = Window_Margins
