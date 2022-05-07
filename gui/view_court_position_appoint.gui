@@ -13,7 +13,7 @@ window = {
 	layer = middle
 	allow_outside = yes
 
-	using = Window_Background
+	#using = Window_Background
 	using = Window_Decoration
 
 	state = {
@@ -29,7 +29,9 @@ window = {
 	vbox = {
 		using = Window_Margins
 		layoutpolicy_vertical = expanding
-
+		###DUIT
+		using = Window_Background
+		###DUIT
 		#Header for appointing
 		header_pattern = {
 			layoutpolicy_horizontal = expanding
@@ -446,7 +448,19 @@ types AppointCourtPositionTypes
 				down = "[AppointCourtPositionView.IsItemSelected(CharacterListItem.Self)]"
 
 				background = {
+					visible = "[Not(GetGlobalVariable('DUIT_is_loaded').IsSet)]"
 					texture = "gfx/interface/buttons/button_entry_characterlist.dds"
+					spriteType = Corneredtiled
+					margin = { 10 0 }
+					using = Color_Orange
+					alpha = 0
+					using = Mask_Rough_Edges
+				}
+				background = {
+					###DUIT
+					visible = "[GetGlobalVariable('DUIT_is_loaded').IsSet]"
+					texture = "[GetIllustration( 'duit_button_button_entry_characterlist' ).GetTexture(GetPlayer)]"
+					###DUIT/
 					spriteType = Corneredtiled
 					margin = { 10 0 }
 					using = Color_Orange

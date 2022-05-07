@@ -11,7 +11,7 @@ window = {
 	movable = no
 	layer = middle
 
-	using = Window_Background
+	#using = Window_Background
 	using = Window_Decoration_Spike
 
 	state = {
@@ -25,6 +25,12 @@ window = {
 		using = Animation_FadeOut_Quick
 		using = Sound_WindowHide_Standard
 	}
+
+	### DUIT
+	vbox={
+		using = Window_Background
+	}
+	### DUIT
 
 	vbox = {
 		using = Window_Margins

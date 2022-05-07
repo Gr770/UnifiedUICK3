@@ -7,9 +7,14 @@ window = {
 	movable = no
 	layer = middle
 
-	using = Window_Background
+	#using = Window_Background
 	using = Window_Decoration
 
+	###DUIT
+	vbox={
+		using = Window_Background
+	}
+	###DUIT/
 	state = {
 		name = _show
 		using = Animation_FadeIn_Quick

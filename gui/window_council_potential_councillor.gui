@@ -11,7 +11,7 @@ window = {
 
 	using = Window_Movable
 	using = Window_Size_CharacterList
-	using = Window_Background
+	#using = Window_Background
 	using = Window_Decoration
 
 	state = {
@@ -28,6 +28,9 @@ window = {
 
 	vbox = {
 		using = Window_Margins
+		###DUIT
+		using = Window_Background
+		###DUIT
 
 		header_pattern = {
 			layoutpolicy_horizontal = expanding

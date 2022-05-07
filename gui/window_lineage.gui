@@ -12,10 +12,15 @@ window = {
 	layer = confirmation
 
 	using = Window_Movable
-	using = Window_Background
+	#using = Window_Background
 	using = Window_Decoration_Spike
 	using = Animation_ShowHide_Standard
 
+	###DUIT
+	vbox={
+		using = Window_Background
+	}
+	###DUIT/
 	vbox = {
 		using = Window_Margins
 

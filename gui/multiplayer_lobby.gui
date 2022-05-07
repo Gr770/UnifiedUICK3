@@ -560,6 +560,9 @@ JominiMultiplayerLobby = {
 
 			button_standard = {
 				name = "game_rules_button"
+				###DUIT
+				visible = "[Or(Not(GetGlobalVariable('DUIT_is_loaded').IsSet), GetPlayer.IsValid)]"
+				###DUIT/
 				layoutpolicy_horizontal = expanding
 				size = { 350 45 }
 
@@ -603,6 +606,56 @@ JominiMultiplayerLobby = {
 					}
 				}
 			}
+
+			###DUIT
+			button_standard = {
+				name = "game_rules_button_new_game"
+				visible = "[And(Not(GetPlayer.IsValid), GetGlobalVariable('DUIT_is_loaded').IsSet))]"
+				texture = "gfx/interface/buttons/button_standard.dds"
+				layoutpolicy_horizontal = expanding
+				size = { 350 45 }
+
+				button_rules = {
+					size = { 30 30 }
+					parentanchor = left|vcenter
+					position = { 5 0 }
+					alwaystransparent = yes
+				}
+
+				text = "GAME_RULES"
+				margin = { 60 0 }
+				onclick = "[OpenGameRules]"
+
+				hbox = {
+					margin = { 5 0 }
+					expand = {}
+					datacontext = "[GetGameRules]"
+
+					ironman_save_icon = {
+						visible = "[IsIronmanEnabled]"
+						size = { 30 30 }
+						tooltip = "IRONMAN_ENABLED"
+					}
+
+					ironman_disabled_icon = {
+						visible = "[Not( IsIronmanEnabled )]"
+						size = { 30 30 }
+						tooltip = "IRONMAN_DISBLED"
+					}
+					achievements_enabled_icon = {
+						visible = "[CanGetAchievements]"
+						size = { 30 30 }
+						tooltip = ACHIEVEMENTS_ENABLED
+					}
+					achievements_disabled_icon = {
+						visible = "[Not( CanGetAchievements )]"
+						size = { 30 30 }
+						tooltip = ACHIEVEMENTS_DISABLED
+						using = tooltip_nw
+					}
+				}
+			}
+			###DUIT/
 
 			vbox = {
 				name = "select_and_customize_character"
@@ -771,12 +824,28 @@ JominiMultiplayerLobby = {
 					}
 						
 					JominiLobbyViewButton = {
+						###DUIT
+						visible = "[Or(Not(GetGlobalVariable('DUIT_is_loaded').IsSet), GetPlayer.IsValid)]"
+						###DUIT/
 						size = { 200 40 }
 						onclick = "[SetRandomPlayableObserverCharacter]"
 						text = "MULTIPLAYER_LOBBY_CHOOSE_RANDOM_CHARACTER"
 					}
+					
+					###DUIT
+					JominiLobbyViewButton = {
+						visible = "[And(Not(GetPlayer.IsValid), GetGlobalVariable('DUIT_is_loaded').IsSet))]"
+						size = { 200 40 }
+						texture = "gfx/interface/buttons/button_standard.dds"
+						onclick = "[SetRandomPlayableObserverCharacter]"
+						text = "MULTIPLAYER_LOBBY_CHOOSE_RANDOM_CHARACTER"
+					}
+					###DUIT/
 
 					JominiLobbyViewButton = {
+						###DUIT
+						visible = "[Or(Not(GetGlobalVariable('DUIT_is_loaded').IsSet), GetPlayer.IsValid)]"
+						###DUIT
 						size = { 200 40 }
 						onclick = "[LobbyView.ToggleObserve]"
 						text = "[SelectLocalization(LobbyView.IsObserver, 'JOMINI_MULTIPLAYER_GUI_DISABLE_OBSERVE', 'JOMINI_MULTIPLAYER_GUI_OBSERVE')]"
@@ -789,6 +858,24 @@ JominiMultiplayerLobby = {
 							size = { 35 35 }
 						}
 					}
+
+					###DUIT
+					JominiLobbyViewButton = {
+						visible = "[And(Not(GetPlayer.IsValid), GetGlobalVariable('DUIT_is_loaded').IsSet))]"
+						size = { 200 40 }
+						texture = "gfx/interface/buttons/button_standard.dds"
+						onclick = "[LobbyView.ToggleObserve]"
+						text = "[SelectLocalization(LobbyView.IsObserver, 'JOMINI_MULTIPLAYER_GUI_DISABLE_OBSERVE', 'JOMINI_MULTIPLAYER_GUI_OBSERVE')]"
+						tooltip = "JOMINI_MULTIPLAYER_GUI_OBSERVE_TOOLTIP"
+						layoutpolicy_horizontal = expanding
+
+						icon_observer = {
+							position = { -5 2 }
+							parentanchor = right
+							size = { 35 35 }
+						}
+					}
+					###DUIT/
 				}
 
 				expand = {}

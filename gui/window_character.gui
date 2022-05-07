@@ -11,7 +11,7 @@ window = {
 	allow_outside = yes
 
 	using = Window_Size_Sidebar
-	using = Window_Background_Sidebar
+	#using = Window_Background_Sidebar
 
 	state = {
 		name = _show
@@ -44,6 +44,9 @@ window = {
 	vbox = {
 		name = "main_content"
 		using = Window_Margins_Sidebar
+		###DUIT
+		using = Window_Background_Sidebar
+		###DUIT
 
 		###############
 		# Character box

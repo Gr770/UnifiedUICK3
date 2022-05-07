@@ -9,8 +9,13 @@ window = {
 	layer = windows_layer
 
 	using = Window_Size_Sidebar
-	using = Window_Background_Sidebar
+	#using = Window_Background_Sidebar
 
+	###DUIT
+	vbox={
+		using = Window_Background_Sidebar
+	}
+	###DUIT/
 	state = {
 		name = _show
 		position = { 0 0 }
