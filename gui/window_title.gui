@@ -644,6 +644,19 @@ window = {
 						layoutpolicy_horizontal = expanding
 						text = "[Title.GetName]"
 					}
+					spacer = { size = { 5 0 } }
+					hbox = {
+						visible = "[GetGlobalVariable('SoW_is_loaded').IsSet]"
+						datacontext = "[TitleViewWindow.GetTitle]"
+						text_single = {
+							layoutpolicy_horizontal = expanding
+							text = "[Title.Custom('demd_title_view_subtitle')]"
+						}
+						tooltipwidget = { 
+							imperial_decay_breakdown_widget = { 
+							} 
+						}
+					}
 				}
 
 				divider = {
