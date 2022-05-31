@@ -1130,6 +1130,13 @@ types CouncilTaskTypes
 						alpha = 0.3
 					}
 
+					# make spouse portrait unique size, so it doesn't reuse
+					# textures from other councilors during hide animation
+					blockoverride "portrait_size"
+					{
+						size = { 260 286 }
+					}
+
 					blockoverride "replace_councillor"
 					{
 						spacer = {
