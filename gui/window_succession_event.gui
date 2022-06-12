@@ -467,7 +467,7 @@ window = {
 
 										widget = {
 											# [UniUI] [Vanilla]
-											visible = "[Not(GetGlobalVariable('Inherichance_is_loaded').IsSet)]"
+											visible = "[Not(AccessGameRules.HasRuleWithFlag('inherichance_gui'))]"
 											# [/Vanilla] [UniUI]
 											layoutpolicy_vertical = expanding
 											layoutpolicy_horizontal = expanding
@@ -483,7 +483,7 @@ window = {
 										widget = {
 											layoutpolicy_vertical = expanding
 											layoutpolicy_horizontal = expanding
-
+											visible = "[AccessGameRules.HasRuleWithFlag('inherichance_gui')]"
 											
 											UniUI_Inherichance_coa_title_small_crown = {}
 
@@ -493,7 +493,7 @@ window = {
 
 									vbox = {
 										# [UniUI] [Vanilla]
-										visible = "[Not(GetGlobalVariable('Inherichance_is_loaded').IsSet)]"
+										visible = "[Not(AccessGameRules.HasRuleWithFlag('inherichance_gui'))]"
 										# [/Vanilla] [UniUI]
 										margin = { 10 10 }
 
@@ -523,7 +523,9 @@ window = {
 									}
 
 									# [UniUI] [Inherichance]
-									UniUI_Inherichance_window_succession_event_text = {}
+									UniUI_Inherichance_window_succession_event_text = {
+										visible = "[AccessGameRules.HasRuleWithFlag('inherichance_gui')]"
+									}
 									# [/Inherichance] [/UniUI]
 
 									expand = {
@@ -534,7 +536,7 @@ window = {
 								### Right Character
 								vbox = {
 									# [UniUI] [Vanilla]
-									visible = "[Not(GetGlobalVariable('Inherichance_is_loaded').IsSet)]"
+									visible = "[Not(AccessGameRules.HasRuleWithFlag('inherichance_gui'))]"
 									# [/Vanilla] [/UniUI]
 									layoutpolicy_vertical = expanding
 									spacing = 5
@@ -572,7 +574,9 @@ window = {
 								}
 								
 								# [UniUI] [Inherichance]
-								UniUI_Inherichance_window_succession_event_right_character = {}
+								UniUI_Inherichance_window_succession_event_right_character = {
+									visible = "[AccessGameRules.HasRuleWithFlag('inherichance_gui')]"
+								}
 								# [/Inherichance] [/UniUI]
 							}
 						}
@@ -588,7 +592,7 @@ window = {
 
 							# [UniUI] [Vanilla]
 							vbox = {
-							visible = "[Not(GetGlobalVariable('Inherichance_is_loaded').IsSet)]"
+							visible = "[Not(AccessGameRules.HasRuleWithFlag('inherichance_gui'))]"
 							# [/Vanilla] [/UniUI]
 							vbox_heir = {
 								name = "right"
@@ -598,7 +602,9 @@ window = {
 							}
 							# [UniUI] [Inherichance]
 							}
-							UniUI_Inherichance_vbox_heir = {}
+							UniUI_Inherichance_vbox_heir = {
+								visible = "[AccessGameRules.HasRuleWithFlag('inherichance_gui')]"
+							}
 							# [/Inherichance] [/UniUI]
 
 							vbox_dynasty = {
@@ -619,7 +625,7 @@ window = {
 
 									vbox = {
 										# [UniUI] [Vanilla]
-										visible = "[Not(GetGlobalVariable('Inherichance_is_loaded').IsSet)]"
+										visible = "[Not(AccessGameRules.HasRuleWithFlag('inherichance_gui'))]"
 										# [/Vanilla] [/UniUI]
 										name = "titles"
 										layoutpolicy_vertical = expanding
@@ -751,7 +757,9 @@ window = {
 									}
 									
 									# [UniUI] [Inherichance]
-									UniUI_Inherichance_window_succession_event_titles = {}
+									UniUI_Inherichance_window_succession_event_titles = {
+										visible = "[AccessGameRules.HasRuleWithFlag('inherichance_gui')]"
+									}
 									# [/Inherichance] [/UniUI]
 								}
 							}
@@ -904,7 +912,7 @@ window = {
 
 									# [UniUI] [Vanilla] Not Inherichance
 									widget = {
-										visible = "[Not(GetGlobalVariable('Inherichance_is_loaded').IsSet)]"
+										visible = "[Not(AccessGameRules.HasRuleWithFlag('inherichance_gui'))]"
 										vbox_current_lineage = {
 											visible = "[SuccessionEventWindow.GetPlayerHeir.IsValid]"
 											datacontext = "[SuccessionEventWindow.GetPlayerHeirLegacy]"
@@ -913,7 +921,9 @@ window = {
 									# [Vanilla]
 
 									# [Inherichance]
-									UniUI_Inherichance_window_succession_event_vbox_current_lineage = {}
+									UniUI_Inherichance_window_succession_event_vbox_current_lineage = {
+										visible = "[AccessGameRules.HasRuleWithFlag('inherichance_gui')]"
+									}
 									# [/Inherichance] [/UniUI]
 
 									vbox_dynasty = {
@@ -942,7 +952,7 @@ window = {
 
 				hbox = {
 					# [UniUI] [Vanilla]
-					visible = "[Not(GetGlobalVariable('Inherichance_is_loaded').IsSet)]"
+					visible = "[Not(AccessGameRules.HasRuleWithFlag('inherichance_gui'))]"
 					# [/Vanilla] [/UniUI]
 					spacing = 15
 
@@ -981,7 +991,9 @@ window = {
 				}
 
 				# [UniUI] [Inherichance]
-				UniUI_Inherichance_window_succession_event_buttons = {}
+				UniUI_Inherichance_window_succession_event_buttons = {
+					visible = "[AccessGameRules.HasRuleWithFlag('inherichance_gui')]"
+				}
 				# [/Inherichance] [/UniUI]
 			}
 		}
