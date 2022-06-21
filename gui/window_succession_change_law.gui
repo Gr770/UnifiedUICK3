@@ -102,7 +102,7 @@ window = {
 								}
 
 								hbox = {
-									visible = "[Not(GetPlayer.GetGovernment.IsType('feudal_government'))]"
+									visible = "[Or(Not(GetPlayer.GetGovernment.IsType('feudal_government')), Not(GetGlobalVariable('StA_is_loaded').IsSet))]"
 									datamodel = "[SuccessionLawChangeWindow.GetSingleHeirLaws]"
 									spacing = 10
 
@@ -112,6 +112,7 @@ window = {
 								}
 
 								text_single = {
+									visible = "[GetGlobalVariable('StA_is_loaded').IsSet]"
 									align = center
 									text = "STA_SINGLE_REALM_HEIR_LAW_OVERRIDE"
 								}
