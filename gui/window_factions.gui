@@ -699,7 +699,6 @@ types  FactionWindow
 				flipdirection = yes
 
 				item = {
-					visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 					container = {
 						datacontext = "[FactionCharacterMember.GetMember]"
 						using = fe_calculate_faction_score
@@ -712,31 +711,6 @@ types  FactionWindow
 							{
 								tooltip = "[FactionCharacterMember.GetTooltip]"
 								using = fe_faction_screen_member_tooltip
-							}
-						}
-
-						warning_icon = {
-							name = "portrait_opinion_bg"
-							visible = "[FactionCharacterMember.IsAtWarAgainstTarget]"
-							parentanchor = top|left
-							position = { -5 15 }
-							size = { 25 25 }
-						}
-					}
-				}
-				item = {
-					visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
-					container = {
-						datacontext = "[FactionCharacterMember.GetMember]"
-
-						portrait_head_small = {
-							position = { 0 -0 }
-							parentanchor = top|left
-
-							blockoverride "portrait_button_template_tooltip"
-							{
-								###Changed by Father_MaGGus
-								#tooltip = "[FactionCharacterMember.GetTooltip]"
 							}
 						}
 

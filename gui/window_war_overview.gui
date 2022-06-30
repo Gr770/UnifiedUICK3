@@ -440,7 +440,6 @@ window = {
 							}
 
 							vbox = {
-								visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 								layoutpolicy_horizontal = expanding
 								margin = { 5 0 }
 
@@ -464,37 +463,6 @@ window = {
 									}
 
 									expand = {}
-								}
-							}
-							widget = {
-								visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
-								size = { 200 60 }
-
-								hbox = {
-									layoutpolicy_horizontal = expanding
-									layoutpolicy_vertical = growing	
-
-									icon = {
-										datacontext = "[WarOverviewWindow.GetLeftSideLeaderItem.GetCharacter.GetFaith]"
-										name = "faith_icon"
-										size = { 75 75 }
-										texture = "[Faith.GetIcon]"
-										using = tooltip_se
-										tooltipwidget = {
-											faith_tooltip = {}
-										}
-									}
-
-									icon = {
-										datacontext = "[WarOverviewWindow.GetLeftSideLeaderItem.GetCharacter.GetCulture]"
-										name = "culture_icon"
-										size = { 75 75 }
-										texture = "\\gfx\\interface\\icons\\character_interactions\\icon_culture.dds"
-										using = tooltip_se
-										tooltipwidget = {
-											culture_tooltip = {}
-										}
-									}
 								}
 							}
 						}
@@ -543,7 +511,6 @@ window = {
 								autoresize = yes
 
 								item = {
-									visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 									portrait_shoulders = {
 										datacontext = "[WarParticipantItem.GetCharacter]"
 										visible = "[Character.IsValid]"
@@ -553,20 +520,6 @@ window = {
 										blockoverride "portrait_button_template_tooltip"
 										{
 											tooltip = "[WarParticipantItem.GetParticipantTooltip]"
-										}
-
-									}
-								}
-								item = {
-									visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
-									portrait_shoulders = {
-										datacontext = "[WarParticipantItem.GetCharacter]"
-										visible = "[Character.IsValid]"
-
-										blockoverride "opinion_box" {}
-
-										blockoverride "portrait_button_template_tooltip"
-										{
 										}
 
 									}
@@ -669,7 +622,6 @@ window = {
 							righttoleft = yes
 
 							item = {
-								visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 								portrait_shoulders = {
 									datacontext = "[WarParticipantItem.GetCharacter]"
 									visible = "[Character.IsValid]"
@@ -681,21 +633,6 @@ window = {
 										tooltip = "[WarParticipantItem.GetParticipantTooltip]"
 									}
 
-
-								}
-							}
-							item = {
-								visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
-								portrait_shoulders = {
-									datacontext = "[WarParticipantItem.GetCharacter]"
-									visible = "[Character.IsValid]"
-
-									blockoverride "opinion_box" {}
-
-									blockoverride "portrait_button_template_tooltip"
-									{
-#Changed by Father_MaGGus										tooltip = "[WarParticipantItem.GetParticipantTooltip]"
-									}
 
 								}
 							}
@@ -855,7 +792,6 @@ window = {
 								}
 
 								widget = {
-									visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 									size = { 55 60 }
 
 									icon = {
@@ -872,39 +808,8 @@ window = {
 										using = tooltip_se
 									}
 								}
-								widget = {
-									visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
-									size = { 150 60 }
-#Changed by Father_MaGGus
-								
-									icon = {
-										parentanchor = right|vcenter
-										name = "icon_culture"
-										datacontext = "[WarOverviewWindow.GetRightSideLeaderItem.GetCharacter.GetCulture]"
-										texture = "\\gfx\\interface\\icons\\character_interactions\\icon_culture.dds"
-										size = { 60 60 }
-										using = tooltip_se
-										tooltipwidget = {
-											culture_tooltip = {}
-										}
-									}
-
-									icon = {
-										parentanchor = left|vcenter
-										name = "faith_icon"
-										datacontext = "[WarOverviewWindow.GetRightSideLeaderItem.GetCharacter.GetFaith]"
-										texture = "[Faith.GetIcon]"
-										size = { 60 60 }
-										using = tooltip_se
-										tooltipwidget = {
-											faith_tooltip = {}
-										}
-									}
-########################
-								}
 
 								vbox = {
-									visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 									layoutpolicy_horizontal = expanding
 
 									text_single = {
@@ -2426,7 +2331,6 @@ window = {
 						item = {
 
 							hbox = {
-								visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 								layoutpolicy_horizontal = expanding
 
 								portrait_head_small = {
@@ -2466,66 +2370,6 @@ window = {
 											layoutpolicy_vertical = growing
 										}
 									}
-								}
-							}
-							hbox = {
-								visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
-								layoutpolicy_horizontal = expanding
-
-								portrait_head_small = {
-									datacontext = "[WarParticipantItem.GetCharacter]"
-									blockoverride "opinion_box" {}
-									blockoverride "portrait_button_template_tooltip"
-									{
-#Changed by Father_MaGGus						tooltip = "[WarParticipantItem.GetParticipantTooltip]"
-									}
-								}
-
-								vbox = {
-									layoutpolicy_vertical = growing
-									layoutpolicy_horizontal = expanding
-									margin = { 10 5 }
-
-									background = {
-										using = Background_Area_With_Header
-									}
-
-									text_single = {
-										text = "[WarParticipantItem.GetCharacter.GetName]"
-										layoutpolicy_horizontal = expanding
-										align = left
-										autoresize = no
-									}
-#Changed by Father_MaGGus
-							hbox = {
-								layoutpolicy_horizontal = expanding
-								layoutpolicy_vertical = growing
-
-									icon = {
-										datacontext = "[WarParticipantItem.GetCharacter.GetFaith]"
-										name = "faith_icon"
-										size = { 50 50 }
-										align = right
-										texture = "[Faith.GetIcon]"
-										using = tooltip_se
-										tooltipwidget = {
-											faith_tooltip = {}
-										}
-									}
-									icon = {
-										datacontext = "[WarParticipantItem.GetCharacter.GetCulture]"
-										name = "culture_icon"
-										size = { 50 50 }
-										align = left
-										texture = "\\gfx\\interface\\icons\\character_interactions\\icon_culture.dds"
-										using = tooltip_se
-										tooltipwidget = {
-											culture_tooltip = {}
-										}
-									}
-
-								}
-###############
 								}
 							}
 						}
@@ -2600,7 +2444,6 @@ window = {
 
 						item = {
 							hbox = {
-								visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 								layoutpolicy_horizontal = expanding
 
 								portrait_head = {
@@ -2640,67 +2483,6 @@ window = {
 											layoutpolicy_vertical = growing
 										}
 									}
-								}
-							}
-							hbox = {
-								visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
-								layoutpolicy_horizontal = expanding
-
-								portrait_head = {
-									datacontext = "[WarParticipantItem.GetCharacter]"
-									blockoverride "opinion_box" {}
-									blockoverride "portrait_button_template_tooltip"
-									{
-#Changed by Father_MaGGus						tooltip = "[WarParticipantItem.GetParticipantTooltip]"
-									}
-								}
-
-								vbox = {
-									layoutpolicy_horizontal = expanding
-									layoutpolicy_vertical = growing
-									margin = { 10 5 }
-
-									background = {
-										using = Background_Area_With_Header
-									}
-
-									text_single = {
-										text = "[WarParticipantItem.GetCharacter.GetName]"
-										autoresize = no
-										layoutpolicy_horizontal = expanding
-										align = left
-									}
-
-#Changed by Father_MaGGus
-							hbox = {
-								layoutpolicy_horizontal = expanding
-								layoutpolicy_vertical = growing
-
-									icon = {
-										datacontext = "[WarParticipantItem.GetCharacter.GetFaith]"
-										name = "faith_icon"
-										size = { 50 50 }
-										align = right
-										texture = "[Faith.GetIcon]"
-										using = tooltip_se
-										tooltipwidget = {
-											faith_tooltip = {}
-										}
-									}
-									icon = {
-										datacontext = "[WarParticipantItem.GetCharacter.GetCulture]"
-										name = "culture_icon"
-										size = { 50 50 }
-										align = left
-										texture = "\\gfx\\interface\\icons\\character_interactions\\icon_culture.dds"
-										using = tooltip_se
-										tooltipwidget = {
-											culture_tooltip = {}
-										}
-									}
-
-								}
-###############
 								}
 							}
 						}

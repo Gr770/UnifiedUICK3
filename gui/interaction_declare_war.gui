@@ -98,7 +98,6 @@ window = {
 
 				widget = {
 					name = "layer_one_war"
-					visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 					size = { 100% 100% }
 
 					vbox = {
@@ -205,100 +204,6 @@ window = {
 							max_width = 210
 							align = center					
 						}
-						expand = {}
-					}
-				}
-
-				widget = {
-					name = "layer_one_war_ire"
-					visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
-					size = { 100% 100% }
-
-					vbox = {
-						datacontext = "[DeclareWarInteractionWindow.GetMilitaryStrengthInfo]"
-						margin_top = 24
-
-#Changed by Father_MaGGus
-					hbox = {
-						vbox = {				
-							margin_right = 10
-							
-								vbox = {
-									icon = {
-										datacontext = "[DeclareWarInteractionWindow.GetAttackerCharacter.GetCharacter.GetFaith]"
-										name = "faith_icon"
-										size = { 60 60 }
-										texture = "[Faith.GetIcon]"
-										using = tooltip_se
-										tooltipwidget = {
-											faith_tooltip = {}
-										}
-									}
-								}
-
-								vbox = {		
-										margin_top = 80
-									icon = {
-										datacontext = "[DeclareWarInteractionWindow.GetAttackerCharacter.GetCharacter.GetCulture]"
-										name = "culture_icon"
-										size = { 60 60 }
-										texture = "gfx\\interface\\icons\\character_interactions\\icon_culture.dds"
-										using = tooltip_se
-										tooltipwidget = {
-											culture_tooltip = {}
-										}
-									}
-								}								
-							}					
-#Changed by Father_MaGGus
-						vbox = {
-							
-							margin_right = -50
-							margin_left = -50
-							icon = {
-										#datacontext = "[DeclareWarInteractionWindow.GetDefenderCharacter.GetCharacter.GetFaith]"
-										name = "swords_icon"
-										size = { 163 85 }
-										texture = "gfx\\interface\\icons\\culture_tradition\\4-items\\swords.dds"
-																		
-									}
-#Changed by Father_MaGGus
-
-						}
-
-						vbox = {
-							margin_left = 10
-							vbox = {
-
-									icon = {
-										datacontext = "[DeclareWarInteractionWindow.GetDefenderCharacter.GetCharacter.GetFaith]"
-										name = "faith_icon"
-										size = { 60 60 }
-										texture = "[Faith.GetIcon]"
-										using = tooltip_se
-										tooltipwidget = {
-											faith_tooltip = {}
-										}
-									}
-								}
-
-								vbox = {			
-									margin_top = 80
-									icon = {
-										datacontext = "[DeclareWarInteractionWindow.GetDefenderCharacter.GetCharacter.GetCulture]"
-										name = "culture_icon"
-										size = { 60 60 }
-										texture = "gfx\\interface\\icons\\character_interactions\\icon_culture.dds"
-										using = tooltip_se
-										tooltipwidget = {
-											culture_tooltip = {}
-										}
-									}
-								}
-							}
-					}		
-#Changed by Father_MaGGus
-
 						expand = {}
 					}
 				}
@@ -845,7 +750,6 @@ window = {
 									}
 
 									hbox = {
-										visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 										layoutpolicy_horizontal = expanding
 
 										text_single = {
@@ -854,39 +758,6 @@ window = {
 											align = nobaseline
 										}
 
-										expand = {}
-									}
-
-									hbox = {
-										visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
-										layoutpolicy_horizontal = expanding
-
-#Changed by Father_MaGGus
-
-									icon = {
-										datacontext = "[Character.GetFaith]"
-										name = "faith_icon"
-										size = { 60 60 }
-										align = left
-										texture = "[Faith.GetIcon]"
-										using = tooltip_se
-										tooltipwidget = {
-											faith_tooltip = {}
-										}
-									}
-
-									icon = {
-										datacontext = "[Character.GetCulture]"
-										name = "culture_icon"
-										size = { 50 50 }
-										align = right
-										texture = "\\gfx\\interface\\icons\\character_interactions\\icon_culture.dds"
-										using = tooltip_se
-										tooltipwidget = {
-											culture_tooltip = {}
-										}
-									}
-#Changed by Father_MaGGus
 										expand = {}
 									}
 									expand = {}
