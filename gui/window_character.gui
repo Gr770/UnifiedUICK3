@@ -1776,12 +1776,24 @@ window = {
 						using = Animation_Character_Window_Refresh
 
 						coa_realm_medium_crown = {
+							visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 							datacontext = "[Character]"
 
 							blockoverride "coa_button"
 							{
 								name = "realm_shield"
 								tooltip = "[Character.GetDefaultRealmFlagTooltipPrimaryTitleClickInfo]"
+								onclick = "[DefaultOnCoatOfArmsClick(Character.GetPrimaryTitle.GetID)]"
+							}
+						}
+
+						coa_realm_medium_crown = {
+							visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
+							datacontext = "[Character]"
+
+							blockoverride "coa_button"
+							{
+								name = "realm_shield"
 								onclick = "[DefaultOnCoatOfArmsClick(Character.GetPrimaryTitle.GetID)]"
 							}
 						}
@@ -1930,6 +1942,7 @@ window = {
 
 								vbox = {
 									tooltip = "[Character.GetGoldTooltipWithBalance]"
+									visible = "[Or(Or(Character.IsOtherLiegeOrAbove( GetPlayer ), Character.IsLocalPlayer), Not(GetGlobalVariable('ire_is_loaded').IsSet))]"
 									min_width = 40
 									spacing = -2
 
@@ -1996,7 +2009,7 @@ window = {
 								}
 
 								vbox = {
-									visible = "[Character.HasLandedTitles]"
+									visible = "[And(Character.HasLandedTitles, GetGlobalVariable('ire_is_loaded').IsSet)]"
 									tooltip = "[CharacterWindow.GetMilitaryStrengthTooltip]"
 									spacing = -2
 									min_width = 40
