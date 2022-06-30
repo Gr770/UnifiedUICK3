@@ -343,24 +343,6 @@ types GameTooltipTypes
 
 				background = {
 					name = "header"
-					visible = "[Not(GetGlobalVariable('DUIT_is_loaded').IsSet)]"
-					texture = "gfx/interface/component_tiles/tile_title_big_top_01.dds"
-					spriteType = Corneredstretched
-					margin = { 15 0 }
-					texture_density = 2
-
-					modify_texture = {
-						name = "mask"
-						texture = "gfx/interface/component_masks/mask_title_big_top.dds"
-						spriteType = Corneredstretched
-						spriteborder = { 160 0 }
-						blend_mode = alphamultiply
-						alpha = 0.5
-					}
-				}
-				background = {
-					name = "header_DUIT"
-					visible = "[GetGlobalVariable('DUIT_is_loaded').IsSet]"
 					texture = "[GetIllustration( 'duit_background_tile_title_big_top_01' ).GetTexture(GetPlayer)]"
 					spriteType = Corneredstretched
 					margin = { 15 0 }
@@ -2191,33 +2173,6 @@ types HoldingTooltips
 
 				background = {
 					name = "header"
-					visible = "[Not(GetGlobalVariable('DUIT_is_loaded').IsSet)]"
-					texture = "gfx/interface/component_tiles/tile_title_big_top_01.dds"
-					spriteType = Corneredstretched
-					align = vcenter|left
-					texture_density = 2
-					margin = { 4 4 }
-
-					modify_texture = {
-						name = "mask"
-						texture = "gfx/interface/component_masks/mask_title_big_top.dds"
-						spriteType = Corneredstretched
-						spriteborder = { 160 0 }
-						blend_mode = alphamultiply
-						alpha = 0.5
-					}
-
-					modify_texture = {
-						name = "overlay"
-						texture = "gfx/interface/component_overlay/overlay_title_big_top.dds"
-						spriteType = Corneredstretched
-						spriteborder = { 0 0 }
-						blend_mode = overlay
-					}
-				}
-				background = {
-					name = "header_DUIT"
-					visible = "[GetGlobalVariable('DUIT_is_loaded').IsSet]"
 					texture = "[GetIllustration( 'duit_background_tile_title_big_top_01' ).GetTexture(GetPlayer)]"
 					spriteType = Corneredstretched
 					align = vcenter|left
@@ -2375,32 +2330,6 @@ types FaithTooltips
 
 				background = {
 					name = "header"
-					visible = "[Not(GetGlobalVariable('DUIT_is_loaded').IsSet)]"
-					texture = "gfx/interface/component_tiles/tile_title_big_top_01.dds"
-					spriteType = Corneredstretched
-					texture_density = 2
-					margin = { 15 0 }
-
-					modify_texture = {
-						name = "mask"
-						texture = "gfx/interface/component_masks/mask_title_big_top.dds"
-						spriteType = Corneredstretched
-						spriteborder = { 160 0 }
-						blend_mode = alphamultiply
-						alpha = 0.5
-					}
-
-					modify_texture = {
-						name = "overlay"
-						texture = "gfx/interface/component_overlay/overlay_title_big_top.dds"
-						spriteType = Corneredstretched
-						spriteborder = { 0 0 }
-						blend_mode = overlay
-					}
-				}
-				background = {
-					name = "header_DUIT"
-					visible = "[GetGlobalVariable('DUIT_is_loaded').IsSet]"
 					texture = "[GetIllustration( 'duit_background_tile_title_big_top_01' ).GetTexture(GetPlayer)]"
 					spriteType = Corneredstretched
 					texture_density = 2
@@ -3669,33 +3598,6 @@ types CultureTooltips
 
 				background = {
 					name = "header"
-					visible = "[Not(GetGlobalVariable('DUIT_is_loaded').IsSet)]"
-					texture = "gfx/interface/component_tiles/tile_title_big_top_01.dds"
-					spriteType = Corneredstretched
-					align = vcenter|left
-					margin = { 15 0 }
-					texture_density = 2
-
-					modify_texture = {
-						name = "mask"
-						texture = "gfx/interface/component_masks/mask_title_big_top.dds"
-						spriteType = Corneredstretched
-						spriteborder = { 160 0 }
-						blend_mode = alphamultiply
-						alpha = 0.5
-					}
-
-					modify_texture = {
-						name = "overlay"
-						texture = "gfx/interface/component_overlay/overlay_title_big_top.dds"
-						spriteType = Corneredstretched
-						spriteborder = { 0 0 }
-						blend_mode = overlay
-					}
-				}
-				background = {
-					name = "header_DUIT"
-					visible = "[GetGlobalVariable('DUIT_is_loaded').IsSet]"
 					texture = "[GetIllustration( 'duit_background_tile_title_big_top_01' ).GetTexture(GetPlayer)]"
 					spriteType = Corneredstretched
 					align = vcenter|left
@@ -4012,33 +3914,6 @@ types CultureTooltips
 
 				background = {
 					name = "header"
-					visible = "[Not(GetGlobalVariable('DUIT_is_loaded').IsSet)]"
-					texture = "gfx/interface/component_tiles/tile_title_big_top_01.dds"
-					spriteType = Corneredstretched
-					align = vcenter|left
-					margin = { 15 0 }
-					texture_density = 2
-
-					modify_texture = {
-						name = "mask"
-						texture = "gfx/interface/component_masks/mask_title_big_top.dds"
-						spriteType = Corneredstretched
-						spriteborder = { 160 0 }
-						blend_mode = alphamultiply
-						alpha = 0.5
-					}
-
-					modify_texture = {
-						name = "overlay"
-						texture = "gfx/interface/component_overlay/overlay_title_big_top.dds"
-						spriteType = Corneredstretched
-						spriteborder = { 0 0 }
-						blend_mode = overlay
-					}
-				}
-				background = {
-					name = "header_DUIT"
-					visible = "[GetGlobalVariable('DUIT_is_loaded').IsSet]"
 					texture = "[GetIllustration( 'duit_background_tile_title_big_top_01' ).GetTexture(GetPlayer)]"
 					spriteType = Corneredstretched
 					align = vcenter|left
@@ -4767,33 +4642,6 @@ types InventoryTooltips
 
 				background = {
 					name = "header"
-					visible = "[Not(GetGlobalVariable('DUIT_is_loaded').IsSet)]"
-					texture = "gfx/interface/component_tiles/tile_title_big_top_01.dds"
-					spriteType = Corneredstretched
-					align = vcenter|left
-					margin = { 15 0 }
-					texture_density = 2
-
-					modify_texture = {
-						name = "mask"
-						texture = "gfx/interface/component_masks/mask_title_big_top.dds"
-						spriteType = Corneredstretched
-						spriteborder = { 160 0 }
-						blend_mode = alphamultiply
-						alpha = 0.5
-					}
-
-					modify_texture = {
-						name = "overlay"
-						texture = "gfx/interface/component_overlay/overlay_title_big_top.dds"
-						spriteType = Corneredstretched
-						spriteborder = { 0 0 }
-						blend_mode = overlay
-					}
-				}
-				background = {
-					name = "header_DUIT"
-					visible = "[GetGlobalVariable('DUIT_is_loaded').IsSet]"
 					texture = "[GetIllustration( 'duit_background_tile_title_big_top_01' ).GetTexture(GetPlayer)]"
 					spriteType = Corneredstretched
 					align = vcenter|left
