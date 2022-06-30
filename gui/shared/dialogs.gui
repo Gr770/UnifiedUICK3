@@ -100,7 +100,7 @@ base_dialog = {
 
 			button_standard= {
 				name = "decline_button"
-				visible = "[Or(GetPlayer.IsValid, Not(GetGlobalVariable('DUIT_is_loaded').IsSet))]"
+				visible = "[GetPlayer.IsValid]"
 				layoutpolicy_horizontal = growing
 
 				text = "CANCEL_BUTTON"
@@ -111,8 +111,7 @@ base_dialog = {
 			###DUIT
 			button_standard= {
 				name = "decline_button_np"
-
-				visible = "[And(Not(GetPlayer.IsValid), GetGlobalVariable('DUIT_is_loaded').IsSet)]"
+				visible = "[Not(GetPlayer.IsValid)]"
 				texture = "gfx/interface/buttons/button_standard.dds"
 
 				layoutpolicy_horizontal = growing
@@ -130,8 +129,7 @@ base_dialog = {
 			button_primary = {
 				layoutpolicy_horizontal = growing
 				name = "accept_button"
-				visible = "[And(Or(GetPlayer.IsValid, Not(GetGlobalVariable('DUIT_is_loaded').IsSet)), Not(GetVariableSystem.Exists('StA_create_title')))]"
-
+				visible = "[And(GetPlayer.IsValid, Not(GetVariableSystem.Exists('StA_create_title')))]"
 				text = "[GameDialog.GetAcceptText]"
 				shortcut = "confirm"
 				onclick = [GameDialog.Accept]
@@ -143,7 +141,7 @@ base_dialog = {
 				layoutpolicy_horizontal = growing
 				name = "accept_button_np"
 
-				visible = "[And(Not(GetPlayer.IsValid), GetGlobalVariable('DUIT_is_loaded').IsSet)]"
+				visible = "[And(Not(GetPlayer.IsValid),Not(GetVariableSystem.Exists('StA_create_title')))]"
 				texture = "gfx/interface/buttons/button_verb_primary.dds"
 
 				text = "[GameDialog.GetAcceptText]"
