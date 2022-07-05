@@ -1569,16 +1569,6 @@ types FaithShared
 				default_format = "#high"
 				align = nobaseline
 			}
-			text_single = {
-				visible = "[GetGlobalVariable('SoW_is_loaded').IsSet]"
-				text = window_faith_fervor_target
-				datacontext = "[GuiScope.SetRoot(Faith.MakeScope).GetScriptValueBreakdown('fervor_target')]"
-				tooltipwidget = {
-					widget_value_breakdown_tooltip = {}
-				}
-				default_format = "#high"
-				align = nobaseline
-			}
 		}
 		hbox = {
 			layoutpolicy_horizontal = expanding

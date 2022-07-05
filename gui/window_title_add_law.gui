@@ -22,6 +22,7 @@ window = {
 
 	vbox = {
 		using = Window_Margins
+		margin_top = 0
 		restrictparent_min = yes
 
 		header_pattern = {
@@ -262,7 +263,7 @@ window = {
 			item = {
 				widget = {
 					allow_outside = yes
-					visible = "[EqualTo_string(TitleAddLawWindow.GetSelectedLaw.GetNameNoTooltip,Scope.Var('law').GetFlagName)]"
+					visible = "[And(GetPlayer.GetGovernment.IsType('feudal_government'),EqualTo_string(TitleAddLawWindow.GetSelectedLaw.GetNameNoTooltip,Scope.Var('law').GetFlagName))]"
 					vbox = {
 						margin_bottom = 10
 						spacing = 5
