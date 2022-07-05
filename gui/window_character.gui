@@ -1996,7 +1996,7 @@ window = {
 								}
 
 								vbox = {
-									visible = "[Character.HasLandedTitles]"
+									visible = "[And(Character.HasLandedTitles, Not(GetGlobalVariable('ire_is_loaded').IsSet))]"
 									tooltip = "[CharacterWindow.GetMilitaryStrengthTooltip]"
 									spacing = -2
 									min_width = 40
