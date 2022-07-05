@@ -699,8 +699,8 @@ types  FactionWindow
 				flipdirection = yes
 
 				item = {
-					visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 					container = {
+						visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 						datacontext = "[FactionCharacterMember.GetMember]"
 						using = fe_calculate_faction_score
 
@@ -723,10 +723,8 @@ types  FactionWindow
 							size = { 25 25 }
 						}
 					}
-				}
-				item = {
-					visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
 					container = {
+						visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
 						datacontext = "[FactionCharacterMember.GetMember]"
 
 						portrait_head_small = {
