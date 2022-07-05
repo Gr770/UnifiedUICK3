@@ -1198,7 +1198,7 @@ window = {
 					### Tax Income
 					hbox = {
 						name = "tutorial_highlight_holding_view_taxes_box"
-						visible = "[HoldingView.HasHolding]"
+						visible = "[Or(Or(And(HoldingView.HasHolding, Holding.GetHolder.IsLocalPlayer), Character.IsOtherLiegeOrAbove( GetPlayer )), And(HoldingView.HasHolding, Not(GetGlobalVariable('ire_is_loaded').IsSet))) ]"
 						layoutpolicy_horizontal = expanding
 						margin = { 2 0 }
 						spacing = 3
@@ -1248,7 +1248,7 @@ window = {
 
 					### Levies
 					vbox = {
-						visible = "[HoldingView.HasHolding]"
+						visible = "[Or(And(HoldingView.HasHolding, Holding.GetHolder.IsLocalPlayer), Character.IsOtherLiegeOrAbove( GetPlayer )) ]"
 						layoutpolicy_horizontal = expanding
 						spacing = 2
 

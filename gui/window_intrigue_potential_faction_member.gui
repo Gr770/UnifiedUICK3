@@ -116,6 +116,7 @@ window = {
 						layoutpolicy_vertical = expanding
 
 						hbox = {
+							visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 							tooltip = "[CharacterListItem.GetText('military_strength_tooltip')]"
 							layoutpolicy_horizontal = expanding
 							spacing = 5
