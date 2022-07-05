@@ -863,29 +863,29 @@ window = {
 
 #Changed by Father_MaGGus
 
-									icon = {
-										datacontext = "[Character.GetFaith]"
-										name = "faith_icon"
-										size = { 60 60 }
-										align = left
-										texture = "[Faith.GetIcon]"
-										using = tooltip_se
-										tooltipwidget = {
-											faith_tooltip = {}
+										icon = {
+											datacontext = "[Character.GetFaith]"
+											name = "faith_icon"
+											size = { 60 60 }
+											align = left
+											texture = "[Faith.GetIcon]"
+											using = tooltip_se
+											tooltipwidget = {
+												faith_tooltip = {}
+											}
 										}
-									}
 
-									icon = {
-										datacontext = "[Character.GetCulture]"
-										name = "culture_icon"
-										size = { 50 50 }
-										align = right
-										texture = "\\gfx\\interface\\icons\\character_interactions\\icon_culture.dds"
-										using = tooltip_se
-										tooltipwidget = {
-											culture_tooltip = {}
+										icon = {
+											datacontext = "[Character.GetCulture]"
+											name = "culture_icon"
+											size = { 50 50 }
+											align = right
+											texture = "\\gfx\\interface\\icons\\character_interactions\\icon_culture.dds"
+											using = tooltip_se
+											tooltipwidget = {
+												culture_tooltip = {}
+											}
 										}
-									}
 #Changed by Father_MaGGus
 										expand = {}
 									}
@@ -1143,7 +1143,7 @@ types CharacterInteractionDeclareWar
 					name = "view_allies"
 					enabled = "[GreaterThan_int32( CharacterItem.GetAllyCount, '(int32)0' )]"
 					size = { 120 30 }
-					onclick = "[CharacterItem.ShowAllyList]"
+					onclick = "[DeclareWarInteractionWindow.ShowAlliesForCharacter( CharacterItem.Self )]"
 					text = "DECLARE_WAR_ALLY_COUNT"
 				}
 			}

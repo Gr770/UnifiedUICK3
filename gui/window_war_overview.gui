@@ -543,10 +543,9 @@ window = {
 								autoresize = yes
 
 								item = {
-									visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 									portrait_shoulders = {
 										datacontext = "[WarParticipantItem.GetCharacter]"
-										visible = "[Character.IsValid]"
+										visible = "[And(Character.IsValid, Not(GetGlobalVariable('ire_is_loaded').IsSet))]"
 
 										blockoverride "opinion_box" {}
 
@@ -556,12 +555,9 @@ window = {
 										}
 
 									}
-								}
-								item = {
-									visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
 									portrait_shoulders = {
 										datacontext = "[WarParticipantItem.GetCharacter]"
-										visible = "[Character.IsValid]"
+										visible = "[And(Character.IsValid, GetGlobalVariable('ire_is_loaded').IsSet)]"
 
 										blockoverride "opinion_box" {}
 
@@ -2497,34 +2493,34 @@ window = {
 										autoresize = no
 									}
 #Changed by Father_MaGGus
-							hbox = {
-								layoutpolicy_horizontal = expanding
-								layoutpolicy_vertical = growing
+									hbox = {
+										layoutpolicy_horizontal = expanding
+										layoutpolicy_vertical = growing
 
-									icon = {
-										datacontext = "[WarParticipantItem.GetCharacter.GetFaith]"
-										name = "faith_icon"
-										size = { 50 50 }
-										align = right
-										texture = "[Faith.GetIcon]"
-										using = tooltip_se
-										tooltipwidget = {
-											faith_tooltip = {}
+										icon = {
+											datacontext = "[WarParticipantItem.GetCharacter.GetFaith]"
+											name = "faith_icon"
+											size = { 50 50 }
+											align = right
+											texture = "[Faith.GetIcon]"
+											using = tooltip_se
+											tooltipwidget = {
+												faith_tooltip = {}
+											}
 										}
-									}
-									icon = {
-										datacontext = "[WarParticipantItem.GetCharacter.GetCulture]"
-										name = "culture_icon"
-										size = { 50 50 }
-										align = left
-										texture = "\\gfx\\interface\\icons\\character_interactions\\icon_culture.dds"
-										using = tooltip_se
-										tooltipwidget = {
-											culture_tooltip = {}
+										icon = {
+											datacontext = "[WarParticipantItem.GetCharacter.GetCulture]"
+											name = "culture_icon"
+											size = { 50 50 }
+											align = left
+											texture = "\\gfx\\interface\\icons\\character_interactions\\icon_culture.dds"
+											using = tooltip_se
+											tooltipwidget = {
+												culture_tooltip = {}
+											}
 										}
-									}
 
-								}
+									}
 ###############
 								}
 							}
@@ -2672,34 +2668,34 @@ window = {
 									}
 
 #Changed by Father_MaGGus
-							hbox = {
-								layoutpolicy_horizontal = expanding
-								layoutpolicy_vertical = growing
+									hbox = {
+										layoutpolicy_horizontal = expanding
+										layoutpolicy_vertical = growing
 
-									icon = {
-										datacontext = "[WarParticipantItem.GetCharacter.GetFaith]"
-										name = "faith_icon"
-										size = { 50 50 }
-										align = right
-										texture = "[Faith.GetIcon]"
-										using = tooltip_se
-										tooltipwidget = {
-											faith_tooltip = {}
+										icon = {
+											datacontext = "[WarParticipantItem.GetCharacter.GetFaith]"
+											name = "faith_icon"
+											size = { 50 50 }
+											align = right
+											texture = "[Faith.GetIcon]"
+											using = tooltip_se
+											tooltipwidget = {
+												faith_tooltip = {}
+											}
 										}
-									}
-									icon = {
-										datacontext = "[WarParticipantItem.GetCharacter.GetCulture]"
-										name = "culture_icon"
-										size = { 50 50 }
-										align = left
-										texture = "\\gfx\\interface\\icons\\character_interactions\\icon_culture.dds"
-										using = tooltip_se
-										tooltipwidget = {
-											culture_tooltip = {}
+										icon = {
+											datacontext = "[WarParticipantItem.GetCharacter.GetCulture]"
+											name = "culture_icon"
+											size = { 50 50 }
+											align = left
+											texture = "\\gfx\\interface\\icons\\character_interactions\\icon_culture.dds"
+											using = tooltip_se
+											tooltipwidget = {
+												culture_tooltip = {}
+											}
 										}
-									}
 
-								}
+									}
 ###############
 								}
 							}
