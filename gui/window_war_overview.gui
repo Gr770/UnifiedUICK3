@@ -449,6 +449,7 @@ window = {
 								}
 
 								text_single = {
+									visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 									text = "WAR_OVERVIEW_TOTAL_SOLDIERS"
 									layoutpolicy_horizontal = expanding
 									align = left
@@ -457,9 +458,11 @@ window = {
 								}
 
 								hbox = {
+									visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 									layoutpolicy_horizontal = expanding
 
 									soldiers_and_quality_small = {
+										visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 										datacontext = "[WarOverviewWindow.GetLeftSideComposition]"
 									}
 
@@ -475,6 +478,7 @@ window = {
 									layoutpolicy_vertical = growing	
 
 									icon = {
+										visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
 										datacontext = "[WarOverviewWindow.GetLeftSideLeaderItem.GetCharacter.GetFaith]"
 										name = "faith_icon"
 										size = { 75 75 }
@@ -486,6 +490,7 @@ window = {
 									}
 
 									icon = {
+										visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
 										datacontext = "[WarOverviewWindow.GetLeftSideLeaderItem.GetCharacter.GetCulture]"
 										name = "culture_icon"
 										size = { 75 75 }
@@ -545,24 +550,13 @@ window = {
 								item = {
 									portrait_shoulders = {
 										datacontext = "[WarParticipantItem.GetCharacter]"
-										visible = "[And(Character.IsValid, Not(GetGlobalVariable('ire_is_loaded').IsSet))]"
+										visible = "[Character.IsValid]"
 
 										blockoverride "opinion_box" {}
 
 										blockoverride "portrait_button_template_tooltip"
 										{
-											tooltip = "[WarParticipantItem.GetParticipantTooltip]"
-										}
-
-									}
-									portrait_shoulders = {
-										datacontext = "[WarParticipantItem.GetCharacter]"
-										visible = "[And(Character.IsValid, GetGlobalVariable('ire_is_loaded').IsSet)]"
-
-										blockoverride "opinion_box" {}
-
-										blockoverride "portrait_button_template_tooltip"
-										{
+											tooltip = "[SelectLocalization(Not(GetGlobalVariable('ire_is_loaded').IsSet), WarParticipantItem.GetParticipantTooltip, '')]"
 										}
 
 									}
@@ -665,7 +659,6 @@ window = {
 							righttoleft = yes
 
 							item = {
-								visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 								portrait_shoulders = {
 									datacontext = "[WarParticipantItem.GetCharacter]"
 									visible = "[Character.IsValid]"
@@ -674,24 +667,9 @@ window = {
 
 									blockoverride "portrait_button_template_tooltip"
 									{
-										tooltip = "[WarParticipantItem.GetParticipantTooltip]"
+										tooltip = "[SelectLocalization(Not(GetGlobalVariable('ire_is_loaded').IsSet), WarParticipantItem.GetParticipantTooltip, '')]"
 									}
 
-
-								}
-							}
-							item = {
-								visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
-								portrait_shoulders = {
-									datacontext = "[WarParticipantItem.GetCharacter]"
-									visible = "[Character.IsValid]"
-
-									blockoverride "opinion_box" {}
-
-									blockoverride "portrait_button_template_tooltip"
-									{
-#Changed by Father_MaGGus										tooltip = "[WarParticipantItem.GetParticipantTooltip]"
-									}
 
 								}
 							}
@@ -855,6 +833,7 @@ window = {
 									size = { 55 60 }
 
 									icon = {
+										visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 										parentanchor = right|vcenter
 										name = "icon_strength_balance"
 										datacontext = "[WarOverviewWindow.GetMilitaryStrengthInfo]"
@@ -869,7 +848,6 @@ window = {
 									}
 								}
 								widget = {
-									visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
 									size = { 150 60 }
 #Changed by Father_MaGGus
 								
@@ -904,6 +882,7 @@ window = {
 									layoutpolicy_horizontal = expanding
 
 									text_single = {
+										visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 										text = "WAR_OVERVIEW_TOTAL_SOLDIERS"
 										layoutpolicy_horizontal = expanding
 										align = left
@@ -912,9 +891,11 @@ window = {
 									}
 
 									hbox = {
+										visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 										layoutpolicy_horizontal = expanding
 
 										soldiers_and_quality_small = {
+											visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 											datacontext = "[WarOverviewWindow.GetRightSideComposition]"
 										}
 										expand = {}
@@ -2422,7 +2403,6 @@ window = {
 						item = {
 
 							hbox = {
-								visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 								layoutpolicy_horizontal = expanding
 
 								portrait_head_small = {
@@ -2430,7 +2410,7 @@ window = {
 									blockoverride "opinion_box" {}
 									blockoverride "portrait_button_template_tooltip"
 									{
-										tooltip = "[WarParticipantItem.GetParticipantTooltip]"
+										tooltip = "[SelectLocalization(Not(GetGlobalVariable('ire_is_loaded').IsSet), WarParticipantItem.GetParticipantTooltip, '')]"
 									}
 								}
 
@@ -2455,48 +2435,9 @@ window = {
 										layoutpolicy_vertical = growing
 
 										soldiers_and_quality_small = {
+											visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 											datacontext = "[WarParticipantItem.GetComposition]"
 										}
-
-										expand = {
-											layoutpolicy_vertical = growing
-										}
-									}
-								}
-							}
-							hbox = {
-								visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
-								layoutpolicy_horizontal = expanding
-
-								portrait_head_small = {
-									datacontext = "[WarParticipantItem.GetCharacter]"
-									blockoverride "opinion_box" {}
-									blockoverride "portrait_button_template_tooltip"
-									{
-#Changed by Father_MaGGus						tooltip = "[WarParticipantItem.GetParticipantTooltip]"
-									}
-								}
-
-								vbox = {
-									layoutpolicy_vertical = growing
-									layoutpolicy_horizontal = expanding
-									margin = { 10 5 }
-
-									background = {
-										using = Background_Area_With_Header
-									}
-
-									text_single = {
-										text = "[WarParticipantItem.GetCharacter.GetName]"
-										layoutpolicy_horizontal = expanding
-										align = left
-										autoresize = no
-									}
-#Changed by Father_MaGGus
-									hbox = {
-										layoutpolicy_horizontal = expanding
-										layoutpolicy_vertical = growing
-
 										icon = {
 											datacontext = "[WarParticipantItem.GetCharacter.GetFaith]"
 											name = "faith_icon"
@@ -2520,8 +2461,10 @@ window = {
 											}
 										}
 
+										expand = {
+											layoutpolicy_vertical = growing
+										}
 									}
-###############
 								}
 							}
 						}
@@ -2596,7 +2539,6 @@ window = {
 
 						item = {
 							hbox = {
-								visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 								layoutpolicy_horizontal = expanding
 
 								portrait_head = {
@@ -2604,7 +2546,7 @@ window = {
 									blockoverride "opinion_box" {}
 									blockoverride "portrait_button_template_tooltip"
 									{
-										tooltip = "[WarParticipantItem.GetParticipantTooltip]"
+										tooltip = "[SelectLocalization(Not(GetGlobalVariable('ire_is_loaded').IsSet), WarParticipantItem.GetParticipantTooltip, '')]"
 									}
 								}
 
@@ -2629,49 +2571,9 @@ window = {
 										layoutpolicy_vertical = growing
 
 										soldiers_and_quality_small = {
+											visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 											datacontext = "[WarParticipantItem.GetComposition]"
 										}
-
-										expand = {
-											layoutpolicy_vertical = growing
-										}
-									}
-								}
-							}
-							hbox = {
-								visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
-								layoutpolicy_horizontal = expanding
-
-								portrait_head = {
-									datacontext = "[WarParticipantItem.GetCharacter]"
-									blockoverride "opinion_box" {}
-									blockoverride "portrait_button_template_tooltip"
-									{
-#Changed by Father_MaGGus						tooltip = "[WarParticipantItem.GetParticipantTooltip]"
-									}
-								}
-
-								vbox = {
-									layoutpolicy_horizontal = expanding
-									layoutpolicy_vertical = growing
-									margin = { 10 5 }
-
-									background = {
-										using = Background_Area_With_Header
-									}
-
-									text_single = {
-										text = "[WarParticipantItem.GetCharacter.GetName]"
-										autoresize = no
-										layoutpolicy_horizontal = expanding
-										align = left
-									}
-
-#Changed by Father_MaGGus
-									hbox = {
-										layoutpolicy_horizontal = expanding
-										layoutpolicy_vertical = growing
-
 										icon = {
 											datacontext = "[WarParticipantItem.GetCharacter.GetFaith]"
 											name = "faith_icon"
@@ -2695,8 +2597,10 @@ window = {
 											}
 										}
 
+										expand = {
+											layoutpolicy_vertical = growing
+										}
 									}
-###############
 								}
 							}
 						}

@@ -2166,7 +2166,7 @@ types BattleSummary
 						spacing = 5
 
 						text_single = {
-							raw_text = "GeneralUniUICharGetNameNoTooltip: "
+							raw_text = "GeneralUniUICharGetNameNoTooltip"
 							max_width = 230
 						}
 

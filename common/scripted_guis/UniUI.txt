@@ -351,3 +351,7 @@ UMS_toggle_esr={
 	scope = character
 	effect = { UMS_toggle_mod = { MOD = esr } }
 }
+UMS_toggle_ire={
+	scope = character
+	effect = { UMS_toggle_mod = { MOD = ire } }
+}

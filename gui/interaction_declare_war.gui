@@ -845,23 +845,14 @@ window = {
 									}
 
 									hbox = {
-										visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 										layoutpolicy_horizontal = expanding
 
 										text_single = {
+											visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
 											name = "ally_military_strength_text"
 											text = "DECLARE_WAR_ALLY_MILITARY_STRENGTH_DESC"
 											align = nobaseline
 										}
-
-										expand = {}
-									}
-
-									hbox = {
-										visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
-										layoutpolicy_horizontal = expanding
-
-#Changed by Father_MaGGus
 
 										icon = {
 											datacontext = "[Character.GetFaith]"
@@ -886,7 +877,6 @@ window = {
 												culture_tooltip = {}
 											}
 										}
-#Changed by Father_MaGGus
 										expand = {}
 									}
 									expand = {}
