@@ -983,31 +983,6 @@ window = {
 								tooltip = "SEXUALITY_TT"
 							}
 
-							button_standard_hover = { # Traits
-								layoutpolicy_horizontal = expanding
-								size = { 0 25 }
-								onclick = "[GetVariableSystem.Toggle('trait_window')]"
-								onclick = "[GetVariableSystem.Clear('cti_window')]"
-								onclick = "[GetVariableSystem.Clear('title_window')]"
-								onclick = "[GetVariableSystem.Clear('claim_window')]"
-								onclick = "[GetVariableSystem.Clear('diplo_window')]"
-								down = "[GetVariableSystem.Exists('trait_window')]"
-		
-								hbox = {
-									margin = { 5 0 }
-									margin_bottom = 3
-									margin_right = 10
-		
-									text_single = {
-										name = "UniUITraitExpander"
-										max_width = 432
-										text = "UniUITraits"
-										fontsize_min = 10
-										align = right
-									}
-								}
-							}
-
 							expand = {}
 						}					}
 
@@ -1610,47 +1585,75 @@ window = {
 								size = { 5 5 }
 							}
 						}
-
-						hbox = {
-							name = "faith_and_culture"
+						vbox = {
+							name = "UniUI_trait_Boc"
+							layoutpolicy_vertical = expanding
 							layoutpolicy_horizontal = expanding
 
 							using = Animation_Character_Window_Refresh
+							
+							
 
-							button_religion_icon = {
-								name = "faith_button"
-								datacontext = "[Character.GetFaith]"
-								size = { 45 45 }
+							button_tertiary = { # Traits
+								layoutpolicy_horizontal = expanding
+								size = { 0 20 }
+								onclick = "[GetVariableSystem.Toggle('trait_window')]"
+								onclick = "[GetVariableSystem.Clear('cti_window')]"
+								onclick = "[GetVariableSystem.Clear('title_window')]"
+								onclick = "[GetVariableSystem.Clear('claim_window')]"
+								onclick = "[GetVariableSystem.Clear('diplo_window')]"
+								down = "[GetVariableSystem.Exists('trait_window')]"
+								text = "UniUITraits"
+								default_format = "#clickable;italic"
+								align = center|nobaseline
+								margin_left = 5
 							}
 
-							vbox = {
+							divider_light = {
+								layoutpolicy_horizontal = expanding
+							}
+
+							hbox = {
+								name = "faith_and_culture"
 								layoutpolicy_horizontal = expanding
 
-								button_tertiary = {
-									datacontext = "[Character.GetFaith]"
-									layoutpolicy_horizontal = expanding
-									size = { 0 25 }
-									onclick = "[DefaultOnFaithClick(Faith.GetID)]"
-									text = "FAITH_CHARACTER_WINDOW"
-									default_format = "#clickable;italic"
-									align = left|nobaseline
-									margin_left = 5
+								using = Animation_Character_Window_Refresh
 
-									tooltipwidget = { faith_tooltip_click = {} }
+								button_religion_icon = {
+									name = "faith_button"
+									datacontext = "[Character.GetFaith]"
+									size = { 40 40 }
 								}
 
-								button_tertiary = {
-									datacontext = "[Character.GetCulture]"
+								vbox = {
 									layoutpolicy_horizontal = expanding
-									size = { 0 25 }
-									onclick = "[DefaultOnCultureClick(Culture.GetID)]"
-									text = "CULTURE_CHARACTER_WINDOW"
-									default_format = "#clickable;italic"
-									align = left|nobaseline
-									margin_left = 5
 
-									tooltipwidget = {
-										culture_tooltip_click = {}
+									button_tertiary = {
+										datacontext = "[Character.GetFaith]"
+										layoutpolicy_horizontal = expanding
+										size = { 0 20 }
+										onclick = "[DefaultOnFaithClick(Faith.GetID)]"
+										text = "FAITH_CHARACTER_WINDOW"
+										default_format = "#clickable;italic"
+										align = left|nobaseline
+										margin_left = 5
+
+										tooltipwidget = { faith_tooltip_click = {} }
+									}
+
+									button_tertiary = {
+										datacontext = "[Character.GetCulture]"
+										layoutpolicy_horizontal = expanding
+										size = { 0 20 }
+										onclick = "[DefaultOnCultureClick(Culture.GetID)]"
+										text = "CULTURE_CHARACTER_WINDOW"
+										default_format = "#clickable;italic"
+										align = left|nobaseline
+										margin_left = 5
+
+										tooltipwidget = {
+											culture_tooltip_click = {}
+										}
 									}
 								}
 							}
