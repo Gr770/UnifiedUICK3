@@ -852,6 +852,7 @@ window = {
 #Changed by Father_MaGGus
 								
 									icon = {
+										visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
 										parentanchor = right|vcenter
 										name = "icon_culture"
 										datacontext = "[WarOverviewWindow.GetRightSideLeaderItem.GetCharacter.GetCulture]"
@@ -864,6 +865,7 @@ window = {
 									}
 
 									icon = {
+										visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
 										parentanchor = left|vcenter
 										name = "faith_icon"
 										datacontext = "[WarOverviewWindow.GetRightSideLeaderItem.GetCharacter.GetFaith]"
@@ -2575,6 +2577,7 @@ window = {
 											datacontext = "[WarParticipantItem.GetComposition]"
 										}
 										icon = {
+											visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
 											datacontext = "[WarParticipantItem.GetCharacter.GetFaith]"
 											name = "faith_icon"
 											size = { 50 50 }
@@ -2586,6 +2589,7 @@ window = {
 											}
 										}
 										icon = {
+											visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
 											datacontext = "[WarParticipantItem.GetCharacter.GetCulture]"
 											name = "culture_icon"
 											size = { 50 50 }
