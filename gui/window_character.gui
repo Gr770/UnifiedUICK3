@@ -983,7 +983,6 @@ window = {
 								onclick = "[GetVariableSystem.Toggle('trait_window')]"
 								onclick = "[GetVariableSystem.Clear('cti_window')]"
 								down = "[GetVariableSystem.Exists('trait_window')]"
-								tooltip = "UniUITraitsTT"
 		
 								hbox = {
 									margin = { 5 0 }
@@ -996,7 +995,6 @@ window = {
 										text = "UniUITraits"
 										fontsize_min = 10
 										align = right
-										tooltip = "UniUITraitsTT"
 									}
 								}
 							}
