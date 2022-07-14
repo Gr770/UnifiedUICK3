@@ -30,6 +30,9 @@ window = {
 		on_start = "[GetVariableSystem.Set( 'COP_character_window_open', 'true' )]"
 		on_start = "[GetVariableSystem.Clear('cti_window')]"
 		on_start = "[GetVariableSystem.Clear('trait_window')]"
+		on_start = "[GetVariableSystem.Clear('claim_window')]"
+		on_start = "[GetVariableSystem.Clear('title_window')]"
+		on_start = "[GetVariableSystem.Clear('diplo_window')]"
 	}
 
 	state = {
@@ -42,6 +45,9 @@ window = {
 		on_start = "[GetVariableSystem.Clear( 'COP_character_window_open' )]"
 		on_start = "[GetVariableSystem.Clear('cti_window')]"
 		on_start = "[GetVariableSystem.Clear('trait_window')]"
+		on_start = "[GetVariableSystem.Clear('claim_window')]"
+		on_start = "[GetVariableSystem.Clear('title_window')]"
+		on_start = "[GetVariableSystem.Clear('diplo_window')]"
 	}
 
 	# MOD(custom-form-of-address)
@@ -982,6 +988,9 @@ window = {
 								size = { 0 25 }
 								onclick = "[GetVariableSystem.Toggle('trait_window')]"
 								onclick = "[GetVariableSystem.Clear('cti_window')]"
+								onclick = "[GetVariableSystem.Clear('title_window')]"
+								onclick = "[GetVariableSystem.Clear('claim_window')]"
+								onclick = "[GetVariableSystem.Clear('diplo_window')]"
 								down = "[GetVariableSystem.Exists('trait_window')]"
 		
 								hbox = {
@@ -2340,7 +2349,7 @@ window = {
 			### TABS
 			hbox = {
 				name = "tabs"
-				visible = "[And(And(Not(GetVariableSystem.Exists('cti_window')), Not(GetVariableSystem.Exists('trait_window'))), CharacterWindow.AreNoneExpanded)]"
+				visible = "[And(And(And(And(And(Not(GetVariableSystem.Exists('claim_window')), Not(GetVariableSystem.Exists('title_window'))), Not(GetVariableSystem.Exists('diplo_window'))), Not(GetVariableSystem.Exists('trait_window'))), Not(GetVariableSystem.Exists('cti_window'))), CharacterWindow.AreNoneExpanded)]"
 				layoutpolicy_horizontal = expanding
 
 				#SMYC
@@ -2482,7 +2491,7 @@ window = {
 			spacer = { size = { 0 2 } }
 
 			widget = {
-				visible = "[And(And(Not(GetVariableSystem.Exists('cti_window')), Not(GetVariableSystem.Exists('trait_window'))), CharacterWindow.AreNoneExpanded)]"
+				visible = "[And(And(And(And(And(Not(GetVariableSystem.Exists('claim_window')), Not(GetVariableSystem.Exists('title_window'))), Not(GetVariableSystem.Exists('diplo_window'))), Not(GetVariableSystem.Exists('trait_window'))), Not(GetVariableSystem.Exists('cti_window'))), CharacterWindow.AreNoneExpanded)]"
 				layoutpolicy_vertical = preferred
 				layoutpolicy_horizontal = expanding
 				size = { 0 350 }
@@ -3778,7 +3787,7 @@ window = {
 			# TITLES EXPANDED
 			scrollbox = {
 				name = "titles_expanded"
-				visible = "[CharacterWindow.AreTitlesExpanded]"
+				visible = "[GetVariableSystem.Exists('title_window')]"
 				layoutpolicy_vertical = expanding
 				layoutpolicy_horizontal = expanding
 
@@ -3837,7 +3846,7 @@ window = {
 			# CLAIMS EXPANDED
 			scrollbox = {
 				name = "claims_expanded"
-				visible = "[CharacterWindow.AreClaimsExpanded]"
+				visible = "[GetVariableSystem.Exists('claim_window')]"
 				layoutpolicy_vertical = expanding
 				layoutpolicy_horizontal = expanding
 
@@ -3919,7 +3928,7 @@ window = {
 			# DIPLOMACY EXPANDED
 			scrollbox = {
 				name = "diplomacy_expanded"
-				visible = "[CharacterWindow.AreDiplomacyExpanded]"
+				visible = "[GetVariableSystem.Exists('diplo_window')]"
 				layoutpolicy_vertical = expanding
 				layoutpolicy_horizontal = expanding
 
@@ -4061,7 +4070,7 @@ window = {
             
             # CORE TITLES EXPANDED
             scrollarea = {
-				visible = "[And(GetGlobalVariable('CTI_is_loaded').IsSet,GetVariableSystem.Exists('cti_window')]"
+				visible = "[And(GetGlobalVariable('CTI_is_loaded').IsSet,GetVariableSystem.Exists('cti_window'))]"
 
 				layoutpolicy_vertical = expanding
 				layoutpolicy_horizontal = expanding
@@ -4574,11 +4583,13 @@ window = {
 					button_standard_hover = { # Title text
 						layoutpolicy_horizontal = expanding
 						size = { 0 25 }
-						onclick = "[CharacterWindow.ToggleExpandedTitles]"
+						onclick = "[GetVariableSystem.Toggle('title_window')]"
 						onclick = "[GetVariableSystem.Clear('trait_window')]"
 						onclick = "[GetVariableSystem.Clear('cti_window')]"
-						down = "[CharacterWindow.AreTitlesExpanded]"
-						tooltip = "[SelectLocalization( CharacterWindow.AreTitlesExpanded, 'CV_TITLES_HIDE_TT', 'CV_TITLES_SHOW_TT' )]"
+						onclick = "[GetVariableSystem.Clear('claim_window')]"
+						onclick = "[GetVariableSystem.Clear('diplo_window')]"
+						down = "[GetVariableSystem.Exists('title_window')]"
+						tooltip = "[SelectLocalization( GetVariableSystem.Exists('title_window'), 'CV_TITLES_HIDE_TT', 'CV_TITLES_SHOW_TT' )]"
 
 						hbox = {
 							margin = { 5 0 }
@@ -4621,6 +4632,9 @@ window = {
 							onclick = "[ScriptedGui.Execute(GuiScope.SetRoot(CharacterWindow.GetCharacter.MakeScope).End )]"
 							onclick = "[GetVariableSystem.Toggle('cti_window')]"
 							onclick = "[GetVariableSystem.Clear('trait_window')]"
+							onclick = "[GetVariableSystem.Clear('claim_window')]"
+							onclick = "[GetVariableSystem.Clear('title_window')]"
+							onclick = "[GetVariableSystem.Clear('diplo_window')]"
 							down = "[GetVariableSystem.Exists('cti_window')]"
 							tooltip = "[SelectLocalization(GetVariableSystem.Exists('cti_window'), 'CV_CORE_TITLES_HIDE_CTT', 'CV_CORE_TITLES_SHOW_CTT' )]"
 	
@@ -4707,11 +4721,13 @@ window = {
 						layoutpolicy_horizontal = expanding
 						margin_left = 5
 						size = { 0 25 }
-						onclick = "[CharacterWindow.ToggleExpandedClaims]"
+						onclick = "[GetVariableSystem.Toggle('claim_window')]"
 						onclick = "[GetVariableSystem.Clear('trait_window')]"
 						onclick = "[GetVariableSystem.Clear('cti_window')]"
-						down = "[CharacterWindow.AreClaimsExpanded]"
-						tooltip = "[SelectLocalization( CharacterWindow.AreClaimsExpanded, 'CV_CLAIMS_HIDE_TT', 'CV_CLAIMS_SHOW_TT' )]"
+						onclick = "[GetVariableSystem.Clear('title_window')]"
+						onclick = "[GetVariableSystem.Clear('diplo_window')]"
+						down = "[GetVariableSystem.Exists('claim_window')]"
+						tooltip = "[SelectLocalization( GetVariableSystem.Exists('claim_window'), 'CV_CLAIMS_HIDE_TT', 'CV_CLAIMS_SHOW_TT' )]"
 
 						hbox = {
 							margin = { 5 0 }
@@ -4814,11 +4830,13 @@ window = {
 			button_standard_hover = {
 				layoutpolicy_horizontal = expanding
 				size = { 0 25 }
-				onclick = "[CharacterWindow.ToggleExpandedDiplomacy]"
+				onclick = "[GetVariableSystem.Toggle('diplo_window')]"
 				onclick = "[GetVariableSystem.Clear('trait_window')]"
 				onclick = "[GetVariableSystem.Clear('cti_window')]"
-				down = "[CharacterWindow.AreDiplomacyExpanded]"
-				tooltip = "[SelectLocalization( CharacterWindow.AreDiplomacyExpanded, 'CV_DIPLOMACY_HIDE_TT', 'CV_DIPLOMACY_SHOW_TT' )]"
+				onclick = "[GetVariableSystem.Clear('claim_window')]"
+				onclick = "[GetVariableSystem.Clear('title_window')]"
+				down = "[GetVariableSystem.Exists('diplo_window')]"
+				tooltip = "[SelectLocalization( GetVariableSystem.Exists('diplo_window'), 'CV_DIPLOMACY_HIDE_TT', 'CV_DIPLOMACY_SHOW_TT' )]"
 
 				hbox = {
 					margin = { 5 0 }
