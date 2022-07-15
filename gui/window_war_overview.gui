@@ -847,7 +847,34 @@ window = {
 										using = tooltip_se
 									}
 								}
+
+								vbox = {
+									visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
+									layoutpolicy_horizontal = expanding
+
+									text_single = {
+										visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
+										text = "WAR_OVERVIEW_TOTAL_SOLDIERS"
+										layoutpolicy_horizontal = expanding
+										align = left
+										autoresize = no
+										margin_left = 7
+									}
+
+									hbox = {
+										visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
+										layoutpolicy_horizontal = expanding
+
+										soldiers_and_quality_small = {
+											visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
+											datacontext = "[WarOverviewWindow.GetRightSideComposition]"
+										}
+										expand = {}
+									}
+								}
+
 								widget = {
+									visible = "[GetGlobalVariable('ire_is_loaded').IsSet]"
 									size = { 150 60 }
 #Changed by Father_MaGGus
 								
@@ -877,31 +904,6 @@ window = {
 										}
 									}
 ########################
-								}
-
-								vbox = {
-									visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
-									layoutpolicy_horizontal = expanding
-
-									text_single = {
-										visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
-										text = "WAR_OVERVIEW_TOTAL_SOLDIERS"
-										layoutpolicy_horizontal = expanding
-										align = left
-										autoresize = no
-										margin_left = 7
-									}
-
-									hbox = {
-										visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
-										layoutpolicy_horizontal = expanding
-
-										soldiers_and_quality_small = {
-											visible = "[Not(GetGlobalVariable('ire_is_loaded').IsSet)]"
-											datacontext = "[WarOverviewWindow.GetRightSideComposition]"
-										}
-										expand = {}
-									}
 								}
 							}
 						}
