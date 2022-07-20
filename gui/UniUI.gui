@@ -86,6 +86,26 @@ window = {
 
 						text_single = {
 							autoresize = yes
+							text = "UniUI Cut Vanilla Content"
+							using = Font_Size_Medium
+						}
+
+						expand={}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('UniUI_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_UniUI').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+
+						text_single = {
+							autoresize = yes
 							text = "Dynamic Theme Selector"
 							using = Font_Size_Medium
 						}
