@@ -64,7 +64,7 @@ window = {
 
 			blockoverride "header_text"
 			{
-				text = "Select Enabled Mods"
+				raw_text = "Select Enabled Mods"
 			}
 
 			blockoverride "button_close"
@@ -86,7 +86,7 @@ window = {
 
 						text_single = {
 							autoresize = yes
-							text = "UniUI Cut Vanilla Content"
+							raw_text = "UniUI Cut Vanilla Content"
 							using = Font_Size_Medium
 						}
 
@@ -106,7 +106,7 @@ window = {
 
 						text_single = {
 							autoresize = yes
-							text = "Dynamic Theme Selector"
+							raw_text = "Dynamic Theme Selector"
 							using = Font_Size_Medium
 						}
 
@@ -126,7 +126,7 @@ window = {
 
 						text_single = {
 							autoresize = yes
-							text = "Show Me Your Council"
+							raw_text = "Show Me Your Council"
 							using = Font_Size_Medium
 						}
 
@@ -148,7 +148,7 @@ window = {
 
 						text_single = {
 							autoresize = yes
-							text = "In My Humble Opinion"
+							raw_text = "In My Humble Opinion"
 							max_width = 250
 							using = Font_Size_Medium
 						}
@@ -169,7 +169,7 @@ window = {
 
 						text_single = {
 							autoresize = yes
-							text = "Fullscreen Barbershop"
+							raw_text = "Fullscreen Barbershop"
 							max_width = 250
 							using = Font_Size_Medium
 						}
@@ -190,7 +190,7 @@ window = {
 
 						text_single = {
 							autoresize = yes
-							text = "The Catholic Trinity (Requires NG)"
+							raw_text = "The Catholic Trinity (Requires NG)"
 							max_width = 250
 							using = Font_Size_Medium
 						}
@@ -211,7 +211,7 @@ window = {
 						
 						text_single = {
 							autoresize = yes
-							text = "Prisoners of War"
+							raw_text = "Prisoners of War"
 							max_width = 250
 							using = Font_Size_Medium
 						}
@@ -232,7 +232,7 @@ window = {
 						
 						text_single = {
 							autoresize = yes
-							text = "Submission to Authority"
+							raw_text = "Submission to Authority"
 							max_width = 250
 							using = Font_Size_Medium
 						}
@@ -253,7 +253,7 @@ window = {
 						
 						text_single = {
 							autoresize = yes
-							text = "Inherichance"
+							raw_text = "Inherichance"
 							max_width = 250
 							using = Font_Size_Medium
 						}
@@ -274,7 +274,7 @@ window = {
 
 						text_single = {
 							autoresize = yes
-							text = "Custom Title Form of Address (Requires NG)"
+							raw_text = "Custom Title Form of Address (Requires NG)"
 							max_width = 300
 							using = Font_Size_Medium
 						}
@@ -295,7 +295,7 @@ window = {
 						
 						text_single = {
 							autoresize = yes
-							text = "Separate Name and Title - IE"
+							raw_text = "Separate Name and Title - IE"
 							max_width = 250
 							using = Font_Size_Medium
 						}
@@ -316,7 +316,7 @@ window = {
 						
 						text_single = {
 							autoresize = yes
-							text = "Enhanced Dynasty Tree Viewer"
+							raw_text = "Enhanced Dynasty Tree Viewer"
 							max_width = 250
 							using = Font_Size_Medium
 						}
@@ -337,7 +337,7 @@ window = {
 						
 						text_single = {
 							autoresize = yes
-							text = "Loyal To A Fault"
+							raw_text = "Loyal To A Fault"
 							max_width = 250
 							using = Font_Size_Medium
 						}
@@ -358,7 +358,7 @@ window = {
 						
 						text_single = {
 							autoresize = yes
-							text = "Core Title Inheritance"
+							raw_text = "Core Title Inheritance"
 							max_width = 250
 							using = Font_Size_Medium
 						}
@@ -379,7 +379,7 @@ window = {
 						
 						text_single = {
 							autoresize = yes
-							text = "Governments +"
+							raw_text = "Governments +"
 							max_width = 250
 							using = Font_Size_Medium
 						}
@@ -400,7 +400,7 @@ window = {
 						
 						text_single = {
 							autoresize = yes
-							text = "Sinews of War"
+							raw_text = "Sinews of War"
 							max_width = 250
 							using = Font_Size_Medium
 						}
@@ -421,7 +421,7 @@ window = {
 						
 						text_single = {
 							autoresize = yes
-							text = "Advanced Character Search"
+							raw_text = "Advanced Character Search"
 							max_width = 250
 							using = Font_Size_Medium
 						}
@@ -442,7 +442,7 @@ window = {
 						
 						text_single = {
 							autoresize = yes
-							text = "Show Me Your Court"
+							raw_text = "Show Me Your Court"
 							max_width = 250
 							using = Font_Size_Medium
 						}
@@ -463,7 +463,7 @@ window = {
 						
 						text_single = {
 							autoresize = yes
-							text = "Social Relations Expanded"
+							raw_text = "Social Relations Expanded"
 							max_width = 250
 							using = Font_Size_Medium
 						}
@@ -484,7 +484,7 @@ window = {
 						
 						text_single = {
 							autoresize = yes
-							text = "Immersive Realm Espionage"
+							raw_text = "Immersive Realm Espionage"
 							max_width = 250
 							using = Font_Size_Medium
 						}
