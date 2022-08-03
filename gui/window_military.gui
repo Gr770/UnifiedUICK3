@@ -513,15 +513,6 @@ window = {
 														tooltip = "[MilitaryView.GetMAACountAndCapTooltip]"
 														using = tooltip_ne
 													}
-													
-													text_single = {
-														visible = "[GetGlobalVariable('SoW_is_loaded').IsSet]"
-														raw_text = "[GetScriptedGui('scriptvalue_error_destroyer').ExecuteTooltip(GuiScope.SetRoot(Character.MakeScope).End)]"
-														datacontext = "[GuiScope.SetRoot(Character.MakeScope).GetScriptValueBreakdown('total_regiment_capacity_display')]"
-														tooltipwidget = {
-															widget_value_breakdown_tooltip = {}
-														}												
-													}
 												}
 											}
 
