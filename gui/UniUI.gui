@@ -106,6 +106,27 @@ window = {
 
 						text_single = {
 							autoresize = yes
+							raw_text = "Nameplates"
+							max_width = 250
+							using = Font_Size_Medium
+						}
+
+						expand = {}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('nameplates_mod_version').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_np').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+
+						text_single = {
+							autoresize = yes
 							raw_text = "Dynamic Theme Selector"
 							using = Font_Size_Medium
 						}

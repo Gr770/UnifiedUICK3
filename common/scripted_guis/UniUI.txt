@@ -336,6 +336,11 @@ UMS_toggle_acs={
 	scope = character
 	effect = { UMS_toggle_mod_acs = {} }
 }
+
+UMS_toggle_np={
+	scope = character
+	effect = { UMS_toggle_mod_np = {} }
+}
 ###
 UMS_toggle_classic_laws={
 	scope = character
