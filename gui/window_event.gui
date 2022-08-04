@@ -320,7 +320,6 @@ base_event_window = {
 
 						margin_widget = {
 							name = "bottom_characters"
-							visible = "[Not(GetGlobalVariable('nameplates_mod_version').IsSet)]"
 							size = { 100% 170 }
 							parentanchor = bottom|hcenter
 							margin_bottom = 10
