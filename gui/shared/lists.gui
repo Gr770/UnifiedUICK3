@@ -133,6 +133,7 @@ types Lists
 									layoutpolicy_horizontal = expanding
 									using = Font_Size_Medium
 									autoresize = no
+									alwaystransparent = yes
 
 									text = "GeneralUniUICharGetUINameNoTooltip"
 								}
@@ -155,6 +156,7 @@ types Lists
 											autoresize = no
 											align = nobaseline
 											visible = "[Character.HasRelationTo( GetPlayer )]"
+											alwaystransparent = yes
 										}
 
 										expand = {
@@ -942,23 +944,6 @@ types Lists
 				alwaystransparent = no
 
 				button_drop = {
-					visible = "[GetPlayer.IsValid]"
-					block "dropdown_size"
-					{
-						size = { 200 32 }
-					}
-					block "dropdown_active_item_properties"
-					{
-						raw_text = "#D Current Option#!"
-					}
-					button_trigger = none
-
-
-				}
-
-				button_drop = {
-					visible = "[Not(GetPlayer.IsValid)]"
-					texture = "gfx/interface/buttons/button_drop_down.dds"
 					block "dropdown_size"
 					{
 						size = { 200 32 }

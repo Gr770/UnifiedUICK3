@@ -520,6 +520,7 @@ types AppointCourtPositionTypes
 									layoutpolicy_horizontal = expanding
 									using = Font_Size_Medium
 									autoresize = no
+									alwaystransparent = yes
 
 									text = "GeneralUniUICharGetUINameNoTooltip"
 								}
@@ -542,6 +543,7 @@ types AppointCourtPositionTypes
 											autoresize = no
 											align = nobaseline
 											visible = "[Character.HasRelationTo( GetPlayer )]"
+											alwaystransparent = yes
 										}
 
 										expand = {

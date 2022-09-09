@@ -522,34 +522,6 @@ types GameTooltipTypes
 					name = "personal"
 					layoutpolicy_horizontal = expanding
 
-					# background = {
-					# 	name = "header"
-					# 	texture = "gfx/interface/component_tiles/tile_title_big_top_01.dds"
-					# 	spriteType = Corneredtiled
-					# 	spriteborder_top = 54
-					# 	margin = { 12 0 }
-					# 	margin_bottom = 15
-					# 	margin_top = 5
-					# 	texture_density = 2
-
-					# 	modify_texture = {
-					# 		name = "mask"
-					# 		texture = "gfx/interface/component_masks/mask_title_big_top.dds"
-					# 		spriteType = Corneredtiled
-					# 		spriteborder = { 160 0 }
-					# 		blend_mode = alphamultiply
-					# 		alpha = 0.5
-					# 	}
-
-					# 	modify_texture = {
-					# 		name = "overlay"
-					# 		texture = "gfx/interface/component_overlay/overlay_title_big_top.dds"
-					# 		spriteType = Corneredstretched
-					# 		spriteborder = { 0 0 }
-					# 		blend_mode = overlay
-					# 	}
-					# }
-
 					hbox = {
 						layoutpolicy_horizontal = expanding
 
@@ -639,8 +611,8 @@ types GameTooltipTypes
 								align = nobaseline
 							}
 
-							vbox = {
-								layoutpolicy_vertical = expanding
+							hbox = {
+								layoutpolicy_horizontal = expanding
 
 								icon = {
 									visible = "[Not(Character.IsFemale)]"
@@ -658,6 +630,13 @@ types GameTooltipTypes
 									frame = "[Character.GetSexualityFrame]"
 									texture = "gfx/interface/icons/character_status/sexuality_icons_female.dds"
 									tooltip = "SEXUALITY_TT"
+								}
+
+								portrait_status_icons = {									
+									blockoverride "direction"
+									{
+										direction = horizontal
+									}
 								}
 
 								expand = {}
@@ -848,6 +827,12 @@ types GameTooltipTypes
 					text = "CHARACTER_KILLER_TOOLTIP"
 					visible = "[And( InDebugMode, Character.GetKiller.IsValid )]"
 				}
+
+				cooltip_paragraph = {
+					layoutpolicy_horizontal	= expanding
+					raw_text = "[GetAnimationTooltip( PdxGuiWidget.Self, Character.Self )]"
+					visible = "[ShouldShowAnimationInfo]"
+				}
 			}
 
 			## NULL CHARACTER
@@ -939,6 +924,24 @@ types GameTooltipTypes
 						align = nobaseline
 						autoresize = yes
 
+					}
+
+					expand = {}
+				}
+
+
+				hbox = {
+					layoutpolicy_horizontal = expanding
+					margin_bottom = 10
+					visible = "[ShouldShowAnimationInfo]"
+
+					#### Animation ####
+					text_single = {
+						name = "debug_animation_info"
+						max_width = 335
+						raw_text = "[RoyalCourtWindow.GetAnimationInfo]"
+						align = nobaseline
+						autoresize = yes
 					}
 
 					expand = {}

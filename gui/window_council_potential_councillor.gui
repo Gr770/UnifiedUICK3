@@ -184,6 +184,12 @@ window = {
 				visible = "[Not(PotentialCouncillorWindow.HasMembers)]"
 			}
 
+			blockoverride "item_size" 
+			{
+				size = { 630 110 }
+				layoutpolicy_horizontal = expanding
+			}
+
 			blockoverride "button"
 			{
 				using = Background_Guest
@@ -204,7 +210,7 @@ window = {
 
 					button_standard = {
 						name = "reassign_to_position"
-						visible = "[And(And( Not( CharacterListItem.GetBool('can_swap') ), Character.HasNormalCouncilPosition ), Not(CharacterListItem.GetCharacter.IsGuest))]"
+						visible = "[And(And( Not( CharacterListItem.GetBool('can_swap') ), Character.IsCouncillor ), Not(CharacterListItem.GetCharacter.IsGuest))]"
 						onclick = "[CharacterListItem.OnClick('set_position')]"
 						enabled = "[Not( PotentialCouncillorWindow.HasPendingInteraction( CharacterListItem.GetCharacter ) )]"
 
@@ -218,7 +224,7 @@ window = {
 
 					button_standard = {
 						name = "add_to_position"
-						visible = "[And(Not( Character.HasNormalCouncilPosition ), Not(CharacterListItem.GetCharacter.IsGuest))]"
+						visible = "[And(Not( Character.IsCouncillor ), Not(CharacterListItem.GetCharacter.IsGuest))]"
 						onclick = "[CharacterListItem.OnClick('set_position')]"
 						enabled = "[And( PotentialCouncillorWindow.CanFireCouncillor, Not( PotentialCouncillorWindow.HasPendingInteraction( CharacterListItem.GetCharacter ) ) )]"						
 

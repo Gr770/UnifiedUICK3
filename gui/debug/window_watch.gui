@@ -19,7 +19,7 @@ window = {
 	using = editor_window
 	name = "watch_window"
 	parentanchor = top|left
-	size = { 950 420 }
+	size = { 1100 420 }
 	position = { 110 100 }
 	widgetanchor = top|left
 	layer = top
@@ -245,6 +245,53 @@ window = {
 								align = left|top
 								text = "[StoryInfo.GetAllDates]"
 								multiline = yes
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	container = {
+		position = { 900 30 }
+		visible = "[WatchWindow.ShouldShowMemories]"
+		watch_textbox = {
+			position = { 5 0 }
+			size = { 100 20 }
+			fontsize = 16
+			parentanchor = top|left
+			raw_text = "Memories:"
+			align = left
+		}
+		scrollarea = {
+			position = { 0 30 }
+			size = { 200 350 }
+			scrollbarpolicy_horizontal = always_off
+
+			scrollbar_vertical = {
+				using = editor_vertical_scrollbar
+			}
+
+			scrollwidget = {
+				fixedgridbox = {
+					name = "memories_grid"
+					position = { 0 0 }
+					size = { 200 350 }
+					addcolumn = 100
+					addrow = 20
+					maxhorizontalslots = 1
+
+					item = {
+						container = {
+							watch_textbox = {
+								position = { 0 0 }
+								size = { 100 20 }
+								fontsize = 14
+								parentanchor = top|left
+								align = left|top
+								text = "[MemoryInfo.GetName]"
+								tooltip = "[MemoryInfo.GetTooltip]"
 							}
 						}
 					}

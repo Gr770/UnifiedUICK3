@@ -9,7 +9,7 @@ window = {
 	parentanchor = center
 	# movable = no
 
-	layer = confirmation
+	layer = top
 
 	using = Window_Movable
 	#using = Window_Background
@@ -118,7 +118,7 @@ window = {
 						background = {
 							margin = { 0 -180 }
 							margin_right = -100
-							margin_left = 400
+							margin_left = 200
 
 							texture = "gfx/interface/colors/white.dds"
 							color = { 0.3 0.3 0.35 0.8 }

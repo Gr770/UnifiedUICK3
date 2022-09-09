@@ -285,7 +285,6 @@ window = {
 					background = {
 						visible = "[GreaterThan_int32( CharacterSelectionList.GetTotalNumber, '(int32)0' )]"
 						texture = "gfx/interface/skinned/illustrations/dungeon.dds"
-						margin = { -5 0 }
 						fittype = end
 						alpha = 0.4
 
