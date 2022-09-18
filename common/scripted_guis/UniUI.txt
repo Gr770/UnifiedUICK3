@@ -311,12 +311,12 @@ UMS_toggle_SoW={
 
 UMS_toggle_acs={
 	scope = character
-	effect = { UMS_toggle_mod_acs = {} }
+	effect = { UMS_toggle_mod_acs = yes }
 }
 
 UMS_toggle_np={
 	scope = character
-	effect = { UMS_toggle_mod_np = {} }
+	effect = { UMS_toggle_mod_np = yes }
 }
 ###
 UMS_toggle_classic_laws={
@@ -339,5 +339,9 @@ UMS_toggle_ire={
 }
 UMS_toggle_UniUI={
 	scope = character
-	effect = { UMS_toggle_mod = { MOD = UniUI } }
+	effect = { UMS_toggle_mod = { MOD = UniUICC } }
+}
+UMS_toggle_minorities={
+	scope = character
+	effect = { UMS_toggle_mod_minorities = yes }
 }
