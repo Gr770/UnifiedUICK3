@@ -1,9 +1,8 @@
-version="beta"
+version="1"
 tags={
-	"Historical"
 	"Gameplay"
-	"Balance"
+	"Utilities"
 }
-name="UnifiedUI HC Edition"
-supported_version="1.7.1"
-remote_file_id="2724128007"
+name="Unified UI"
+supported_version="1.7.2"
+remote_file_id="2768734977"
