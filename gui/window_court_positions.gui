@@ -8,56 +8,65 @@ types CourtPositionTypes
 			using = Expand_Court_Positions
 		}
 
-		hbox = {
-			datamodel = "[GetAllCourtPositionCategories]"
-			visible = "[CourtPositionsWindow.CanShowCategoryTabs]"
+		scrollarea = {
+			layoutpolicy_horizontal = expanding
+			minimumsize = { 0 70 }
+			scrollbarpolicy_vertical = always_off
 
-			spacing = 5
-			margin = { 10 5 }
-
-			button_position_category = {
-				onclick = "[CourtPositionsWindow.ClearCategoryFilter]"
-				down ="[Not(CourtPositionsWindow.HasCategoryFilter)]"
-				size = { 110 33 }
-
-				hbox = {
-					text_single = {
-						layoutpolicy_horizontal = expanding
-						align = center|nobaseline
-						text = COURT_POSITIONS_WINDOW_FILTER_ALL
-						default_format = "#low"
-						margin_right = 30
-						max_width = 70
-					}
-				}
-
-				blockoverride "hire_available_text" {
-					text = COURT_POSITIONS_WINDOW_FILTER_TAB_ALL_NUM_HIRES
-					alpha = 0.6
-				}
+			scrollbar_horizontal = {
+				using = Scrollbar_Horizontal
 			}
 
-			item = {
-				button_position_category = {
-					visible = "[CourtPositionsWindow.CanShowCategoryTab(CourtPositionCategory.Self)]"
-					onclick = "[CourtPositionsWindow.SetCategoryFilter(CourtPositionCategory.Self)]"
-					down = "[CourtPositionsWindow.IsCategoryFiltering(CourtPositionCategory.Self)]"
-					size = { 138 33 }
+			scrollwidget = {
+				hbox = {
+					datamodel = "[GetAllCourtPositionCategories]"
+					visible = "[CourtPositionsWindow.CanShowCategoryTabs]"
 
-					hbox = {
-						text_single = {
-							layoutpolicy_horizontal = expanding
-							align = center|nobaseline
-							text = "[CourtPositionCategory.GetName]"
-							default_format = "#low"
-							margin_right = 30
-							max_width = 110
+					button_position_category = {
+						onclick = "[CourtPositionsWindow.ClearCategoryFilter]"
+						down ="[Not(CourtPositionsWindow.HasCategoryFilter)]"
+						minimumsize = { 0 33 }
+
+						hbox = {
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								align = center|nobaseline
+								text = COURT_POSITIONS_WINDOW_FILTER_ALL
+								default_format = "#low"
+								margin_right = 30
+								max_width = 70
+							}
+						}
+
+						blockoverride "hire_available_text" {
+							text = COURT_POSITIONS_WINDOW_FILTER_TAB_ALL_NUM_HIRES
+							alpha = 0.6
 						}
 					}
 
-					blockoverride "hire_available_text" {
-						text = COURT_POSITIONS_WINDOW_FILTER_TAB_CATEGORY_NUM_HIRES
-						alpha = 0.6
+					item = {
+						button_position_category = {
+							visible = "[CourtPositionsWindow.CanShowCategoryTab(CourtPositionCategory.Self)]"
+							onclick = "[CourtPositionsWindow.SetCategoryFilter(CourtPositionCategory.Self)]"
+							down = "[CourtPositionsWindow.IsCategoryFiltering(CourtPositionCategory.Self)]"
+							minimumsize = { 0 33 }
+
+							hbox = {
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									align = center|nobaseline
+									text = "[CourtPositionCategory.GetName]"
+									default_format = "#low"
+									margin_right = 30
+									max_width = 110
+								}
+							}
+
+							blockoverride "hire_available_text" {
+								text = COURT_POSITIONS_WINDOW_FILTER_TAB_CATEGORY_NUM_HIRES
+								alpha = 0.6
+							}
+						}
 					}
 				}
 			}
@@ -619,14 +628,18 @@ types CourtPositionTypes
 	{
 		datacontext = "[EmployedPositionItem.GetPosition]"
 		datacontext = "[CourtPosition.GetEmployee]"
+		datacontext = "[GetIllustration( 'courtposition_view_bg_uniui' )]"
 		visible = "[EmployedPositionItem.CanShow]"
 
 		size = { 530 295 }
 
 		background = {
-			using = Background_Area_Light
+			#using = Background_Area_Light
+			texture = "[Illustration.GetTexture( Character.Self )]"
+			fittype = centercrop
+			using = Mask_Rough_Edges
+			alpha = 1.0
 			margin_top = 2
-			alpha = 0.6
 		}
 
 		background = {
@@ -644,13 +657,139 @@ types CourtPositionTypes
 				court_position_tooltip = { }
 			}
 
+			#### COUNTY BACKGROUND IFiK ####
+			background = {
+				spriteType = Corneredtiled
+				using = Color_County
+				alpha = 0.7
+				texture = "gfx/interface/colors/white.dds"
+				visible = "[And(CourtPosition.GetPositionType.CourtPositionRequiresRankOrHigher('county'), GetGlobalVariable('interfaceisking_is_loaded').IsSet)]"
+
+				margin_bottom = -1
+				margin_top = 2
+				margin_left = -1
+
+				using = Mask_Rough_Edges
+
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
+					spriteType = Corneredstretched
+					spriteborder = { 0 0 }
+					blend_mode = alphamultiply
+					mirror = horizontal
+				}
+
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.3
+				}
+			}
+
+			#### DUCHY BACKGROUND IFiK####
+			background = {
+				spriteType = Corneredtiled
+				using = Color_Duchy
+				alpha = 0.7
+				texture = "gfx/interface/colors/white.dds"
+				visible = "[And(CourtPosition.GetPositionType.CourtPositionRequiresRankOrHigher('duchy'), GetGlobalVariable('interfaceisking_is_loaded').IsSet)]"
+
+				margin_bottom = -1
+				margin_top = 2
+				margin_left = -1
+
+				using = Mask_Rough_Edges
+
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
+					spriteType = Corneredstretched
+					spriteborder = { 0 0 }
+					blend_mode = alphamultiply
+					mirror = horizontal
+				}
+
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.3
+				}
+			}
+
+			##### KINGDOM BACKGROUND IFiK ####
+			background = {
+				visible = "[And(CourtPosition.GetPositionType.CourtPositionRequiresRankOrHigher('kingdom'), GetGlobalVariable('interfaceisking_is_loaded').IsSet)]"
+
+				spriteType = Corneredtiled
+				using = Color_King
+				alpha = 0.8
+				texture = "gfx/interface/colors/white.dds"
+
+				margin_bottom = -1
+				margin_top = 2
+				margin_left = -1
+
+				using = Mask_Rough_Edges
+
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
+					spriteType = Corneredstretched
+					spriteborder = { 0 0 }
+					blend_mode = alphamultiply
+					mirror = horizontal
+				}
+
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+
+			##### EMPIRE BACKGROUND IFiK####
+			background = {
+				visible = "[And(CourtPosition.GetPositionType.CourtPositionRequiresRankOrHigher('empire'), GetGlobalVariable('interfaceisking_is_loaded').IsSet)]"
+
+				spriteType = Corneredtiled
+				using = Color_Empire
+				alpha = 0.8
+				texture = "gfx/interface/colors/white.dds"
+
+				margin_bottom = -1
+				margin_top = 2
+				margin_left = -1
+
+				using = Mask_Rough_Edges
+
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
+					spriteType = Corneredstretched
+					spriteborder = { 0 0 }
+					blend_mode = alphamultiply
+					mirror = horizontal
+				}
+
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.3
+				}
+			}
+
 			#### COMMON BACKGROUND ####
 			background = {
 				spriteType = Corneredtiled
 				using = Color_Blue
 				alpha = 0.3
 				texture = "gfx/interface/colors/white.dds"
-				visible = "[Not(CourtPosition.GetPositionType.CourtPositionRequiresRankOrHigher('kingdom'))]"
+				visible = "[And(Not(CourtPosition.GetPositionType.CourtPositionRequiresRankOrHigher('kingdom')), Not(GetGlobalVariable('interfaceisking_is_loaded').IsSet))]"
 
 				margin_bottom = -1
 				margin_top = 2
@@ -677,7 +816,7 @@ types CourtPositionTypes
 
 			##### ROYAL BACKGROUND ####
 			background = {
-				visible = "[CourtPosition.GetPositionType.CourtPositionRequiresRankOrHigher('kingdom')]"
+				visible = "[And(CourtPosition.GetPositionType.CourtPositionRequiresRankOrHigher('kingdom'), Not(GetGlobalVariable('interfaceisking_is_loaded').IsSet))]"
 
 				spriteType = Corneredtiled
 				using = Color_Purple
@@ -839,6 +978,50 @@ types CourtPositionTypes
 
 				expand = {}
 			}
+
+			vbox = {
+				name = "aptitude_stars"
+				visible = "[GetGlobalVariable('interfaceisking_is_loaded').IsSet]"
+				datacontext = "[GetIllustration( 'courtposition_view_stars' )]"
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				margin_bottom = 5
+				margin_right = -640
+				margin_top = 50
+
+				background = {
+					texture = "[Illustration.GetTexture( Character.Self )]"
+					using = Mask_Rough_Edges
+					alpha = 1.0
+					margin_left = -410
+					margin_right = -10
+					margin_top = -55
+					margin_bottom = -213
+				}
+
+				text_single = {
+					name = "aptitude"
+					layoutpolicy_horizontal = expanding
+					min_width = 400
+					max_width = 320
+
+					tooltipwidget = {
+						court_position_aptitude_breakdown_tooltip = {
+							datacontext = "[CourtPosition.GetAptitudeTooltip]"
+
+							blockoverride "header_text" {
+								text = COURT_POSITION_aptitude_description_position
+							}
+
+							blockoverride "modifier_list" {
+								text = "[CourtPosition.GetEmployerBonuses]"
+							}
+						}
+					}
+				}
+
+				expand = {}
+			}
 		}
 	}
 
@@ -891,13 +1074,131 @@ types CourtPositionTypes
 				court_position_type_tooltip = { }
 			}
 
+			#### COUNTY BACKGROUND ####
+			background = {
+				spriteType = Corneredtiled
+				using = Color_County
+				alpha = 0.8
+				texture = "gfx/interface/colors/white.dds"
+				visible = "[And(And(CourtPositionType.CourtPositionRequiresRankOrHigher('county'), Not(EmptyCourtPosition.IsAppointing)), GetGlobalVariable('interfaceisking_is_loaded').IsSet)]"
+
+				margin_left = -2
+
+				using = Mask_Rough_Edges
+
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
+					spriteType = Corneredstretched
+					spriteborder = { 0 0 }
+					blend_mode = alphamultiply
+					mirror = horizontal
+				}
+
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+
+			#### DUCHY BACKGROUND ####
+			background = {
+				spriteType = Corneredtiled
+				using = Color_Duchy
+				alpha = 0.8
+				texture = "gfx/interface/colors/white.dds"
+				visible = "[And(And(CourtPositionType.CourtPositionRequiresRankOrHigher('duchy'), Not(EmptyCourtPosition.IsAppointing)), GetGlobalVariable('interfaceisking_is_loaded').IsSet)]"
+
+				margin_left = -2
+
+				using = Mask_Rough_Edges
+
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
+					spriteType = Corneredstretched
+					spriteborder = { 0 0 }
+					blend_mode = alphamultiply
+					mirror = horizontal
+				}
+
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+
+			#### KINGDOM BACKGROUND ####
+			background = {
+				visible = "[And(And(CourtPositionType.CourtPositionRequiresRankOrHigher('kingdom'), Not(EmptyCourtPosition.IsAppointing)), GetGlobalVariable('interfaceisking_is_loaded').IsSet)]"
+
+				spriteType = Corneredtiled
+				using = Color_King
+				alpha = 0.8
+				texture = "gfx/interface/colors/white.dds"
+
+				margin_left = -2
+
+				using = Mask_Rough_Edges
+
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
+					spriteType = Corneredstretched
+					spriteborder = { 0 0 }
+					blend_mode = alphamultiply
+					mirror = horizontal
+				}
+
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.3
+				}
+			}
+
+			#### EMPIRE BACKGROUND ####
+			background = {
+				visible = "[And(And(CourtPositionType.CourtPositionRequiresRankOrHigher('empire'), Not(EmptyCourtPosition.IsAppointing)), GetGlobalVariable('interfaceisking_is_loaded').IsSet)]"
+
+				spriteType = Corneredtiled
+				using = Color_Empire
+				alpha = 0.8
+				texture = "gfx/interface/colors/white.dds"
+
+				margin_left = -2
+
+				using = Mask_Rough_Edges
+
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
+					spriteType = Corneredstretched
+					spriteborder = { 0 0 }
+					blend_mode = alphamultiply
+					mirror = horizontal
+				}
+
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.3
+				}
+			}
+
 			#### COMMON BACKGROUND ####
 			background = {
 				spriteType = Corneredtiled
 				using = Color_Blue
 				alpha = 0.3
 				texture = "gfx/interface/colors/white.dds"
-				visible = "[Not(And(CourtPositionType.CourtPositionRequiresRankOrHigher('kingdom'), Not(EmptyCourtPosition.IsAppointing)))]"
+				visible = "[And(Not(And(CourtPositionType.CourtPositionRequiresRankOrHigher('kingdom'), Not(EmptyCourtPosition.IsAppointing))), Not(GetGlobalVariable('interfaceisking_is_loaded').IsSet))]"
 
 				margin_left = -2
 
@@ -922,7 +1223,7 @@ types CourtPositionTypes
 
 			#### ROYAL BACKGROUND ####
 			background = {
-				visible = "[And(CourtPositionType.CourtPositionRequiresRankOrHigher('kingdom'), Not(EmptyCourtPosition.IsAppointing))]"
+				visible = "[And(And(CourtPositionType.CourtPositionRequiresRankOrHigher('kingdom'), Not(EmptyCourtPosition.IsAppointing)), Not(GetGlobalVariable('interfaceisking_is_loaded').IsSet))]"
 
 				spriteType = Corneredtiled
 				using = Color_Purple

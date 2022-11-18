@@ -345,3 +345,7 @@ UMS_toggle_minorities={
 	scope = character
 	effect = { UMS_toggle_mod_minorities = yes }
 }
+UMS_toggle_IFiK={
+	scope = character
+	effect = { UMS_toggle_mod_ifik = yes }
+}

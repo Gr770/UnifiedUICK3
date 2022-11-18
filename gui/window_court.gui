@@ -192,7 +192,7 @@ window = {
 								vbox_character_list = {
 									layoutpolicy_horizontal = expanding
 									layoutpolicy_vertical = expanding
-									minimumsize = { -1 800 }
+									minimumsize = { -1 940 }
 									datacontext = "[CourtWindow.GetCourt]"
 
 									blockoverride "sort_dropdown" {
