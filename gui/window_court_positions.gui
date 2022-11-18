@@ -373,13 +373,139 @@ types CourtPositionTypes
 				court_position_tooltip = { }
 			}
 
+			#### COUNTY BACKGROUND IFiK ####
+			background = {
+				spriteType = Corneredtiled
+				using = Color_County
+				alpha = 0.8
+				texture = "gfx/interface/colors/white.dds"
+				visible = "[And(CourtPosition.GetPositionType.CourtPositionRequiresRankOrHigher('county'), GetGlobalVariable('interfaceisking_is_loaded').IsSet)]"
+
+				margin_bottom = -1
+				margin_top = 2
+				margin_left = -1
+
+				using = Mask_Rough_Edges
+
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
+					spriteType = Corneredstretched
+					spriteborder = { 0 0 }
+					blend_mode = alphamultiply
+					mirror = horizontal
+				}
+
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+
+			#### DUCHY BACKGROUND IFiK ####
+			background = {
+				spriteType = Corneredtiled
+				using = Color_Duchy
+				alpha = 0.8
+				texture = "gfx/interface/colors/white.dds"
+				visible = "[And(CourtPosition.GetPositionType.CourtPositionRequiresRankOrHigher('duchy'), GetGlobalVariable('interfaceisking_is_loaded').IsSet)]"
+
+				margin_bottom = -1
+				margin_top = 2
+				margin_left = -1
+
+				using = Mask_Rough_Edges
+
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
+					spriteType = Corneredstretched
+					spriteborder = { 0 0 }
+					blend_mode = alphamultiply
+					mirror = horizontal
+				}
+
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.2
+				}
+			}
+
+			##### KINGDOM BACKGROUND IFiK ####
+			background = {
+				visible = "[And(CourtPosition.GetPositionType.CourtPositionRequiresRankOrHigher('kingdom'), GetGlobalVariable('interfaceisking_is_loaded').IsSet)]"
+
+				spriteType = Corneredtiled
+				using = Color_King
+				alpha = 0.8
+				texture = "gfx/interface/colors/white.dds"
+
+				margin_bottom = -1
+				margin_top = 2
+				margin_left = -1
+
+				using = Mask_Rough_Edges
+
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
+					spriteType = Corneredstretched
+					spriteborder = { 0 0 }
+					blend_mode = alphamultiply
+					mirror = horizontal
+				}
+
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.3
+				}
+			}
+
+			##### EMPIRE BACKGROUND IFiK ####
+			background = {
+				visible = "[And(CourtPosition.GetPositionType.CourtPositionRequiresRankOrHigher('empire'), GetGlobalVariable('interfaceisking_is_loaded').IsSet)]"
+
+				spriteType = Corneredtiled
+				using = Color_Empire
+				alpha = 0.8
+				texture = "gfx/interface/colors/white.dds"
+
+				margin_bottom = -1
+				margin_top = 2
+				margin_left = -1
+
+				using = Mask_Rough_Edges
+
+				modify_texture = {
+					name = "mask"
+					texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
+					spriteType = Corneredstretched
+					spriteborder = { 0 0 }
+					blend_mode = alphamultiply
+					mirror = horizontal
+				}
+
+				modify_texture = {
+					texture = "gfx/interface/component_masks/patterns/mask_pattern_02.dds"
+					spriteType = Corneredtiled
+					blend_mode = alphamultiply
+					alpha = 0.3
+				}
+			}
+
 			#### COMMON BACKGROUND ####
 			background = {
 				spriteType = Corneredtiled
 				using = Color_Blue
 				alpha = 0.3
 				texture = "gfx/interface/colors/white.dds"
-				visible = "[Not(CourtPosition.GetPositionType.CourtPositionRequiresRankOrHigher('kingdom'))]"
+				visible = "[And(Not(CourtPosition.GetPositionType.CourtPositionRequiresRankOrHigher('kingdom')), Not(GetGlobalVariable('interfaceisking_is_loaded').IsSet))]"
 
 				margin_bottom = -1
 				margin_top = 2
@@ -406,7 +532,7 @@ types CourtPositionTypes
 
 			##### ROYAL BACKGROUND ####
 			background = {
-				visible = "[CourtPosition.GetPositionType.CourtPositionRequiresRankOrHigher('kingdom')]"
+				visible = "[And(CourtPosition.GetPositionType.CourtPositionRequiresRankOrHigher('kingdom'), Not(GetGlobalVariable('interfaceisking_is_loaded').IsSet))]"
 
 				spriteType = Corneredtiled
 				using = Color_Purple
