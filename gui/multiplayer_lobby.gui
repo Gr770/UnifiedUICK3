@@ -914,7 +914,7 @@ JominiMultiplayerOosMessage = {
 				margin = { 5 0 }
 
 				text_single = {
-					text = "[Character.GetName]"
+					text = "GeneralUniUICharGetName"
 					visible = "[And( Character.IsValid, Not( OosData.IsObserver ))]"
 					autoresize = yes
 					layoutpolicy_horizontal = expanding
