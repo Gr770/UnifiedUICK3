@@ -30,7 +30,7 @@ types CourtPositionTypes
 						hbox = {
 							text_single = {
 								layoutpolicy_horizontal = expanding
-								align = center|nobaseline
+								align = left|nobaseline
 								text = COURT_POSITIONS_WINDOW_FILTER_ALL
 								default_format = "#low"
 								margin_right = 30
