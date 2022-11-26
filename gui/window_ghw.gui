@@ -950,7 +950,6 @@ window = {
 									button_standard = {
 										name = "change_beneficiary"
 										size = { 150 30 }
-										enabled = "[GreatHolyWarWindow.HasPotentialBeneficiary]"
 										onclick = "[OpenCharacterInteraction( 'select_ghw_beneficiary_interaction', GetPlayer )]"
 										tooltip = "SELECT_GHW_BENEFICIARY"
 										text = "GHW_CHANGE_BENEFICIARY"

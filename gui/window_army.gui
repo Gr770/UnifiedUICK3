@@ -1385,16 +1385,15 @@ window = {
 
 				blockoverride "scrollbox_content"
 				{
-					vbox = {
+					fixedgridbox = {
 						datamodel = "[ArmyReorgWindow.GetLeftItems]"
-						layoutpolicy_horizontal = expanding
-						spacing = 3
+						addcolumn = 350
+    					addrow = 53
 
 						item = {
 							button_standard_list = {
 								name = "regiment_item"
-								layoutpolicy_horizontal = expanding
-								size = { 0 50 }
+								size = { 350 50 }
 								onclick = "[RegimentReorgEntry.MoveRegiment]"
 
 								using = reorg_regiment_tooltips
@@ -1429,16 +1428,15 @@ window = {
 
 				blockoverride "scrollbox_content"
 				{
-					vbox = {
+					fixedgridbox = {
 						datamodel = "[ArmyReorgWindow.GetRightItems]"
-						layoutpolicy_horizontal = expanding
-						spacing = 3
+						addcolumn = 350
+    					addrow = 53
 
 						item = {
 							button_standard_list = {
 								name = "regiment_item"
-								layoutpolicy_horizontal = expanding
-								size = { 0 50 }
+								size = { 350 50 }
 								onclick = "[RegimentReorgEntry.MoveRegiment]"
 
 								using = reorg_regiment_tooltips
