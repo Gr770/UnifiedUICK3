@@ -495,7 +495,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded
 			has_court_position = court_physician_court_position 
 		}
-		reference = "court_positions/physician.dds"
+		reference = "court_positions/Vanila/physician.dds"
 	}
 
 	texture = {
@@ -503,7 +503,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded 
 			has_court_position = chief_eunuch_court_position 
 		}
-		reference = "court_positions/chief_eunuch.dds"
+		reference = "court_positions/Vanila/chief_eunuch.dds"
 	}
 
 	texture = {
@@ -511,7 +511,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded  
 			has_court_position = court_jester_court_position 
 		}
-		reference = "court_positions/court_jester.dds"
+		reference = "court_positions/Vanila/court_jester.dds"
 	}
 
 	texture = {
@@ -519,7 +519,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded 
 			has_court_position = antiquarian_court_position 
 		}
-		reference = "court_positions/antiquary.dds"
+		reference = "court_positions/Vanila/antiquary.dds"
 	}
 
 	texture = {
@@ -527,7 +527,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded 
 			has_court_position = cupbearer_court_position 
 		}
-		reference = "court_positions/cupbearer.dds"
+		reference = "court_positions/Vanila/cupbearer.dds"
 	}
 
 	texture = {
@@ -535,7 +535,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded 
 			has_court_position = champion_court_position 
 		}
-		reference = "court_positions/personal_champion.dds"
+		reference = "court_positions/Vanila/personal_champion.dds"
 	}
 
 	texture = {
@@ -543,7 +543,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded 
 			has_court_position = court_gardener_court_position 
 		}
-		reference = "court_positions/court_gardener.dds"
+		reference = "court_positions/Vanila/court_gardener.dds"
 	}
 
 	texture = {
@@ -551,7 +551,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded 
 			has_court_position = bodyguard_court_position 
 		}
-		reference = "court_positions/bodyguard.dds"
+		reference = "court_positions/Vanila/bodyguard.dds"
 	}
 	
 	texture = {
@@ -559,7 +559,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded 
 			has_court_position = court_tutor_court_position 
 		}
-		reference = "court_positions/court_tutor.dds"
+		reference = "court_positions/Vanila/court_tutor.dds"
 	}
 
 	texture = {
@@ -567,7 +567,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded 
 			has_court_position = high_almoner_court_position 
 		}
-		reference = "court_positions/high_almoner.dds"
+		reference = "court_positions/Vanila/high_almoner.dds"
 	}
 
 	texture = {
@@ -575,7 +575,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded 
 			has_court_position = executioner_court_position 
 		}
-		reference = "court_positions/executioner.dds"
+		reference = "court_positions/Vanila/executioner.dds"
 	}
 
 	texture = {
@@ -583,7 +583,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded 
 			has_court_position = food_taster_court_position 
 		}
-		reference = "court_positions/food_taster.dds"
+		reference = "court_positions/Vanila/food_taster.dds"
 	}
 
 	texture = {
@@ -591,7 +591,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded 
 			has_court_position = seneschal_court_position 
 		}
-		reference = "court_positions/seneschal.dds"
+		reference = "court_positions/Vanila/seneschal.dds"
 	}
 
 	texture = {
@@ -599,7 +599,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded 
 			has_court_position = lady_in_waiting_court_position 
 		}
-		reference = "court_positions/lady_in_waiting.dds"
+		reference = "court_positions/Vanila/lady_in_waiting.dds"
 	}
 	
 	texture = {
@@ -607,7 +607,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded 
 			has_court_position = royal_architect_court_position 
 		}
-		reference = "court_positions/royal_architect.dds"
+		reference = "court_positions/Vanila/royal_architect.dds"
 	}
 	
 	texture = {
@@ -615,7 +615,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded 
 			has_court_position = cultural_emissary_court_position 
 		}
-		reference = "court_positions/cultural_emissary.dds"
+		reference = "court_positions/Vanila/cultural_emissary.dds"
 	}
 	
 	texture = {
@@ -623,7 +623,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded 
 			has_court_position = master_of_hunt_court_position 
 		}
-		reference = "court_positions/master_of_the_hunt.dds"
+		reference = "court_positions/Vanila/master_of_the_hunt.dds"
 	}
 	
 	texture = {
@@ -631,7 +631,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded 
 			has_court_position = keeper_of_swans_court_position 
 		}
-		reference = "court_positions/keeper_of_the_swans.dds"
+		reference = "court_positions/Vanila/keeper_of_the_swans.dds"
 	}
 	
 	texture = {
@@ -639,7 +639,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded 
 			has_court_position = court_musician_court_position 
 		}
-		reference = "court_positions/court_musician.dds"
+		reference = "court_positions/Vanila/court_musician.dds"
 	}
 	
 	texture = {
@@ -647,7 +647,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded 
 			has_court_position = court_artificer_court_position 
 		}
-		reference = "court_positions/court_artificer.dds"
+		reference = "court_positions/Vanila/court_artificer.dds"
 	}
 	
 	texture = {
@@ -655,7 +655,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded 
 			has_court_position = master_of_horse_court_position 
 		}
-		reference = "court_positions/master_of_the_horse.dds"
+		reference = "court_positions/Vanila/master_of_the_horse.dds"
 	}
 	
 	texture = {
@@ -663,7 +663,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded 
 			has_court_position = court_poet_court_position 
 		}
-		reference = "court_positions/court_poet.dds"
+		reference = "court_positions/Vanila/court_poet.dds"
 	}
 	
 	texture = {
@@ -671,7 +671,7 @@ courtposition_view_bg_uniui = {
 			exists = global_var:interfaceisking_is_loaded 
 			has_court_position = garuda_court_position 
 		}
-		reference = "court_positions/garuda.dds"
+		reference = "court_positions/Vanila/garuda.dds"
 	}
 	
 	###### KETAROS ADVANCED COURT POSITIONS ######
@@ -890,6 +890,70 @@ courtposition_view_bg_uniui = {
 			has_court_position = court_mathematician_position 
 		}
 		reference = "court_positions/KACP/court_mathematician.dds"
+	}
+
+	texture = {
+		trigger = { 
+			exists = global_var:interfaceisking_is_loaded 
+			has_court_position = strategist_master_position 
+		}
+		reference = "court_positions/KACP/strategist_master.dds"
+	}
+
+	texture = {
+		trigger = { 
+			exists = global_var:interfaceisking_is_loaded 
+			has_court_position = literature_magister_position 
+		}
+		reference = "court_positions/KACP/literature_magister.dds"
+	}
+
+	texture = {
+		trigger = { 
+			exists = global_var:interfaceisking_is_loaded 
+			has_court_position = marshal_assistant_position 
+		}
+		reference = "court_positions/KACP/marshal_assistant.dds"
+	}
+
+	texture = {
+		trigger = { 
+			exists = global_var:interfaceisking_is_loaded 
+			has_court_position = royal_engineer_position 
+		}
+		reference = "court_positions/KACP/royal_engineer.dds"
+	}
+
+	texture = {
+		trigger = { 
+			exists = global_var:interfaceisking_is_loaded 
+			has_court_position = court_cartographer_position 
+		}
+		reference = "court_positions/KACP/court_cartographer.dds"
+	}
+
+	texture = {
+		trigger = { 
+			exists = global_var:interfaceisking_is_loaded 
+			has_court_position = atilliator_master_position 
+		}
+		reference = "court_positions/KACP/atilliator_master.dds"
+	}
+
+	texture = {
+		trigger = { 
+			exists = global_var:interfaceisking_is_loaded 
+			has_court_position = royal_guards_captain_position 
+		}
+		reference = "court_positions/KACP/royal_guards_captain.dds"
+	}
+
+	texture = {
+		trigger = { 
+			exists = global_var:interfaceisking_is_loaded 
+			has_court_position = war_constable_position 
+		}
+		reference = "court_positions/KACP/war_constable.dds"
 	}
 
 	texture = {

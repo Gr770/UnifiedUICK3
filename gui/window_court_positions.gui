@@ -852,12 +852,12 @@ types CourtPositionTypes
 
 				text_single = {
 					text = "[CourtPosition.GetNameNoTooltip]"
-					default_format = "#medium"
+					default_format = "#high"
 					parentanchor = left
-					using = Font_Size_Medium
+					using = Font_Size_Big
 					align = nobaseline
-					margin_left = 15
-					margin_top = 4
+					margin_left = 62
+					margin_top = 0
 				}
 
 				flowcontainer = {
@@ -887,29 +887,53 @@ types CourtPositionTypes
 					text_single = {
 						align = right
 						default_format = "#high"
+						using = Font_Size_Medium
 						text = "[CourtPosition.GetSalaryText]"
 						tooltip = "[CourtPosition.GetSalaryBreakdownTooltip]"
-						margin_top = 1
-						margin_right = 10
+						margin_top = -2
+						margin_right = 5
 					}
 				}
 			}
 		}
 
 		widget = {
-			size = { 520 255 }
+			size = { 520 290 }
+
+			## COURT ICON
+			vbox = {
+				name = "court_icons"
+				datacontext = "[GetIllustration( 'courtposition_view_icon' )]"
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				visible = "[GetGlobalVariable('interfaceisking_is_loaded').IsSet]"
+				margin_bottom = 5
+				margin_right = -640
+				margin_top = 50
+
+				background = {
+					texture = "[Illustration.GetTexture( Character.Self )]"
+					using = Mask_Rough_Edges
+					alpha = 1.0
+					margin_left = -3
+					margin_right = -462
+					margin_top = 0
+					margin_bottom = -238
+				}
+
+			}
 
 			###### NAME ######
 			text_single = {
 				text = "GetEmployeeUniUIGetNameNoTooltip"
 				default_format = "#high"
 				align = left
-				position = { 16 25 }
+				position = { 62 25 }
 			}
 
 			###### YEARS OF SERVICE ######
 			text_single = {
-				default_format = "#weak"
+				default_format = "#medium"
 				text = "[CourtPosition.GetTimeOfService]"
 				align = right
 				parentanchor = right
@@ -917,7 +941,13 @@ types CourtPositionTypes
 			}
 
 			portrait_head_small = {
+				visible = "[Not(GetGlobalVariable('interfaceisking_is_loaded').IsSet)]"
 				position = { 10 60 }
+			}
+			portrait_torso = {
+				visible = "[GetGlobalVariable('interfaceisking_is_loaded').IsSet]"
+				position = { 1 40 }
+				scale = 1.1
 			}
 
 			vbox = {
@@ -925,7 +955,7 @@ types CourtPositionTypes
 				layoutpolicy_horizontal = expanding
 				layoutpolicy_vertical = expanding
 				margin_bottom = 5
-				margin_left = 80
+				margin_left = 130
 				margin_top = 56
 
 				text_single = {
@@ -933,7 +963,7 @@ types CourtPositionTypes
 					layoutpolicy_horizontal = expanding
 					text = "COURT_POSITION_aptitude_description_position"
 					min_width = 400
-					max_width = 400
+					max_width = 320
 
 					tooltipwidget = {
 						court_position_aptitude_breakdown_tooltip = {
@@ -953,14 +983,14 @@ types CourtPositionTypes
 				text_single = {
 					name = "opinion_bonus"
 					min_width = 400
-					max_width = 400
+					max_width = 320
 					layoutpolicy_horizontal = expanding
 					text = "COURT_POSITION_OPINION_BONUS"
 				}
 
 				text_multi = {
 					min_width = 400
-					max_width = 400
+					max_width = 320
 					autoresize = yes
 					align = left
 					text = "[CourtPosition.GetEmployerBonuses]"
@@ -973,7 +1003,7 @@ types CourtPositionTypes
 					text = "[CourtPosition.GetAICandidateScore]"
 					default_format = "#D"
 					min_width = 400
-					max_width = 400
+					max_width = 320
 				}
 
 				expand = {}
@@ -1030,7 +1060,7 @@ types CourtPositionTypes
 		datacontext = "[EmptyCourtPosition.GetType]"
 		visible = "[EmptyCourtPosition.CanShow]"
 
-		size = { 530 295 }
+		size = { 530 200 }
 
 		background = {
 			visible = "[And(Not(EmptyCourtPosition.IsAppointing), EmptyCourtPosition.CanHirePosition)]"
@@ -1258,7 +1288,7 @@ types CourtPositionTypes
 				parentanchor = left
 				text = "[CourtPositionType.GetNameNoTooltip]"
 				default_format = "#high"
-				using = Font_Size_Medium
+				using = Font_Size_Big
 				align = nobaseline
 				margin_top = 7
 				margin_left = 15
@@ -1269,7 +1299,7 @@ types CourtPositionTypes
 				visible = "[Not(EmptyCourtPosition.CanHirePosition)]"
 				parentanchor = left
 				text = "[CourtPositionType.GetNameNoTooltip]"
-				default_format = "#weak"
+				default_format = "#high"
 				using = Font_Size_Medium
 				align = nobaseline
 				margin_top = 7
@@ -1282,6 +1312,7 @@ types CourtPositionTypes
 				parentanchor = right
 				align = right
 				default_format = "#high"
+				using = Font_Size_Medium
 				text = "[CourtPositionType.GetSalaryTextFor(CourtPositionsWindow.CourtOwner)]"
 				tooltip = "[CourtPositionType.GetSalaryBreakdownFor(CourtPositionsWindow.CourtOwner)]"
 				margin_top = 5
