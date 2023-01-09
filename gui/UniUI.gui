@@ -106,6 +106,27 @@ window = {
 
 						text_single = {
 							autoresize = yes
+							raw_text = "Turn OFF all extra faith doctrine mods"
+							max_width = 250
+							using = Font_Size_Medium
+						}
+
+						expand = {}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('UniUIFaithDocs_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_UniUIFaithDocs').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+
+						text_single = {
+							autoresize = yes
 							raw_text = "Interface is King!"
 							max_width = 250
 							using = Font_Size_Medium

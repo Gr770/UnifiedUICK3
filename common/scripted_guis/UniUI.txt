@@ -176,6 +176,10 @@ legions_uniui = {
 
 #mod selector
 ###
+UMS_toggle_UniUIFaithDocs={
+	scope = character
+	effect = { UMS_toggle_mod = { MOD = UniUIFaithDocs } }
+}
 UMS_toggle_TTF={
 	scope = character
 	effect = { UMS_toggle_mod = { MOD = TTF } }

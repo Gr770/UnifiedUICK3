@@ -382,6 +382,7 @@ window = {
 			vbox = {
 				layoutpolicy_horizontal = expanding
 				spacing = 8
+				#margin_top = 15
 				margin = { 8 16 }
 				margin_bottom = 11
 
@@ -389,25 +390,43 @@ window = {
 					text = "FAITH_CORE_TENETS_HEADING"
 				}
 
-				hbox = {
-					name = "doctrines_grid_core_tenets"
-					datamodel = "[FaithWindow.GetGroupingHelper( 'core_tenets' ).GetGrouping]"
-					spacing = 52
+				scrollbox = {
+					layoutpolicy_vertical = expanding
+					layoutpolicy_horizontal = expanding
+					size = { 200 250 }
+					
+					blockoverride "scrollbox_content"
+					{
+						
+						fixedgridbox = {
+							name = "doctrines_grid_core_tenets"
+							datamodel = "[FaithWindow.GetGroupingHelper( 'core_tenets' ).GetGrouping]"
+							flipdirection = yes
+							addcolumn = 140
+							addrow = 210
+							setitemsizefromcell = yes
+							datamodel_wrap = 4
+							maxhorizontalslots = -1
+							maxverticalslots = -1
+							layoutpolicy_vertical = expanding
+							layoutpolicy_horizontal = expanding
 
-					state = {
-						name = "faith_view_refresh"
-						using = Animation_Refresh_FadeOut
-					}
+							state = {
+								name = "faith_view_refresh"
+								using = Animation_Refresh_FadeOut
+							}
 
-					state = {
-						using = Animation_Refresh_FadeIn
-					}
+							state = {
+								using = Animation_Refresh_FadeIn
+							}
 
-					item = {
-						container_tenet_item = {
-							datacontext = "[GuiFaithDoctrineItem.GetDoctrine]"
-							datacontext = "[GuiFaithDoctrineItem.GetFaith]"
-							tooltip = "FAITH_WINDOW_DOCTRINE_TOOLTIP"
+							item = {
+								container_tenet_item = {
+									datacontext = "[GuiFaithDoctrineItem.GetDoctrine]"
+									datacontext = "[GuiFaithDoctrineItem.GetFaith]"
+									tooltip = "FAITH_WINDOW_DOCTRINE_TOOLTIP"
+								}
+							}
 						}
 					}
 				}
@@ -471,7 +490,7 @@ window = {
 
 									vbox = {
 										dynamicgridbox = {
-											name = "virtues_grid"
+											name = "sins_grid"
 											datamodel = "[FaithWindow.GetSins]"
 											flipdirection = yes
 											datamodel_wrap = 6
@@ -617,6 +636,57 @@ window = {
 							}
 						}
 
+						### Beginn code added by Lucky Lenny
+						##  This vbox is needed by "Polytheism Reborn", "More Religious Doctrines" and "More Immersive Doctrines"
+						# Beginn More doctrines mod 
+						vbox = {
+							name = "more_doctrines_faith"
+							# 'visible' trigger added by Lucky Lenny
+							visible = "[And(Or( Or( GetGlobalVariable('MRD_is_loaded').IsSet, GetGlobalVariable('MID_is_loaded').IsSet ), And( GetGlobalVariable('PR_is_loaded').IsSet, GetGlobalVariable('more_doctrines_is_active').IsSet ) ), Not(GetGlobalVariable('UniUIFaithDocs_is_loaded').IsSet))]"
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+							margin_top = 10
+
+								text_label_center = {
+									layoutpolicy_horizontal = expanding
+									text = "FAITH_DOCTRINES_BELIEF"
+									default_format = "#low"
+								}
+
+								fixedgridbox = {
+									datamodel = "[FaithWindow.GetGroupingHelper( 'belief' ).GetGrouping]"
+									flipdirection = yes
+									addcolumn = 225
+									addrow = 67
+									datamodel_wrap = 2
+
+									item = {
+										widget_doctrine_item = {}
+									}
+								}
+
+								text_label_center = {
+									layoutpolicy_horizontal = expanding
+									text = "FAITH_DOCTRINES_PRACTICES"
+									default_format = "#low"
+								}
+
+								fixedgridbox = {
+									datamodel = "[FaithWindow.GetGroupingHelper( 'practices' ).GetGrouping]"
+									flipdirection = yes
+									addcolumn = 225
+									addrow = 67
+									datamodel_wrap = 2
+
+									item = {
+										widget_doctrine_item = {}
+									}
+								}
+							# }
+						}
+						# End More doctrines mod 
+						### End code added by Lucky Lenny
+
 						vbox = {
 							layoutpolicy_horizontal = expanding
 							spacing = 12
@@ -640,6 +710,27 @@ window = {
 								}
 							}
 						}
+
+						### Beginn code added by Lucky Lenny
+						##  The vbox is needed by "Polytheism Reborn"
+						vbox= {
+							margin_top = -85
+							margin_left = 235
+
+							fixedgridbox = {
+								visible = "[And(GetGlobalVariable('more_doctrines_is_active').IsSet, Not(GetGlobalVariable('UniUIFaithDocs_is_loaded').IsSet))]"
+								datamodel = "[FaithWindow.GetGroupingHelper( 'marriage_md' ).GetGrouping]"
+								flipdirection = yes
+								addcolumn = 230
+								addrow = 65
+								datamodel_wrap = 1
+
+								item = {
+									widget_doctrine_item = {}
+								}
+							}
+						}
+						### End code added by Lucky Lenny
 
 						vbox = {
 							layoutpolicy_horizontal = expanding
@@ -688,6 +779,26 @@ window = {
 								}
 							}
 						}
+
+						### Beginn code added by Lucky Lenny
+						##  The vbox is needed by "Polytheism Reborn"
+						vbox= {
+							margin_top = -10
+
+							fixedgridbox = {
+								visible = "[And(GetGlobalVariable('more_doctrines_is_active').IsSet, Not(GetGlobalVariable('UniUIFaithDocs_is_loaded').IsSet))]"
+								datamodel = "[FaithWindow.GetGroupingHelper( 'clergy_md' ).GetGrouping]"
+								flipdirection = yes
+								addcolumn = 230
+								addrow = 65
+								datamodel_wrap = 2
+
+								item = {
+									widget_doctrine_item = {}
+								}
+							}
+						}
+						### End code added by Lucky Lenny
 
 						vbox = {
 							visible = "[DataModelHasItems(FaithWindow.GetGroupingHelper( 'special' ).GetGrouping)]"
