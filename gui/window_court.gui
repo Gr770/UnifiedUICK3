@@ -79,6 +79,16 @@ window = {
 
 						onclick = "[CourtWindow.SetShowCourt]"
 						down = "[CourtWindow.IsShowCourt]"
+
+						text_single = {
+							visible = "[GetGlobalVariable('interfaceisking_is_loaded').IsSet]"
+							parentanchor = vcenter|right
+							position = { -20 -2 }
+							text = "[GetDataModelSize(GetPlayer.GetCourt)]"
+							default_format = "#mid"
+
+							alpha = "[Select_float( GreaterThan_int32(GetDataModelSize(GetPlayer.GetCourt), '(int32)0'), '(float)1.0', '(float)0.5' )]"
+						}
 					}
 
 
@@ -182,7 +192,7 @@ window = {
 								vbox_character_list = {
 									layoutpolicy_horizontal = expanding
 									layoutpolicy_vertical = expanding
-									minimumsize = { -1 800 }
+									minimumsize = { -1 940 }
 									datacontext = "[CourtWindow.GetCourt]"
 
 									blockoverride "sort_dropdown" {
