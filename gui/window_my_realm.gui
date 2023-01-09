@@ -1222,19 +1222,19 @@ window = {
 								text_single = {
 									layoutpolicy_horizontal = growing
 									max_width = 350
-									raw_text = "LEADING_FAMILY_TITLE"
+									text = "LEADING_FAMILY_TITLE"
 								}
 								text_single = {
 									layoutpolicy_horizontal = growing
 									max_width = 350
-									raw_text = "YOUR_OR_LIEGE_REPUBLIC"
+									text = "YOUR_OR_LIEGE_REPUBLIC"
 								}
 							}
 
 							button_standard = {
-								raw_text = "VIEW_REPUBLIC_HOUSES"
+								text = "VIEW_REPUBLIC_HOUSES"
 								size = { 150 32 }
-								raw_tooltip = "VIEW_REPUBLIC_HOUSES_TT"
+								tooltip = "VIEW_REPUBLIC_HOUSES_TT"
 								onclick = "[GetVariableSystem.Toggle('window_republic_families')]"
 								onclick = "[GetScriptedGui('most_likely_to_succeed').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 							}
@@ -1253,19 +1253,19 @@ window = {
 								text_single = {
 									layoutpolicy_horizontal = growing
 									max_width = 350
-									raw_text = "REPUBLIC_TERM_LIMITS"
+									text = "REPUBLIC_TERM_LIMITS"
 								}
 								text_single = {
 									layoutpolicy_horizontal = growing
 									max_width = 350
-									raw_text = "GET_REPUBLIC_TERM_LIMIT"
+									text = "GET_REPUBLIC_TERM_LIMIT"
 								}
 							}
 
 							button_standard = {
-								raw_text = "CHANGE_REPUBLIC_TERM_LIMIT"
+								text = "CHANGE_REPUBLIC_TERM_LIMIT"
 								size = { 150 32 }
-								raw_tooltip = "CHANGE_REPUBLIC_TERM_LIMIT"
+								tooltip = "CHANGE_REPUBLIC_TERM_LIMIT"
 								onclick = "[GetVariableSystem.Toggle('window_republic_elected_ruler_form')]"
 							}
 						}
@@ -1282,19 +1282,19 @@ window = {
 								text_single = {
 									layoutpolicy_horizontal = growing
 									max_width = 350
-									raw_text = "SENATE_VIEW"
+									text = "SENATE_VIEW"
 								}
 								text_single = {
 									layoutpolicy_horizontal = growing
 									max_width = 350
-									raw_text = "GET_YOUR_SEATS"
+									text = "GET_YOUR_SEATS"
 								}
 							}
 
 							button_standard = {
-								raw_text = "OPEN_SENATE_VIEW"
+								text = "OPEN_SENATE_VIEW"
 								size = { 150 32 }
-								raw_tooltip = "VIEW_SENATE"
+								tooltip = "VIEW_SENATE"
 								onclick = "[GetVariableSystem.Toggle('window_republic_senate_form')]"
 							}
 						}
@@ -1307,17 +1307,17 @@ window = {
 								text_single = {
 									layoutpolicy_horizontal = growing
 									max_width = 350
-									raw_text = "COUNCIL_VIEW"
+									text = "COUNCIL_VIEW"
 								}
 								text_single = {
 									layoutpolicy_horizontal = growing
 									max_width = 350
-									raw_text = "IS_COUNCILLOR_REPUBLIC"
+									text = "IS_COUNCILLOR_REPUBLIC"
 								}
 							}
 
 							button_standard = {
-								raw_text = "OPEN_COUNCIL_VIEw"
+								text = "OPEN_COUNCIL_VIEw"
 								size = { 150 32 }
 								tooltip = "VIEW_COUNCIL"
 								onclick = "[GetVariableSystem.Toggle('window_republic_council_form')]"
@@ -1332,14 +1332,14 @@ window = {
 								text_single = {
 									layoutpolicy_horizontal = growing
 									max_width = 350
-									raw_text = "CONSTITUTIONAL_VIEW"
+									text = "CONSTITUTIONAL_VIEW"
 								}
 							}
 
 							button_standard = {
-								raw_text = "OPEN_CONSTITUTIONAL_VIEW"
+								text = "OPEN_CONSTITUTIONAL_VIEW"
 								size = { 150 32 }
-								raw_tooltip = "VIEW_CONSTITUTIONAL"
+								tooltip = "VIEW_CONSTITUTIONAL"
 								onclick = "[GetVariableSystem.Toggle('window_republic_bicameral_form')]"
 							}
 						}
@@ -2392,9 +2392,9 @@ window = {
 												}
 												text_single = {
 													visible = "[GetScriptedGui('holder_is_not_you').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).AddScope('important_holder',Scope.Title.GetHolder.MakeScope).End)]"
-													raw_text = "EFFECTIVENESS"
+													text = "EFFECTIVENESS"
 													minimumsize = { 300 -1 }
-													raw_tooltip = "EFFECTIVENESS_TOOLTIP"
+													tooltip = "EFFECTIVENESS_TOOLTIP"
 												}
 											}
 											vbox = {
@@ -2431,7 +2431,7 @@ window = {
 						spacing = 8
 
 						hbox = {
-							visible = "[GetVariableSystem.HasValue( 'show_governors', '1' )]"
+							visible = "[GetVariableSystem.HasValue( 'realm_tabs', 'governors' )]"
 							tooltip = "[GetPlayer.GetDomainLimitTooltip]"
 							spacing = 2
 
@@ -2449,7 +2449,7 @@ window = {
 							}
 						}
 						hbox = {
-							visible = "[GetVariableSystem.HasValue( 'show_governors', '1' )]"
+							visible = "[GetVariableSystem.HasValue( 'realm_tabs', 'governors' )]"
 							tooltip = "[GetPlayer.GetDomainLimitTooltip]"
 							spacing = 2
 
@@ -2463,7 +2463,7 @@ window = {
 							}
 
 							text_single = {
-								raw_text = "[GetPlayer.MakeScope.Var('office_slots').GetValue|0]/[GetPlayer.MakeScope.Var('office_slots_max').GetValue|0] Holdings"
+								text = "[GetPlayer.MakeScope.Var('office_slots').GetValue|0]/[GetPlayer.MakeScope.Var('office_slots_max').GetValue|0] Holdings"
 							}
 						}					
 
