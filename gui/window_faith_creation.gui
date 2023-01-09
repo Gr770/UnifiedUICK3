@@ -25,6 +25,7 @@ window = {
 		on_start = "[GetVariableSystem.Set( 'faith_creation_icon_selection', 'false' )]"
 		on_start = "[GetVariableSystem.Clear('faith_creation_right_view')]"
 		on_start = "[GetVariableSystem.Clear('conversion_view_vassals')]"
+		on_start = "[GetVariableSystem.Clear('show_hide_ltd_virtues_sins')]"
 	}
 
 	state = {
@@ -177,41 +178,66 @@ window = {
 					vbox = {
 						name = "tenets"
 						layoutpolicy_horizontal = expanding
-						spacing = 15
+						layoutpolicy_vertical = expanding
+						spacing = 5
 
 						text_label_center = {
 							text = "[core_tenets|E]"
 						}
 
-						hbox = {
-							name = "tenets_grid"
-							datamodel = "[FaithCreationWindow.GetGroupingHelper( 'core_tenets' ).GetGrouping]"
-							spacing = 45
+						### Beginn code from 'More Religion Tenets Slots' mod by Karax
+						scrollbox = {
+							layoutpolicy_vertical = expanding
+							layoutpolicy_horizontal = expanding							
+							#margin_top = 15
+							#spacing = 10
+						
+							blockoverride "scrollbox_content"
+							{	
+								
+								fixedgridbox = {
 
-							item = {
-								button_group = {
-									datacontext = "[GuiFaithCreationDoctrineItem.GetGuiFaithDoctrineItem]"
-									datacontext = "[GuiFaithDoctrineItem.GetDoctrine]"
-									datacontext = "[GuiFaithDoctrineItem.GetFaith]"
+									name = "tenets_grid"
+									datamodel = "[FaithCreationWindow.GetGroupingHelper( 'core_tenets' ).GetGrouping]"
+									flipdirection = yes
+									addcolumn = 140
+									addrow = 210
+									setitemsizefromcell = yes
+									datamodel_wrap = 5
+									maxhorizontalslots = -1
+									maxverticalslots = 10
+									layoutpolicy_vertical = expanding
+									layoutpolicy_horizontal = expanding
+									### End code from 'More Religion Tenets Slots' mod by Karax
 
-									icon = {
-										size = { 130 160 }
-										scale = 1.5
-										parentanchor = center
-										visible = "[EqualTo_int32( GuiFaithCreationDoctrineItem.GetSlotIndex, GuiFaithCreationDoctrineItem.GetFaithCreationWindow.GetDoctrineGroupWindow.GetSlotIndex ) ]"
-										texture = "gfx/portraits/portrait_glow.dds"
-										using = Color_Orange
+									item = {
+										button_group = {
+											datacontext = "[GuiFaithCreationDoctrineItem.GetGuiFaithDoctrineItem]"
+											datacontext = "[GuiFaithDoctrineItem.GetDoctrine]"
+											datacontext = "[GuiFaithDoctrineItem.GetFaith]"
+
+											icon = {
+												size = { 130 160 }
+												scale = 1.5
+												parentanchor = center
+												visible = "[EqualTo_int32( GuiFaithCreationDoctrineItem.GetSlotIndex, GuiFaithCreationDoctrineItem.GetFaithCreationWindow.GetDoctrineGroupWindow.GetSlotIndex ) ]"
+												texture = "gfx/portraits/portrait_glow.dds"
+												using = Color_Orange
+											}
+
+											container_tenet_item = {
+												tooltip = "FAITH_WINDOW_DOCTRINE_CHANGE_TOOLTIP"
+											}
+
+											onclick = "[GuiFaithCreationDoctrineItem.GetFaithCreationWindow.GetDoctrineGroupWindow.ShowWindowSortList( GuiFaithCreationDoctrineItem.GetSlotIndex )]"
+											onclick = "[GetVariableSystem.Set( 'faith_creation_right_view', 'doctrine_selection' )]"
+											onclick = "[GetVariableSystem.Set( 'doctrine_group_name', FaithDoctrine.GetGroup.GetName( GuiFaithDoctrineItem.GetFaith ) )]"
+										}
 									}
-
-									container_tenet_item = {
-										tooltip = "FAITH_WINDOW_DOCTRINE_CHANGE_TOOLTIP"
-									}
-
-									onclick = "[GuiFaithCreationDoctrineItem.GetFaithCreationWindow.GetDoctrineGroupWindow.ShowWindowSortList( GuiFaithCreationDoctrineItem.GetSlotIndex )]"
-									onclick = "[GetVariableSystem.Set( 'faith_creation_right_view', 'doctrine_selection' )]"
-									onclick = "[GetVariableSystem.Set( 'doctrine_group_name', FaithDoctrine.GetGroup.GetName( GuiFaithDoctrineItem.GetFaith ) )]"
+								### Beginn code added by Karax
 								}
 							}
+							### End code added by Karax
 						}
 					}
 
@@ -265,6 +291,63 @@ window = {
 									}
 								}
 
+								### Beginn code added by Lucky Lenny
+								##  The two vboxes are needed by "Polytheism Reborn", "More Religious Doctrines" and "More Immersive Doctrines"
+								# Beginn More doctrines mod 
+								vbox = {
+									name = "more_doctrines_belief"
+									visible = "[And(Or( Or( GetGlobalVariable('MRD_is_loaded').IsSet, GetGlobalVariable('MID_is_loaded').IsSet ), And( GetGlobalVariable('PR_is_loaded').IsSet, GetGlobalVariable('more_doctrines_is_active').IsSet ) ), Not(GetGlobalVariable('UniUIFaithDocs_is_loaded').IsSet))]"
+									layoutpolicy_horizontal = expanding
+									spacing = 10
+
+									text_label_left = {
+										layoutpolicy_horizontal = expanding
+										text = "FAITH_DOCTRINES_BELIEF"
+										default_format = "#low"
+									}
+
+									fixedgridbox = {
+										name = "doctrines_grid_belief"
+										datamodel = "[FaithCreationWindow.GetGroupingHelper( 'belief' ).GetGrouping]"
+										flipdirection = yes
+										addcolumn = 270
+										addrow = 65
+										datamodel_wrap = 2
+
+										item = {
+											widget_doctrine_selection_item = {}
+										}
+									}
+								}
+
+								vbox = {
+									name = "more_doctrines_practices"
+									visible = "[And(Or( Or( GetGlobalVariable('MRD_is_loaded').IsSet, GetGlobalVariable('MID_is_loaded').IsSet ), And( GetGlobalVariable('PR_is_loaded').IsSet, GetGlobalVariable('more_doctrines_is_active').IsSet ) ), Not(GetGlobalVariable('UniUIFaithDocs_is_loaded').IsSet))]"
+									layoutpolicy_horizontal = expanding
+									spacing = 10
+
+									text_label_left = {
+										layoutpolicy_horizontal = expanding
+										text = "FAITH_DOCTRINES_PRACTICES"
+										default_format = "#low"
+									}
+
+									fixedgridbox = {
+										name = "doctrines_grid_practices"
+										datamodel = "[FaithCreationWindow.GetGroupingHelper( 'practices' ).GetGrouping]"
+										flipdirection = yes
+										addcolumn = 270
+										addrow = 65
+										datamodel_wrap = 2
+
+										item = {
+											widget_doctrine_selection_item = {}
+										}
+									}
+								}
+								# End More doctrines mod 
+								### End code added by Lucky Lenny
+
 								vbox = {
 									layoutpolicy_horizontal = expanding
 									spacing = 10
@@ -287,6 +370,25 @@ window = {
 											widget_doctrine_selection_item = {}
 										}
 									}
+
+									### Beginn code added by Lucky Lenny
+									##  The vbox is needed by "Polytheism Reborn"
+									vbox= {
+										margin_top = -85
+										margin_left = 270
+										fixedgridbox = {
+											visible = "[And(GetGlobalVariable('more_doctrines_is_active').IsSet, Not(GetGlobalVariable('UniUIFaithDocs_is_loaded').IsSet))]"
+											datamodel = "[FaithCreationWindow.GetGroupingHelper( 'marriage_md' ).GetGrouping]"
+											flipdirection = yes
+											addcolumn = 270
+											addrow = 65
+											datamodel_wrap = 1
+											item = {
+												widget_doctrine_selection_item = {}
+											}
+										}
+									}
+									### End code added by Lucky Lenny
 
 								}
 
@@ -338,7 +440,151 @@ window = {
 											widget_doctrine_selection_item = {}
 										}
 									}
+
+									### Beginn code added by Lucky Lenny
+									##  The vbox is needed by "Polytheism Reborn"
+									vbox= {
+										margin_top = -10
+										fixedgridbox = {
+											visible = "[And(GetGlobalVariable('more_doctrines_is_active').IsSet, Not(GetGlobalVariable('UniUIFaithDocs_is_loaded').IsSet))]"
+											datamodel = "[FaithCreationWindow.GetGroupingHelper( 'clergy_md' ).GetGrouping]"
+											flipdirection = yes
+											addcolumn = 270
+											addrow = 65
+											datamodel_wrap = 2
+											item = {
+												widget_doctrine_selection_item = {}
+											}
+										}
+									}
+									### End code added by Lucky Lenny
 								}
+								
+								### Beginn code for 'Virtues & Sins' group from 'Elder Kings 2'
+								### Added and ajusted by Lucky Lenny
+								vbox = {
+									datacontext = "[AccessGameRules]"
+									datacontext = "[JominiGameRules.AccessNamedGameRule( 'customizable_ethics_game_rule' )]"
+									datacontext = "[GuiGameRule.GetRule]"
+									datacontext = "[GuiGameRule.GetSetting]"
+									visible = "[And(And( GetGlobalVariable('MTS_CE_is_loaded').IsSet, GameRuleSetting.HasFlag('limited_customizable_ethics_enabled') ), Not(GetGlobalVariable('UniUIFaithDocs_is_loaded').IsSet))]"
+									layoutpolicy_horizontal = expanding
+									spacing = 10
+
+									hbox = {
+										layoutpolicy_horizontal = expanding
+										#margin_right = 15
+										text_label_left = {
+											layoutpolicy_horizontal = expanding
+											text = "FAITH_DOCTRINES_LTD_VIRTUES_SINS"
+											default_format = "#low"
+										}
+										button_expand = {
+											tooltip = "[SelectLocalization( VariableSystem.Exists('show_hide_ltd_virtues_sins'), 'show_ltd_virtues_sins', 'hide_ltd_virtues_sins' )]"
+											using = tooltip_nw
+											onclick = "[VariableSystem.Toggle('show_hide_ltd_virtues_sins')]"
+
+											texture = "gfx/interface/buttons/button_tree_expand.dds"
+											frame = "[Select_int32( VariableSystem.Exists('show_hide_ltd_virtues_sins'), '(int32)1', '(int32)2' )]"
+											mirror = horizontal
+
+											oversound = "event:/SFX/UI/Generic/sfx_ui_generic_icon_pointer_over"
+											clicksound = "event:/SFX/UI/Generic/sfx_ui_generic_icon_select"
+										}
+									}
+
+									fixedgridbox = {
+										name = "doctrines_grid_ltd_virtues_sins"
+										visible = "[Not(VariableSystem.Exists('show_hide_ltd_virtues_sins'))]"
+										datamodel = "[FaithCreationWindow.GetGroupingHelper( 'ltd_virtues_sins' ).GetGrouping]"
+
+										flipdirection = yes
+										addcolumn = 270
+										addrow = 65
+										datamodel_wrap = 2
+
+										item = {
+											widget_doctrine_selection_item = {}
+										}
+									}
+								}
+								### End code for 'Virtues & Sins' group from 'Elder Kings 2'
+							
+								### Beginn code from 'Religion customizable sins and virtues' mod by Karax
+								vbox = {
+									datacontext = "[AccessGameRules]"
+									datacontext = "[JominiGameRules.AccessNamedGameRule( 'customizable_ethics_game_rule' )]"
+									datacontext = "[GuiGameRule.GetRule]"
+									datacontext = "[GuiGameRule.GetSetting]"
+									# 'visible' trigger added by Lucky Lenny
+									visible = "[And(Or( GetGlobalVariable('CSV_is_loaded').IsSet, And(  GetGlobalVariable('MTS_CE_is_loaded').IsSet, GameRuleSetting.HasFlag('customizable_ethics_enabled') ) ), Not(GetGlobalVariable('UniUIFaithDocs_is_loaded').IsSet))]"
+									layoutpolicy_horizontal = expanding
+									spacing = 10
+
+									text_label_left = {
+										### Code not used by Lucky Lenny
+										# spacing = 10
+										layoutpolicy_horizontal = expanding										
+										text = "FAITH_WINDOW_SINS"
+										default_format = "#low"
+									}
+
+									fixedgridbox = {
+										name = "doctrines_grid_unl_sins"
+										datamodel = "[FaithCreationWindow.GetGroupingHelper( 'ethics_unl_sins' ).GetGrouping]"
+
+										flipdirection = yes
+										### Changed from 150 to 160 by Lucky Lenny
+										addcolumn = 160
+										addrow = 65
+
+										datamodel_wrap = 4
+										maxhorizontalslots = -1
+										maxverticalslots = 10
+
+										item = {
+											widget_doctrine_selection_item_small = {}
+										}
+									}
+								}
+
+								vbox = {
+									datacontext = "[AccessGameRules]"
+									datacontext = "[JominiGameRules.AccessNamedGameRule( 'customizable_ethics_game_rule' )]"
+									datacontext = "[GuiGameRule.GetRule]"
+									datacontext = "[GuiGameRule.GetSetting]"
+									# 'visible' trigger added by Lucky Lenny
+									visible = "[And(Or( GetGlobalVariable('CSV_is_loaded').IsSet, And(  GetGlobalVariable('MTS_CE_is_loaded').IsSet, GameRuleSetting.HasFlag( 'customizable_ethics_enabled')) ), Not(GetGlobalVariable('UniUIFaithDocs_is_loaded').IsSet))]"
+									layoutpolicy_horizontal = expanding
+									spacing = 10
+
+									text_label_left = {
+										### Code not used by Lucky Lenny
+										# spacing = 10
+										layoutpolicy_horizontal = expanding
+										text = "FAITH_WINDOW_VIRTUES"
+										default_format = "#low"
+									}
+									
+									fixedgridbox = {
+										name = "doctrines_grid_unl_virtues"
+										datamodel = "[FaithCreationWindow.GetGroupingHelper( 'ethics_unl_virtues' ).GetGrouping]"
+
+										flipdirection = yes
+										### Changed from 150 to 160 by Lucky Lenny
+										addcolumn = 160
+										addrow = 65										
+
+										datamodel_wrap = 4
+										maxhorizontalslots = -1
+										maxverticalslots = 10
+
+										item = {
+											widget_doctrine_selection_item_small = {}
+										}
+									}
+								}
+								### End code from 'Religion customizable sins and virtues' mod by Karax
 							}
 						}
 					}
@@ -356,6 +602,7 @@ window = {
 							vbox = {
 								name = "sins"
 								spacing = 3
+								layoutpolicy_vertical = expanding
 
 								hbox = {
 									spacing = 5
@@ -369,9 +616,11 @@ window = {
 									}
 								}
 
-								hbox = {
-									name = "virtues_grid"
+								dynamicgridbox = {
+									name = "sins_grid"
 									datamodel = "[FaithCreationWindow.GetSins]"
+									flipdirection = yes
+									datamodel_wrap = 8
 
 									item = {
 										icon = {
@@ -392,6 +641,7 @@ window = {
 										}
 									}
 								}
+								expand = {}
 							}
 
 							divider_light = {
@@ -414,9 +664,11 @@ window = {
 									}
 								}
 
-								hbox = {
+								dynamicgridbox = {
 									name = "virtues_grid"
 									datamodel = "[FaithCreationWindow.GetVirtues]"
+									flipdirection = yes
+									datamodel_wrap = 8
 
 									item = {
 										icon = {
@@ -437,6 +689,7 @@ window = {
 										}
 									}
 								}
+								expand = {}
 							}
 						}
 					}
@@ -1293,6 +1546,52 @@ types "FaithCreation"
 			}
 		}
 	}
+	
+	### Beginn code from 'Religion customizable sins and virtues' mod by Karax
+	type widget_doctrine_selection_item_small = button_standard_hover {
+		### Changed from 120 to 148 by Lucky Lenny
+		size = { 148 53 }
+		tooltip = "FAITH_WINDOW_DOCTRINE_CHANGE_TOOLTIP"
+		datacontext = "[GuiFaithCreationDoctrineItem.GetGuiFaithDoctrineItem]"
+		datacontext = "[GuiFaithDoctrineItem.GetDoctrine]"
+		onclick = "[GuiFaithCreationDoctrineItem.GetFaithCreationWindow.GetDoctrineGroupWindow.ShowWindow( GuiFaithCreationDoctrineItem.GetSlotIndex )]"
+		onclick = "[GetVariableSystem.Set( 'faith_creation_right_view', 'doctrine_selection' )]"
+		onclick = "[GetVariableSystem.Set( 'doctrine_group_name', FaithDoctrine.GetGroup.GetName( GuiFaithDoctrineItem.GetFaith ) )]"
+		down = "[And(GetVariableSystem.HasValue( 'doctrine_group_name', FaithDoctrine.GetGroup.GetName( GuiFaithDoctrineItem.GetFaith ) ), GetVariableSystem.HasValue( 'faith_creation_right_view', 'doctrine_selection' ))]"
+
+		background = {
+			using = Background_Area
+			margin = { 5 5 }
+		}
+
+		flowcontainer = {
+			name = "faith_list_item"
+			datacontext = "[GuiFaithDoctrineItem.GetDoctrine]"
+			spacing = 5
+			using = tooltip_nw
+			tooltip = "FAITH_WINDOW_DOCTRINE_TOOLTIP"
+
+			flowcontainer = {
+				direction = vertical
+
+				text_single = {
+					name = "doctrine_group_name"
+					text = "[FaithDoctrine.GetGroup.GetName( GuiFaithDoctrineItem.GetFaith )]"
+					align = left
+					default_format = "#low"
+				}
+
+				text_single = {
+					name = "faith_name"
+					text = "[FaithDoctrine.GetName( GuiFaithDoctrineItem.GetFaith )]"
+					datacontext = "[GuiFaithDoctrineItem.GetFaith]"
+					layoutpolicy_horizontal = expanding
+					elide = right
+					align = left				}
+			}
+		}
+	}
+	### End code from 'Religion customizable sins and virtues' mod by Karax
 
 	type vassal_conversion_preview = widget {
 		name = "vassal_conversion_preview_list"
