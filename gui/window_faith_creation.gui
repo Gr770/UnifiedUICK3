@@ -467,7 +467,7 @@ window = {
 									datacontext = "[JominiGameRules.AccessNamedGameRule( 'customizable_ethics_game_rule' )]"
 									datacontext = "[GuiGameRule.GetRule]"
 									datacontext = "[GuiGameRule.GetSetting]"
-									visible = "[And(And( GetGlobalVariable('MTS_CE_is_loaded').IsSet, GameRuleSetting.HasFlag('limited_customizable_ethics_enabled') ), Not(GetGlobalVariable('UniUIFaithDocs_is_loaded').IsSet))]"
+									visible = "[And(And( GetGlobalVariable('MTS_CE_is_loaded').IsSet, GameRuleSetting.HasFlag('limited_customizable_ethics_enabled') ), Not(GetGlobalVariable('UniUIFaithDocs_is_loaded').IsSet)]"
 									layoutpolicy_horizontal = expanding
 									spacing = 10
 
