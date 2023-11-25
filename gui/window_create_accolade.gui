@@ -1,0 +1,447 @@
+######################################################
+################# CREATE ACCOLADE VIEW ###################
+######################################################
+
+window = {
+	name = "create_accolade_view"
+	size = { 540 865 }
+	parentanchor = top|right
+	position = { -626 170 }
+	movable = no
+	layer = middle
+	datacontext = "[CreateAccoladeView.AccessMilitaryView]"
+
+	using = Window_Background_Subwindow
+
+	state = {
+		name = _show
+		using = Animation_FadeIn_Quick
+
+		position = { -626 170 }
+	}
+
+	state = {
+		name = _hide
+		using = Animation_FadeOut_Quick
+
+		position_x = -570
+	}
+
+	vbox = {
+		margin = { 4 4 }
+		spacing = 5
+		name = "create_accolade_tutorial_uses_this"
+
+		header_pattern = {
+			layoutpolicy_horizontal = expanding
+
+			blockoverride "header_text"
+			{
+				text = "CREATE_ACCOLADE"
+			}
+
+			blockoverride "button_close"
+			{
+				onclick = "[CreateAccoladeView.Close]"
+				onclick = "[OpenGameView( 'knights' )]"
+				texture = "gfx/interface/icons/flat_icons/window_back.dds"
+				tooltip = "BACK_TOOLTIP"
+			}
+		}
+
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			margin_bottom = 20
+			margin_left = 22
+			spacing = 10
+
+			widget = {
+				size = { 140 160 }
+				accolade_banner = {
+					position = { -6 0 }
+					size = { 100% 100% }
+				}
+
+				portrait_shoulders = {
+					datacontext = "[CreateAccoladeView.GetSelectedKnight]"
+				}
+			}
+
+			vbox = {
+				margin = { 10 0 }
+				spacing = 20
+
+				visible = "[CreateAccoladeView.GetSelectedKnight.IsValid]"
+
+				hbox = {
+					spacing = 20
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+
+					background = {
+						using = Background_Area_Dark
+						alpha = 0.6
+						margin = { 10 10 }
+					}
+
+					text_single = {
+						visible = "[Not( CreateAccoladeView.IsRenaming )]"
+						text = "[CreateAccoladeView.GetAccoladeName]"
+						max_width = 275
+						autoresize = yes
+						using = Font_Size_Medium
+						align = nobaseline
+					}
+
+					button_edit_text = {
+						size = { 25 25 }
+						visible = "[Not( CreateAccoladeView.IsRenaming )]"
+						onclick = "[CreateAccoladeView.ToggleRenaming]"
+					}
+
+					editbox_standard = {
+						layoutpolicy_horizontal = expanding
+						visible = "[CreateAccoladeView.IsRenaming]"
+
+						blockoverride "editbox_properties"
+						{
+							name = "accolade_name"
+							text = "[CreateAccoladeView.GetTempName]"
+							ontextedited = "[CreateAccoladeView.EditName]"
+							onreturnpressed = "[CreateAccoladeView.SubmitName]"
+						}
+					}
+
+					expand = {}
+				}
+
+				hbox = {
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+
+					name = "candidate_attributes_tutorial_uses_this"
+
+					vbox = {
+						spacing = 5
+
+						accolade_type_box = {
+							margin_right = 5
+							datacontext = "[CreateAccoladeView.GetSelectedPrimaryType]"
+
+							blockoverride "subtitle_text"
+							{
+								text = "ACCOLADE_PRIMARY_TYPE"
+							}
+
+							blockoverride "change_button"
+							{
+								button_round = {
+									name = "change_primary_type"
+									size = { 32 32 }
+
+									enabled = "[GreaterThan_int32( GetDataModelSize( CreateAccoladeView.GetPotentialTypes ), '(int32)2')]"
+									onclick = "[CreateAccoladeView.ToggleChangingPrimaryType]"
+									tooltip = "[CreateAccoladeView.GetChangePrimaryTypeTooltip]"
+
+									button_change = {
+										size = { 25 25 }
+										alwaystransparent = yes
+										parentanchor = center
+									}
+								}
+							}
+						}
+
+						accolade_type_box = {
+							margin_right = 5
+							datacontext = "[CreateAccoladeView.GetSelectedSecondaryType]"
+
+							blockoverride "subtitle_text"
+							{
+								text = "ACCOLADE_SECONDARY_TYPE"
+							}
+
+							blockoverride "change_button"
+							{
+								button_round = {
+									name = "change_secondary_type"
+									size = { 32 32 }
+
+									enabled = "[GreaterThan_int32( GetDataModelSize( CreateAccoladeView.GetPotentialTypes ), '(int32)2')]"
+									onclick = "[CreateAccoladeView.ToggleChangingSecondaryType]"
+									tooltip = "[CreateAccoladeView.GetChangeSecondaryTypeTooltip]"
+
+									button_change = {
+										size = { 25 25 }
+										alwaystransparent = yes
+										parentanchor = center
+									}
+								}
+							}
+						}
+					}
+
+					expand = {}
+				}
+			}
+
+			vbox = {
+				margin = { 10 0 }
+				spacing = 20
+
+				visible = "[Not(CreateAccoladeView.GetSelectedKnight.IsValid)]"
+
+				text_multi = {
+					text = "CREATE_ACCOLADE_SELECT_KNIGHT"
+					default_format = "#help"
+					using = Font_Size_Medium
+					autoresize = yes
+					max_width = 250
+				}
+			}
+
+			expand = {}
+		}
+
+		hbox = {
+			spacing = 10
+			margin_bottom = 5
+
+			button_standard = {
+				size = { 200 40 }
+
+				onclick = "[CreateAccoladeView.Close]"
+				onclick = "[OpenGameView( 'knights' )]"
+
+				text = "CANCEL"
+			}
+			button_standard = {
+				size = { 200 40 }
+				enabled = "[CreateAccoladeView.CanCreateAccolade]"
+				onclick = "[CreateAccoladeView.CreateAccolade]"
+
+				tooltip = "[CreateAccoladeView.GetCreateAccoladeTooltip]"
+				text = "CREATE_ACCOLADE"
+			}
+		}
+
+		scrollbox = {
+			name = "accolade_candidate_list_tutorial_uses_this"
+
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+
+			visible = "[Not( CreateAccoladeView.IsChangingType )]"
+
+			blockoverride "scrollbox_content" {
+				name = "acclaimed_knights"
+				datamodel = "[MilitaryView.GetKnights]"
+				spacing = 10
+
+				item = {
+					button = {
+						layoutpolicy_horizontal = expanding
+						size = { 0 130 }
+
+						# has at least 2 potential accolade types
+						visible = "[Character.CanBeAcclaimed]"
+						onclick = "[CreateAccoladeView.SetSelectedKnight( Character.Self )]"
+						tooltip = "CREATE_ACCOLADE_ASSIGN_TT"
+						using = tooltip_nw
+
+						using = Background_Frame
+						color = { 0.7 0.4 0.3 0.7 }
+
+						blockoverride "Background_Guest_pattern_visible"
+						{
+							visible = "[Character.IsGuest]"
+							margin_bottom = -5
+							margin_right = 5
+						}
+						blockoverride "Background_Guest_frame_visible"
+						{
+							visible = "[Character.IsGuest]"
+							margin_left = 3
+							margin_bottom = -5
+							margin_top = 1
+							margin_right = 5
+						}
+
+						vbox = {
+							spacing = 7
+							margin_top = 5
+							margin_left = 5
+							margin_right = 20
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+								layoutpolicy_vertical = expanding
+								margin_right = 5
+								spacing = 10
+
+								portrait_head = {
+									alpha = "[Select_float( Character.IsKnight, '(float)1.0', '(float)0.6' )]"
+								}
+
+
+								vbox = {
+									layoutpolicy_vertical = expanding
+									layoutpolicy_horizontal = expanding
+									spacing = 10
+									margin_top = 15
+
+									hbox = {
+										layoutpolicy_horizontal = expanding
+
+										hbox = {
+											layoutpolicy_horizontal = expanding
+											layoutpolicy_vertical = expanding
+											spacing = 4
+											margin_left = -5
+
+											icon = {
+												visible = "[Character.IsKnight]"
+												texture = "gfx/interface/icons/icon_knight_small.dds"
+												size = { 32 32 }
+											}
+
+											vbox = {
+												layoutpolicy_horizontal = expanding
+												layoutpolicy_vertical = expanding
+
+												text_single = {
+													layoutpolicy_horizontal = expanding
+													text = "GeneralUniUICharGetNameNoTooltip"
+													using = Font_Size_Medium
+													autoresize = no
+												}
+
+
+												text_single = {
+													layoutpolicy_horizontal = expanding
+													text = "[Character.GetRelationToString( GetPlayer )]"
+													default_format = "#low"
+													autoresize = no
+													align = nobaseline
+												}
+
+												expand = {}
+											}
+										}
+
+										vbox = {
+											layoutpolicy_vertical = expanding
+											margin = { 10 -4 }
+
+											text_label_center  = {
+												text = "[prowess_i][Character.GetSkill( 'prowess' )]"
+												using = Font_Size_Big
+												default_format = "#high"
+											}
+
+											expand = {}
+										}
+									}
+
+									hbox = {
+										visible = "[Character.IsGuest]"
+										layoutpolicy_horizontal = expanding
+										spacing = 10
+
+										button_standard = {
+											visible = "[Character.IsPlayerInteractionShown('recruit_guest_interaction')]"
+											enabled = "[Character.IsPlayerInteractionValid('recruit_guest_interaction')]"
+											onclick = "[Character.OpenPlayerInteraction('recruit_guest_interaction')]"
+											text = "[Character.GetPlayerInteractionName('recruit_guest_interaction')]"
+											tooltip = "[Character.GetPlayerInteractionTooltip('recruit_guest_interaction')]"
+											using = tooltip_se
+										}
+
+										expand = {}
+									}
+
+									expand = {}
+								}
+
+
+							}
+
+							divider = {
+								layoutpolicy_horizontal = expanding
+							}
+						}
+					}
+				}
+			}
+		}
+
+		scrollbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+
+			visible = "[CreateAccoladeView.IsChangingType]"
+
+			blockoverride "scrollbox_content" {
+				name = "accolade_types"
+				datamodel = "[CreateAccoladeView.GetPotentialTypes]"
+				spacing = 5
+
+				item = {
+					widget = {
+						size = { 400 40 }
+
+						visible = "[And( Not( ObjectsEqual( AccoladeType.Self, CreateAccoladeView.GetSelectedPrimaryType ) ), Not( ObjectsEqual( AccoladeType.Self, CreateAccoladeView.GetSelectedSecondaryType ) ) )]"
+
+						button_standard = {
+							size = { 100% 40 }
+							using = Background_Frame
+
+							visible = "[CreateAccoladeView.IsChangingPrimaryType]"
+
+							onclick = "[CreateAccoladeView.SetSelectedPrimaryType( AccoladeType.Self )]"
+							onclick = "[CreateAccoladeView.ToggleChangingPrimaryType]"
+							tooltip = "CREATE_ACCOLADE_SET_PRIMARY_TYPE_TT"
+							using = tooltip_nw
+
+							text = "[AccoladeType.GetName]"
+						}
+
+
+						button_standard = {
+							size = { 100% 40 }
+							using = Background_Frame
+
+							visible = "[CreateAccoladeView.IsChangingSecondaryType]"
+
+							onclick = "[CreateAccoladeView.SetSelectedSecondaryType( AccoladeType.Self )]"
+							onclick = "[CreateAccoladeView.ToggleChangingSecondaryType]"
+							tooltip = "CREATE_ACCOLADE_SET_SECONDARY_TYPE_TT"
+							using = tooltip_nw
+
+							text = "[AccoladeType.GetName]"
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+types CreateAccoladeWindowTypes
+{
+	type empty_accolade_type_box = hbox {
+		layoutpolicy_horizontal = expanding
+		spacing = 10
+
+		text_single = {
+			layoutpolicy_horizontal = expanding
+			text = "CREATE_ACCOLADE_EMPTY_TYPE"
+			align = nobaseline
+		}
+
+		debug_square = {
+			size = { 30 30 }
+		}
+	}
+}
+

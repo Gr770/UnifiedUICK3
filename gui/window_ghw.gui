@@ -299,7 +299,7 @@ window = {
 						margin_top = 10
 
 						background = {
-							texture = "[Illustration.GetTexture( Character.Self )]"
+							texture = "[Illustration.GetTexture( Character.MakeScope )]"
 							fittype = centercrop
 							margin = { 45 5 }
 							margin_left = 25
@@ -402,7 +402,7 @@ window = {
 						margin_top = 10
 
 						background = {
-							texture = "[Illustration.GetTexture( Character.Self )]"
+							texture = "[Illustration.GetTexture( Character.MakeScope )]"
 							fittype = centercrop
 							margin = { 45 5 }
 							margin_right = 25
@@ -1192,7 +1192,7 @@ window = {
 										name = "rank"
 										spacing = 1
 										minimumsize = { 0 25 }
-										visible = "[GreatHolyWar.IsPledgedAttacker( GetPlayer ))]"
+										visible = "[GreatHolyWar.IsPledgedAttacker( GetPlayer )]"
 
 										tooltip = "GHW_MY_RANK_TT"
 

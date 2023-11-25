@@ -173,7 +173,7 @@ window = {
 			}
 		}
 
-		vbox_character_list = {
+		fixed_gridbox_character_list = {
 			layoutpolicy_vertical = expanding
 			layoutpolicy_horizontal = expanding
 			visible = "[PotentialCouncillorWindow.CanReassignCouncillor]"
@@ -187,7 +187,6 @@ window = {
 			blockoverride "item_size" 
 			{
 				size = { 630 110 }
-				layoutpolicy_horizontal = expanding
 			}
 
 			blockoverride "button"

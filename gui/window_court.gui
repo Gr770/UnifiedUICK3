@@ -144,7 +144,7 @@ window = {
 									datacontext = "[GetDecisionWithKey('invite_knights_decision')]"
 									visible = "[Decision.IsShownForPlayer]"
 
-									onclick = "[OpenDecisionDetailView(Decision.Self)]"
+									onclick = "[OpenGameViewData( 'decision_detail', Decision.Self)]"
 									using = tooltip_se
 
 									size = { 210 30 }
@@ -192,7 +192,7 @@ window = {
 								vbox_character_list = {
 									layoutpolicy_horizontal = expanding
 									layoutpolicy_vertical = expanding
-									minimumsize = { -1 940 }
+									minimumsize = { -1 800 }
 									datacontext = "[CourtWindow.GetCourt]"
 
 									blockoverride "sort_dropdown" {

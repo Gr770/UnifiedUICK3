@@ -8,7 +8,7 @@ window = {
 	datacontext = "[DeclareWarInteractionWindow.GetCharacterInteractionConfirmationWindow]"
 	parentanchor = top|right
 	position = { -15 90 }
-	size = { 640 950 } #1020
+	size = { 640 970 } #1020
 	allow_outside = yes
 	movable = no
 	layer = middle
@@ -74,6 +74,8 @@ window = {
 			using = Window_Margins
 
 			header_pattern_interaction = {
+				size = { 0 40 }
+
 				layoutpolicy_horizontal = expanding
 
 				blockoverride "header_text"
@@ -88,8 +90,9 @@ window = {
 			}
 
 			widget = {
+
 				layoutpolicy_horizontal = expanding
-				size = { 0 240 }
+				size = { 0 220 }
 
 				background = {					
 					using = Background_Area_Dark
@@ -696,6 +699,7 @@ window = {
 							visible = "[DeclareWarInteractionWindow.ShouldShowAdditionalWarning]"
 							spacing = 8
 							margin_top = 2
+							margin_bottom = -5
 
 							warning_icon = {
 								size = { 25 25 }
@@ -705,6 +709,42 @@ window = {
 								text = "[DeclareWarInteractionWindow.WriteAdditionalWarningMessage]"
 								max_width = 350
 								autoresize = yes
+							}
+						}
+					}
+
+					scrollarea = {
+						name = "defenders_scrollarea"
+						visible = "[Not(IsDataModelEmpty(DeclareWarInteractionWindow.GetDefenders))]"
+						size = { 540 120 }
+						scrollbarpolicy_vertical = always_off
+						scrollbarpolicy_horizontal = as_needed
+						scrollbar_horizontal = {
+							using = Scrollbar_Horizontal
+						}
+						scrollwidget = {
+							hbox = {
+								using = Scrollbox_Margins
+
+								fixedgridbox = {
+									datamodel_reuse_widgets = yes
+									maxverticalslots = 1
+									flipdirection = yes
+									name = "forced_defenders"
+									datamodel = "[DeclareWarInteractionWindow.GetDefenders]"
+									addrow = 90
+									addcolumn = 80
+
+									item = {
+										portrait_head_small = {
+											datacontext = "[WarAllyItem.GetCharacter]"
+
+											tooltip = "WAR_DEFENDER_ALLY_TOOLTIP"
+
+											blockoverride "opinion_box" {}
+										}
+									}
+								}
 							}
 						}
 					}
@@ -743,7 +783,7 @@ window = {
 
 						tooltip = "[DeclareWarInteractionWindow.GetDeclareWarButtonTooltip]"
 
-						clicksound = "event:/SFX/UI/War/sfx_ui_war_declare_war"
+						clicksound = "[DeclareWarInteractionWindow.GetConfirmClickSound]"
 
 						animation_aggressive = {
 							visible = "[DeclareWarInteractionWindow.CanSend]"

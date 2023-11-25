@@ -23,7 +23,6 @@ JominiMultiplayerLobby = {
 	}
 
 	blockoverride "lobby_view_back_onclick" {
-		onclick = "[SetIronmanEnabledStatus( '(bool)no' )]"
 		onclick = "[ReturnToMenu]"
 	}
 
@@ -125,7 +124,7 @@ JominiMultiplayerLobby = {
 					datacontext = "[GetIllustration( 'character_view_bg' )]"
 
 					background = {
-						texture = "[Illustration.GetTexture( Character.Self )]"
+						texture = "[Illustration.GetTexture( Character.MakeScope )]"
 						fittype = centercrop
 						using = Mask_Rough_Edges
 					}
@@ -866,7 +865,7 @@ JominiMultiplayerLobby = {
 						texture = "gfx/interface/buttons/button_standard.dds"
 						onclick = "[LobbyView.ToggleObserve]"
 						text = "[SelectLocalization(LobbyView.IsObserver, 'JOMINI_MULTIPLAYER_GUI_DISABLE_OBSERVE', 'JOMINI_MULTIPLAYER_GUI_OBSERVE')]"
-						tooltip = "JOMINI_MULTIPLAYER_GUI_OBSERVE_TOOLTIP"
+						tooltip = "LOBBY_OBSERVER_MODE_TOOLTIP"
 						layoutpolicy_horizontal = expanding
 
 						icon_observer = {

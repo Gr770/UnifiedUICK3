@@ -106,48 +106,6 @@ window = {
 
 						text_single = {
 							autoresize = yes
-							raw_text = "Turn OFF all extra faith doctrine mods"
-							max_width = 250
-							using = Font_Size_Medium
-						}
-
-						expand = {}
-
-						button_checkbox = {
-							size = { 30 30 }
-							
-							checked = "[GetGlobalVariable('UniUIFaithDocs_is_loaded').IsSet]"
-							onclick = "[GetScriptedGui('UMS_toggle_UniUIFaithDocs').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
-						}
-					}
-
-					hbox={
-						layoutpolicy_horizontal = expanding
-						using = UMS_Entry_Margins
-
-						text_single = {
-							autoresize = yes
-							raw_text = "Interface is King!"
-							max_width = 250
-							using = Font_Size_Medium
-						}
-
-						expand = {}
-
-						button_checkbox = {
-							size = { 30 30 }
-							
-							checked = "[GetGlobalVariable('interfaceisking_is_loaded').IsSet]"
-							onclick = "[GetScriptedGui('UMS_toggle_IFiK').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
-						}
-					}
-
-					hbox={
-						layoutpolicy_horizontal = expanding
-						using = UMS_Entry_Margins
-
-						text_single = {
-							autoresize = yes
 							raw_text = "Cultural and Religious Minorities"
 							max_width = 250
 							using = Font_Size_Medium
@@ -274,28 +232,7 @@ window = {
 
 						text_single = {
 							autoresize = yes
-							raw_text = "Fullscreen Barbershop"
-							max_width = 250
-							using = Font_Size_Medium
-						}
-
-						expand = {}
-
-						button_checkbox = {
-							size = { 30 30 }
-							
-							checked = "[GetGlobalVariable('FSB_is_loaded').IsSet]"
-							onclick = "[GetScriptedGui('UMS_toggle_FSB').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
-						}
-					}
-
-					hbox={
-						layoutpolicy_horizontal = expanding
-						using = UMS_Entry_Margins
-
-						text_single = {
-							autoresize = yes
-							raw_text = "The Catholic Trinity (Requires NG)"
+							raw_text = "The Catholic Trinity (Requires NG/Also Covers KoH)"
 							max_width = 250
 							using = Font_Size_Medium
 						}
@@ -484,7 +421,7 @@ window = {
 						
 						text_single = {
 							autoresize = yes
-							raw_text = "Governments +"
+							raw_text = "Governments+"
 							max_width = 250
 							using = Font_Size_Medium
 						}
@@ -496,48 +433,6 @@ window = {
 							
 							checked = "[GetGlobalVariable('Gov_is_loaded').IsSet]"
 							onclick = "[GetScriptedGui('UMS_toggle_Gov').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
-						}
-					}
-
-					hbox={
-						layoutpolicy_horizontal = expanding
-						using = UMS_Entry_Margins
-						
-						text_single = {
-							autoresize = yes
-							raw_text = "Sinews of War"
-							max_width = 250
-							using = Font_Size_Medium
-						}
-
-						expand = {}
-
-						button_checkbox = {
-							size = { 30 30 }
-							
-							checked = "[GetGlobalVariable('SoW_is_loaded').IsSet]"
-							onclick = "[GetScriptedGui('UMS_toggle_SoW').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
-						}
-					}
-					
-					hbox={
-						layoutpolicy_horizontal = expanding
-						using = UMS_Entry_Margins
-						
-						text_single = {
-							autoresize = yes
-							raw_text = "Advanced Character Search"
-							max_width = 250
-							using = Font_Size_Medium
-						}
-
-						expand = {}
-
-						button_checkbox = {
-							size = { 30 30 }
-							
-							checked = "[GetGlobalVariable('mod_acs_active').IsSet]"
-							onclick = "[GetScriptedGui('UMS_toggle_acs').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
 						}
 					}
 
