@@ -538,7 +538,7 @@ types DynastyTreeView
 			visible = "[Not( ObjectsEqual( DynastyHouse.GetFounder.Self, DynastyHouse.GetHeadOfHouse.Self ))]"
 
 			button_standard = {
-				onclick = "[OpenDynastyTreeViewFromCharacter( DynastyHouse.GetFounder.GetID )]"
+				onclick = "[OpenGameViewData( 'dynasty_tree_view', DynastyHouse.GetFounder.GetID )]"
 
 				text = "DynastyTreeUniUIFounderGetShortUINameNotMeNoTooltip"
 
@@ -547,7 +547,7 @@ types DynastyTreeView
 
 			button_standard ={
 				visible = "[DynastyHouse.HasHeadOfHouse]"
-				onclick = "[OpenDynastyTreeViewFromCharacter( DynastyHouse.GetHeadOfHouse.GetID )]"
+				onclick = "[OpenGameViewData( 'dynasty_tree_view', DynastyHouse.GetHeadOfHouse.GetID )]"
 
 				text = "DynastyTreeUniUIHeadGetShortUINameNotMeNoTooltip"
 
@@ -557,7 +557,7 @@ types DynastyTreeView
 
 		button_standard = {
 			visible = "[ObjectsEqual( DynastyHouse.GetFounder.Self, DynastyHouse.GetHeadOfHouse.Self )]"
-			onclick = "[OpenDynastyTreeViewFromCharacter( DynastyHouse.GetFounder.GetID )]"
+			onclick = "[OpenGameViewData( 'dynasty_tree_view', DynastyHouse.GetFounder.GetID )]"
 			text = "DynastyTreeUniUIFounderGetShortUINameNotMeNoTooltip"
 			size = { 145 70 }
 		}
