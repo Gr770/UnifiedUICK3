@@ -225,13 +225,13 @@ window = {
 						name = "add_to_position"
 						visible = "[And(Not( Character.IsCouncillor ), Not(CharacterListItem.GetCharacter.IsGuest))]"
 						onclick = "[CharacterListItem.OnClick('set_position')]"
-						enabled = "[And( PotentialCouncillorWindow.CanFireCouncillor, Not( PotentialCouncillorWindow.HasPendingInteraction( CharacterListItem.GetCharacter ) ) )]"						
+						enabled = "[And( PotentialCouncillorWindow.CanFireCouncillor, Not( PotentialCouncillorWindow.HasPendingInteraction( CharacterListItem.GetCharacter ) ) )]"
 
 						text = "POTENTIAL_COUNCILLOR_ASSIGN"
 						default_format = "#high"
 
 						using = tooltip_below
-						tooltip = "[Select_CString( PotentialCouncillorWindow.CanFireCouncillor, CharacterListItem.GetText('assign_tooltip'), PotentialCouncillorWindow.GetFireCouncillorTooltip )]"						
+						tooltip = "[Select_CString( PotentialCouncillorWindow.CanFireCouncillor, CharacterListItem.GetText('assign_tooltip'), PotentialCouncillorWindow.GetFireCouncillorTooltip )]"
 					}
 
 					button_standard = {

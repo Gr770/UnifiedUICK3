@@ -500,7 +500,7 @@ types CouncilWindow
 						texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
 						blend_mode = alphamultiply
 						alpha = 0.9
-						mirror = horizontal					
+						mirror = horizontal
 					}
 				}
 
