@@ -267,7 +267,7 @@ types ActivityPlannerTypes
 
 	type potential_selectable_target_portrait_widget = widget
 	{
-		size = { 400 94 }
+		size = { 475 94 }
 
 		portrait_head_small = {
 			parentanchor = left|vcenter
@@ -285,40 +285,51 @@ types ActivityPlannerTypes
 				name = "character_list_arrow"
 			}
 
-			vbox = {
-				margin = {16 16}
 
-				expand = {}
+			hbox = {
+				margin = { 16 16 }
 
-				text_single = {
-					name = "character_name"
-					layoutpolicy_horizontal = expanding
+				vbox = {
 
-					text = "GeneralUniUICharGetUINameNoTooltip"
-					align = nobaseline
-					default_format = "#high"
-					max_width = 360
-					using = Font_Size_Medium
+					expand = {}
 
-					alwaystransparent = yes
+					text_single = {
+						name = "character_name"
+						layoutpolicy_horizontal = expanding
+
+						text = "GeneralUniUICharGetUINameNoTooltip"
+						align = nobaseline
+						default_format = "#high"
+						max_width = 320
+						using = Font_Size_Medium
+
+						alwaystransparent = yes
+					}
+
+					text_single = {
+						name = "character_relation"
+						layoutpolicy_horizontal = expanding
+
+						text = "[Character.GetRelationToString( GetPlayer )]"
+						default_format = "#low"
+						align = nobaseline
+						max_width = 320
+
+						alwaystransparent = yes
+					}
+
+					expand = {}
 				}
 
-				text_single = {
-					name = "character_relation"
-					layoutpolicy_horizontal = expanding
-
-					text = "[Character.GetRelationToString( GetPlayer )]"
-					default_format = "#low"
-					align = nobaseline
-					max_width = 360
-
-					alwaystransparent = yes
-				}
-
 				expand = {}
+				
+				block "extra_data"
+				{
+				}
 			}
 		}
 	}
+
 
 	type caravan_master_portrait_widget = widget
 	{
@@ -339,12 +350,10 @@ types ActivityPlannerTypes
 
 		button = {
 			name = "empty_slot"
-
 			visible = "[Not(Character.IsValid)]"
+			size = { 100% 100% }
 
 			tooltip = "APPOINT_CARAVAN_MASTER"
-
-			size = { 100% 100% }
 
 			block "empty_slot"
 			{
@@ -364,8 +373,30 @@ types ActivityPlannerTypes
 			}
 
 			button_plus = {
+				visible = "[And( Not( TravelPlanner.GetTravelPlan.IsValid ), Not( Character.IsValid ) )]"
 				parentanchor = center
 				alwaystransparent = yes
+			}
+		}
+
+		text_multi = {
+			visible = "[And( TravelPlanner.GetTravelPlan.IsValid, Not( Character.IsValid ) )]"
+			position = { 0 60 }
+
+			text = "TRAVEL_LEADER_SELECTED_NONE"
+			align = center|nobaseline
+			autoresize = yes
+			default_format = "#weak"
+			max_width = 150
+
+			background = {
+				using = Background_Area_Dark
+				margin = { 8 4 }
+
+				modify_texture = {
+					texture = "gfx/interface/component_masks/mask_fade_horizontal_middle_thick.dds"
+					blend_mode = alphamultiply
+				}
 			}
 		}
 	}
@@ -462,8 +493,7 @@ types ActivityPlannerTypes
 
 						button_icon_highlight = {
 							parentanchor = center
-							position = { 0 0}
-							size = { 36 36 }
+							size = { 34 34 }
 							texture = "[ActivityPhase.GetIcon]"
 						}
 					}
@@ -1218,7 +1248,7 @@ types ActivityPlannerNewTypes
 			}
 
 			vbox = {
-				spacing = 16
+				spacing = 8
 				margin = { 16 16 }
 
 				text_single = {
@@ -1577,6 +1607,13 @@ types ActivityPlannerNewTypes
 					}
 				}
 
+				vbox = {
+					name = "activity_options_plugins"
+					layoutpolicy_vertical = expanding
+					margin_top = 8
+					margin_bottom = 16
+				}
+
 				# Activity Options
 				widget = {
 					name = "activity_options"
@@ -1642,6 +1679,7 @@ types ActivityPlannerNewTypes
 							item = {
 								button = {
 									name = "activity_button"
+									datacontext = "[ActiveActivityOption.GetOption]"
 									visible = "[Not( ObjectsEqual( ActiveActivityOption.GetCategory, ActivityType.GetSpecialOptionCategory ) )]"
 									size = { 66 110 }
 
@@ -1930,7 +1968,7 @@ types ActivityPlannerNewTypes
 
 				text_multi = {
 					layoutpolicy_horizontal = expanding
-					text = "[ActivityOption.GetDescription]"
+					text = "ACTIVITY_OPTION_DESC"
 					autoresize = yes
 					max_width = 300
 				}

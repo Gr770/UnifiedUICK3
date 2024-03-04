@@ -306,7 +306,7 @@ window = {
 
 				text_label_center = {
 					name = "guest_list_instruction_text"
-					visible = "[ActivityGuestListWindow.IsFromPlanning]"
+					visible = "[And(ActivityGuestListWindow.IsFromPlanning, Not( ActivityType.IsOpenInvite ))]"
 					layoutpolicy_horizontal = expanding
 
 					text = "ACTIVITY_GUEST_LIST_INFO"
@@ -316,7 +316,7 @@ window = {
 					margin = {4 4}
 				}
 
-				fixed_gridbox_character_list = {
+				vbox_character_list = {
 					name = "invited_characters"
 					layoutpolicy_horizontal = expanding
 					layoutpolicy_vertical = expanding
@@ -326,81 +326,16 @@ window = {
 						size = { 660 0 }
 					}
 
-					blockoverride "item_size"
-					{
-						size = { 630 110 }
-					}
+					blockoverride "container_implementation" {
+						fixedgridbox = {
+							name = "characters_grid"
+							datamodel = "[CharacterSelectionList.GetList]"
+							visible = "[Not(CharacterSelectionList.IsBuildingList)]"
+							addcolumn = 630
+							addrow = 98
 
-					blockoverride "bottom_right_box"
-					{
-						vbox = {
-							layoutpolicy_vertical = expanding
-							layoutpolicy_horizontal = expanding
-							visible = "[ActivityGuestListWindow.IsFromPlanning]"
-							margin = { 4 8 }
-
-							button_standard = {
-								name = "select_special_guest"
-								text = "SELECT"
-								onclick = "[CharacterListItem.OnClick( 'select_special_guest' )]"
-								visible = "[ActivityGuestListWindow.IsSelectingSpecialGuest]"
-								tooltip = "ACTIVITY_GUEST_LIST_SELECT_HONORARY_GUEST"
-							}
-
-							hbox = {
-								name = "guest_info"
-								layoutpolicy_horizontal = expanding
-								visible = "[Not( ActivityGuestListWindow.IsSelectingSpecialGuest )]"
-								spacing = 4
-
-								expand = {}
-
-								text_single = {
-									text = "ACTIVITY_GUEST_LIST_TRAVEL_TIME_INFO"
-								}
-
-								hbox = {
-									visible = "[GreaterThan_CFixedPoint( ActivityGuestListWindow.GetJoinChance( CharacterListItem.Self ), '(CFixedPoint)0' )]"
-
-
-									icon = {
-										size = { 30 30 }
-
-										texture = "gfx/interface/icons/symbols/icon_check.dds"
-
-										tooltip = "ACTIVITY_GUEST_WILL_ACCEPT"
-									}
-
-									warning_icon = {
-										visible = "[ActivityGuestListWindow.MayNotArriveInTime( CharacterListItem.Self )]"
-										size = { 30 30 }
-
-										tooltip = "ACTIVITY_GUEST_MAY_NOT_ARRIVE"
-									}
-								}
-
-								icon = {
-									visible = "[LessThanOrEqualTo_CFixedPoint( ActivityGuestListWindow.GetJoinChance( CharacterListItem.Self ), '(CFixedPoint)0' )]"
-									size = { 30 30 }
-
-									texture = "gfx/interface/icons/symbols/icon_cross.dds"
-
-									tooltip = "ACTIVITY_GUEST_WILL_DECLINE"
-								}
-							}
-						}
-
-						hbox = {
-							layoutpolicy_vertical = expanding
-							layoutpolicy_horizontal = expanding
-							visible = "[Not( ActivityGuestListWindow.IsFromPlanning )]"
-
-							margin = { 8 0 }
-
-							expand = {}
-
-							text_single = {
-								text = "[Character.GetActivityStateText( 'verb' )]"
+							item = {
+								widget_guest_list_item = {}
 							}
 						}
 					}
@@ -428,33 +363,254 @@ window = {
 		position = { -20 20 }
 
 		blockoverride "addition_filter" {
-			filter_item = {
+			vbox_filter_group = {
 				layoutpolicy_horizontal = expanding
-				datacontext = "[CharacterSelectionList.GetFilter('gender_filter')]"
+				datacontext = "[CharacterSelectionList.GetCategory('age_filter_category')]"
+				blockoverride "filters" {
+					filter_item = {
+						layoutpolicy_horizontal = expanding
+						datacontext = "[CharacterSelectionList.GetFilter('adult_filter')]"
+					}
+					filter_item = {
+						layoutpolicy_horizontal = expanding
+						datacontext = "[CharacterSelectionList.GetFilter('age_filter')]"
+					}
+				}
 			}
-			filter_item = {
+
+			vbox_filter_group = {
 				layoutpolicy_horizontal = expanding
-				datacontext = "[CharacterSelectionList.GetFilter('adult_filter')]"
+				datacontext = "[CharacterSelectionList.GetCategory('personal_filter_category')]"
+				blockoverride "filters" {
+					filter_item = {
+						layoutpolicy_horizontal = expanding
+						datacontext = "[CharacterSelectionList.GetFilter('culture_filter')]"
+					}
+					filter_item = {
+						layoutpolicy_horizontal = expanding
+						datacontext = "[CharacterSelectionList.GetFilter('gender_filter')]"
+					}
+					filter_item = {
+						layoutpolicy_horizontal = expanding
+						datacontext = "[CharacterSelectionList.GetFilter('religion_filter')]"
+					}
+				}
 			}
-			filter_item = {
+
+			vbox_filter_group = {
 				layoutpolicy_horizontal = expanding
-				datacontext = "[CharacterSelectionList.GetFilter('age_filter')]"
+				datacontext = "[CharacterSelectionList.GetCategory('politics_filter_category')]"
+				blockoverride "filters" {
+					filter_item = {
+						layoutpolicy_horizontal = expanding
+						datacontext = "[CharacterSelectionList.GetFilter('dynasty_filter')]"
+					}
+					filter_item = {
+						layoutpolicy_horizontal = expanding
+						datacontext = "[CharacterSelectionList.GetFilter('hostage_filter')]"
+					}
+					filter_item = {
+						layoutpolicy_horizontal = expanding
+						datacontext = "[CharacterSelectionList.GetFilter('ruler_filter')]"
+					}
+				}
 			}
-			filter_item = {
-				layoutpolicy_horizontal = expanding
-				datacontext = "[CharacterSelectionList.GetFilter('dynasty_filter')]"
+		}
+	}
+}
+
+######################################################
+################ TYPES AND TEMPLATES #################
+######################################################
+
+types GuestListWindow
+{
+	type widget_guest_list_item = widget {
+		datacontext = "[CharacterListItem.GetCharacter]"
+		size = { 630 96 }
+
+		hbox = {
+			layoutpolicy_horizontal = expanding
+
+			background = {
+				using = Background_Area_With_Header
 			}
-			filter_item = {
-				layoutpolicy_horizontal = expanding
-				datacontext = "[CharacterSelectionList.GetFilter('ruler_filter')]"
+
+			vbox = {
+				layoutpolicy_vertical = expanding
+				margin_top = 2
+
+				portrait_head_small = {}
+
+				expand = {}
 			}
-			filter_item = {
+
+			vbox = {
 				layoutpolicy_horizontal = expanding
-				datacontext = "[CharacterSelectionList.GetFilter('religion_filter')]"
-			}
-			filter_item = {
-				layoutpolicy_horizontal = expanding
-				datacontext = "[CharacterSelectionList.GetFilter('culture_filter')]"
+				layoutpolicy_vertical = expanding
+
+				margin_left = 4
+				spacing = 4
+
+				hbox = {
+					layoutpolicy_horizontal = expanding
+					
+					margin_top = 4
+					margin_right = 8
+
+					text_single = {
+						layoutpolicy_horizontal = expanding
+						text = "GeneralUniUICharGetUINameNoTooltip"
+						using = Font_Size_Medium
+						autoresize = no
+						fontsize_min = 13
+						align = nobaseline
+						max_width = 370
+					}
+
+					expand = {}
+
+					hbox_skills_grid = {}
+
+				}
+
+				hbox = {
+					layoutpolicy_horizontal = expanding
+
+					using = character_age_or_death_text
+
+					blockoverride "list_layout" {}
+
+					expand = {}
+				}
+
+				hbox = {
+					layoutpolicy_horizontal = expanding
+
+					hbox = {
+						spacing = 4 
+
+						## Dynasty
+						widget = {
+							size = { 30 30 }
+
+							coa_house_small = {
+								datacontext = "[Character.GetHouse]"
+								scale = 0.55
+								parentanchor = center
+							}
+						}
+
+						## Traits
+						fixedgridbox = {
+							name = "traits_grid"
+							datamodel = "[CharacterListItem.GetTraits]"
+							flipdirection = yes
+							size = { 150 60 }
+							addcolumn = 30
+							addrow = 30
+							maxhorizontalslots = 8
+							maxverticalslots = 1
+
+							item = {
+								container = {
+									visible = "[Trait.IsValid]"
+
+									icon_trait = {
+										blockoverride "icon_size"
+										{
+											size = { 30 30 }
+										}
+
+										blockoverride "tooltip_placement"
+										{
+											using = tooltip_se
+										}
+
+										blockoverride "glow_radius"
+										{
+											glow_radius = 3
+										}
+									}
+								}
+							}
+						}
+					}
+
+					expand = {}
+
+					vbox = {
+						visible = "[ActivityGuestListWindow.IsFromPlanning]"
+						margin = { 8 0 }
+
+						button_standard = {
+							name = "select_special_guest"
+							size = { 160 30 }
+							text = "SELECT"
+							onclick = "[CharacterListItem.OnClick( 'select_special_guest' )]"
+							visible = "[ActivityGuestListWindow.IsSelectingSpecialGuest]"
+							tooltip = "ACTIVITY_GUEST_LIST_SELECT_HONORARY_GUEST"
+						}
+
+						hbox = {
+							name = "guest_info"
+							layoutpolicy_horizontal = expanding
+							visible = "[Not( ActivityGuestListWindow.IsSelectingSpecialGuest )]"
+							spacing = 4
+
+							expand = {}
+
+							text_single = {
+								text = "ACTIVITY_GUEST_LIST_TRAVEL_TIME_INFO"
+							}
+
+							hbox = {
+								visible = "[GreaterThan_CFixedPoint( ActivityGuestListWindow.GetJoinChance( CharacterListItem.Self ), '(CFixedPoint)0' )]"
+
+
+								icon = {
+									size = { 30 30 }
+
+									texture = "gfx/interface/icons/symbols/icon_check.dds"
+
+									tooltip = "ACTIVITY_GUEST_WILL_ACCEPT"
+								}
+
+								warning_icon = {
+									visible = "[ActivityGuestListWindow.MayNotArriveInTime( CharacterListItem.Self )]"
+									size = { 30 30 }
+
+									tooltip = "ACTIVITY_GUEST_MAY_NOT_ARRIVE"
+								}
+							}
+
+							icon = {
+								visible = "[LessThanOrEqualTo_CFixedPoint( ActivityGuestListWindow.GetJoinChance( CharacterListItem.Self ), '(CFixedPoint)0' )]"
+								size = { 30 30 }
+
+								texture = "gfx/interface/icons/symbols/icon_cross.dds"
+
+								tooltip = "ACTIVITY_GUEST_WILL_DECLINE"
+							}
+						}
+					}
+
+					hbox = {
+						layoutpolicy_vertical = expanding
+						layoutpolicy_horizontal = expanding
+						visible = "[Not( ActivityGuestListWindow.IsFromPlanning )]"
+
+						margin = { 12 0 }
+
+						expand = {}
+
+						text_single = {
+							text = "[Character.GetActivityStateText( 'verb' )]"
+						}
+					}
+				}
+
+				expand = {}
 			}
 		}
 	}
