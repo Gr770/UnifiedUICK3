@@ -66,7 +66,7 @@ window = {
 					name = "left_background_portrait"
 					datacontext = "[CharacterInteractionConfirmationWindow.GetActor]"
 					visible = "[Character.IsValid]"
-					tooltip_enabled = "[Character.IsValid]"
+					tooltip_visible = "[Character.IsValid]"
 				}
 
 				hbox = {
@@ -87,7 +87,7 @@ window = {
 								name = "left_main_portrait"
 								visible = "[Character.IsValid]"
 								datacontext = "[CharacterInteractionConfirmationWindow.GetRecipient]"
-								tooltip_enabled = "[Character.IsValid]"
+								tooltip_visible = "[Character.IsValid]"
 							}
 						}
 
@@ -127,7 +127,7 @@ window = {
 					name = "right_background_portrait"
 					datacontext = "[CharacterInteractionConfirmationWindow.GetSecondaryActor]"
 					visible = "[Character.IsValid]"
-					tooltip_enabled = "[Character.IsValid]"
+					tooltip_visible = "[Character.IsValid]"
 
 					blockoverride "portrait_transformation"
 					{

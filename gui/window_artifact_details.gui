@@ -223,7 +223,7 @@ window = {
 									button_icon_highlight = {
 										parentanchor = center
 										size = { 20 20 }
-										texture = "gfx/interface/icons/flat_icons/clear.dds"
+										texture = "gfx/interface/icons/flat_icons/destroy_artifact.dds"
 									}
 
 									visible = "[Artifact.GetOwner.IsPlayerInteractionShown( 'destroy_artifact_interaction' )]"

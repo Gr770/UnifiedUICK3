@@ -4,6 +4,7 @@
 window = {
 	gfxtype = windowgfx
 	name = "character_interaction_menu_window"
+	widgetid = "character_interaction_menu_window"
 	movable = yes
 	position = { 420 70 } #420 70
 	alwaystransparent = yes
@@ -134,7 +135,7 @@ window = {
 
 							button_barbershop = {
 								name = "customize_portrait"
-								visible = "[Or(Not(GameIsMultiplayer), And( GameIsMultiplayer, Character.CanCustomizePortrait))]"
+								visible = "[Character.CanCustomizePortrait]"
 								onclick = "[Character.OnCustomizePortrait]"
 								onclick = "[CharacterInteractionMenuWindow.Close]"
 								size = { 25 25 }

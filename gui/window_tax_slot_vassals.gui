@@ -244,7 +244,7 @@ window = {
 								layoutpolicy_vertical = expanding
 								layoutpolicy_horizontal = expanding
 								spacing = 7
-								max_width = 160
+								max_width = 260
 
 								text_single = {
 									text = "TAX_SLOT_VASSAL_WINDOW_EFFECT_THIS_JURISDICTION"
@@ -284,7 +284,7 @@ window = {
 									using = Background_Area
 									using = Color_White
 									tintcolor = { 0.6 0.7 0.2 0.3 }
-									margin = { 50 3 }
+									margin = { 30 3 }
 
 									modify_texture = {
 										texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
@@ -302,6 +302,7 @@ window = {
 									datacontext = "[TaxSlotVassalChange.GetTaxBreakdown]"
 
 									text = "TAX_SLOT_REMOVE_VASSAL_TAX_CHANGE"
+									align = nobaseline
 
 									tooltipwidget = {
 										tax_contribution_tooltip = {
@@ -331,6 +332,7 @@ window = {
 									datacontext = "[TaxSlotVassalChange.GetLeviesBreakdown]"
 
 									text = "TAX_SLOT_REMOVE_VASSAL_LEVIES_CHANGE"
+									align = nobaseline
 
 									tooltipwidget = {
 										tax_contribution_tooltip = {
@@ -503,6 +505,7 @@ window = {
 					}
 
 					text_single = {
+						max_width = 620
 						text = "TAX_SLOT_VASSAL_WINDOW_TAB_ASSIGN_EFFECT_SUB_HEADER"
 					}
 
@@ -525,7 +528,7 @@ window = {
 								layoutpolicy_vertical = expanding
 								layoutpolicy_horizontal = expanding
 								spacing = 7
-								max_width = 160
+								max_width = 260
 
 								text_single = {
 									text = "TAX_SLOT_VASSAL_WINDOW_EFFECT_THIS_JURISDICTION"
@@ -550,7 +553,6 @@ window = {
 									using = Mask_Rough_Edges
 								}
 								expand = {}
-								expand = {}
 							}
 
 							hbox = {
@@ -564,7 +566,7 @@ window = {
 									using = Background_Area
 									using = Color_White
 									tintcolor = { 0.6 0.7 0.2 0.3 }
-									margin = { 50 3 }
+									margin = { 30 3 }
 
 									modify_texture = {
 										texture = "gfx/interface/component_masks/mask_fade_horizontal.dds"
@@ -581,6 +583,7 @@ window = {
 								text_single = {
 									datacontext = "[TaxSlotVassalChange.GetTaxBreakdown]"
 
+									align = nobaseline
 									text = "TAX_SLOT_ASSIGN_VASSAL_TAX_CHANGE"
 
 									tooltipwidget = {
@@ -610,6 +613,7 @@ window = {
 								text_single = {
 									datacontext = "[TaxSlotVassalChange.GetLeviesBreakdown]"
 
+									align = nobaseline
 									text = "TAX_SLOT_ASSIGN_VASSAL_LEVIES_CHANGE"
 
 									tooltipwidget = {

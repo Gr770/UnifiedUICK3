@@ -923,6 +923,7 @@ window = {
 														text_single = {
 															layoutpolicy_horizontal = growing
 															text = "[TroopItem.GetCount|*]"
+															default_format = "#high"
 														}
 													}
 												}
@@ -1912,7 +1913,7 @@ types ArmyWindow
 		}
 
 		army_quality_icon = {
-			tooltip_enabled = no
+			tooltip_visible = no
 		}
 
 		expand = {

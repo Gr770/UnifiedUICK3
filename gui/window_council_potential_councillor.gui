@@ -71,7 +71,6 @@ window = {
 
 					text_multi = {
 						layoutpolicy_horizontal = expanding
-						#layoutpolicy_vertical = expanding
 						autoresize = yes
 						text = "GeneralUniUICharGetUINameNoTooltip"
 						default_format = "#high"
@@ -126,42 +125,7 @@ window = {
 							datamodel = "[PotentialCouncillorWindow.GetCouncillorSkillItems]"
 
 							item = {
-								widget = {
-									size = { 32 25 }
-
-									text_single = {
-										name = "value"
-										parentanchor = center
-										margin_bottom = 4
-										align = center
-										text = "[SkillItem.GetValue]"
-										visible = "[LessThan_int32( SkillItem.GetValue, '(int32)12' )]"
-										tooltip = "[SkillItem.GetName]"
-									}
-
-									text_single = {
-										name = "value_good"
-										parentanchor = center
-										margin_bottom = 4
-										align = center
-										text = "[SkillItem.GetValue|P]"
-										visible = "[GreaterThanOrEqualTo_int32( SkillItem.GetValue, '(int32)12' )]"
-										default_format = "#bold"
-										tooltip = "[SkillItem.GetName]"
-									}
-
-									background = {
-										name = "skill_icon_bg"
-										texture = "gfx/interface/window_character/character_view_skills_bg.dds"
-										framesize = { 70 26 }
-										margin = { 5 0 }
-
-										block "bg"
-										{
-											frame = "[SkillItem.GetFrame]"
-										}
-									}
-								}
+								widget_skill_item_no_icon = {}
 							}
 						}
 					}
