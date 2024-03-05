@@ -772,7 +772,7 @@ window = {
 				margin_bottom = 5
 
 				hbox = {
-					name = "tutorial_highlight_declare_war_send_button"
+					name = "declare_war_send_button"
 
 					button_standard_big = {
 						name = "send_button"

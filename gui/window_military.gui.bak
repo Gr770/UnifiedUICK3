@@ -246,7 +246,6 @@ window = {
 										}
 
 										hbox = {
-											name = tutorial_highlight_soldiers_total
 											layoutpolicy_horizontal = expanding
 											spacing = 10
 

@@ -421,7 +421,7 @@ window = {
 
 													text_single = {
 														layoutpolicy_horizontal = expanding
-														text = "GeneralUniUICharGetNameNoTooltip"
+														text = "[Character.GetNameNoTooltip]"
 														using = Font_Size_Medium
 														autoresize = no
 														alwaystransparent = yes

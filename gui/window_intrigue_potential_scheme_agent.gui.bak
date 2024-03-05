@@ -68,7 +68,6 @@ window = {
 						tooltip = "EXTENDED_RELATIONS_TOOLTIP"
 						default_format = "#low"
 						autoresize = no
-						alwaystransparent = yes
 					}
 
 					hbox = {

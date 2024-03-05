@@ -763,10 +763,6 @@ window = {
 						layoutpolicy_horizontal = expanding
 						datacontext = "[CharacterSelectionList.GetFilter('claim_filter')]"
 					}
-					filter_item = {
-						layoutpolicy_horizontal = expanding
-						datacontext = "[CharacterSelectionList.GetFilter('hostage_filter')]"
-					}
 				}
 			}
 

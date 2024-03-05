@@ -2478,8 +2478,6 @@ types ActivityWindowTypes
 		datacontext = "[GetPlayer]"
 		layoutpolicy_horizontal = expanding
 
-		spacing = 4
-
 		hbox = {
 			name = "travel_state"
 			visible = "[Character.HasActivityState( 'travel' )]"

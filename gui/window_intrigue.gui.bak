@@ -263,7 +263,6 @@ window = {
 					### HOOKS AND SECRETS
 					scrollbox = {
 						name = "hooks_and_secrets"
-						widgetid = "hooks_and_secrets"
 						visible = "[IntrigueWindow.IsTabShown( 'hooks_and_secrets' )]"
 						layoutpolicy_horizontal = expanding
 						layoutpolicy_vertical = expanding

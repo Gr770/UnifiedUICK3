@@ -613,7 +613,6 @@ window = {
 								text_single = {
 									datacontext = "[TaxSlotVassalChange.GetLeviesBreakdown]"
 
-									align = nobaseline
 									text = "TAX_SLOT_ASSIGN_VASSAL_LEVIES_CHANGE"
 
 									tooltipwidget = {

@@ -158,6 +158,7 @@ types Lists
 				{
 					texture = "gfx/interface/buttons/button_entry_characterlist.dds"
 				}
+				texture = "gfx/interface/buttons/button_entry_characterlist.dds"
 
 				block "button" {}
 
@@ -767,7 +768,7 @@ types Lists
 	type dropdown_sort_characterlist = dropDown {
 		name = "sort_options"
 		block "size_button_drop" {   ########### only used for character finder
-			size = { 190 33 }
+		size = { 190 33 }
 		}
 
 		active_item = {
@@ -1686,58 +1687,58 @@ types Lists
 								layoutpolicy_horizontal = expanding
 
 								text_single = {
-									name = "character_relation"
-									visible = "[Character.GetLiege.IsLocalPlayer]"
-									layoutpolicy_horizontal = expanding
-									text = "[Character.GetRelationToString(GetPlayer)]"
-									tooltip = "EXTENDED_RELATIONS_TOOLTIP"
-									default_format = "#low"
-									autoresize = no
-									fontsize_min = 13
-									align = nobaseline
-									max_width = 350
-								}
-
-								expand = {}
+								name = "character_relation"
+								visible = "[Character.GetLiege.IsLocalPlayer]"
+								layoutpolicy_horizontal = expanding
+								text = "[Character.GetRelationToString(GetPlayer)]"
+								tooltip = "EXTENDED_RELATIONS_TOOLTIP"
+								default_format = "#low"
+								autoresize = no
+								fontsize_min = 13
+								align = nobaseline
+								max_width = 350
 							}
 
-							hbox = {
-								layoutpolicy_horizontal = expanding
-								spacing = 5
-	
-								vassal_stance_icon = {
-									name = "vassal_stance"
-									size = { 30 30 }
-								}
-	
-								vassal_expected_legitimacy_icon = {
-									name = "legitimacy_expectation"
-									size = { 30 30 }
-								}
+							expand = {}
+						}
 
-								block "realm_size_powerful_status" {
-									flowcontainer = {
-										spacing = 10
-	
-										text_single = {
-											text = "REALM_WINDOW_SIZE"
-											tooltip = "REALM_WINDOW_SIZE_TT"
-											layoutpolicy_horizontal = expanding
-											align = nobaseline
-											visible = "[NotEqualTo_int32(Character.GetPrimaryTitle.GetTierFrame, '(int32)2')]" #nonbaron
-	
-										}
-	
-										text_single = {
-											visible = "[Character.IsPowerfulVassal]"
-											text = "MY_REALM_WINDOW_POWERFUL_VASSAL"
-											layoutpolicy_horizontal = expanding
-											align = nobaseline
-										}
+						hbox = {
+							layoutpolicy_horizontal = expanding
+							spacing = 5
+
+							vassal_stance_icon = {
+								name = "vassal_stance"
+								size = { 30 30 }
+							}
+
+							vassal_expected_legitimacy_icon = {
+								name = "legitimacy_expectation"
+								size = { 30 30 }
+							}
+
+							block "realm_size_powerful_status" {
+								flowcontainer = {
+									spacing = 10
+
+									text_single = {
+										text = "REALM_WINDOW_SIZE"
+										tooltip = "REALM_WINDOW_SIZE_TT"
+										layoutpolicy_horizontal = expanding
+										align = nobaseline
+										visible = "[NotEqualTo_int32(Character.GetPrimaryTitle.GetTierFrame, '(int32)2')]" #nonbaron
+
+									}
+
+									text_single = {
+										visible = "[Character.IsPowerfulVassal]"
+										text = "MY_REALM_WINDOW_POWERFUL_VASSAL"
+										layoutpolicy_horizontal = expanding
+										align = nobaseline
 									}
 								}
+							}
 
-								expand = {}
+							expand = {}
 
 							}
 						}

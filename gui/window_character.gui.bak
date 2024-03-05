@@ -4,7 +4,6 @@
 
 window = {
 	name = "character_window"
-	widgetid = "character_window"
 	datacontext = "[GetVariableSystem]"
 	datacontext = "[CharacterWindow.GetCharacter]"
 	movable = no
@@ -13,6 +12,7 @@ window = {
 
 	using = Window_Size_Sidebar
 	#using = Window_Background_Sidebar
+	widgetid = "character_window"
 
 	state = {
 		name = _show

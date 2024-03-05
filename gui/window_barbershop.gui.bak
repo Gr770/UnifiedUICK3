@@ -110,15 +110,14 @@ window = {
 		}
 	}
 
-	widget = {
+    widget = {
 		size = { 1920 1080 }
 		scale = "[ScaleToFitElementInside('(int32)1920', '(int32)1080')]"
 		datamodel = "[BarbershopWindow.GetBarbershopCharacters]"
-
 		item = {
 			barbershop_name_window = {}
 		}
-	}
+    }
 
 	### SCENE TAB - Screenshot notification ###
 	container = {

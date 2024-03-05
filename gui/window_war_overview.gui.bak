@@ -20,7 +20,11 @@ window = {
 	state = {
 		name = _mouse_hierarchy_leave
 		start_sound = {
-			soundeffect = "event:/SFX/Snapshots/sfx_snapshots_closeWarOutcome"
+			soundeffect = "event:/SFX/Snapshots/sfx_snapshots_WaroutcomeWindow"
+			soundparam = {
+				name = StateChange
+				value = 1.0
+			}
 		}
 	}
 

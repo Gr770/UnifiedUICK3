@@ -907,11 +907,10 @@ types TravelPlannerTypes
 							datamodel = "[TravelPlanner.GetTimedModifiers]"
 
 							item = {
-								modifier_item_icon = {
-									blockoverride "size"
-									{
-										size = { 30 30 }
-									}
+								icon = {
+									size = { 30 30 }
+									alwaystransparent = no
+									texture = "[ModifierItem.GetIcon]"
 								}
 							}
 						}

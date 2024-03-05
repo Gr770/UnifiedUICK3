@@ -1174,7 +1174,6 @@ types ActivityPlannerNewTypes
 
 		widget = {
 			name = "tour_has_vassals_tutorial_uses_this"
-			widgetid = "tour_has_vassals_tutorial_uses_this"
 			size = { 0 0 }
 			visible = "[TravelPlanData.HasNextDestination]"
 		}

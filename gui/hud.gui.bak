@@ -5536,7 +5536,7 @@ types HUD
 
 					cooltip_paragraph = {
 						text = "LEGITIMACY_EFFECTS"
-						max_width = 500
+
 					}
 					expand = {
 						layoutpolicy_horizontal = expanding

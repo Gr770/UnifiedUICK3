@@ -1,7 +1,6 @@
 
 window = {
 	name = "diarchy_window"
-	widgetid = "diarchy_window"
 	visible = "[And( DiarchyWindow.IsVisible, Not(IsGameViewOpen('barbershop')) )]"
 	layer = middle
 	allow_outside = yes
@@ -14,7 +13,6 @@ window = {
 
 	widget = {
 		name = "tutorial_tab_visible_your_regent"
-		widgetid = "tutorial_tab_visible_your_regent"
 		visible = "[DiarchyWindow.IsYourDiarchyShown]"
 		size = {0 0}
 	}

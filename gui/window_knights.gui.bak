@@ -564,7 +564,7 @@ window = {
 
 									text_multi = {
 										layoutpolicy_horizontal = expanding
-										text = "AcclaimedKnightGetNameNoTooltip"
+										text = "[Accolade.GetAcclaimedKnight.GetNameNoTooltip]"
 										align = nobaseline|top
 										max_width = 255
 										default_format = "#low"

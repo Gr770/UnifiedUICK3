@@ -2020,6 +2020,7 @@ types DynastyView
 				block "decisions_visibility" {
 					visible = "[DataModelHasItems( DynastyHouseView.GetDecisions(HouseUnityStage.Self) )]"
 				}
+				margin_bottom = 20
 
 				text_label_left  = {
 					layoutpolicy_horizontal = expanding
