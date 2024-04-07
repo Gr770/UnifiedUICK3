@@ -497,6 +497,20 @@ window = {
 										using = tooltip_se
 									}
 								}
+								#########toddel
+								button_round  = {
+									name = "mrfp"
+									visible = "[GetGlobalVariable('mrfp_is_loaded').IsSet]"
+									enabled = "[CourtWindow.CanDoMassPrisonerAction('release')]"
+
+									button_prison_release = {
+										parentanchor = center
+										onclick = "[GetScriptedGui('mrfp_is_loaded_sgui').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										tooltip = "mrfp_tooltip"
+										using = tooltip_se
+									}
+								}
+								###toddel
 
 								button_round  = {
 									name = "execute"

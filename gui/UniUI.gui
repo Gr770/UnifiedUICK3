@@ -498,6 +498,27 @@ window = {
 							onclick = "[GetScriptedGui('UMS_toggle_ire').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
 						}
 					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+						
+						text_single = {
+							autoresize = yes
+							raw_text = "Mass Release From Prison"
+							max_width = 250
+							using = Font_Size_Medium
+						}
+
+						expand = {}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('mrfp_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_mrfp').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
 					expand = {}
 				}
 			}

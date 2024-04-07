@@ -287,6 +287,10 @@ UMS_toggle_ire={
 	scope = character
 	effect = { UMS_toggle_mod = { MOD = ire } }
 }
+UMS_toggle_mrfp={
+	scope = character
+	effect = { UMS_toggle_mod = { MOD = mrfp } }
+}
 UMS_toggle_UniUI={
 	scope = character
 	effect = { UMS_toggle_mod = { MOD = UniUICC } }
