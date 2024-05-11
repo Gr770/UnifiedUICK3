@@ -519,6 +519,111 @@ window = {
 							onclick = "[GetScriptedGui('UMS_toggle_mrfp').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
 						}
 					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+						
+						text_single = {
+							autoresize = yes
+							raw_text = "Polytheism Reborn"
+							max_width = 250
+							using = Font_Size_Medium
+						}
+
+						expand = {}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('PR_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_PR').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+						
+						text_single = {
+							autoresize = yes
+							raw_text = "More Tenets"
+							max_width = 250
+							using = Font_Size_Medium
+						}
+
+						expand = {}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('MTS_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_MTS').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+						
+						text_single = {
+							autoresize = yes
+							raw_text = "More Tenets - CE"
+							max_width = 250
+							using = Font_Size_Medium
+						}
+
+						expand = {}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('MTS_CE_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_MTS_CE').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+						
+						text_single = {
+							autoresize = yes
+							raw_text = "More Doctrines"
+							max_width = 250
+							using = Font_Size_Medium
+						}
+
+						expand = {}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('MRD_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_MRD').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
+
+					hbox={
+						layoutpolicy_horizontal = expanding
+						using = UMS_Entry_Margins
+						
+						text_single = {
+							autoresize = yes
+							raw_text = "More Imersive Doctrines"
+							max_width = 250
+							using = Font_Size_Medium
+						}
+
+						expand = {}
+
+						button_checkbox = {
+							size = { 30 30 }
+							
+							checked = "[GetGlobalVariable('MID_is_loaded').IsSet]"
+							onclick = "[GetScriptedGui('UMS_toggle_MID').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End ) ]"
+						}
+					}
 					expand = {}
 				}
 			}

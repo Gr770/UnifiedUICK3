@@ -392,6 +392,7 @@ window = {
 				}
 
 				hbox = {
+					visible = "[Not( GetScriptedGui('pr_tenets_uniui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
 					name = "doctrines_grid_core_tenets"
 					datamodel = "[FaithWindow.GetGroupingHelper( 'core_tenets' ).GetGrouping]"
 					spacing = 52
@@ -413,6 +414,52 @@ window = {
 						}
 					}
 				}
+				### Beginn code from 'More Religion Tenets Slots' mod by Karax
+				### Core Tenets
+					scrollbox = {
+	
+						visible = "[GetScriptedGui('pr_tenets_uniui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+						
+						layoutpolicy_vertical = expanding
+						layoutpolicy_horizontal = expanding
+						size = { 200 250 }
+	
+						blockoverride "scrollbox_content"
+						{
+							
+							fixedgridbox = {
+								name = "doctrines_grid_core_tenets"
+								datamodel = "[FaithWindow.GetGroupingHelper( 'core_tenets' ).GetGrouping]"
+								flipdirection = yes
+								addcolumn = 140
+								addrow = 210
+								setitemsizefromcell = yes
+								datamodel_wrap = 4
+								maxhorizontalslots = -1
+								maxverticalslots = -1
+								layoutpolicy_vertical = expanding
+								layoutpolicy_horizontal = expanding
+	
+								state = {
+									name = "faith_view_refresh"
+									using = Animation_Refresh_FadeOut
+								}
+	
+								state = {
+									using = Animation_Refresh_FadeIn
+								}
+	
+								item = {
+									container_tenet_item = {
+										datacontext = "[GuiFaithDoctrineItem.GetDoctrine]"
+										datacontext = "[GuiFaithDoctrineItem.GetFaith]"
+										tooltip = "FAITH_WINDOW_DOCTRINE_TOOLTIP"
+									}
+								}
+							}
+						}
+					}
+					### End code from 'More Religion Tenets Slots' mod by Karax
 			}
 
 			### Doctrines
@@ -470,6 +517,7 @@ window = {
 
 								vbox = {
 									dynamicgridbox = {
+										visible = "[Not(GetScriptedGui('pr_tenets_ce_uniui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
 										name = "virtues_grid"
 										datamodel = "[FaithWindow.GetSins]"
 										flipdirection = yes
@@ -495,6 +543,33 @@ window = {
 										}
 									}
 								}
+								#Pr - Customizable Ethics build in compatibility								
+								dynamicgridbox = {
+									name = "virtues_grid"
+									datamodel = "[FaithWindow.GetSins]"
+									flipdirection = yes
+									datamodel_wrap = 6
+									visible = "[GetScriptedGui('pr_tenets_ce_uniui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									item = {
+										icon = {
+											datacontext = "[GuiVirtueOrSinItem.GetTrait]"
+											size = { 40 40 }
+											alwaystransparent = yes
+											texture = "[Trait.GetIcon( GetPlayer )]"
+
+											tooltipwidget = {
+												using = faith_window_trait_tooltip
+											}
+
+											block "tooltip_placement"
+											{
+												using = tooltip_ne
+												tooltip_offset = { 0 20 }
+											}
+										}
+									}
+								}
+								#End build in compatibility sins 
 
 								expand = {}
 							}
@@ -526,6 +601,7 @@ window = {
 								vbox = {
 									dynamicgridbox = {
 										name = "virtues_grid"
+										visible = "[Not(GetScriptedGui('pr_tenets_ce_uniui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
 										datamodel = "[FaithWindow.GetVirtues]"
 										flipdirection = yes
 										datamodel_wrap = 6
@@ -550,6 +626,33 @@ window = {
 										}
 									}
 								}
+								#Pr - Customizable Ethics build in compatibility
+								dynamicgridbox = {
+									name = "virtues_grid"
+									datamodel = "[FaithWindow.GetVirtues]"
+									flipdirection = yes
+									datamodel_wrap = 6
+									visible = "[GetScriptedGui('pr_tenets_ce_uniui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									item = {
+										icon = {
+											datacontext = "[GuiVirtueOrSinItem.GetTrait]"
+											size = { 40 40 }
+											alwaystransparent = yes
+											texture = "[Trait.GetIcon( GetPlayer )]"
+
+											tooltipwidget = {
+												using = faith_window_trait_tooltip
+											}
+
+											block "tooltip_placement"
+											{
+												using = tooltip_ne
+												tooltip_offset = { 0 20 }
+											}
+										}
+									}
+								}
+								#End build in compatibility virtues
 
 								expand = {}
 							}
@@ -611,7 +714,50 @@ window = {
 								}
 							}
 						}
-
+						vbox = {
+							name = "more_doctrines_faith"
+							visible = "[GetScriptedGui('pr_doctrines_uniui').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+							spacing = 12
+							margin_bottom = -10
+							#More doctrines	
+							text_label_center = {
+								layoutpolicy_horizontal = expanding
+								text = "FAITH_DOCTRINES_BELIEF"
+								default_format = "#low"
+							}
+	
+							fixedgridbox = {
+								datamodel = "[FaithWindow.GetGroupingHelper( 'belief' ).GetGrouping]"
+								flipdirection = yes
+								addcolumn = 230
+								addrow = 65
+								datamodel_wrap = 2
+	
+								item = {
+									widget_doctrine_item = {}
+								}
+							}
+	
+							text_label_center = {
+								layoutpolicy_horizontal = expanding
+								text = "FAITH_DOCTRINES_PRACTICES"
+								default_format = "#low"
+							}
+	
+							fixedgridbox = {
+								datamodel = "[FaithWindow.GetGroupingHelper( 'practices' ).GetGrouping]"
+								flipdirection = yes
+								addcolumn = 230
+								addrow = 65
+								datamodel_wrap = 2
+	
+								item = {
+									widget_doctrine_item = {}
+								}
+							}
+						}
 						vbox = {
 							layoutpolicy_horizontal = expanding
 							spacing = 12
@@ -673,6 +819,17 @@ window = {
 
 							fixedgridbox = {
 								datamodel = "[FaithWindow.GetGroupingHelper( 'clergy' ).GetGrouping]"
+								flipdirection = yes
+								addcolumn = 225
+								addrow = 67
+								datamodel_wrap = 2
+
+								item = {
+									widget_doctrine_item = {}
+								}
+							}
+							fixedgridbox = {
+								datamodel = "[FaithWindow.GetGroupingHelper( 'clergy_md' ).GetGrouping]"
 								flipdirection = yes
 								addcolumn = 225
 								addrow = 67

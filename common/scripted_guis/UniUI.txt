@@ -92,6 +92,49 @@ personally_has_republic_government_uniui = {
 		holds_valid_merchant_republic = yes
 	}
 }
+#Used for Polytheism Reborn, More Tenets, More Tenet - CE, More doctrines and More Imersive Doctrines 
+pr_tenets_uniui = {
+	scope = character 
+	is_shown = {
+		OR = {
+			AND = {	
+				exists = global_var:PR_is_loaded
+				has_game_rule = pr_more_tenets_enabled
+			}
+			exists = global_var:MTS_is_loaded
+			exists = global_var:MTS_CE_is_loaded
+		}
+
+	}
+}
+
+pr_doctrines_uniui = {
+	is_shown = {
+		OR = {
+			#AND = {	
+				#exists = global_var:PR_is_loaded
+				#has_game_rule = pr_more_doctrines_enabled
+			#}
+			exists = global_var:PR_is_loaded
+			exists = global_var:MRD_is_loaded
+			exists = global_var:MID_is_loaded
+		}
+
+	}
+}
+
+pr_tenets_ce_uniui = {
+	scope = character
+	is_shown = {
+		OR = {
+			exists = global_var:MTS_CE_is_loaded
+			AND = {
+				exists = global_var:PR_is_loaded
+				has_game_rule = pr_customizable_ethics_enabled
+			}
+		}
+	}
+}
 
 dummy_UniUI = {
 	scope = character
@@ -302,4 +345,24 @@ UMS_toggle_minorities={
 UMS_toggle_IFiK={
 	scope = character
 	effect = { UMS_toggle_mod_ifik = yes }
+}
+UMS_toggle_PR={
+	scope = character
+	effect = { UMS_toggle_mod = { MOD = PR } }
+}
+UMS_toggle_MTS={
+	scope = character
+	effect = { UMS_toggle_mod = { MOD = MTS } }
+}
+UMS_toggle_MTS_CE={
+	scope = character
+	effect = { UMS_toggle_mod = { MOD = MTS_CE } }
+}
+UMS_toggle_MRD={
+	scope = character
+	effect = { UMS_toggle_mod = { MOD = MRD } }
+}
+UMS_toggle_MID={
+	scope = character
+	effect = { UMS_toggle_mod = { MOD = MID } }
 }
