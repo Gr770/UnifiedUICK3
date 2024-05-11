@@ -4,5 +4,5 @@ tags={
 	"Utilities"
 }
 name="Unified UI"
-supported_version="1.12.4"
+supported_version="1.12.5"
 remote_file_id="2768734977"
