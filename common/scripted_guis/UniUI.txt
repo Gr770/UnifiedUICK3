@@ -346,23 +346,3 @@ UMS_toggle_IFiK={
 	scope = character
 	effect = { UMS_toggle_mod_ifik = yes }
 }
-UMS_toggle_PR={
-	scope = character
-	effect = { UMS_toggle_mod = { MOD = PR } }
-}
-UMS_toggle_MTS={
-	scope = character
-	effect = { UMS_toggle_mod = { MOD = MTS } }
-}
-UMS_toggle_MTS_CE={
-	scope = character
-	effect = { UMS_toggle_mod = { MOD = MTS_CE } }
-}
-UMS_toggle_MRD={
-	scope = character
-	effect = { UMS_toggle_mod = { MOD = MRD } }
-}
-UMS_toggle_MID={
-	scope = character
-	effect = { UMS_toggle_mod = { MOD = MID } }
-}
