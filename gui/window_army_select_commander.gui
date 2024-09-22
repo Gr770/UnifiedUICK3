@@ -4,7 +4,7 @@
 
 window = {
 	name = "select_commander_window"
-	layer = middle
+	layer = top
 	allow_outside = yes
 
 	using = Window_Position_CharacterList_Small
