@@ -212,8 +212,8 @@ window = {
 
 		hbox = {
 			layoutpolicy_horizontal = expanding
-			margin = { 10 2 }
-			spacing = 6
+			margin = { 10 0 }
+			spacing = 5
 
 			hbox = {
 				datamodel = "[HoldingView.GetDeJureLieges]"
@@ -252,7 +252,36 @@ window = {
 						hbox = {
 							name = "county_modifiers_grid"
 							datamodel = "[HoldingView.GetCountyModifiers]"
-							spacing = 2
+
+							button_round = {
+								name = "move_domcicle_button"
+								datacontext = "[GetPlayer.GetDomicile]"
+								datacontext = "[HoldingView.GetProvince]"
+								visible = "[IsLandlessAdventurer( GetPlayer )]"
+								widgetid = "move_domcicle_button"
+								size = { 50 50 }
+
+								enabled = "[Domicile.CanMoveTo( Province.Self )]"
+								onclick = "[OpenGameViewData( 'move_domicile_planner', Province.Self )]"
+
+								tooltip = "[Domicile.GetType.GetMoveTooltip( Character.Self )]"
+								tooltip_when_disabled = "[Domicile.GetMoveToTooltip( Province.Self )]"
+								using = tooltip_ne
+
+								button_icon = {
+									alwaystransparent = yes
+									parentanchor = center
+									size = { 30 30 }
+									texture = "gfx/interface/icons/flat_icons/move_camp.dds"
+								}
+							}
+
+							expand = {}
+
+							spacer = {
+								visible = "[Or( IsLandlessAdventurer( GetPlayer ), County.IsFullyOccupied )]"
+								size = { 8 0 }
+							}
 
 							item = {
 								modifier_item_icon = {
@@ -395,17 +424,17 @@ window = {
 				datacontext = [County.GetCountyOccupant]
 	
 				widget = {
-					size = { 52 52 }
+					size = { 50 50 }
 	
 					icon = {
-						size = { 70 70 }
+						size = { 50 50 }
 						name = "war_icon"
 						texture = "gfx/interface/icons/war_status/war_icon.dds"
 						parentanchor = center
 					}
 	
-					coa_realm_small = {
-						position = { 1 0 }
+					coa_realm_tiny = {
+							parentanchor = center
 						blockoverride "coa_button" {
 							tooltip = "COUNTY_OCCUPIER_TOOLTIP"
 							onclick = "[DefaultOnRealmFlagClick(Character.GetID)]"
@@ -536,7 +565,7 @@ window = {
 								datacontext = "[HoldingView.GetCountyTitle.GetHolder]"
 								visible = "[And(Character.HasRelationTo( GetPlayer ), Not(Character.IsPlayer))]"
 								layoutpolicy_horizontal = expanding
-								max_width = 187
+								max_width = 160
 								text = "[Character.GetRelationToString( GetPlayer )]"
 								tooltip = "EXTENDED_RELATIONS_TOOLTIP"
 								autoresize = yes
@@ -546,7 +575,7 @@ window = {
 						text_multi = {
 							datacontext = "[HoldingView.GetCountyTitle.GetHolder]"
 							layoutpolicy_horizontal = expanding
-							max_width = 188
+							max_width = 160
 							text = "GeneralUniUICharGetShortUINameNoTooltipU"
 							default_format = "#high"
 							autoresize = yes
@@ -686,7 +715,7 @@ window = {
 						default_format = "#high"
 
 						tooltip_visible = "[ValueBreakdown.HasTooltip]"
-
+						max_width = 160
 						margin = { 5 0 }
 
 						tooltipwidget = {
@@ -711,7 +740,7 @@ window = {
                         visible = "[NotEqualTo_uint32(Culture.GetID, GetPlayer.GetCulture.GetID)]"
                         text = "COUNTY_CULTURE_ACCEPTANCE_DIFF_CULTURE"
                         margin_right = 5
-
+						max_width = 160
                         tooltip = "CULTURE_ACCEPTANCE_TOOLTIP"
                     }
 
@@ -807,6 +836,7 @@ window = {
 							margin_right = 5
 							text = "[Faith.GetNameNoTooltip]"
 							default_format = "#high"
+							max_width = 160
 						}
 
 						text_single = {
@@ -814,6 +844,7 @@ window = {
                             text = "[Faith.GetNameNoTooltip]"
                             default_format = "#high"
                             margin = { 5 0 }
+							max_width = 160
 
                             background = {
                                 margin = { 5 0 }
@@ -1225,7 +1256,7 @@ window = {
 
 						button_standard = {
 							name = "toggle_find_vassal"
-							visible = "[And( ObjectsEqual( HoldingView.GetTitle.GetHolder, GetPlayer ), Not(HoldingView.GetTitle.IsLeasedOut) )]"
+							visible = "[And(And( ObjectsEqual( HoldingView.GetTitle.GetHolder, GetPlayer ), Not(HoldingView.GetTitle.IsLeasedOut) ), Not(HoldingView.GetProvince.IsRealmCapital))]"
 							enabled = "[HoldingView.CanGrantTitle]"
 							text = "FIND_VASSAL_HEADER"
 							onclick = "[HoldingView.ToggleFindVassalListWindow]"
@@ -1387,6 +1418,7 @@ window = {
 							container = {
 								icon = {
 									name = "terrain"
+									datacontext = "[HoldingView.GetProvince]"
 									visible = "[HoldingStatus.IsTerrainType]"
 									datacontext = "[HoldingStatus.GetTerrainType]"
 									texture = "[Terrain.GetIcon]"
@@ -1644,6 +1676,7 @@ window = {
 							layoutpolicy_horizontal = expanding
 							text = "SUPPLY_LIMIT"
 							default_format = "#high"
+							max_width = 140
 						}
 
 						text_single = {
@@ -3022,7 +3055,7 @@ types CountyViewTypes
 				name = "building_icon"
 				visible = "[Not( GUIBuildingItem.CanUpgrade )]"
 				parentanchor = center
-				size = { 40 40 }
+				size = { 45 40 }
 				texture = "[GUIBuildingItem.GetCurrentOrConstrucingBuilding.GetTypeIcon]"
 			}
 
@@ -3030,7 +3063,7 @@ types CountyViewTypes
 				name = "building_icon_can_upgrade"
 				visible = "[GUIBuildingItem.CanUpgrade]"
 				parentanchor = center
-				size = { 40 40 }
+				size = { 45 40 }
 				texture = "[GUIBuildingItem.GetCurrentOrConstrucingBuilding.GetTypeIcon]"
 			}
 

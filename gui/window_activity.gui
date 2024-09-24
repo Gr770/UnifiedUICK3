@@ -3,6 +3,7 @@
 	size = { 1390 750 }
 	layer = middle
 	parentanchor = center
+	allow_outside = yes
 
 	datacontext = "[GetPlayer]"
 	datacontext = "[GetVariableSystem]"
@@ -283,6 +284,14 @@
 			layoutpolicy_vertical = expanding
 			layoutpolicy_horizontal = expanding
 
+			# Used for pivotal moments in Chariot Races which are not fullscreen
+			widget = {
+				name = "widget_activity_pivotal_moment_event_window"
+				size = { 100% 100% }
+				parentanchor = top|hcenter
+				alwaystransparent = yes
+			}
+
 			activity_event_widget = {
 				name = "activity_event"
 				size = { 100% 100% }
@@ -486,7 +495,7 @@
 									}
 
 									text_single = {
-										name = "intent_name"
+										name = "intent_name_completed"
 										text = "[ActivityIntent.GetName]"
 									}
 								}
@@ -508,7 +517,7 @@
 								}
 
 								text_single = {
-									name = "intent_name"
+									name = "intent_name_failed"
 									text = "[ActivityIntent.GetName]"
 								}
 							}
@@ -685,6 +694,10 @@
 			activity_event_header = {
 				name = "tour_arrival_event"
 			}
+
+			activity_event_header = {
+				name = "chariot_race_pivotal_moment_widget"
+			}
 		}
 
 		watch_window_button = {
@@ -712,8 +725,19 @@
 	}
 
 	activity_pulse_action_popup_right = {
-		datacontext = "[ActivityWindow.GetActivity]"
 		datacontext = "[ActivityWindow.GetLastWeeklyPulseEffectData]"
+		visible = "[And( ActivityPulseEffect.IsValid, Not( ActivityWindow.HasActiveEvent ) )]"
+	}
+
+	widget = {
+		parentanchor = right
+		allow_outside = yes
+
+		vbox = {
+			layoutpolicy_vertical = expanding
+
+			window_activity_contestants_right_bar = {}
+		}
 	}
 }
 
@@ -915,6 +939,12 @@ types ActivityWindowTypes
 				}
 			}
 		}
+	}
+
+	type window_activity_contestants_right_bar = vbox
+	{
+		allow_outside = yes
+		name = "window_activity_contestants_right_bar_container"
 	}
 
 	type activity_event_widget = margin_widget

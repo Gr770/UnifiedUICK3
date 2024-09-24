@@ -14,6 +14,7 @@ GeneralUniUICharGetUINameNotMeNoTooltip: "[Character.GetUINameNotMeNoTooltip]"
 GeneralUniUICharGetUINameUV: "[Character.GetUIName|UV]"
 GeneralUniUICharGetShortUINameUV: "[Character.GetShortUIName|UV]"
 GeneralUniUICharGetFullNameNoTooltip: "[Character.GetFullNameNoTooltip]"
+GeneralUniUITitleFirstNameNoTooltip: "[Character.GetTitledFirstNameNoTooltip]"
 
 #Debug Windows
 AIWatchWindowUniUICharGetUIName: "[AIWatchWindow.GetCharacter.GetUIName]"
@@ -72,3 +73,10 @@ DisplayedDiarchGetUINameU: "[DiarchyWindow.GetDisplayedDiarch.GetUIName|U]"
 
 #Court
 CourtEmployeeUINameNoTooltip: "[CourtPosition.GetEmployee.GetUINameNoTooltip]"
+
+#Succ
+SuccShortUINameNoTooltip: "[Character.GetShortUINameNotMeNoTooltip], "
+SuccShortUINameNoTooltipTT: "[Character.GetShortUINameNotMeNoTooltip]"
+
+#Legend
+LegendShortUINameNoTooltip: "[Legend.GetProtagonist.GetShortUINameNotMeNoTooltip]"

@@ -702,13 +702,9 @@ window = {
 							margin_top = 2
 							margin_bottom = -5
 
-							warning_icon = {
-								size = { 25 25 }
-							}
-
 							text_multi = {
 								text = "[DeclareWarInteractionWindow.WriteAdditionalWarningMessage]"
-								max_width = 350
+								max_width = 520
 								autoresize = yes
 							}
 						}
@@ -894,30 +890,6 @@ window = {
 											text = "DECLARE_WAR_ALLY_MILITARY_STRENGTH_DESC"
 											align = nobaseline
 										}
-
-										icon = {
-											datacontext = "[Character.GetFaith]"
-											name = "faith_icon"
-											size = { 60 60 }
-											align = left
-											texture = "[Faith.GetIcon]"
-											using = tooltip_se
-											tooltipwidget = {
-												faith_tooltip = {}
-											}
-										}
-
-										icon = {
-											datacontext = "[Character.GetCulture]"
-											name = "culture_icon"
-											size = { 50 50 }
-											align = right
-											texture = "\\gfx\\interface\\icons\\character_interactions\\icon_culture.dds"
-											using = tooltip_se
-											tooltipwidget = {
-												culture_tooltip = {}
-											}
-										}
 										expand = {}
 									}
 									expand = {}
@@ -1006,6 +978,19 @@ types DeclareWarTypes
 				raw_text = "@dynasty_prestige_icon![DeclareWarInteractionWindow.GetSpecificCost( 'renown' )|0]"
 				align = nobaseline
 				using = Font_Size_Big
+				default_format = "#high"
+
+				tooltipwidget = { widget_value_breakdown_tooltip = {} }
+			}
+
+			text_single = {
+				name = "influence"
+				datacontext = "[DeclareWarInteractionWindow.GetCostBreakdown( 'influence' )]"
+				visible = "[NotEqualTo_CFixedPoint( DeclareWarInteractionWindow.GetSpecificCost( 'influence' ), '(CFixedPoint)0' )]"
+
+				raw_text = "@influence_icon![DeclareWarInteractionWindow.GetSpecificCost( 'influence' )|0]"
+				using = Font_Size_Big
+				align = nobaseline
 				default_format = "#high"
 
 				tooltipwidget = { widget_value_breakdown_tooltip = {} }

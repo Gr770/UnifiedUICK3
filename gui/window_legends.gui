@@ -2,7 +2,7 @@ window = {
 	name = "legends_window"
 	widgetid = "legends_window"
 	movable = no
-	layer = windows_layer
+	layer = middle
 
 	using = Window_Size_Sidebar
 	using = Window_Background_Sidebar
@@ -340,8 +340,7 @@ vbox = {
 
 			hbox_single_court_position_card = {
 				datacontext = "[GetCourtPositionType( 'chronicler_court_position' )]"
-				visible = "[And( GetPlayer.IsValid, Or( PdxGuiTabs.IsTabSet( 'seeds' ), PdxGuiTabs.IsTabSet( 'realm' ) ) ) )]"
-
+				visible = "[And( CourtPositionType.IsShown(GetPlayer), And( GetPlayer.IsValid, Or( PdxGuiTabs.IsTabSet( 'seeds' ), PdxGuiTabs.IsTabSet( 'realm' ) ) ) ) )]"
 				oncreate = "[BindFoldOutContext]"
 				oncreate = "[PdxGuiFoldOut.Unfold]"
 
@@ -883,9 +882,9 @@ types LegendTypes
 
 				vbox = {
 					datacontext = "[GetPlayer]"
+					layoutpolicy_vertical = expanding
 
 					visible = "[Not( Legend.IsCompleted )]"
-					layoutpolicy_vertical = expanding
 					margin = { 2 18 }
 					spacing = -4
 
@@ -916,7 +915,6 @@ types LegendTypes
 					text_label_right = {
 						layoutpolicy_horizontal = expanding
 						visible = "[Or( Legend.IsCharacterPromotingLegend( GetPlayer ), IsValidCommand( GetPlayer.StartPromotingLegend( Legend.Self ) ) )]"
-
 
 						text = "LEGEND_MAINTENANCE_LABEL"
 						align = right|nobaseline
@@ -982,7 +980,7 @@ types LegendTypes
 
 		using = Create_Resetting_Fold_Out
 
-		hbox_expandable_toggle_field = {}
+		button_expandable_toggle_field = {}
 
 		vbox = {
             layoutpolicy_horizontal = expanding
@@ -1036,7 +1034,7 @@ types LegendTypes
 
 		using = Create_Resetting_Fold_Out
 
-		hbox_expandable_toggle_field = {}
+		button_expandable_toggle_field = {}
 
 		vbox = {
 			layoutpolicy_horizontal = expanding
@@ -1507,7 +1505,7 @@ types LegendSeedTypes
 
 		datacontext = "[AccessLocalPlayerCachedData]"
 
-		hbox_expandable_toggle_field = {
+		button_expandable_toggle_field = {
 			blockoverride "text"
 			{
 				text = "LEGEND_SEEDS"

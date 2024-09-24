@@ -43,9 +43,9 @@ window = {
 			blockoverride "button_close"
 			{
 				onclick = "[KnightsView.Close]"
-
 			}
-		}# ACCOLADES ----------------------------------------------------------------------------
+		}
+		# ACCOLADES ----------------------------------------------------------------------------
 		vbox = {
 
 			background = {
@@ -118,7 +118,7 @@ window = {
 					datamodel = "[GetNullCharacterDataModel( Subtract_int32( GetDefine('NGui', 'KNIGHTS_VIEW_NUM_ACCOLADES'), MilitaryView.GetCharacter.GetNumActiveAccolades ) )]"
 					item = {
 						widget = {
-							enabled = "[And( MilitaryView.GetCharacter.HasFreeAccoladeSlots, KnightsView.HasCachedPotentialAcclaimedKnights )]"
+							enabled = "[LessThan_int32( PdxGuiWidget.GetIndexInDataModel, MilitaryView.GetCharacter.GetNumFreeAccoladeSlots )]"
 
 							size = { 96 110 }
 
@@ -129,19 +129,18 @@ window = {
 								visible = "[And( MilitaryView.GetCharacter.HasFreeAccoladeSlots, KnightsView.HasCachedPotentialAcclaimedKnights )]"
 							}
 
-
 							accolade_banner = {
-								visible = "[And( MilitaryView.GetCharacter.HasFreeAccoladeSlots, KnightsView.HasCachedPotentialAcclaimedKnights )]"
+								visible = "[LessThan_int32( PdxGuiWidget.GetIndexInDataModel, MilitaryView.GetCharacter.GetNumFreeAccoladeSlots )]"
 							}
 							accolade_banner_broken = {
-								visible = "[Not( And( MilitaryView.GetCharacter.HasFreeAccoladeSlots, KnightsView.HasCachedPotentialAcclaimedKnights ) )]"
+								visible = "[GreaterThanOrEqualTo_int32( PdxGuiWidget.GetIndexInDataModel, MilitaryView.GetCharacter.GetNumFreeAccoladeSlots )]"
 							}
 
 							widget = {
 								parentanchor = center
 								position = { 2 0 }
 								size = { 85 90 }
-								tooltip = "[KnightsView.GetAccoladeSlotTooltip( MilitaryView.GetCharacter.Self )]"
+								tooltip = "[SelectLocalization( LessThan_int32( PdxGuiWidget.GetIndexInDataModel, MilitaryView.GetCharacter.GetNumFreeAccoladeSlots ), KnightsView.GetAccoladeSlotTooltip( MilitaryView.GetCharacter.Self ), 'LOCKED_ACCOLADE_SLOT' )]"
 
 								background = {
 									using = Background_Area_Solid
@@ -201,6 +200,7 @@ window = {
 										parentanchor = center
 										position = { 0 0 }
 										alwaystransparent = yes
+										visible = "[LessThan_int32( PdxGuiWidget.GetIndexInDataModel, MilitaryView.GetCharacter.GetNumFreeAccoladeSlots )]"
 									}
 
 									widget = {
@@ -299,7 +299,7 @@ window = {
 
 			text_label_center = {
 				name = "knights_effectiveness"
-				text = "KNIGHTS_SUBHEADER"
+				text = "[MilitaryView.GetCharacter.Custom('GetValidKnightsHeader')]"
 				default_format = "#medium"
 			}
 

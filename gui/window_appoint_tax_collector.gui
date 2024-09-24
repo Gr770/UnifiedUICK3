@@ -330,7 +330,7 @@ window = {
 
 						icon = {
 							size = { 25 25 }
-							texture = "gfx/interface/icons/message_feed/icon_tax_collector.dds"
+							texture = "gfx/interface/icons/message_feed/tax_collector.dds"
 						}
 
 						text_single = {

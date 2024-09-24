@@ -67,7 +67,6 @@ window = {
 			}
 
 			vbox = {
-
 				visible = "[CreateAccoladeView.GetSelectedKnight.IsValid]"
 				layoutpolicy_horizontal = expanding
 				layoutpolicy_vertical = expanding
@@ -332,6 +331,15 @@ window = {
 
 				tooltip = "[CreateAccoladeView.GetCreateAccoladeTooltip]"
 				text = "CREATE_ACCOLADE"
+			}
+		}
+
+		hbox = {
+			margin_bottom = 8
+
+			text_label_center = {
+				text = "KNIGHTS_SUBHEADER"
+				default_format = "#medium"
 			}
 		}
 

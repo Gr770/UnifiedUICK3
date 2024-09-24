@@ -6,6 +6,7 @@
 
 window = {
 	name = "appoint_court_position_view"
+	widgetid = "appoint_court_position_view"
 	parentanchor = "top|right"
 	position = { -610 80 }
 	size = { 680 920 }

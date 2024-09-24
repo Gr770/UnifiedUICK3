@@ -405,118 +405,117 @@ window = {
 			}
 
 			# right vbox is claims and history tabs
-			vbox = {
-				layoutpolicy_vertical = expanding
-				minimumsize = { 500 -1 }
+		vbox = {
+			layoutpolicy_vertical = expanding
+			minimumsize = { 500 -1 }
 
-				hbox = {
-					name = "right_side_tabs"
+			hbox = {
+				name = "right_side_tabs"
+				layoutpolicy_horizontal = expanding
+
+				button_tab = {
 					layoutpolicy_horizontal = expanding
-
-					button_tab = {
-						layoutpolicy_horizontal = expanding
-						text = "DETAILS_TAB_CLAIMS"
-						onclick = "[VariableSystem.Set( 'details_right_side_tab', 'claims' )]"
-						down = "[VariableSystem.HasValue( 'details_right_side_tab', 'claims' )]"
-					}
-
-					button_tab = {
-						layoutpolicy_horizontal = expanding
-						text = "DETAILS_TAB_HISTORY"
-						onclick = "[VariableSystem.Set( 'details_right_side_tab', 'history' )]"
-						down = "[VariableSystem.HasValue( 'details_right_side_tab', 'history' )]"
-					}
+					text = "DETAILS_TAB_CLAIMS"
+					onclick = "[VariableSystem.Set( 'details_right_side_tab', 'claims' )]"
+					down = "[VariableSystem.HasValue( 'details_right_side_tab', 'claims' )]"
 				}
 
-				scrollbox = {
-					name = "history"
-					visible = "[VariableSystem.HasValue( 'details_right_side_tab', 'history' )]"
+				button_tab = {
 					layoutpolicy_horizontal = expanding
-					layoutpolicy_vertical = expanding
+					text = "DETAILS_TAB_HISTORY"
+					onclick = "[VariableSystem.Set( 'details_right_side_tab', 'history' )]"
+					down = "[VariableSystem.HasValue( 'details_right_side_tab', 'history' )]"
+				}
+			}
 
-					blockoverride "scrollbox_content" {
-						fixedgridbox = {
-							name = "history_list"
-							datamodel = "[Artifact.GetHistory.GetEntries]"
-							addcolumn = 500
-							addrow = 142
+			scrollbox = {
+				name = "history"
+				visible = "[VariableSystem.HasValue( 'details_right_side_tab', 'history' )]"
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
 
-							item = {
-								widget = {
-									minimumsize = { 470 138 }
+				blockoverride "scrollbox_content" {
+					fixedgridbox = {
+						name = "history_list"
+						datamodel = "[Artifact.GetHistory.GetEntries]"
+						addcolumn = 500
+						addrow = 142
 
-									vbox = {
+						item = {
+							widget = {
+								minimumsize = { 470 138 }
+
+								vbox = {
+									layoutpolicy_horizontal = expanding
+									layoutpolicy_vertical = expanding
+
+									background = {
+										using = Background_Area_With_Header
+									}
+
+									hbox = {
+										layoutpolicy_horizontal = expanding
+
+										text_single = {
+											text = "[HistoryEntry.GetTitle]"
+											margin = { 10 6 }
+											align = nobaseline
+											max_width = 400
+										}
+
+										expand = {}
+									}
+
+									hbox = {
 										layoutpolicy_horizontal = expanding
 										layoutpolicy_vertical = expanding
+										margin = { 10 0 }
 
-										background = {
-											using = Background_Area_With_Header
+										portrait_head_small = {
+											name = "actor"
+											datacontext = "[HistoryEntry.GetActor]"
+											visible = "[HistoryEntry.HasActor]"
 										}
 
-										hbox = {
+										vbox = {
 											layoutpolicy_horizontal = expanding
+											margin = { 5 0 }
 
-											text_single = {
-												text = "[HistoryEntry.GetTitle]"
-												margin = { 10 6 }
-												align = nobaseline
-												max_width = 400
+											text_multi = {
+												text = "[HistoryEntry.GetDescription]"
+												maximumsize = { 270 90 }
+												min_width = 270
+												autoresize = yes
+												fontsize_min = 12
 											}
-
-											expand = {}
 										}
 
-										hbox = {
-											layoutpolicy_horizontal = expanding
-											layoutpolicy_vertical = expanding
-											margin = { 10 0 }
+										expand = {}
 
-											portrait_head_small = {
-												name = "actor"
-												datacontext = "[HistoryEntry.GetActor]"
-												visible = "[HistoryEntry.HasActor]"
+										vbox = {
+											name = "actor_house"
+											datacontext = "[HistoryEntry.GetActor.GetHouse]"
+											visible = "[And( Or( Not( HistoryEntry.HasRecipient ), ObjectsEqual( HistoryEntry.GetRecipient, HistoryEntry.GetActor ) ), HistoryEntry.GetActor.IsValid )]"
+											margin = { 5 0 }
+
+											coa_house_small = {}
+
+											text_multi = {
+												text = "[DynastyHouse.GetBaseNameNoTooltip]"
+												max_width = 80
+												autoresize = yes
 											}
+										}
 
-											vbox = {
-												layoutpolicy_horizontal = expanding
-												margin = { 5 0 }
+										portrait_head_small = {
+											name = "recipient"
+											datacontext = "[HistoryEntry.GetRecipient]"
+											visible = "[And( HistoryEntry.HasRecipient, Not( ObjectsEqual( HistoryEntry.GetRecipient, HistoryEntry.GetActor ) ) )]"
 
-												text_multi = {
-													text = "[HistoryEntry.GetDescription]"
-													maximumsize = { 270 90 }
-													min_width = 270
-													autoresize = yes
-													fontsize_min = 12
-												}
-											}
-
-											expand = {}
-
-											vbox = {
-												name = "actor_house"
-												datacontext = "[HistoryEntry.GetActor.GetHouse]"
-												visible = "[And( Or( Not( HistoryEntry.HasRecipient ), ObjectsEqual( HistoryEntry.GetRecipient, HistoryEntry.GetActor ) ), HistoryEntry.GetActor.IsValid )]"
-												margin = { 5 0 }
-
-												coa_house_small = {}
-
-												text_multi = {
-													text = "[DynastyHouse.GetBaseNameNoTooltip]"
-													max_width = 80
-													autoresize = yes
-												}
-											}
-
-											portrait_head_small = {
-												name = "recipient"
-												datacontext = "[HistoryEntry.GetRecipient]"
-												visible = "[And( HistoryEntry.HasRecipient, Not( ObjectsEqual( HistoryEntry.GetRecipient, HistoryEntry.GetActor ) ) )]"
-
-												blockoverride "portrait_transformation"
-												{
-													portrait_scale = { -1 1 }
-													portrait_offset = { 1 0 }
-												}
+											blockoverride "portrait_transformation"
+											{
+												portrait_scale = { -1 1 }
+												portrait_offset = { 1 0 }
 											}
 										}
 									}
@@ -525,177 +524,177 @@ window = {
 						}
 					}
 				}
+			}
 
-				scrollbox = {
-					name = "artifact_claims"
-					visible = "[VariableSystem.HasValue( 'details_right_side_tab', 'claims' )]"
-					layoutpolicy_vertical = expanding
-					layoutpolicy_horizontal = expanding
+			scrollbox = {
+				name = "artifact_claims"
+				visible = "[VariableSystem.HasValue( 'details_right_side_tab', 'claims' )]"
+				layoutpolicy_vertical = expanding
+				layoutpolicy_horizontal = expanding
 
-					blockoverride "scrollbox_empty"
-					{
-						visible = "[IsDataModelEmpty(ArtifactDetailsView.GetClaimants)]"
-						text = "DETAILS_TAB_NO_CLAIMANTS"
-					}
+				blockoverride "scrollbox_empty"
+				{
+					visible = "[IsDataModelEmpty(ArtifactDetailsView.GetClaimants)]"
+					text = "DETAILS_TAB_NO_CLAIMANTS"
+				}
 
-					blockoverride "scrollbox_content" {
-						fixedgridbox = {
-							name = "claims_list"
-							datamodel = "[ArtifactDetailsView.GetClaimants]"
-							addcolumn = 500
-							addrow = 142
+				blockoverride "scrollbox_content" {
+					fixedgridbox = {
+						name = "claims_list"
+						datamodel = "[ArtifactDetailsView.GetClaimants]"
+						addcolumn = 500
+						addrow = 142
 
-							item = {
-								widget = {
-									size = { 470 138 }
+						item = {
+							widget = {
+								size = { 470 138 }
+
+								vbox = {
+									layoutpolicy_horizontal = expanding
+									layoutpolicy_vertical = expanding
+
+									background = {
+										using = Background_Area_With_Header
+									}
 
 									vbox = {
 										layoutpolicy_horizontal = expanding
 										layoutpolicy_vertical = expanding
+										margin_left = 10
+										margin_right = 22
 
-										background = {
-											using = Background_Area_With_Header
-										}
-
-										vbox = {
+										hbox = {
 											layoutpolicy_horizontal = expanding
-											layoutpolicy_vertical = expanding
-											margin_left = 10
-											margin_right = 22
+											margin_top = 5
+											margin_bottom = 8
 
-											hbox = {
-												layoutpolicy_horizontal = expanding
-												margin_top = 5
-												margin_bottom = 8
-
-												text_single = {
-													name = "character_name"
-													visible = "[ClaimantEntry.IsCharacter]"
-													text = "ClaimantEntryUniUIGetUINameNoTooltip"
-													max_width = 400
-												}
-
-												text_single = {
-													name = "house_name"
-													visible = "[ClaimantEntry.IsHouse]"
-													text = "[house|E] [ClaimantEntry.GetHouse.GetNameNoTooltip]"
-													max_width = 400
-												}
-
-												expand = {}
+											text_single = {
+												name = "character_name"
+												visible = "[ClaimantEntry.IsCharacter]"
+												text = "ClaimantEntryUniUIGetUINameNoTooltip"
+												max_width = 400
 											}
 
-											hbox = {
+											text_single = {
+												name = "house_name"
+												visible = "[ClaimantEntry.IsHouse]"
+												text = "[house|E] [ClaimantEntry.GetHouse.GetNameNoTooltip]"
+												max_width = 400
+											}
+
+											expand = {}
+										}
+
+										hbox = {
+											layoutpolicy_horizontal = expanding
+											margin_top = 5
+											margin_bottom = 9
+
+											portrait_head_small = {
+												name = "character"
+												visible = "[ClaimantEntry.IsCharacter]"
+												datacontext = "[ClaimantEntry.GetCharacter]"
+											}
+
+											coa_house_medium = {
+												name = "house"
+												visible = "[ClaimantEntry.IsHouse]"
+												datacontext = "[ClaimantEntry.GetHouse]"
+											}
+
+											vbox = {
 												layoutpolicy_horizontal = expanding
-												margin_top = 5
-												margin_bottom = 9
+												layoutpolicy_vertical = expanding
 
-												portrait_head_small = {
-													name = "character"
-													visible = "[ClaimantEntry.IsCharacter]"
-													datacontext = "[ClaimantEntry.GetCharacter]"
-												}
-
-												coa_house_medium = {
-													name = "house"
-													visible = "[ClaimantEntry.IsHouse]"
-													datacontext = "[ClaimantEntry.GetHouse]"
-												}
-
-												vbox = {
+												hbox = {
 													layoutpolicy_horizontal = expanding
-													layoutpolicy_vertical = expanding
+													visible = "[ClaimantEntry.IsHouse]"
+													margin_left = 10
 
-													hbox = {
-														layoutpolicy_horizontal = expanding
-														visible = "[ClaimantEntry.IsHouse]"
-														margin_left = 10
-
-														text_single = {
-															text = "CLAIMANT_ENTRY_HOUSE_HEAD"
-															align = nobaseline
-															multiline = yes
-															max_width = 240
-														}
-
-														expand = {}
+													text_single = {
+														text = "CLAIMANT_ENTRY_HOUSE_HEAD"
+														align = nobaseline
+														multiline = yes
+														max_width = 240
 													}
 
 													expand = {}
+												}
 
-													hbox = {
+												expand = {}
+
+												hbox = {
+													layoutpolicy_horizontal = expanding
+													spacing = 6
+
+													icon = {
+														name = "flag_icon"
+														visible = "[And( ClaimantEntry.IsCharacter, Not( ClaimantEntry.CanDeclareWarForClaim ) )]"
+														texture = "gfx/interface/icons/icon_retreat.dds"
+														size = { 30 30 }
+														tooltip = "CLAIMANT_NOT_A_THREAT"
+														using = tooltip_ne
+													}
+
+													text_single = {
+														datacontext = "[ClaimantEntry.GetCharacter]"
+
+														visible = "[And( ClaimantEntry.IsCharacter, Not( ClaimantEntry.CanDeclareWarForClaim ) )]"
 														layoutpolicy_horizontal = expanding
-														spacing = 6
-
-														icon = {
-															name = "flag_icon"
-															visible = "[And( ClaimantEntry.IsCharacter, Not( ClaimantEntry.CanDeclareWarForClaim ) )]"
-															texture = "gfx/interface/icons/icon_retreat.dds"
-															size = { 30 30 }
-															tooltip = "CLAIMANT_NOT_A_THREAT"
-															using = tooltip_ne
-														}
-
-														text_single = {
-															datacontext = "[ClaimantEntry.GetCharacter]"
-
-															visible = "[And( ClaimantEntry.IsCharacter, Not( ClaimantEntry.CanDeclareWarForClaim ) )]"
-															layoutpolicy_horizontal = expanding
-															text = "CHARACTER_CANNOT_DECLARE_WAR_SHORT"
-															align = nobaseline
-														}
+														text = "CHARACTER_CANNOT_DECLARE_WAR_SHORT"
+														align = nobaseline
 													}
 												}
 											}
 										}
 									}
+								}
 
-									widget = {
-										name = "army_composition"
-										datacontext = "[ClaimantEntry.GetArmyComposition]"
-										visible = "[GreaterThan_int32(ArmyComposition.GetCurrentNumberOfSoldiers, '(int32)0' )]"
-										size = { 120 45 }
-										parentanchor = right|bottom
-										position = { -10 -10 }
+								widget = {
+									name = "army_composition"
+									datacontext = "[ClaimantEntry.GetArmyComposition]"
+									visible = "[GreaterThan_int32(ArmyComposition.GetCurrentNumberOfSoldiers, '(int32)0' )]"
+									size = { 120 45 }
+									parentanchor = right|bottom
+									position = { -10 -10 }
 
-										background = {
-											using = Background_Area_Dark
-										}
+									background = {
+										using = Background_Area_Dark
+									}
 
-										vbox = {
-											layoutpolicy_horizontal = expanding
-											layoutpolicy_vertical = expanding
-											tooltip = "[ArmyComposition.GetArmyCompositionTooltip]"
+									vbox = {
+										layoutpolicy_horizontal = expanding
+										layoutpolicy_vertical = expanding
+										tooltip = "[ArmyComposition.GetArmyCompositionTooltip]"
 
-											margin = { 0 6 }
+										margin = { 0 6 }
 
-												hbox = {
-													spacing = 6
+											hbox = {
+												spacing = 6
 
-													icon = {
-														name = "icon_soldier"
-														size = { 25 25 }
-														texture = "gfx/interface/icons/icon_soldier.dds"
-													}
-
-													text_single = {
-														text = "[ArmyComposition.GetSoldierCountString]"
-														using = Font_Size_Medium
-														default_format = "#high"
-														align = nobaseline
-													}
-
-													army_quality_icon = {}
+												icon = {
+													name = "icon_soldier"
+													size = { 25 25 }
+													texture = "gfx/interface/icons/icon_soldier.dds"
 												}
 
-												progressbar_standard = {
-													name = "soldiers_max"
-													size = { 40 8 }
-
-													min = 0
-													max = "[IntToFloat(ArmyComposition.GetMaxNumberOfSoldiers)]"
-													value = "[IntToFloat(ArmyComposition.GetCurrentNumberOfSoldiers)]"
+												text_single = {
+													text = "[ArmyComposition.GetSoldierCountString]"
+													using = Font_Size_Medium
+													default_format = "#high"
+													align = nobaseline
 												}
+
+												army_quality_icon = {}
+											}
+
+											progressbar_standard = {
+												name = "soldiers_max"
+												size = { 40 8 }
+
+												min = 0
+												max = "[IntToFloat(ArmyComposition.GetMaxNumberOfSoldiers)]"
+												value = "[IntToFloat(ArmyComposition.GetCurrentNumberOfSoldiers)]"
 											}
 										}
 									}

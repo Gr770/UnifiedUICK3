@@ -495,30 +495,26 @@ window = {
 		}
 
 		hbox = {
-			layoutpolicy_horizontal = expanding
 			margin = { 0 8 }
 
-			button_standard = {
-				name = "find_successor_button"
-				size = { 300 45 }
-				text = "find_suitable_accolade_successor_interaction"
-
-				background = {
-					texture = "gfx/interface/illustrations/decisions/decision_knight_kneeling.dds"
-					fittype = centercrop
-					alpha = 0.7
-				}
-
-				datacontext = "[Accolade.GetAcclaimedKnight]"
-				enabled = "[Character.IsPlayerInteractionValid('find_suitable_accolade_successor_interaction')]"
-				onclick = "[Character.OpenPlayerInteraction('find_suitable_accolade_successor_interaction')]"
-				tooltip = "[Character.GetPlayerInteractionTooltip('find_suitable_accolade_successor_interaction')]"
+			text_label_center = {
+				text = "KNIGHTS_SUBHEADER"
+				default_format = "#medium"
 			}
 		}
 
 		scrollbox = {
 			layoutpolicy_horizontal = expanding
 			layoutpolicy_vertical = expanding
+
+			datacontext = "[AccessKnightsView()]"
+
+			blockoverride "scrollbox_empty" {
+				datacontext = "[Accolade.GetAcclaimedKnight]"
+				visible = "[Character.IsPlayerInteractionValid('find_suitable_accolade_successor_interaction')]"
+
+				text = "ACCOLADE_NO_SUCCESSOR_FOUND"
+			}
 
 			blockoverride "scrollbox_content" {
 				vbox = {
@@ -613,7 +609,6 @@ window = {
 													text_single = {
 														layoutpolicy_horizontal = expanding
 														text = "[Character.GetRelationToString( GetPlayer )]"
-														tooltip = "EXTENDED_RELATIONS_TOOLTIP"
 														default_format = "#low"
 														autoresize = no
 														align = nobaseline
@@ -634,6 +629,70 @@ window = {
 												}
 
 												expand = {}
+											}
+										}
+
+										hbox = {
+											visible = "[Not(Character.IsGuest)]"
+											layoutpolicy_horizontal = expanding
+											spacing = 5
+
+											button_standard = {
+												size = { 90 33 }
+												onclick = "[MilitaryView.SetKnightForced( Character.Self )]"
+												down = "[Character.IsKnightForced]"
+												alwaystransparent = no
+												enabled = "[Not( Character.IsKnightForced )]"
+
+												text = "KNIGHTS_VIEW_FORCE"
+
+												tooltip = "KNIGHTS_VIEW_TITLE_FORCE_TT"
+												using = tooltip_se
+											}
+
+											button_standard = {
+												size = { 90 33 }
+												onclick = "[MilitaryView.SetKnightDefault( Character.Self )]"
+												down = "[Character.IsKnightDefault]"
+												alwaystransparent = no
+												enabled = "[Not( Character.IsKnightDefault )]"
+
+												text = "KNIGHTS_VIEW_ALLOW"
+
+												tooltip = "KNIGHTS_VIEW_TITLE_BY_PROWESS_TT"
+												using = tooltip_se
+											}
+
+											button_standard = {
+												size = { 90 33 }
+												onclick = "[MilitaryView.SetKnightDisallowed( Character.Self )]"
+												down = "[Character.IsKnightDisallowed]"
+												alwaystransparent = no
+												enabled = "[Not( Character.IsKnightDisallowed )]"
+
+												text = "KNIGHTS_VIEW_FORBID"
+												tooltip = "[SelectLocalization( Character.IsAcclaimedKnight, 'CANNOT_FORBID_ACCLAIMED_KNIGHT', 'KNIGHTS_VIEW_TITLE_FORBID_TT' )]"
+												using = tooltip_se
+											}
+
+											expand = {}
+
+											icon = {
+												visible = "[And( HasDlcFeature( 'accolades' ), And( Or( Not( Character.HasLandedTitles ), Character.GetPrimaryTitle.IsBarony ), KnightsView.HasPotentialAccolade( Character.Self ) ) )]"
+
+												texture = "gfx/interface/icons/icon_knight_acclaimed.dds"
+												size = { 30 30 }
+
+												tooltipwidget = {
+													using = accolade_types_tooltip
+												}
+
+												icon = {
+													visible = "[Not( KnightsView.CanBeAcclaimedKnight( Character.Self ) )]"
+													size = { 25 25 }
+													position = { 10 10 }
+													texture = "gfx/interface/icons/symbols/icon_cross.dds"
+												}
 											}
 										}
 
@@ -665,6 +724,28 @@ window = {
 						}
 					}
 				}
+			}
+		}
+
+		hbox = {
+			margin = { 0 16 }
+			datacontext = "[Accolade.GetAcclaimedKnight]"
+			visible = "[Character.IsPlayerInteractionValid('find_suitable_accolade_successor_interaction')]"
+
+			button_standard = {
+				name = "find_successor_button"
+				size = { 300 45 }
+				text = "find_suitable_accolade_successor_interaction"
+
+				background = {
+					texture = "gfx/interface/illustrations/decisions/decision_knight_kneeling.dds"
+					fittype = centercrop
+					alpha = 0.7
+				}
+
+				enabled = "[Character.IsPlayerInteractionValid('find_suitable_accolade_successor_interaction')]"
+				onclick = "[Character.OpenPlayerInteraction('find_suitable_accolade_successor_interaction')]"
+				tooltip = "[Character.GetPlayerInteractionTooltip('find_suitable_accolade_successor_interaction')]"
 			}
 		}
 	}

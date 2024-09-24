@@ -57,12 +57,12 @@ window = {
 				}
 
 				hbox = {
-					visible = "[Not(GetPlayer.IsIndependentRuler)]"
 					layoutpolicy_horizontal = expanding
 
 					button_tab = {
 						name = "targeting_factions"
 						layoutpolicy_horizontal = expanding
+						visible = "[Not(IsLandlessAdventurer(GetPlayer))]"
 						onclick = "[GetVariableSystem.Set( 'factions_view_tabs', 'against_you' )]"
 						down = "[GetVariableSystem.HasValue( 'factions_view_tabs', 'against_you' )]"
 
@@ -73,8 +73,7 @@ window = {
 					button_tab = {
 						name = "my_factions"
 						layoutpolicy_horizontal = expanding
-						visible = "[Not(GetPlayer.IsIndependentRuler)]"
-
+						visible = "[Or( Not(GetPlayer.IsIndependentRuler), FactionsWindow.IsInAnyFaction)]"
 						onclick = "[GetVariableSystem.Set( 'factions_view_tabs', 'against_liege' )]"
 						down = "[GetVariableSystem.HasValue( 'factions_view_tabs', 'against_liege' )]"
 
@@ -103,9 +102,10 @@ window = {
 						}
 					}
 
+					# Outer container for factions against player character
 					scrollbox = {
 						name = "against_you"
-						visible = "[GetVariableSystem.HasValue( 'factions_view_tabs', 'against_you' )]"
+						visible = "[And( GetVariableSystem.HasValue( 'factions_view_tabs', 'against_you' ), Not( IsLandlessAdventurer( GetPlayer ) ) ) ]"
 						layoutpolicy_horizontal = expanding
 						layoutpolicy_vertical = expanding
 

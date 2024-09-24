@@ -2,7 +2,7 @@ window = {
 	using = editor_window
 	name = "character_pool_watch_window"
 	parentanchor = hcenter|vcenter
-	size = { 300 500 }
+	size = { 350 500 }
 	resizable = yes
 	layer = top
 
@@ -61,19 +61,45 @@ window = {
 							portrait_head = {}
 
 							text_single = {
-								position = { 90 15 }
+								position = { 110 5 }
 								size = { 420 30 }
 								text = "GeneralUniUICharGetUINameNoTooltip"
 							}
 
 							text_single = {
-								position = { 90 55 }
+								datacontext = "[Character.GetCulture]"
+								position = { 110 30 }
+								size = { 420 30 }
+								text = "[Culture.GetName]"
+							}
+							button_religion_icon = {
+								name = "faith_button"
+								datacontext = "[Character.GetFaith]"
+								position = { 230 35 }
+								size = { 45 45 }
+							}
+							
+							coa_house_small = { 
+								datacontext = "[Character.GetHouse]"
+								parentanchor = center
+								scale = 0.7
+								position = { 50 0 }
+							}
+							text_single = {
+								datacontext = "[Character.GetHouse]"
+								position = { 297 72 }
+								size = { 420 30 }
+								text = "[DynastyHouse.GetNumberOfMembers|V]"
+							}
+
+							text_single = {
+								position = { 110 65 }
 								raw_text = "#D Join:#!"
 								align = nobaseline
 							}
 
 							container = {
-								position = { 135 55 }
+								position = { 155 65 }
 								tooltip = "[Character.GetDebugGuestArriveReasons]"
 								
 								icon = {
@@ -88,7 +114,7 @@ window = {
 							}
 
 							text_single = {
-								position = { 90 80 }
+								position = { 110 90 }
 								raw_text = "#D Score: [Character.GetDebugGuestScore]#!"
 								align = nobaseline
 							}

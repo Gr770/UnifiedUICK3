@@ -559,6 +559,7 @@ types ActivityPlannerTypes
 	type activity_special_option_selection_widget = widget
 	{
 		datacontext = "[ActivityPlanner.GetEditingOption]"
+		visible = "[ActivityPlanner.IsEditingOption]"
 		size = { 100% 100% }
 
 		using = Activity_Planner_Widget
@@ -641,7 +642,7 @@ types ActivityPlannerTypes
 						fontsize = 32
 
 						background = {
-							texture = "gfx/interface/window_travel/travel_planner_header_banner.dds"
+							texture = "gfx/interface/window_activities/activity_planning/activity_type_banner.dds"
 
 							margin = { 40 20 }
 
@@ -1102,7 +1103,7 @@ types ActivityPlannerNewTypes
 				hbox = {
 					name = "activity_type"
 					datacontext = "[ActivityPlanner.GetSelectedSpecialOption]"
-					visible = "[And(Not(ActivityPlanner.IsPlanningStage( 'special_option_category' )),ActivityType.HasSpecialOptionCategory)]"
+					visible = "[And(And(Not(ActivityPlanner.IsPlanningStage( 'special_option_category' )),ActivityType.HasSpecialOptionCategory), ActivityPlanner.HasSelectedSpecialOption)]"
 					layoutpolicy_horizontal = expanding
 
 					spacing = 8
@@ -1281,28 +1282,8 @@ types ActivityPlannerNewTypes
 		size = { 100 56 }
 
 		background = {
-			name = "header"
-			texture = "gfx/interface/component_tiles/tile_title_big_top_01.dds"
-			spriteType = Corneredtiled
-			texture_density = 2
+			using = Background_Header
 			margin_left = 30
-
-			modify_texture = {
-				name = "mask"
-				texture = "gfx/interface/component_masks/mask_title_big_top.dds"
-				spriteType = Corneredtiled
-				spriteborder = { 160 0 }
-				blend_mode = alphamultiply
-				alpha = 0.5
-			}
-
-			modify_texture = {
-				name = "overlay"
-				texture = "gfx/interface/component_overlay/overlay_title_big_top.dds"
-				spriteType = Corneredstretched
-				spriteborder = { 0 0 }
-				blend_mode = overlay
-			}
 
 			modify_texture = {
 				texture = "gfx/interface/component_masks/mask_fade_horizontal_short.dds"
@@ -1611,8 +1592,6 @@ types ActivityPlannerNewTypes
 				vbox = {
 					name = "activity_options_plugins"
 					layoutpolicy_vertical = expanding
-					margin_top = 8
-					margin_bottom = 16
 				}
 
 				# Activity Options
