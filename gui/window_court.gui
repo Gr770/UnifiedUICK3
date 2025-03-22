@@ -139,7 +139,7 @@ window = {
 							hbox = {
 								spacing = 10
 
-								button_court = {
+								button_decision_entry = {
 									name = "invite_knights_decision"
 									datacontext = "[GetDecisionWithKey('invite_knights_decision')]"
 									visible = "[Decision.IsShownForPlayer]"
@@ -147,23 +147,18 @@ window = {
 									onclick = "[OpenGameViewData( 'decision_detail', Decision.Self)]"
 									using = tooltip_se
 
-									size = { 210 30 }
-
-									blockoverride "size_illustration" {
-										size = { 210 28 }
+									blockoverride "button_size"
+									{
+										size = { 210 30 }
 									}
 
-									blockoverride "vignette_size" {
-										position = { 0 1 }
-										size = { 206 26 }
-									}
-
-									blockoverride "deb_illustration" {
-										visible = no
+									blockoverride "vignette_size"
+									{
+										size = { 98% 88% }
 									}
 								}
 
-								button_court = {
+								button_decision_entry = {
 									name = "invite_claimants_decision"
 									datacontext = "[GetDecisionWithKey('invite_claimants_decision')]"
 									visible = "[Decision.IsShownForPlayer]"
@@ -171,19 +166,14 @@ window = {
 									onclick = "[OpenGameViewData( 'decision_detail', Decision.Self)]"
 									using = tooltip_se
 
-									size = { 210 30 }
-
-									blockoverride "size_illustration" {
-										size = { 210 28 }
+									blockoverride "button_size"
+									{
+										size = { 210 30 }
 									}
 
-									blockoverride "vignette_size" {
-										position = { 0 1 }
-										size = { 206 26 }
-									}
-
-									blockoverride "deb_illustration" {
-										visible = no
+									blockoverride "vignette_size"
+									{
+										size = { 98% 88% }
 									}
 								}
 							}
@@ -332,12 +322,12 @@ window = {
 								visible = "[Not(CharacterSelectionList.IsBuildingList)]"
 								layoutpolicy_horizontal = expanding
 								addcolumn = 520
-								addrow = 167
+								addrow = 148
 								datamodel_reuse_widgets = yes
 
 								item = {
 									vbox = {
-										maximumsize = { 520 167 }
+										maximumsize = { 520 148 }
 
 										widget_character_list_item_finder = {
 											layoutpolicy_horizontal = expanding
@@ -354,13 +344,14 @@ window = {
 										hbox = {
 											name = "prisoner_data"
 											layoutpolicy_horizontal = expanding
-											margin = { 10 10 }
+											margin = { 8 4 }
 											spacing = 5
 
 											background = {
 												# [PoW]
 												visible = "[Not(GetGlobalVariable('PoW_is_loaded').IsSet)]"
 												# [PoW]
+												alpha = 0.5
 												using = Background_Area_Dark
 											}
 
@@ -368,7 +359,7 @@ window = {
 											using = PoW_background
 											# [/PoW]
 
-											vbox = {
+											hbox = {
 												# [PoW]
 												visible = "[Not(GetGlobalVariable('PoW_is_loaded').IsSet)]"
 												# [PoW]
@@ -377,33 +368,21 @@ window = {
 												layoutpolicy_vertical = expanding
 
 												text_single = {
-													visible = "[CharacterListItem.GetCharacter.IsImprisoned]"
+													name = "imprisoned_time"
+													layoutpolicy_horizontal = expanding
+													text = "[CharacterListItem.GetText('imprisoned_time')]"
+													autoresize = no
+													align = nobaseline
+												}
+
+												text_single = {
 													name = "type"
 													layoutpolicy_horizontal = expanding
 													text = "[CharacterListItem.GetText('tooltip')]"
 													default_format = "#low"
 													autoresize = no
+													align = nobaseline
 												}
-
-												hbox = {
-													layoutpolicy_horizontal = expanding
-													spacing = 5
-													visible = "[CharacterListItem.GetCharacter.IsImprisoned]"
-
-													icon = {
-														texture = "gfx/interface/icons/portraits/punishment.dds"
-														size = { 30 30 }
-													}
-
-													text_single = {
-														name = "imprisoned_time"
-														layoutpolicy_horizontal = expanding
-														text = "[CharacterListItem.GetText('imprisoned_time')]"
-														autoresize = no
-													}
-												}
-
-												expand = {}
 											}
 
 											# [PoW]
@@ -423,42 +402,20 @@ window = {
 											hbox = {
 												spacing = 3
 
-												button_round  = {
-													name = "ransom"
-													enabled = "[CharacterListItem.GetBool('can_ransom')]"
+												button_round = {
 
-													button_prison_ransom = {
+													datacontext = "[CharacterListItem.GetCharacter]"
+
+													tooltip = "PRISON_INTERACTIONS_BUTTON_TOOLTIP"
+													tooltip_visible = "[Not(IsInteractionMenuOpenForCharacterWithFilter(Character.Self, 'interaction_category_prison'))]"
+
+													onclick = "[ToggleFilteredCharacterInteractionMenu(Character.Self, 'interaction_category_prison')]"
+
+													button_icon = {
+														alwaystransparent = yes
 														parentanchor = center
-														onclick = "[CharacterListItem.OnClick('ransom')]"
-														enabled = "[CharacterListItem.GetBool('can_ransom')]"
-														tooltip = "[CharacterListItem.GetText('ransom_tooltip')]"
-														using = tooltip_se
-													}
-												}
-
-												button_round  = {
-													name = "release"
-													enabled = "[CharacterListItem.GetBool('can_release')]"
-
-													button_prison_release = {
-														parentanchor = center
-														onclick = "[CharacterListItem.OnClick('release')]"
-														enabled = "[CharacterListItem.GetBool('can_release')]"
-														tooltip = "[CharacterListItem.GetText('release_tooltip')]"
-														using = tooltip_se
-													}
-												}
-
-												button_round  = {
-													name = "execute"
-													enabled = "[CharacterListItem.GetBool('can_execute')]"
-
-													button_prison_execute = {
-														parentanchor = center
-														onclick = "[CharacterListItem.OnClick('execute')]"
-														enabled = "[CharacterListItem.GetBool('can_execute')]"
-														tooltip = "[CharacterListItem.GetText('execute_tooltip')]"
-														using = tooltip_se
+														size = { 30 30 }
+														texture = "gfx/interface/icons/flat_icons/character_interactions.dds"
 													}
 												}
 											}
@@ -694,54 +651,18 @@ window = {
 												}
 											}
 
-											hbox = {
-												spacing = 8
+											button_round = {
 
-												button_round  = {
-													name = "ransom"
-													enabled = "[CharacterListItem.GetBool('can_ransom')]"
-													# [UniUI] [PoW]
-													using = UniUI_PoW_mass_action_visibility_trigger
-													# [/PoW] [/UniUI]
+												tooltip = "PRISON_INTERACTIONS_BUTTON_TOOLTIP"
+												tooltip_visible = "[Not(IsInteractionMenuOpenForCharacterWithFilter(Character.Self, 'interaction_category_prison'))]"
 
-													button_prison_ransom = {
-														parentanchor = center
-														onclick = "[CharacterListItem.OnClick('ransom')]"
-														enabled = "[CharacterListItem.GetBool('can_ransom')]"
-														tooltip = "[CharacterListItem.GetText('ransom_tooltip')]"
-														using = tooltip_se
+												onclick = "[ToggleFilteredCharacterInteractionMenu(Character.Self, 'interaction_category_prison')]"
 
-													}
-												}
-
-												button_round  = {
-													name = "release"
-													enabled = "[CharacterListItem.GetBool('can_release')]"
-													# [UniUI] [PoW]
-													using = UniUI_PoW_mass_action_visibility_trigger
-													# [/PoW] [/UniUI]
-
-													button_prison_release = {
-														parentanchor = center
-														onclick = "[CharacterListItem.OnClick('release')]"
-														enabled = "[CharacterListItem.GetBool('can_release')]"
-														tooltip = "[CharacterListItem.GetText('release_tooltip')]"
-														using = tooltip_se
-
-													}
-												}
-
-												button_round  = {
-													name = "execute"
-													enabled = "[CharacterListItem.GetBool('can_execute')]"
-
-													button_prison_execute = {
-														parentanchor = center
-														onclick = "[CharacterListItem.OnClick('execute')]"
-														enabled = "[CharacterListItem.GetBool('can_execute')]"
-														tooltip = "[CharacterListItem.GetText('execute_tooltip')]"
-														using = tooltip_se
-													}
+												button_icon = {
+													alwaystransparent = yes
+													parentanchor = center
+													size = { 30 30 }
+													texture = "gfx/interface/icons/flat_icons/character_interactions.dds"
 												}
 											}
 										}
@@ -758,7 +679,7 @@ window = {
 	window_character_filter = {
 		name = "court_character_filter_window"
 		datacontext = "[CourtWindow.GetCourt]"
-		size = { 510 860 }
+		size = { 510 902 }
 
 		blockoverride "editbox_properties"
 		{
@@ -825,6 +746,10 @@ window = {
 					filter_item = {
 						layoutpolicy_horizontal = expanding
 						datacontext = "[CharacterSelectionList.GetFilter('inspiration_filter')]"
+					}
+					filter_item = {
+						layoutpolicy_horizontal = expanding
+						datacontext = "[CharacterSelectionList.GetFilter('tutor_filter')]"
 					}
 				}
 			}
@@ -897,6 +822,10 @@ window = {
 					filter_item = {
 						layoutpolicy_horizontal = expanding
 						datacontext = "[CharacterSelectionList.GetFilter('inspiration_filter')]"
+					}
+					filter_item = {
+						layoutpolicy_horizontal = expanding
+						datacontext = "[CharacterSelectionList.GetFilter('tutor_filter')]"
 					}
 				}
 			}
